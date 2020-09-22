@@ -1,0 +1,87 @@
+
+
+.card-body {
+  padding: 0.5em 0 0 0;
+}
+
+.id-data {
+  line-height:0.4em;
+}
+
+.movements-data {
+  line-height:0.4em;
+}
+
+.card-footer {
+  padding: 0.3em;
+}
+
+.card:hover {
+  -webkit-box-shadow: 9px 7px 10px 1px rgba(0,0,0,0.73);
+  -moz-box-shadow: 9px 7px 10px 1px rgba(0,0,0,0.73);
+  box-shadow: 9px 7px 10px 1px rgba(0,0,0,0.73);
+}
+
+.card-horizontal {
+  display: flex;
+  flex: 1 1 auto;
+}
+
+.card-img {
+  padding: 0.5em;
+  width: 100%;
+  max-width: 150px;
+  margin: auto;
+  display: block;
+}
+
+@media (max-width: 600px) {
+  .card-img {
+    display: none;
+  }
+
+  .progress-bar-container {
+    display: none;
+  }
+}
+
+
+.card-title {
+  font-weight:900;
+}
+
+.card-name{
+  font-size:2em;
+  font-weight:900;
+  line-height:0.2;
+  text-transform:uppercase;
+  color: black;
+  padding-top: 0.5em
+}
+
+.card-number{
+  font-size:1em;
+  font-weight: lighter;
+  text-transform:uppercase;
+  color: grey;
+}
+
+.card-amount{
+  font-size:2em;
+  font-weight: bold;
+  text-transform:uppercase;
+  color: red;
+}
+
+.card-movements {
+  font-size:2em;
+  font-weight: bold;
+  color: darkgrey;
+}
+
+.card-last-movement{
+  font-size:0.8em;
+  font-weight: bold;
+  color: black;
+}
+

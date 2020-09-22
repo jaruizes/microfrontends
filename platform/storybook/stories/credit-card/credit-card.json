@@ -1,0 +1,34 @@
+{
+  "version": 1.1,
+  "tags": [
+    {
+      "name": "credit-card",
+      "attributes": [
+        {
+          "name": "entity",
+          "description": "Card entity"
+        },
+        {
+          "name": "expiration",
+          "description": "Card expiration"
+        },
+        {
+          "name": "logo",
+          "description": "Card logo"
+        },
+        {
+          "name": "name",
+          "description": "Card's onwer"
+        },
+        {
+          "name": "number",
+          "description": "Card number"
+        },
+        {
+          "name": "type",
+          "description": "Card type: 0 (debit) / 1 (credit)"
+        }
+      ]
+    }
+  ]
+}

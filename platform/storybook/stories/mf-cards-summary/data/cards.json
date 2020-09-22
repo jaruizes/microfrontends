@@ -1,0 +1,17 @@
+[
+    {
+      "id": 1,
+      "number" : "123412341234",
+      "type" : 0,
+      "lastmovement": "2 days ago",
+      "amount": 345
+    },
+    {
+      "id": 2,
+      "number" : "3333333344445555",
+      "type" : 1,
+      "lastmovement": "2 days ago",
+      "amount": 478,
+      "limit": 2500
+    }
+  ]

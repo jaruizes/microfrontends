@@ -1,0 +1,17 @@
+{
+  "/mfs-home": {
+    "target": "http://microfrontends-cdn.s3-website.eu-west-2.amazonaws.com/mfs-home",
+    "secure": false,
+    "logLevel": "debug",
+    "changeOrigin" : true,
+    "pathRewrite": {
+      "^/mfs-home": ""
+    }
+  },
+  "/assets/mfs-home": {
+    "target": "http://microfrontends-cdn.s3-website.eu-west-2.amazonaws.com/mfs-home",
+    "secure": false,
+    "logLevel": "debug",
+    "changeOrigin" : true
+  }
+}

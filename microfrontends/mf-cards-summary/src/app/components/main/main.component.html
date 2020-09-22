@@ -1,0 +1,21 @@
+<div class="container-fluid">
+    <mat-card class="card" >
+        <mat-card-title fxLayout.gt-xs="row" fxLayout.xs="column">
+            <h3>Cards</h3>
+        </mat-card-title>
+        <mat-card-content>
+            <div class="cards-container mat-elevation-z8">
+                <div *ngFor="let card of cards">
+                    <credit-card-resume *axLazyElement="elementUrl; module: true"
+                                        number="{{card.number}}"
+                                        lastmovement="{{card.lastmovement}}"
+                                        amount="{{card.amount}}"
+                                        limit="{{card.limit}}"
+                                        type="{{card.type}}">
+                    </credit-card-resume>
+                </div>
+            </div>
+        </mat-card-content>
+    </mat-card>
+</div>
+

@@ -1,0 +1,19 @@
+import { Story, Canvas } from '@storybook/addon-docs/blocks';
+import { html } from 'lit-html';
+import { wcloader } from '../../utils/wc-loader';
+
+# Storybook Docs for Web Components
+
+<Meta title="Microfrontends/Cards Summary" />
+
+## Cards Summary
+
+Microfrontend providing a cards summary
+
+<Story name="default" height="220px">
+  {() => {
+    wcloader('http://microfrontends-cdn.s3-website.eu-west-2.amazonaws.com/mf-cards-summary/main.js');
+    return html` <mf-cards-summary></mf-cards-summary> `
+    }
+  }
+</Story>

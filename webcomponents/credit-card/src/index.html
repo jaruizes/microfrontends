@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <title>Stencil Component Starter</title>
+
+    <script type="module" src="/build/credit-card.esm.js"></script>
+    <script nomodule src="/build/credit-card.js"></script>
+  </head>
+  <body>
+      <credit-card name="Jose Miguel González del Campo"
+                   number="XXXX XXXX XXXX XXXX"
+                   entity="TECHNOLOGY BANK"
+                   expiration="10/24"
+                   type="0">
+      </credit-card>
+
+      <br />
+      <br />
+      <br />
+
+      <credit-card name="Jose Miguel González del Campo"
+                   number="XXXX XXXX XXXX XXXX"
+                   entity="TECHNOLOGY BANK"
+                   expiration="10/24"
+                   type="1">
+      </credit-card>
+
+      <br />
+      <br />
+      <br />
+
+      <credit-card-resume name="MASTERCARD"
+                          number="1234 1234 1234 1234"
+                          lastmovement="3 min ago"
+                          amount="500 €"
+                          progress="50"
+                          type="1">
+      </credit-card-resume>
+
+      <credit-card-resume name="MASTERCARD"
+                          number="1234 1234 1234 1234"
+                          lastmovement="3 min ago"
+                          amount="500 €"
+                          progress="50">
+      </credit-card-resume>
+
+  </body>
+</html>

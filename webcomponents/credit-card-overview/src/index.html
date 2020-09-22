@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <title>Stencil Component Starter</title>
+
+    <script type="module" src="/build/credit-card-resume.esm.js"></script>
+    <script nomodule src="/build/credit-card-resume.js"></script>
+
+  </head>
+  <body>
+      <credit-card-resume id="1"
+                          number="1234123412341234"
+                          lastmovement="3 min ago"
+                          amount="948"
+                          limit="1000"
+                          type="1">
+      </credit-card-resume>
+
+      <credit-card-resume name="MASTERCARD"
+                          number="1234123412341234"
+                          lastmovement="3 min ago"
+                          amount="500 €">
+      </credit-card-resume>
+
+      <script>
+          const elements = document.getElementsByTagName("credit-card-resume");
+          for(let i = 0;i < elements.length; i++) {
+              elements[i].addEventListener("cardClick", (e) => console.log(e), false);
+          }
+
+      </script>
+
+  </body>
+</html>
