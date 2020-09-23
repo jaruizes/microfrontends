@@ -13,30 +13,20 @@ import { Account } from '../model/account';
 export class MainComponent implements OnInit {
     public elementUrl: string = 'http://microfrontends-cdn.s3-website.eu-west-2.amazonaws.com/web-components/account-overview/account-overview.esm.js';
 
-    @Input()
-    public title;
-
     public accounts: Account[];
+    public totalBalance: number;
 
     private channel;
 
     constructor(private accountsService: AccountsService) {
+        this.totalBalance = 0;
         this.channel = new BroadcastChannel("mfs-channel");
     }
 
     ngOnInit() {
-        if (!this.title) {
-            this.title = 'Welcome to the future'
-        }
-
         this.accountsService.getCards().subscribe((accounts) => {
-            console.log(accounts);
+            accounts.forEach((account) => this.totalBalance = this.totalBalance + account.amount);
             this.accounts = accounts;
-            console.log('lastmovement: ' + this.accounts[0].lastmovement);
-            console.log('newmovements: ' + this.accounts[0].newmovements);
-
-            console.log('lastmovement: ' + this.accounts[1].lastmovement);
-            console.log('newmovements: ' + this.accounts[1].newmovements);
         });
     }
 

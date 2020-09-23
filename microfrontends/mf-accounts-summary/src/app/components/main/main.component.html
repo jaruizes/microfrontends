@@ -1,7 +1,17 @@
 <div class="container-fluid">
     <mat-card class="card" >
         <mat-card-title fxLayout.gt-xs="row" fxLayout.xs="column">
-            <h3>Accounts</h3>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-10 justify-content-start">
+                        <h3>Accounts</h3>
+                    </div>
+                    <div class="col-2 d-flex justify-content-end">
+                        <h3>Balance: {{totalBalance}} €</h3>
+                    </div>
+                </div>
+            </div>
+
         </mat-card-title>
         <mat-card-content>
             <div class="cards-container mat-elevation-z8">
