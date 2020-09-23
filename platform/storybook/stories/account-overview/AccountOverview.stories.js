@@ -27,12 +27,12 @@ export default {
         type: 'text'
       }
     },
-    lastMovement: {
+    lastmovement: {
       control: {
         type: 'text'
       }
     },
-    newMovements: {
+    newmovements: {
       control: {
         type: 'number'
       }
@@ -47,8 +47,8 @@ export default {
 const AccountOverviewTemplate = ({ number, name, lastMovement, amount, newMovements }) => `
     <account-overview number="${number}"
                         name="${name}"
-                        last-movement="${lastMovement}"
-                        new-movements="${newMovements}"
+                        lastmovement="${lastMovement}"
+                        newmovements="${newMovements}"
                         amount="${amount}">
     </account-overview>
 `;

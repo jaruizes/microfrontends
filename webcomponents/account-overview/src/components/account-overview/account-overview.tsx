@@ -21,12 +21,12 @@ export class AccountOverview {
   /**
    * Account new movements
    */
-  @Prop() newMovements: number;
+  @Prop() newmovements: number;
 
   /**
    * Account last movement
    */
-  @Prop() lastMovement: string;
+  @Prop() lastmovement: string;
 
   /**
    * Account amount
@@ -52,7 +52,7 @@ export class AccountOverview {
                         <p class="text-muted">New transactions</p>
                       </div>
                       <div class="d-flex justify-content-center">
-                        <h3 class="card-movements">{this.newMovements}</h3>
+                        <h3 class="card-movements">{this.newmovements}</h3>
                       </div>
                     </div>
                     <div class="col-xl-4 col-lg-4 col-sm-4 col-6">
@@ -70,7 +70,7 @@ export class AccountOverview {
                 <div class="container-fluid">
                   <div class="row">
                     <div class="col-12">
-                      <small class="text-muted font-weight-bold">Last movement: {this.lastMovement}</small>
+                      <small class="text-muted font-weight-bold">Last movement: {this.lastmovement}</small>
                     </div>
                   </div>
                 </div>

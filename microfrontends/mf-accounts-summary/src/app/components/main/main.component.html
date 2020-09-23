@@ -1,0 +1,21 @@
+<div class="container-fluid">
+    <mat-card class="card" >
+        <mat-card-title fxLayout.gt-xs="row" fxLayout.xs="column">
+            <h3>Accounts</h3>
+        </mat-card-title>
+        <mat-card-content>
+            <div class="cards-container mat-elevation-z8">
+                <div *ngFor="let account of accounts">
+                    <account-overview *axLazyElement="elementUrl; module: true"
+                                      number="{{account.number}}"
+                                      name="{{account.name}}"
+                                      lastmovement="{{account.lastmovement}}"
+                                      newmovements="{{account.newmovements}}"
+                                      amount="{{account.amount}}">
+                    </account-overview>
+                </div>
+            </div>
+        </mat-card-content>
+    </mat-card>
+</div>
+

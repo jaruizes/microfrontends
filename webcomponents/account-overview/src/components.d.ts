@@ -14,7 +14,7 @@ export namespace Components {
         /**
           * Account last movement
          */
-        "lastMovement": string;
+        "lastmovement": string;
         /**
           * Account name
          */
@@ -22,7 +22,7 @@ export namespace Components {
         /**
           * Account new movements
          */
-        "newMovements": number;
+        "newmovements": number;
         /**
           * Account number
          */
@@ -49,7 +49,7 @@ declare namespace LocalJSX {
         /**
           * Account last movement
          */
-        "lastMovement"?: string;
+        "lastmovement"?: string;
         /**
           * Account name
          */
@@ -57,7 +57,7 @@ declare namespace LocalJSX {
         /**
           * Account new movements
          */
-        "newMovements"?: number;
+        "newmovements"?: number;
         /**
           * Account number
          */

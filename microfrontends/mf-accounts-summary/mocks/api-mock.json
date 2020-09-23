@@ -1,0 +1,20 @@
+{
+  "accounts" : [
+    {
+      "id": 1,
+      "number" : "123412341234",
+      "name" : "Cuenta Nómina",
+      "lastmovement": "2 days ago",
+      "newmovements": "5",
+      "amount": "345"
+    },
+    {
+      "id": 2,
+      "number" : "123412341234",
+      "name" : "Cuenta Naranja",
+      "lastmovement": "2 days ago",
+      "newmovements": 5,
+      "amount": 345
+    }
+  ]
+}
