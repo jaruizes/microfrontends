@@ -7,7 +7,6 @@ import { OAuthService } from 'angular-oauth2-oidc';
   styleUrls: ['./private.component.css']
 })
 export class PrivateComponent implements OnInit {
-
   constructor(private oauthService: OAuthService) { }
 
   ngOnInit(): void {

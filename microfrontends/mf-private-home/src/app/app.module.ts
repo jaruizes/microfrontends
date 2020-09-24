@@ -27,11 +27,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PrivateHomeComponent } from './components/private-home/private-home.component';
 import { LazyElementsModule } from '@angular-extensions/elements';
 import { GlobalPositionComponent } from './components/global-position/global-position.component';
+import { CardsComponent } from './components/cards/cards.component';
+import { AccountsComponent } from './components/accounts/accounts.component';
 
 @NgModule({
   declarations: [
     PrivateHomeComponent,
-    GlobalPositionComponent
+    GlobalPositionComponent,
+    CardsComponent,
+    AccountsComponent
   ],
   imports: [
     BrowserModule,

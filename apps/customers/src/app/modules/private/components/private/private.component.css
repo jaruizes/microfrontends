@@ -1,0 +1,33 @@
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+.main-content {
+  padding: 1em;
+}
+
+section {
+  padding: 0.5em;
+}
+
+a:hover {
+  color: white;
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.toolbar-color {
+  background-color: white;
+  border: #3f51b5 0.1em solid;
+}
+
+.toolbar-color>div {
+  color: #3f51b5;
+}
+
+.toolbar-color>div>a:hover {
+  color: darkblue;
+  font-weight: bold;
+  text-decoration: none;
+  background-color: lightblue;
+}

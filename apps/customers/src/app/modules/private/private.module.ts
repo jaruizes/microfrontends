@@ -1,22 +1,46 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PrivateComponent } from './components/private/private.component';
 import { PrivateRoutingModule } from './private-routing.module';
-import { OAuthService } from 'angular-oauth2-oidc';
 import { HttpClientModule } from '@angular/common/http';
+import { LazyElementsModule } from '@angular-extensions/elements';
+import { MatButtonModule } from '@angular/material/button';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatCardModule } from '@angular/material/card';
+import { GlobalPositionComponent } from './components/global-position/global-position.component';
+import { CardsComponent } from './components/cards/cards.component';
+import { AccountsComponent } from './components/accounts/accounts.component';
 
 
 
 @NgModule({
   declarations: [
-    PrivateComponent
+    PrivateComponent,
+    GlobalPositionComponent,
+    AccountsComponent,
+    CardsComponent
   ],
   providers: [
   ],
   imports: [
     CommonModule,
     PrivateRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    LazyElementsModule,
+    MatButtonModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatSidenavModule,
+    FlexLayoutModule,
+    MatCardModule,
+    MatListModule
+  ],
+  schemas: [
+    CUSTOM_ELEMENTS_SCHEMA
   ]
 })
 export class PrivateModule { }

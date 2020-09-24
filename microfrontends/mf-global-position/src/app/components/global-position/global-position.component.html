@@ -1,28 +1,47 @@
 <div class="container-fluid">
     <div class="row">
+        <!-- Accounts & Cards -->
         <div class="col-xl-8 col-lg-12 col-sm-12">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-12">
-                        <section style="width: 100%;">
-                            <mf-accounts-summary *axLazyElement="urlAccountsSummary"></mf-accounts-summary>
-                        </section>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-12">
-                        <section style="width: 100%;">
-                            <mf-cards-summary *axLazyElement="urlCardsSummary"></mf-cards-summary>
-                        </section>
-                    </div>
-                </div>
-            </div>
+            <section style="width: 100%;">
+                <mf-accounts-summary *axLazyElement="urlAccountsSummary"></mf-accounts-summary>
+            </section>
+            <section style="width: 100%;">
+                <mf-cards-summary *axLazyElement="urlCardsSummary"></mf-cards-summary>
+            </section>
         </div>
+
+
         <div class="col-xl-4 col-lg-12 col-sm-12">
+            <!-- Summary -->
             <section style="width: 100%;">
                 <div class="card text-center">
                     <div class="card-body">
-                        <h5 class="card-title">Accesos directos</h5>
+                        <h5 class="card-title">Summary</h5>
+                        <div style="padding: 0.3em">
+                            <div class="d-flex justify-content-start">
+                                <span class="text-muted font-italic">Incomes</span>
+                            </div>
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">2467 €</div>
+                            </div>
+                        </div>
+                        <div style="padding: 0.3em">
+                            <div class="d-flex justify-content-start">
+                                <span class="text-muted font-italic">Expenses</span>
+                            </div>
+                            <div class="progress">
+                                <div class="progress-bar bg-danger" role="progressbar" aria-valuenow="1000" aria-valuemin="0" aria-valuemax="100" style="width: 40%">1267 €</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Accesos directos -->
+            <section style="width: 100%;">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <h5 class="card-title">Shortcuts</h5>
                         <div class="container-fluid" style="padding-top: 0.3em">
                             <div class="row" style="border-bottom: lightgray 0.1em solid">
                                 <div class="col-6 d-flex justify-content-center" style="border-right: lightgray 0.1em solid; padding-top: 0.3em">
@@ -56,6 +75,9 @@
                     </div>
                 </div>
             </section>
+
+
+            <!-- Loan -->
             <section style="width: 100%;">
                 <div class="card text-center">
                     <div class="card-body">
@@ -65,6 +87,8 @@
                     </div>
                 </div>
             </section>
+
+            <!-- last movements -->
             <section style="width: 100%;">
                 <div class="card">
                     <div class="card-body">
