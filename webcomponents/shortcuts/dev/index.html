@@ -1,0 +1,40 @@
+<!doctype html>
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Demo</title>
+    <script type="module" src="build/wc-shortcuts.js"></script>
+    <style>
+      p {
+        border: solid 1px blue;
+        padding: 8px;
+      }
+    </style>
+
+  </head>
+  <body>
+    <wc-shortcuts id="shorchuts"></wc-shortcuts>
+    <script>
+      const el = document.getElementById('shortcuts');
+      el.data = [
+        {
+          icon: 'shopping_cart',
+          text: 'National transfer 1'
+        },
+        {
+          icon: 'shopping_cart',
+          text: 'National transfer 2'
+        },
+        {
+          icon: 'shopping_cart',
+          text: 'National transfer 3'
+        },
+        {
+          icon: 'shopping_cart',
+          text: 'National transfer 4'
+        },
+      ];
+    </script>
+  </body>
+</html>
