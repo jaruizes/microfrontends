@@ -39,41 +39,7 @@
 
             <!-- Accesos directos -->
             <section style="width: 100%;">
-                <div class="card text-center">
-                    <div class="card-body">
-                        <h5 class="card-title">Shortcuts</h5>
-                        <div class="container-fluid" style="padding-top: 0.3em">
-                            <div class="row" style="border-bottom: lightgray 0.1em solid">
-                                <div class="col-6 d-flex justify-content-center" style="border-right: lightgray 0.1em solid; padding-top: 0.3em">
-                                    <a href="">
-                                        <mat-icon aria-hidden="false" aria-label="Example home icon">home</mat-icon>
-                                        <span class="shortcut-icon-text">National transfer</span>
-                                    </a>
-                                </div>
-                                <div class="col-6 d-flex justify-content-center" style="border-left: lightgray 0.1em solid; padding-top: 0.3em">
-                                    <a href="">
-                                        <mat-icon aria-hidden="false" aria-label="Example home icon">home</mat-icon>
-                                        <span class="shortcut-icon-text">Transfer between accounts</span>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-6 d-flex justify-content-center" style="border-right: lightgray 0.1em solid; padding-top: 0.3em">
-                                    <a href="">
-                                        <mat-icon aria-hidden="false" aria-label="Example home icon">home</mat-icon>
-                                        <span class="shortcut-icon-text">Profile</span>
-                                    </a>
-                                </div>
-                                <div class="col-6 d-flex justify-content-center" style="border-left: lightgray 0.1em solid; padding-top: 0.3em">
-                                    <a href="">
-                                        <mat-icon aria-hidden="false" aria-label="Example home icon">home</mat-icon>
-                                        <span class="shortcut-icon-text">Bizum</span>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <wc-shortcuts *axLazyElement="urlShortcuts; module: true" [data]="shortcuts"></wc-shortcuts>
             </section>
 
 
