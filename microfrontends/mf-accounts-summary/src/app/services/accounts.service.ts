@@ -11,7 +11,7 @@ export class AccountsService {
 
   constructor(private http: HttpClient) { }
 
-  getCards(): Observable<Account[]> {
+  getAccounts(): Observable<Account[]> {
     return this.http.get<Account[]>(this.cardsURL)
   }
 }

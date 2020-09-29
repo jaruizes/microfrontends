@@ -8,14 +8,34 @@
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
   <script>
     const channel = new BroadcastChannel("mfs-channel");
     channel.onmessage = function (e) {
       console.log(e);
+    };
+
+    function changeLanguage(locale) {
+      channel.postMessage({
+        cmd: 'changeLocale',
+        payload: {
+          locale: locale
+        }
+      });
     }
+
   </script>
 </head>
 <body>
-  <mf-accounts-summary></mf-accounts-summary>
+  <div>
+    <p>Language</p>
+    <button onclick="changeLanguage('es')">ES</button>
+    <button onclick="changeLanguage('en')">EN</button>
+  </div>
+
+  <div style="margin-top: 2em">
+    <mf-accounts-summary locale="en"></mf-accounts-summary>
+  </div>
+
 </body>
 </html>
