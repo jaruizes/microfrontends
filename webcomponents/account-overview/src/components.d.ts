@@ -16,6 +16,10 @@ export namespace Components {
          */
         "lastmovement": string;
         /**
+          * lang
+         */
+        "locale": string;
+        /**
           * Account name
          */
         "name": string;
@@ -50,6 +54,10 @@ declare namespace LocalJSX {
           * Account last movement
          */
         "lastmovement"?: string;
+        /**
+          * lang
+         */
+        "locale"?: string;
         /**
           * Account name
          */

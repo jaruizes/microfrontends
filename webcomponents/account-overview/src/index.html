@@ -7,15 +7,25 @@
 
     <script type="module" src="/build/account-overview.esm.js"></script>
     <script nomodule src="/build/account-overview.js"></script>
+    <script>
+        function changeLanguage(locale) {
+            document.getElementById('1').setAttribute("locale", locale);
+        }
+    </script>
 
   </head>
   <body>
-      <account-overview id="1"
-                        number="1234123412341234"
-                        name="Cuenta naranja"
-                        lastmovement="3 min ago"
-                        newmovements="3"
-                        amount="948">
-      </account-overview>
+    <div>
+      <p>Language</p>
+      <button onclick="changeLanguage('es')">ES</button>
+      <button onclick="changeLanguage('en')">EN</button>
+    </div>
+    <account-overview id="1"
+                      number="1234123412341234"
+                      name="Cuenta naranja"
+                      lastmovement="3 min ago"
+                      newmovements="3"
+                      amount="948">
+    </account-overview>
   </body>
 </html>
