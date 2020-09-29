@@ -7,44 +7,42 @@
 
     <script type="module" src="/build/credit-card.esm.js"></script>
     <script nomodule src="/build/credit-card.js"></script>
+    <script>
+      function changeLanguage(locale) {
+          document.getElementById('debit-card').locale = locale;
+          document.getElementById('credit-card').locale = locale;
+      }
+    </script>
   </head>
   <body>
-      <credit-card name="Jose Miguel González del Campo"
-                   number="XXXX XXXX XXXX XXXX"
-                   entity="TECHNOLOGY BANK"
-                   expiration="10/24"
-                   type="0">
+    <div>
+      <p>Language</p>
+      <button onclick="changeLanguage('es')">ES</button>
+      <button onclick="changeLanguage('en')">EN</button>
+    </div>
+
+    <div>
+      <credit-card
+        id="debit-card"
+        name="Jose Miguel González del Campo"
+        number="XXXX XXXX XXXX XXXX"
+        entity="TECHNOLOGY BANK"
+        expiration="10/24"
+        type="0">
       </credit-card>
 
       <br />
       <br />
-      <br />
-
-      <credit-card name="Jose Miguel González del Campo"
-                   number="XXXX XXXX XXXX XXXX"
-                   entity="TECHNOLOGY BANK"
-                   expiration="10/24"
-                   type="1">
+      <credit-card
+        id="credit-card"
+        name="Jose Miguel González del Campo"
+        number="XXXX XXXX XXXX XXXX"
+        entity="TECHNOLOGY BANK"
+        expiration="10/24"
+        type="1">
       </credit-card>
+    </div>
 
-      <br />
-      <br />
-      <br />
-
-      <credit-card-resume name="MASTERCARD"
-                          number="1234 1234 1234 1234"
-                          lastmovement="3 min ago"
-                          amount="500 €"
-                          progress="50"
-                          type="1">
-      </credit-card-resume>
-
-      <credit-card-resume name="MASTERCARD"
-                          number="1234 1234 1234 1234"
-                          lastmovement="3 min ago"
-                          amount="500 €"
-                          progress="50">
-      </credit-card-resume>
 
   </body>
 </html>

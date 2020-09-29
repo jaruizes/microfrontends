@@ -16,6 +16,10 @@ export namespace Components {
          */
         "expiration": string;
         /**
+          * lang
+         */
+        "lang": string;
+        /**
           * Card logo
          */
         "logo": string;
@@ -54,6 +58,10 @@ declare namespace LocalJSX {
           * Card expiration
          */
         "expiration"?: string;
+        /**
+          * lang
+         */
+        "lang"?: string;
         /**
           * Card logo
          */

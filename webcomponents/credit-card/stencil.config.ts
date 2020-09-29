@@ -21,5 +21,5 @@ export const config: Config = {
       type: 'docs-vscode',
       file: 'dist/doc/credit-card.json'
     }
-  ],
+  ]
 };
