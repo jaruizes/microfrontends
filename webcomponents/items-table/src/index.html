@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <title>Stencil Component Starter</title>
+
+    <script type="module" src="/build/items-table.esm.js"></script>
+    <script nomodule src="/build/items-table.js"></script>
+
+  </head>
+  <body>
+    <items-table header="Movimientos" id="movements"></items-table>
+    <script>
+      const data = [
+          {
+            "header": "01/01/2020 10:00",
+            "title1": "MERCADONA",
+            "subtitle1": "Cuenta corriente",
+            "title2": "645 €",
+            "subtitle2": "1028 €"
+          },
+          {
+            "header": "01/01/2020 10:00",
+            "title1": "MERCADONA",
+            "subtitle1": "Cuenta corriente",
+            "title2": "645 €",
+            "subtitle2": "1028 €"
+          },
+          {
+            "header": "01/01/2020 10:00",
+            "title1": "MERCADONA",
+            "subtitle1": "Cuenta corriente",
+            "title2": "645 €",
+            "subtitle2": "1028 €"
+          },
+          {
+            "header": "01/01/2020 10:00",
+            "title1": "MERCADORNA",
+            "subtitle1": "Cuenta corriente",
+            "title2": "645 €",
+            "subtitle2": "1028 €"
+          },
+          {
+            "header": "01/01/2020 10:00",
+            "title1": "MERCADONA",
+            "subtitle1": "Cuenta corriente",
+            "title2": "645 €",
+            "subtitle2": "1028 €"
+          }
+      ];
+
+      const movementsEl = document.getElementById('movements');
+      movementsEl.items = data;
+    </script>
+  </body>
+</html>
