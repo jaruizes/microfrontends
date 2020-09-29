@@ -8,31 +8,31 @@ section {
     font-weight: bold;
 }
 
-.movements {
+.items {
     color: black;
 }
 
-.movement-card {
+.items-card {
     border: 0px;
     border-top: lightgray 2px solid;
 }
 
-.movement-card>a {
+.items-card>a {
     text-decoration: none;
     color: black;
 }
 
-.movement-card:hover {
+.items-card:hover {
     background-color: #fafafa;
     text-decoration: none;
 
 }
 
 
-.movement-data {
+.items-data {
     padding: 0.4em;
 }
 
-.movement-data p {
+.items-data p {
     margin: 0em;
 }
