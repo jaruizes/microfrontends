@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-global-position',
@@ -28,6 +28,51 @@ export class GlobalPositionComponent implements OnInit {
       text: 'Bizum'
     }
   ];
+
+  public urlMovements = 'http://microfrontends-cdn.s3-website.eu-west-2.amazonaws.com/web-components/items-table/items-table.esm.js';
+  public movements = [
+      {
+          "header": "01/01/2020 10:00",
+          "title1": "MERCADONA",
+          "subtitle1": "Cuenta corriente",
+          "title2": "645 €",
+          "subtitle2": "1028 €"
+      },
+      {
+          "header": "01/01/2020 10:00",
+          "title1": "MERCADONA",
+          "subtitle1": "Cuenta corriente",
+          "title2": "645 €",
+          "subtitle2": "1028 €"
+      },
+      {
+          "header": "01/01/2020 10:00",
+          "title1": "MERCADONA",
+          "subtitle1": "Cuenta corriente",
+          "title2": "645 €",
+          "subtitle2": "1028 €"
+      },
+      {
+          "header": "01/01/2020 10:00",
+          "title1": "MERCADORNA",
+          "subtitle1": "Cuenta corriente",
+          "title2": "645 €",
+          "subtitle2": "1028 €"
+      },
+      {
+          "header": "01/01/2020 10:00",
+          "title1": "MERCADONA",
+          "subtitle1": "Cuenta corriente",
+          "title2": "645 €",
+          "subtitle2": "1028 €"
+      }
+  ];
+
+    @HostListener('itemClick', ['$event'])
+    handleItemClick(item) {
+        console.log('Angular!!');
+        console.log(item.detail);
+    }
 
   constructor() { }
 
