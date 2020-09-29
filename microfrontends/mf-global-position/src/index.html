@@ -12,10 +12,25 @@
     const channel = new BroadcastChannel("mfs-channel");
     channel.onmessage = function (e) {
       console.log(e);
+    };
+
+    function changeLanguage(locale) {
+      channel.postMessage({
+        cmd: 'changeLocale',
+        payload: {
+          locale: locale
+        }
+      });
     }
+
   </script>
 </head>
 <body>
+<div>
+  <p>Language</p>
+  <button onclick="changeLanguage('es')">ES</button>
+  <button onclick="changeLanguage('en')">EN</button>
+</div>
   <mf-global-position></mf-global-position>
 </body>
 </html>
