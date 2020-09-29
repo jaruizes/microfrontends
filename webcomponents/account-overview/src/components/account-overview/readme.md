@@ -11,6 +11,7 @@
 | -------------- | -------------- | --------------------- | -------- | ----------- |
 | `amount`       | `amount`       | Account amount        | `number` | `undefined` |
 | `lastmovement` | `lastmovement` | Account last movement | `string` | `undefined` |
+| `locale`       | `locale`       | lang                  | `string` | `undefined` |
 | `name`         | `name`         | Account name          | `string` | `undefined` |
 | `newmovements` | `newmovements` | Account new movements | `number` | `undefined` |
 | `number`       | `number`       | Account number        | `string` | `undefined` |
