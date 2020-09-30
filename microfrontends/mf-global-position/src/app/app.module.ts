@@ -9,6 +9,14 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatCardModule } from '@angular/material/card';
 import { LazyElementsModule } from '@angular-extensions/elements';
 import { GlobalPositionComponent } from './components/global-position/global-position.component';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+
+// AoT requires an exported function for factories
+export function createTranslateLoader(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/mf-global-position/i18n/', '.json');
+}
 
 @NgModule({
   declarations: [
@@ -21,7 +29,16 @@ import { GlobalPositionComponent } from './components/global-position/global-pos
     MatIconModule,
     FlexLayoutModule,
     MatCardModule,
-    LazyElementsModule
+    LazyElementsModule,
+    HttpClientModule,
+    TranslateModule.forRoot({
+      defaultLanguage: 'en',
+      loader: {
+        provide: TranslateLoader,
+        useFactory: createTranslateLoader,
+        deps: [HttpClient]
+      }
+    })
   ],
   providers: [],
   bootstrap: [],

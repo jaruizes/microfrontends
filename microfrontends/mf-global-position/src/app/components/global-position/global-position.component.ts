@@ -1,4 +1,5 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, HostListener, Input, NgZone, OnInit } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-global-position',
@@ -6,11 +7,13 @@ import { Component, HostListener, OnInit } from '@angular/core';
   styleUrls: ['./global-position.component.css']
 })
 export class GlobalPositionComponent implements OnInit {
+    @Input()
+    public locale: string;
 
-  public urlCardsSummary = 'http://microfrontends-cdn.s3-website.eu-west-2.amazonaws.com/mf-cards-summary/main.js';
-  public urlAccountsSummary = 'http://microfrontends-cdn.s3-website.eu-west-2.amazonaws.com/mf-accounts-summary/main.js';
-  public urlShortcuts = 'http://microfrontends-cdn.s3-website.eu-west-2.amazonaws.com/web-components/wc-shortcuts/wc-shortcuts.bundled.js';
-  public shortcuts = [
+    public urlCardsSummary = 'http://microfrontends-cdn.s3-website.eu-west-2.amazonaws.com/mf-cards-summary/main.js';
+    public urlAccountsSummary = '/mf-accounts-summary/main.js';
+    public urlShortcuts = '/web-components/wc-shortcuts/wc-shortcuts.bundled.js';
+    public shortcuts = [
     {
       icon: 'unfold_less',
       text: 'Internal transfer'
@@ -27,10 +30,10 @@ export class GlobalPositionComponent implements OnInit {
       icon: 'groups',
       text: 'Bizum'
     }
-  ];
+    ];
 
-  public urlMovements = 'http://microfrontends-cdn.s3-website.eu-west-2.amazonaws.com/web-components/items-table/items-table.esm.js';
-  public movements = [
+    public urlMovements = 'http://microfrontends-cdn.s3-website.eu-west-2.amazonaws.com/web-components/items-table/items-table.esm.js';
+    public movements = [
       {
           "header": "01/01/2020 10:00",
           "title1": "MERCADONA",
@@ -66,7 +69,7 @@ export class GlobalPositionComponent implements OnInit {
           "title2": "645 €",
           "subtitle2": "1028 €"
       }
-  ];
+    ];
 
     @HostListener('itemClick', ['$event'])
     handleItemClick(item) {
@@ -74,9 +77,27 @@ export class GlobalPositionComponent implements OnInit {
         console.log(item.detail);
     }
 
-  constructor() { }
+    constructor(private translate: TranslateService, private ngZone: NgZone) {
+      const channel = new BroadcastChannel("mfs-channel");
+      channel.onmessage = (message) => {
+          this.ngZone.run(() => {
+              this.handleMessage(message.data);
+          });
+      };
 
-  ngOnInit(): void {
-  }
+      this.locale = 'en';
+      translate.setDefaultLang(this.locale);
+      translate.use(this.locale);
+    }
+
+    ngOnInit(): void {
+    }
+
+    handleMessage(message) {
+        if (message.cmd === 'changeLocale') {
+            this.locale = message.payload.locale;
+            this.translate.use(this.locale);
+        }
+    }
 
 }

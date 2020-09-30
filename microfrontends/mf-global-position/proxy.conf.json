@@ -4,5 +4,29 @@
     "secure": false,
     "logLevel": "debug",
     "changeOrigin" : true
+  },
+  "/mf-accounts-summary": {
+    "target": "http://microfrontends-cdn.s3-website.eu-west-2.amazonaws.com/mf-accounts-summary",
+    "secure": false,
+    "logLevel": "debug",
+    "changeOrigin" : true,
+    "pathRewrite": {
+      "^/mf-accounts-summary": ""
+    }
+  },
+  "/assets/mf-accounts-summary": {
+    "target": "http://microfrontends-cdn.s3-website.eu-west-2.amazonaws.com/mf-accounts-summary",
+    "secure": false,
+    "logLevel": "debug",
+    "changeOrigin" : true
+  },
+  "/web-components": {
+    "target": "http://microfrontends-cdn.s3-website.eu-west-2.amazonaws.com/web-components",
+    "secure": false,
+    "logLevel": "debug",
+    "changeOrigin" : true,
+    "pathRewrite": {
+      "^/web-components": ""
+    }
   }
 }
