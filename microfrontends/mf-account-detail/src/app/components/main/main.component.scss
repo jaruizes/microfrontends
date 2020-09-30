@@ -1,0 +1,32 @@
+@import '~bootstrap/scss/bootstrap.scss';
+
+
+.content-section {
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
+}
+
+.content-section-heading h2 {
+  font-size: 3rem;
+}
+
+.content-section-heading h3 {
+  font-size: 1rem;
+  text-transform: uppercase;
+}
+
+
+.cards-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.mat-table {
+  overflow: auto;
+  max-height: 500px;
+}
+
+a {
+  cursor: pointer;
+}
