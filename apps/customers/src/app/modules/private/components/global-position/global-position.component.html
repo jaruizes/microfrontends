@@ -1,1 +1,10 @@
-<mf-global-position *axLazyElement="globalPositionURL"></mf-global-position>
+<ng-template #loading>
+  <div class="container">
+    <div class="row">
+      <div class="col-6">
+        <div class="spinner-border"></div>
+      </div>
+    </div>
+  </div>
+</ng-template>
+<mf-global-position *axLazyElement="globalPositionURL; loadingTemplate: loading"></mf-global-position>

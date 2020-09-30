@@ -9,9 +9,6 @@ import { OAuthService } from 'angular-oauth2-oidc';
 })
 export class PublicComponent implements OnInit {
 
-  public elementUrl: string = '/mfs-home/main.js';
-  //private loaded: boolean;
-
   constructor(private router: Router, private  ngZone: NgZone) {
     //this.loaded = false;
     const channel = new BroadcastChannel("mfs-channel");
@@ -25,16 +22,11 @@ export class PublicComponent implements OnInit {
     console.log(this.router);
   }
 
-
   ngOnInit() {
   }
 
-  /*load(): void {
-    if (this.loaded) return;
-    const script = document.createElement('script');
-    script.src = '/mfs-home/main.js';
-    document.body.appendChild(script);
-    this.loaded = true;
-  }*/
+  doLogin() {
+    this.router.navigate(['/login']);
+  }
 
 }

@@ -33,7 +33,9 @@
     "keycloak-js": "^11.0.2",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
-    "zone.js": "~0.10.2"
+    "zone.js": "~0.10.2",
+    "@fortawesome/fontawesome-free": "5.13.1",
+    "simple-line-icons": "^2.4.1"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.1001.0",
