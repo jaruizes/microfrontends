@@ -10,8 +10,9 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
   <script>
-    const channel = new BroadcastChannel("mfs-channel");
+    const channel = new BroadcastChannel("mfs");
     channel.onmessage = function (e) {
+      console.log('Message received from microfrontend');
       console.log(e);
     };
 
@@ -34,7 +35,7 @@
   </div>
 
   <div style="margin-top: 2em">
-    <mf-accounts-summary locale="en"></mf-accounts-summary>
+    <mf-accounts-summary locale="en" channel="mfs"></mf-accounts-summary>
   </div>
 
 </body>

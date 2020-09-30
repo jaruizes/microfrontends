@@ -12,27 +12,27 @@ import { TranslateService } from '@ngx-translate/core';
     encapsulation: ViewEncapsulation.ShadowDom
 })
 export class MainComponent implements OnInit {
+    /**
+     * Microfrontend specified properties
+     */
     @Input()
     public locale: string;
 
-    public elementUrl: string = 'http://microfrontends-cdn.s3-website.eu-west-2.amazonaws.com/web-components/account-overview/account-overview.esm.js';
+    @Input()
+    public channel: string = 'microfrontends';
+
+    public elementUrl: string = './web-components/account-overview/account-overview.esm.js';
     public accounts: Account[];
     public totalBalance: number;
 
-    private channel;
+    /**
+     * This is the broadcastChannel used by an instance of this microfrontend
+     */
+    private broadcastChannel;
 
     constructor(private accountsService: AccountsService, private ngZone: NgZone, private translate: TranslateService){
         this.totalBalance = 0;
-        this.channel = new BroadcastChannel("mfs-channel");
-        this.channel.onmessage = (message) => {
-            this.ngZone.run(() => {
-                this.handleMessage(message.data);
-            });
-        };
-
-        this.locale = 'en';
-        translate.setDefaultLang(this.locale);
-        translate.use(this.locale);
+        this.initI18n();
     }
 
     ngOnInit() {
@@ -40,12 +40,53 @@ export class MainComponent implements OnInit {
             accounts.forEach((account) => this.totalBalance = this.totalBalance + account.amount);
             this.accounts = accounts;
         });
+
+        this.initBroadcastChannel();
     }
 
+    /**
+     * Handle messages received by the broadcast channel
+     * @param message
+     */
     handleMessage(message) {
         if (message.cmd === 'changeLocale') {
             this.locale = message.payload.locale;
             this.translate.use(this.locale);
         }
+    }
+
+    /**
+     * Sends a message using the broadcastChannel
+     * @param accountId
+     */
+    handleAccountClick(accountId) {
+        this.broadcastChannel.postMessage({
+            cmd: 'accountClick',
+            payload: {
+                accountId: accountId
+            }
+        });
+    }
+
+    /**
+     * Initializes the broadcastChannel object used by this microfrontend
+     * The channel is specified by the property @channel
+     */
+    private initBroadcastChannel() {
+        this.broadcastChannel = new BroadcastChannel(this.channel);
+        this.broadcastChannel.onmessage = (message) => {
+            this.ngZone.run(() => {
+                this.handleMessage(message.data);
+            });
+        };
+    }
+
+    /**
+     * Initializes translate service
+     */
+    private initI18n() {
+        this.locale = 'en';
+        this.translate.setDefaultLang(this.locale);
+        this.translate.use(this.locale);
     }
 }

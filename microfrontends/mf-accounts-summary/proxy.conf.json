@@ -1,8 +1,17 @@
 {
   "/api/*": {
-    "target": "http://localhost:3000/api/*",
+    "target": "http://localhost:3005/api/*",
     "secure": false,
     "logLevel": "debug",
     "changeOrigin" : true
+  },
+  "/web-components": {
+    "target": "http://microfrontends-cdn.s3-website.eu-west-2.amazonaws.com/web-components",
+    "secure": false,
+    "logLevel": "debug",
+    "changeOrigin" : true,
+    "pathRewrite": {
+      "^/web-components": ""
+    }
   }
 }

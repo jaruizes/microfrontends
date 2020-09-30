@@ -17,12 +17,14 @@
             <div class="cards-container mat-elevation-z8">
                 <div *ngFor="let account of accounts">
                     <account-overview *axLazyElement="elementUrl; module: true"
+                                      class="account-overview"
                                       [locale]="locale"
                                       number="{{account.number}}"
                                       name="{{account.name}}"
                                       lastmovement="{{account.lastmovement}}"
                                       newmovements="{{account.newmovements}}"
-                                      amount="{{account.amount}}">
+                                      amount="{{account.amount}}"
+                                      (click)="handleAccountClick(account.id)">
                     </account-overview>
                 </div>
             </div>
