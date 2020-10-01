@@ -10,14 +10,16 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
   <script>
-    const channel = new BroadcastChannel("mfs");
-    channel.onmessage = function (e) {
-      console.log('Message received from microfrontend');
-      console.log(e);
+    const generalChannel = new BroadcastChannel("microfrontends");
+    const internalChannel = new BroadcastChannel("internal");
+    internalChannel.onmessage = function (e) {
+      const pEL = document.createElement('p');
+      pEL.innerText = 'cmd: ' + e.data.cmd + ' / accountId: ' + e.data.payload.id;
+      document.getElementById('childmessages').appendChild(pEL);
     };
 
     function changeLanguage(locale) {
-      channel.postMessage({
+      generalChannel.postMessage({
         cmd: 'changeLocale',
         payload: {
           locale: locale
@@ -35,8 +37,14 @@
   </div>
 
   <div style="margin-top: 2em">
-    <mf-accounts-summary locale="en" channel="mfs"></mf-accounts-summary>
+    <mf-accounts-summary locale="en" channel="internal"></mf-accounts-summary>
   </div>
+
+  <div style="margin: 2em; padding: 2em; border: solid 2px lightgray">
+    <h3>Messages received from children</h3>
+    <div id="childmessages" style="margin-top: 2em"></div>
+  </div>
+
 
 </body>
 </html>

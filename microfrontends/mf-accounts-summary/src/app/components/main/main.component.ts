@@ -19,36 +19,45 @@ export class MainComponent implements OnInit {
     public locale: string;
 
     @Input()
-    public channel: string = 'microfrontends';
+    public channel: string;
 
     public elementUrl: string = './web-components/account-overview/account-overview.esm.js';
     public accounts: Account[];
     public totalBalance: number;
 
     /**
-     * This is the broadcastChannel used by an instance of this microfrontend
+     * This is the parentChannel used by an instance of this microfrontend
      */
-    private broadcastChannel;
+    private parentChannel;
+
+    /**
+     * This is the general channel used by manage events in broadcast
+     */
+    private generalChannel;
 
     constructor(private accountsService: AccountsService, private ngZone: NgZone, private translate: TranslateService){
+        console.log('[mf-accounts-summary] starting....');
         this.totalBalance = 0;
         this.initI18n();
     }
 
     ngOnInit() {
-        this.accountsService.getAccounts().subscribe((accounts) => {
+        console.log('[mf-accounts-summary] initializing....');
+        this.accountsService.getAccounts().subscribe((accounts: Account[]) => {
             accounts.forEach((account) => this.totalBalance = this.totalBalance + account.amount);
             this.accounts = accounts;
         });
 
-        this.initBroadcastChannel();
+        this.initBroadcastChannels();
+        console.log('[mf-accounts-summary] initialized....');
     }
 
     /**
-     * Handle messages received by the broadcast channel
+     * Handle messages received by the parent channel
      * @param message
      */
-    handleMessage(message) {
+    handleParentMessage(message) {
+        console.log('[mf-accounts-summary] Message received from parent: ' + message.cmd);
         if (message.cmd === 'changeLocale') {
             this.locale = message.payload.locale;
             this.translate.use(this.locale);
@@ -56,29 +65,52 @@ export class MainComponent implements OnInit {
     }
 
     /**
-     * Sends a message using the broadcastChannel
+     * Handle messages received by the general broadcast channel
+     * @param message
+     */
+    handleGeneralMessages(message) {
+        console.log('[mf-accounts-summary] Message received from general channel: ' + message.cmd);
+        if (message.cmd === 'changeLocale') {
+            this.locale = message.payload.locale;
+            this.translate.use(this.locale);
+        }
+    }
+
+    /**
+     * Sends a message using the parentChannel
      * @param accountId
      */
     handleAccountClick(accountId) {
-        this.broadcastChannel.postMessage({
+        this.parentChannel.postMessage({
             cmd: 'accountClick',
             payload: {
-                accountId: accountId
+                id: accountId
             }
         });
     }
 
     /**
-     * Initializes the broadcastChannel object used by this microfrontend
-     * The channel is specified by the property @channel
+     * Initializes the channels used by this microfrontend
+     * The parent channel is specified by the property @channel
      */
-    private initBroadcastChannel() {
-        this.broadcastChannel = new BroadcastChannel(this.channel);
-        this.broadcastChannel.onmessage = (message) => {
+    private initBroadcastChannels() {
+        console.log('[mf-accounts-summary] Initializing general channel....');
+        this.generalChannel = new BroadcastChannel('microfrontends');
+        this.generalChannel.onmessage = (message) => {
             this.ngZone.run(() => {
-                this.handleMessage(message.data);
+                this.handleGeneralMessages(message.data);
             });
         };
+
+        if (this.channel) {
+            console.log('[mf-accounts-summary] Initializing parent channel: ' + this.channel);
+            this.parentChannel = new BroadcastChannel(this.channel);
+            this.parentChannel.onmessage = (message) => {
+                this.ngZone.run(() => {
+                    this.handleParentMessage(message.data);
+                });
+            };
+        }
     }
 
     /**
