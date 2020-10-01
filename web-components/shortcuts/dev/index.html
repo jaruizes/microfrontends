@@ -4,17 +4,23 @@
   <head>
     <meta charset="utf-8">
     <title>Demo</title>
-    <script type="module" src="build/wc-shortcuts.js"></script>
-    <style>
-      p {
-        border: solid 1px blue;
-        padding: 8px;
+    <base href="/dev/build/">
+    <script type="module" src="wc-shortcuts.js"></script>
+
+    <script>
+      function changeLanguage(locale) {
+        document.getElementById('shortcuts').setAttribute("locale", locale);
       }
-    </style>
+    </script>
 
   </head>
   <body>
-    <wc-shortcuts id="shorchuts"></wc-shortcuts>
+    <div style="margin-bottom: 2em">
+      <p>Language</p>
+      <button onclick="changeLanguage('es')">ES</button>
+      <button onclick="changeLanguage('en')">EN</button>
+    </div>
+    <wc-shortcuts id="shortcuts" locale="es"></wc-shortcuts>
     <script>
       const el = document.getElementById('shortcuts');
       el.data = [

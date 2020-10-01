@@ -24,6 +24,8 @@
       }
     ]
   },
-  "include": ["src/**/*.ts"],
+  "include": ["src/**/*.ts",
+    "src/assets"
+  ],
   "exclude": []
 }

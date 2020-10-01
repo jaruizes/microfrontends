@@ -16,11 +16,19 @@ import filesize from 'rollup-plugin-filesize';
 import {terser} from 'rollup-plugin-terser';
 import resolve from 'rollup-plugin-node-resolve';
 import replace from '@rollup/plugin-replace';
+import copy from 'rollup-plugin-copy';
+
+
+const copyConfig = {
+  targets: [
+    { src: 'dev/build/assets', dest: 'dist/wc-shortcuts/v1' }
+  ],
+};
 
 export default {
   input: './dev/build/wc-shortcuts.js',
   output: {
-    file: 'distribution/wc-shortcuts/wc-shortcuts.bundled.js',
+    file: 'dist/wc-shortcuts/v1/wc-shortcuts.bundled.js',
     format: 'esm',
   },
   onwarn(warning) {
@@ -40,6 +48,7 @@ export default {
         },
       },
     }),
+    copy(copyConfig),
     filesize({
       showBrotliSize: true,
     }),

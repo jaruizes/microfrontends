@@ -1,20 +1,11 @@
-/**
- * @license
- * Copyright (c) 2019 The Polymer Project Authors. All rights reserved.
- * This code may only be used under the BSD style license found at
- * http://polymer.github.io/LICENSE.txt
- * The complete set of authors may be found at
- * http://polymer.github.io/AUTHORS.txt
- * The complete set of contributors may be found at
- * http://polymer.github.io/CONTRIBUTORS.txt
- * Code distributed by Google as part of the polymer project is also
- * subject to an additional IP rights grant found at
- * http://polymer.github.io/PATENTS.txt
- */
-
 import {LitElement, html, customElement, css, property} from 'lit-element';
 import '@material/mwc-icon';
+import { registerTranslateConfig, translate } from 'lit-translate';
+import { use } from "lit-translate";
 
+registerTranslateConfig({
+  loader: lang => fetch(`./assets/webcomponents/wc-shortcuts/v1/i18n/wc-shortcuts.i18n.${lang}.json`).then(res => res.json())
+});
 
 /**
  * WC Shortcuts.
@@ -45,6 +36,10 @@ export class ShortCutsElement extends LitElement {
   @property({type: Array})
   data = [];
 
+  @property({
+  })
+  locale = 'en';
+
   constructor() {
     super();
     const fontGoogle = document.createElement('link');
@@ -53,13 +48,22 @@ export class ShortCutsElement extends LitElement {
     document.head.appendChild(fontGoogle);
   }
 
+  async connectedCallback () {
+    super.connectedCallback();
+    await use(this.locale);
+  }
+
+  updated(){
+    use(this.locale);
+  }
+
   render() {
     return html`
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
       
       <div class="card text-center">
             <div class="card-body">
-                <h5 class="card-title">Shortcuts</h5>
+                <h5 class="card-title">${translate("title")}</h5>
                 <div class="container-fluid" style="padding-top: 0.3em">
                     <div class="row" style="border-bottom: lightgray 0.1em solid;">
                         <div class="col-6 d-flex justify-content-center" style="border-right: lightgray 0.1em solid;">
