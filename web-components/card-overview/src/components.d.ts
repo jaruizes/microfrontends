@@ -6,7 +6,7 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
-    interface CreditCardResume {
+    interface CardOverview {
         /**
           * Card amount
          */
@@ -20,6 +20,10 @@ export namespace Components {
          */
         "limit": number;
         /**
+          * locale
+         */
+        "locale": string;
+        /**
           * Card number
          */
         "number": string;
@@ -30,18 +34,18 @@ export namespace Components {
     }
 }
 declare global {
-    interface HTMLCreditCardResumeElement extends Components.CreditCardResume, HTMLStencilElement {
+    interface HTMLCardOverviewElement extends Components.CardOverview, HTMLStencilElement {
     }
-    var HTMLCreditCardResumeElement: {
-        prototype: HTMLCreditCardResumeElement;
-        new (): HTMLCreditCardResumeElement;
+    var HTMLCardOverviewElement: {
+        prototype: HTMLCardOverviewElement;
+        new (): HTMLCardOverviewElement;
     };
     interface HTMLElementTagNameMap {
-        "credit-card-resume": HTMLCreditCardResumeElement;
+        "card-overview": HTMLCardOverviewElement;
     }
 }
 declare namespace LocalJSX {
-    interface CreditCardResume {
+    interface CardOverview {
         /**
           * Card amount
          */
@@ -55,6 +59,10 @@ declare namespace LocalJSX {
          */
         "limit"?: number;
         /**
+          * locale
+         */
+        "locale"?: string;
+        /**
           * Card number
          */
         "number"?: string;
@@ -64,14 +72,14 @@ declare namespace LocalJSX {
         "type"?: number;
     }
     interface IntrinsicElements {
-        "credit-card-resume": CreditCardResume;
+        "card-overview": CardOverview;
     }
 }
 export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
-            "credit-card-resume": LocalJSX.CreditCardResume & JSXBase.HTMLAttributes<HTMLCreditCardResumeElement>;
+            "card-overview": LocalJSX.CardOverview & JSXBase.HTMLAttributes<HTMLCardOverviewElement>;
         }
     }
 }

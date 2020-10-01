@@ -2,17 +2,14 @@ import { Config } from '@stencil/core';
 import { sass } from '@stencil/sass';
 
 export const config: Config = {
-  namespace: 'credit-card-resume',
+  namespace: 'card-overview',
   plugins: [
-    sass({
-      injectGlobalPaths: [
-        'src/scss/_global.scss'
-      ]
-    })
+    sass({})
   ],
   outputTargets: [
     {
       type: 'dist',
+      dir: 'dist/v1',
       esmLoaderPath: '../loader',
     },
     {
@@ -27,7 +24,7 @@ export const config: Config = {
     },
     {
       type: 'docs-vscode',
-      file: 'dist/doc/credit-card-resume.json'
+      file: 'dist/doc/card-overview.json'
     }
   ],
 };

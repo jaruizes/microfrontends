@@ -1,12 +1,19 @@
 import { Component, getAssetPath, h, Prop } from '@stencil/core';
 
 @Component({
-  tag: 'credit-card-resume',
-  styleUrl: 'credit-card-resume.scss',
+  tag: 'card-overview',
+  styleUrls: ['card-overview.scss'],
   shadow: true,
   assetsDirs: ['assets']
 })
-export class CreditCardResume {
+export class CardOverview {
+
+  /**
+   * locale
+   */
+  @Prop({
+    reflect: true
+  }) locale: string;
 
   /**
    * Card number
@@ -33,6 +40,11 @@ export class CreditCardResume {
    */
   @Prop() amount: number;
 
+  /**
+   * Localized strings
+   */
+  private i18nStrings: Array<string>;
+
   isCredit() {
     return this.type === 1;
   }
@@ -48,13 +60,36 @@ export class CreditCardResume {
     return formated;
   }
 
+  /**
+   * Load the right locale resource from lang property
+   * @param componentName
+   * @param locale
+   */
+  fetchLocaleStringsForComponent(): Promise<Array<string>> {
+    const locale = this.locale ? this.locale : 'en';
+    return new Promise((resolve, reject): void => {
+      fetch(getAssetPath(`./assets/i18n/credit-card-overview.i18n.${locale}.json`))
+        .then((result) => {
+          if (result.ok) resolve(result.json());
+          else reject();
+        }, () => reject());
+    });
+  }
+
+  /**
+   * Function called within StencilJS (before every render) lifecycle
+   */
+  async componentWillRender() {
+    this.i18nStrings = await this.fetchLocaleStringsForComponent();
+  }
+
   render() {
 
     let cardImg: string = getAssetPath('./assets/debit-card.png');
-    let cardType: string = "DEBIT CARD";
+    let cardType: string = this.i18nStrings['debit-card'];
     if (this.isCredit()) {
       cardImg = getAssetPath('./assets/credit-card.png');
-      cardType = "CREDIT CARD";
+      cardType = this.i18nStrings['credit-card'];
     }
 
     return (
@@ -83,7 +118,7 @@ export class CreditCardResume {
                                 <div class="progress-bar bg-danger" role="progressbar" style={{width: `${this.getProgress()}%`}} aria-valuenow={this.getProgress()} aria-valuemin="0" aria-valuemax="100"></div>
                               </div>
                               <div class="d-flex justify-content-end" style={{"padding-top": "0.2em"}}>
-                                <small class="text-muted font-italic">Credit limit: {this.limit} €</small>
+                                <small class="text-muted font-italic">{this.i18nStrings['credit-limit']}: {this.limit} €</small>
                               </div>
                             </div>
                             : <div></div>
@@ -97,7 +132,7 @@ export class CreditCardResume {
                 <div class="container-fluid">
                   <div class="row">
                     <div class="col-8">
-                      <small class="text-muted font-weight-bold">Last movement: {this.lastmovement}</small>
+                      <small class="text-muted font-weight-bold">{this.i18nStrings['last-movement']}: {this.lastmovement}</small>
                     </div>
                   </div>
                 </div>

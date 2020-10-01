@@ -7,18 +7,30 @@
 
     <script type="module" src="/build/credit-card-resume.esm.js"></script>
     <script nomodule src="/build/credit-card-resume.js"></script>
+    <script>
+        function changeLanguage(locale) {
+            document.getElementById('1').setAttribute("locale", locale);
+            document.getElementById('2').setAttribute("locale", locale);
+        }
+    </script>
 
   </head>
   <body>
-      <credit-card-resume id="1"
-                          number="1234123412341234"
-                          lastmovement="3 min ago"
-                          amount="948"
-                          limit="1000"
-                          type="1">
-      </credit-card-resume>
+      <div>
+        <p>Language</p>
+        <button onclick="changeLanguage('es')">ES</button>
+        <button onclick="changeLanguage('en')">EN</button>
+      </div>
+      <card-overview id="1"
+                    number="1234123412341234"
+                    lastmovement="3 min ago"
+                    amount="948"
+                    limit="1000"
+                    type="1">
+      </card-overview>
 
-      <credit-card-resume name="MASTERCARD"
+      <credit-card-resume id="2"
+                          name="MASTERCARD"
                           number="1234123412341234"
                           lastmovement="3 min ago"
                           amount="500 €">
