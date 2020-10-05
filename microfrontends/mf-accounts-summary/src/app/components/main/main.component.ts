@@ -22,7 +22,13 @@ export class MainComponent implements OnInit {
     public channel: string;
 
     @Input()
-    public customer: string;
+    get customer(): string { return this._customer; }
+    set customer(customer: string) {
+        this._customer = customer;
+        this.getData();
+    }
+
+    public _customer: string;
 
     public show = false;
 
@@ -48,13 +54,6 @@ export class MainComponent implements OnInit {
 
     ngOnInit() {
         console.log('[mf-accounts-summary] initializing....');
-        this.show = false;
-        this.accountsService.getAccounts(this.customer).subscribe((accounts: Account[]) => {
-            accounts.forEach((account) => this.totalBalance = this.totalBalance + account.amount);
-            this.accounts = accounts;
-            this.show = true;
-        });
-
         this.initBroadcastChannels();
         console.log('[mf-accounts-summary] initialized....');
     }
@@ -96,6 +95,14 @@ export class MainComponent implements OnInit {
         }
     }
 
+    private getData() {
+        this.show = false;
+        this.accountsService.getAccounts(this.customer).subscribe((accounts: Account[]) => {
+            accounts.forEach((account) => this.totalBalance = this.totalBalance + account.amount);
+            this.accounts = accounts;
+            this.show = true;
+        });
+    }
 
 
     /**

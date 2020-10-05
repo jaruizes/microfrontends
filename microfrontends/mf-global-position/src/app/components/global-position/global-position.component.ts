@@ -19,6 +19,14 @@ export class GlobalPositionComponent implements OnInit {
     @Input()
     public channel: string;
 
+    @Input()
+    get customer(): string { return this._customer; }
+    set customer(customer: string) {
+        this._customer = customer;
+    }
+
+    public _customer: string;
+
     /**
      * This is the parentChannel used by an instance of this microfrontend
      */
@@ -63,11 +71,13 @@ export class GlobalPositionComponent implements OnInit {
 
     constructor(private translate: TranslateService, private ngZone: NgZone, private movementsService: MovementsService) {
       this.initI18n();
+      console.log('Customer (const): ' + this.customer);
     }
 
     ngOnInit(): void {
+        console.log('Customer (ngOnInit): ' + this.customer);
         this.showMovements = false;
-        this.movementsService.getMovements().subscribe((movements: Movement[]) => {
+        this.movementsService.getMovements(this.customer).subscribe((movements: Movement[]) => {
             movements.forEach((movement) => {
                 const item: ItemTable = {
                     header: movement.date,
@@ -123,6 +133,10 @@ export class GlobalPositionComponent implements OnInit {
      */
     handleItemClick(item) {
         console.log(item.detail);
+    }
+
+    handleShortcutClick(e) {
+        console.log(e);
     }
 
     /**

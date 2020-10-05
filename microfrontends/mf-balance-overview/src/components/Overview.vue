@@ -7,7 +7,7 @@
         <link rel="stylesheet" type="text/css" href="https://unpkg.com/bootstrap/dist/css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.css">
 
-        <a v-b-modal.modal-1>
+        <a v-b-modal.modal-1 v-if="show">
             <div class="card text-center" >
                 <div class="card-body">
                     <h5 class="card-title">{{ $t("summary") }}
@@ -82,6 +82,15 @@
             locale: {
                 type: String,
                 default: 'en'
+            },
+            customer: {
+                type: String
+            }
+        },
+        watch: {
+            customer: function(newVal, oldVal) {
+                console.log('[mf-balance-overview] customer change: ' + newVal + ' / ' + oldVal);
+                this.initData();
             }
         },
         mounted() {
@@ -102,11 +111,12 @@
                 summaryData: {},
                 messages: {},
                 incomes: 0,
-                expenses: 0
+                expenses: 0,
+                show: false
             };
         },
         created() {
-            this.initData();
+            console.log('Customer: ' + this.customer);
             this.$i18n.locale = this.locale;
             console.log('Locale: ' + this.locale);
 
@@ -117,9 +127,10 @@
         },
         methods: {
             initData() {
-                axios.get("/api/summary").then((result) => {
+                this.show = false;
+                axios.get("/api/customers/" + this.customer).then((result) => {
                     console.log(result.data);
-                    this.summaryData = result.data;
+                    this.summaryData = result.data.summary;
 
                     this.summaryData['incomes'].forEach((income) => {
                         this.incomes += income;
@@ -128,6 +139,8 @@
                     this.summaryData['expenses'].forEach((expense) => {
                         this.expenses += expense;
                     });
+
+                    this.show = true;
                 });
             },
             handleApplicationMessage(message) {

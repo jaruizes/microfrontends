@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Overview :locale="locale"/>
+    <Overview :locale="locale" customer="0001"/>
   </div>
 
 </template>
@@ -17,6 +17,9 @@
       locale: {
         type: String,
         default: 'en'
+      },
+      customer: {
+        type: String
       }
     },
     data(){

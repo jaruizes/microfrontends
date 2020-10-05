@@ -1,87 +1,20 @@
 {
-  "accounts" : [
+  "customer": [
     {
-      "id": 1,
-      "number" : "123412341234",
-      "name" : "Cuenta Nómina",
-      "lastmovement": "2 days ago",
-      "newmovements": "5",
-      "amount": 345
+      "summary": {
+        "incomes": [2500, 2700, 3000, 2500, 6000, 4000, 2360, 3000, 3200, 2900, 3000, 3200],
+        "expenses": [1500, 1700, 2000, 2000, 3000, 2000, 1360, 2000, 1200, 1900, 2000, 1200],
+        "dates": ["10/2019", "11/2019", "12/2019", "01/2020", "02/2020", "03/2020", "04/2020", "05/2020", "06/2020", "07/2020", "08/2020", "09/2020"]
+      },
+      "id": "0001"
     },
     {
-      "id": 2,
-      "number" : "123412341234",
-      "name" : "Cuenta Naranja",
-      "lastmovement": "2 days ago",
-      "newmovements": 5,
-      "amount": 30000
+      "summary": {
+        "expenses": [2500, 2700, 3000, 2500, 6000, 4000, 2360, 3000, 3200, 2900, 3000, 3200],
+        "incomes": [1500, 1700, 2000, 2000, 3000, 2000, 1360, 2000, 1200, 1900, 2000, 1200],
+        "dates": ["10/2019", "11/2019", "12/2019", "01/2020", "02/2020", "03/2020", "04/2020", "05/2020", "06/2020", "07/2020", "08/2020", "09/2020"]
+      },
+      "id": "0002"
     }
-  ],
-  "cards" : [
-    {
-      "id": 1,
-      "number" : "123412341234",
-      "type" : 0,
-      "lastmovement": "2 days ago",
-      "amount": 345
-    },
-    {
-      "id": 2,
-      "number" : "3333333344445555",
-      "type" : 1,
-      "lastmovement": "2 days ago",
-      "amount": 478,
-      "limit": 2500
-    },
-    {
-      "id": 3,
-      "number" : "3333333344445555",
-      "type" : 1,
-      "lastmovement": "2 days ago",
-      "amount": 478,
-      "limit": 2500
-    }
-  ],
-  "movements": [
-    {
-      "id": 1,
-      "date": "01/01/2020",
-      "subject": "CONSUM SUPERMERCADO",
-      "account": "CUENTA NARANJA",
-      "amount": "200"
-    },
-    {
-      "id": 2,
-      "date": "01/02/2020",
-      "subject": "REINTEGRO CAJERO",
-      "account": "CUENTA NARANJA",
-      "amount": "100"
-    },
-    {
-      "id": 3,
-      "date": "01/03/2020",
-      "subject": "AMAZON",
-      "account": "CUENTA NARANJA",
-      "amount": "350"
-    },
-    {
-      "id": 4,
-      "date": "01/04/2020",
-      "subject": "TELEFONICA FIBRA",
-      "account": "CUENTA NARANJA",
-      "amount": "120"
-    },
-    {
-      "id": 5,
-      "date": "01/05/2020",
-      "subject": "MEDITERRANEA COMEDOR",
-      "account": "CUENTA NARANJA",
-      "amount": "250"
-    }
-  ],
-  "summary": {
-    "incomes": [2500, 2700, 3000, 2500, 6000, 4000, 2360, 3000, 3200, 2900, 3000, 3200],
-    "expenses": [1500, 1700, 2000, 2000, 3000, 2000, 1360, 2000, 1200, 1900, 2000, 1200],
-    "dates": ["10/2019", "11/2019", "12/2019", "01/2020", "02/2020", "03/2020", "04/2020", "05/2020", "06/2020", "07/2020", "08/2020", "09/2020"]
-  }
+  ]
 }

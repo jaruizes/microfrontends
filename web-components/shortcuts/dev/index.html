@@ -9,7 +9,12 @@
 
     <script>
       function changeLanguage(locale) {
-        document.getElementById('shortcuts').setAttribute("locale", locale);
+        const el = document.getElementById('shortcuts');
+        el.setAttribute("locale", locale);
+      }
+
+      function handleEvent(e) {
+        console.log(e);
       }
     </script>
 
@@ -41,6 +46,7 @@
           text: 'National transfer 4'
         },
       ];
+      el.addEventListener('shortcutClick', handleEvent);
     </script>
   </body>
 </html>

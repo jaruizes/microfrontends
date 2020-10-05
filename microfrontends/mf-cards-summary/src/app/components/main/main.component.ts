@@ -22,7 +22,13 @@ export class MainComponent implements OnInit {
     public channel: string;
 
     @Input()
-    public customer: string;
+    get customer(): string { return this._customer; }
+    set customer(customer: string) {
+        this._customer = customer;
+        this.getData();
+    }
+
+    public _customer: string;
 
     public show;
 
@@ -51,11 +57,7 @@ export class MainComponent implements OnInit {
 
     ngOnInit() {
         console.log('[mf-cards-summary] initializing....');
-        this.show = false;
-        this.cardsService.getCards(this.customer).subscribe((cards) => {
-            this.cards = cards;
-            this.show = true;
-        });
+
         this.initBroadcastChannels();
 
         console.log('[mf-cards-summary] initialized....');
@@ -95,6 +97,14 @@ export class MainComponent implements OnInit {
             payload: {
                 id: cardId
             }
+        });
+    }
+
+    private getData() {
+        this.show = false;
+        this.cardsService.getCards(this.customer).subscribe((cards) => {
+            this.cards = cards;
+            this.show = true;
         });
     }
 

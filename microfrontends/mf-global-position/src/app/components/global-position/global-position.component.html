@@ -1,34 +1,40 @@
-<div class="container-fluid">
+<div class="container-fluid" *ngIf="showMovements">
     <div class="row">
         <!-- Accounts & Cards -->
         <div class="col-xl-8 col-lg-12 col-sm-12">
             <section style="width: 100%;">
                 <mf-accounts-summary *axLazyElement="urlAccountsSummary;"
                                      channel="mf-global-position-accounts"
-                                     [locale]="locale">
+                                     [locale]="locale"
+                                     [customer]="customer">
                 </mf-accounts-summary>
             </section>
             <section style="width: 100%;">
                 <mf-cards-summary *axLazyElement="urlCardsSummary;"
                                   channel="mf-global-position-cards"
-                                  [locale]="locale">
+                                  [locale]="locale"
+                                  [customer]="customer">
                 </mf-cards-summary>
             </section>
         </div>
 
 
-        <div class="col-xl-4 col-lg-12 col-sm-12">
+        <div class="col-xl-4 col-lg-12 col-sm-12" >
             <!-- Summary -->
             <section style="width: 100%;">
                 <mf-balance-overview *axLazyElement="urlBalanceOverview;"
-                                     [locale]="locale"></mf-balance-overview>
+                                     [locale]="locale"
+                                     [customer]="customer">
+                </mf-balance-overview>
             </section>
 
             <!-- Accesos directos -->
             <section style="width: 100%;">
                 <wc-shortcuts *axLazyElement="urlShortcuts; module: true;"
                               [data]="shortcuts"
-                              [locale]="locale"></wc-shortcuts>
+                              [locale]="locale"
+                              (shortcutClick)="handleShortcutClick($event)">
+                </wc-shortcuts>
             </section>
 
 
@@ -44,7 +50,7 @@
             </section>
 
             <!-- last movements -->
-            <section style="width: 100%;" *ngIf="showMovements">
+            <section style="width: 100%;">
                 <items-table header="{{ 'last-movements' | translate }}"
                              *axLazyElement="urlMovements; module: true;"
                              [items]="movementsItems"

@@ -57,6 +57,18 @@ export class ShortCutsElement extends LitElement {
     use(this.locale);
   }
 
+  fireEventClick(shortcut: number) {
+    console.log('fireEventClick');
+    const eventData = {
+      detail: { shortcut: shortcut },
+      bubbles: true,
+      composed: true
+    };
+
+    const customEvent = new CustomEvent('shortcutClick', eventData);
+    this.dispatchEvent(customEvent);
+  }
+
   render() {
     return html`
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
@@ -67,7 +79,7 @@ export class ShortCutsElement extends LitElement {
                 <div class="container-fluid" style="padding-top: 0.3em">
                     <div class="row" style="border-bottom: lightgray 0.1em solid;">
                         <div class="col-6 d-flex justify-content-center" style="border-right: lightgray 0.1em solid;">
-                            <a href="" style="padding-bottom: 0.8em">
+                            <a href="#" style="padding-bottom: 0.8em" @click="${() => this.fireEventClick(0)}">
                                 <div>
                                     <mwc-icon>${this.data[0]['icon']}</mwc-icon>      
                                 </div>
@@ -75,7 +87,7 @@ export class ShortCutsElement extends LitElement {
                             </a>
                         </div>
                         <div class="col-6 d-flex justify-content-center" style="border-left: lightgray 0.1em solid;">
-                            <a href="" style="padding-bottom: 0.8em">
+                            <a href="#" style="padding-bottom: 0.8em" @click="${() => this.fireEventClick(1)}">
                                 <div>
                                     <mwc-icon>${this.data[1]['icon']}</mwc-icon>      
                                 </div>
@@ -85,7 +97,7 @@ export class ShortCutsElement extends LitElement {
                     </div>
                     <div class="row" >
                         <div class="col-6 d-flex justify-content-center" style="border-right: lightgray 0.1em solid;">
-                            <a href="" style="padding-top: 0.8em">
+                            <a href="#" style="padding-top: 0.8em" @click="${() => this.fireEventClick(2)}">
                                 <div>
                                     <mwc-icon>${this.data[2]['icon']}</mwc-icon>      
                                 </div>
@@ -93,7 +105,7 @@ export class ShortCutsElement extends LitElement {
                             </a>
                         </div>
                         <div class="col-6 d-flex justify-content-center" style="border-left: lightgray 0.1em solid;">
-                            <a href="" style="padding-top: 0.8em">
+                            <a href="#" style="padding-top: 0.8em" @click="${() => this.fireEventClick(3)}">
                                 <div>
                                     <mwc-icon>${this.data[3]['icon']}</mwc-icon>      
                                 </div>

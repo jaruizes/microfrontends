@@ -3,18 +3,38 @@
     {
       "id": 1,
       "number" : "123412341234",
-      "name" : "Cuenta Nómina",
+      "name" : "Cuenta Nómina 1",
       "lastmovement": "2 days ago",
       "newmovements": "5",
-      "amount": 345
+      "amount": 345,
+      "customer": "0001"
     },
     {
       "id": 2,
       "number" : "123412341234",
-      "name" : "Cuenta Naranja",
+      "name" : "Cuenta Naranja 1",
       "lastmovement": "2 days ago",
       "newmovements": 5,
-      "amount": 30000
+      "amount": 30000,
+      "customer": "0001"
+    },
+    {
+      "id": 1,
+      "number" : "123412341234",
+      "name" : "Cuenta Nómina 2",
+      "lastmovement": "2 days ago",
+      "newmovements": "5",
+      "amount": 345,
+      "customer": "0002"
+    },
+    {
+      "id": 2,
+      "number" : "123412341234",
+      "name" : "Cuenta Naranja 2",
+      "lastmovement": "2 days ago",
+      "newmovements": 5,
+      "amount": 30000,
+      "customer": "0002"
     }
   ],
   "cards" : [
@@ -23,7 +43,8 @@
       "number" : "123412341234",
       "type" : 0,
       "lastmovement": "2 days ago",
-      "amount": 345
+      "amount": 345,
+      "customer": "0001"
     },
     {
       "id": 2,
@@ -31,7 +52,8 @@
       "type" : 1,
       "lastmovement": "2 days ago",
       "amount": 478,
-      "limit": 2500
+      "limit": 2500,
+      "customer": "0001"
     },
     {
       "id": 3,
@@ -39,10 +61,216 @@
       "type" : 1,
       "lastmovement": "2 days ago",
       "amount": 478,
-      "limit": 2500
+      "limit": 2500,
+      "customer": "0001"
+    },
+    {
+      "id": 4,
+      "number" : "123412341234",
+      "type" : 0,
+      "lastmovement": "2 days ago",
+      "amount": 345,
+      "customer": "0002"
+    },
+    {
+      "id": 5,
+      "number" : "3333333344445555",
+      "type" : 1,
+      "lastmovement": "2 days ago",
+      "amount": 478,
+      "limit": 2500,
+      "customer": "0002"
     }
   ],
-  "movements": [
+  "customers": [
+    {
+      "id": "0001",
+      "name": "Fernando Alonso Díaz",
+      "age": 34,
+      "balance": 50000,
+      "entry": "01/01/2015",
+      "summary": {
+        "incomes": [2500, 2700, 3000, 2500, 6000, 4000, 2360, 3000, 3200, 2900, 3000, 3200],
+        "expenses": [1500, 1700, 2000, 2000, 3000, 2000, 1360, 2000, 1200, 1900, 2000, 1200],
+        "dates": ["10/2019", "11/2019", "12/2019", "01/2020", "02/2020", "03/2020", "04/2020", "05/2020", "06/2020", "07/2020", "08/2020", "09/2020"]
+      },
+      "lastmovements": [
+        {
+          "id": 1,
+          "date": "01/01/2020",
+          "subject": "CONSUM SUPERMERCADO",
+          "account": "CUENTA NARANJA",
+          "amount": "200"
+        },
+        {
+          "id": 2,
+          "date": "01/02/2020",
+          "subject": "REINTEGRO CAJERO",
+          "account": "CUENTA NARANJA",
+          "amount": "100"
+        },
+        {
+          "id": 3,
+          "date": "01/03/2020",
+          "subject": "AMAZON",
+          "account": "CUENTA NARANJA",
+          "amount": "350"
+        },
+        {
+          "id": 4,
+          "date": "01/04/2020",
+          "subject": "TELEFONICA FIBRA",
+          "account": "CUENTA NARANJA",
+          "amount": "120"
+        },
+        {
+          "id": 5,
+          "date": "01/05/2020",
+          "subject": "MEDITERRANEA COMEDOR",
+          "account": "CUENTA NARANJA",
+          "amount": "250"
+        }
+      ]
+    },
+    {
+      "id": "0002",
+      "name": "Nicolas Camara Sanchez",
+      "age": 68,
+      "balance": 50000,
+      "entry": "01/01/2015",
+      "summary": {
+        "incomes": [2500, 2700, 3000, 2500, 6000, 4000, 2360, 3000, 3200, 2900, 3000, 3200],
+        "expenses": [1500, 1700, 2000, 2000, 3000, 2000, 1360, 2000, 1200, 1900, 2000, 1200],
+        "dates": ["10/2019", "11/2019", "12/2019", "01/2020", "02/2020", "03/2020", "04/2020", "05/2020", "06/2020", "07/2020", "08/2020", "09/2020"]
+      },
+      "lastmovements": [
+        {
+          "id": 1,
+          "date": "01/01/2020",
+          "subject": "CONSUM SUPERMERCADO",
+          "account": "CUENTA NARANJA",
+          "amount": "200"
+        },
+        {
+          "id": 2,
+          "date": "01/02/2020",
+          "subject": "REINTEGRO CAJERO",
+          "account": "CUENTA NARANJA",
+          "amount": "100"
+        },
+        {
+          "id": 3,
+          "date": "01/03/2020",
+          "subject": "AMAZON",
+          "account": "CUENTA NARANJA",
+          "amount": "350"
+        },
+        {
+          "id": 4,
+          "date": "01/04/2020",
+          "subject": "TELEFONICA FIBRA",
+          "account": "CUENTA NARANJA",
+          "amount": "120"
+        },
+        {
+          "id": 5,
+          "date": "01/05/2020",
+          "subject": "MEDITERRANEA COMEDOR",
+          "account": "CUENTA NARANJA",
+          "amount": "250"
+        }
+      ]
+    },
+    {
+      "id": "0003",
+      "name": "Rafael Nadal Parera",
+      "balance": 20000,
+      "age": 38,
+      "entry": "01/01/2015",
+      "lastmovements": [
+        {
+          "id": 1,
+          "date": "01/01/2020",
+          "subject": "CONSUM SUPERMERCADO",
+          "account": "CUENTA NARANJA",
+          "amount": "200"
+        },
+        {
+          "id": 2,
+          "date": "01/02/2020",
+          "subject": "REINTEGRO CAJERO",
+          "account": "CUENTA NARANJA",
+          "amount": "100"
+        },
+        {
+          "id": 3,
+          "date": "01/03/2020",
+          "subject": "AMAZON",
+          "account": "CUENTA NARANJA",
+          "amount": "350"
+        },
+        {
+          "id": 4,
+          "date": "01/04/2020",
+          "subject": "TELEFONICA FIBRA",
+          "account": "CUENTA NARANJA",
+          "amount": "120"
+        },
+        {
+          "id": 5,
+          "date": "01/05/2020",
+          "subject": "MEDITERRANEA COMEDOR",
+          "account": "CUENTA NARANJA",
+          "amount": "250"
+        }
+      ]
+    },
+    {
+      "id": "0004",
+      "name": "Iker Casillas Fernández",
+      "age": 39,
+      "balance": 80000,
+      "entry": "01/01/2015",
+      "lastmovements": [
+        {
+          "id": 1,
+          "date": "01/01/2020",
+          "subject": "CONSUM SUPERMERCADO",
+          "account": "CUENTA NARANJA",
+          "amount": "200"
+        },
+        {
+          "id": 2,
+          "date": "01/02/2020",
+          "subject": "REINTEGRO CAJERO",
+          "account": "CUENTA NARANJA",
+          "amount": "100"
+        },
+        {
+          "id": 3,
+          "date": "01/03/2020",
+          "subject": "AMAZON",
+          "account": "CUENTA NARANJA",
+          "amount": "350"
+        },
+        {
+          "id": 4,
+          "date": "01/04/2020",
+          "subject": "TELEFONICA FIBRA",
+          "account": "CUENTA NARANJA",
+          "amount": "120"
+        },
+        {
+          "id": 5,
+          "date": "01/05/2020",
+          "subject": "MEDITERRANEA COMEDOR",
+          "account": "CUENTA NARANJA",
+          "amount": "250"
+        }
+      ]
+    }
+  ],
+  "lastmovements": [
     {
       "id": 1,
       "date": "01/01/2020",
