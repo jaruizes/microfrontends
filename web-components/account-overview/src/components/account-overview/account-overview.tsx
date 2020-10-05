@@ -16,7 +16,7 @@ export class AccountOverview {
   }) locale: string;
 
   /**
-   * Account number
+   * Account number (not formatted)
    */
   @Prop() number: string;
 
@@ -68,6 +68,10 @@ export class AccountOverview {
     this.i18nStrings = await this.fetchLocaleStringsForComponent();
   }
 
+  formatIBAN(accountNumber: string) {
+    return accountNumber.replace(/[^\dA-Z]/g, '').replace(/(.{4})/g, '$1 ').trim()
+  }
+
   render() {
 
     return (
@@ -80,7 +84,7 @@ export class AccountOverview {
                   <div class="row">
                     <div class="col-xl-4 col-lg-4 col-sm-4 col-6">
                       <h4 class="card-title">{this.name}</h4>
-                      <p class="text-muted">{this.number}</p>
+                      <p class="text-muted">{this.formatIBAN(this.number)}</p>
                     </div>
                     <div class="col-xl-4 col-lg-4 col-sm-4 d-none d-sm-block">
                       <div class="d-flex justify-content-center">

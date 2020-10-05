@@ -28,7 +28,7 @@ export namespace Components {
          */
         "newmovements": number;
         /**
-          * Account number
+          * Account number (not formatted)
          */
         "number": string;
     }
@@ -67,7 +67,7 @@ declare namespace LocalJSX {
          */
         "newmovements"?: number;
         /**
-          * Account number
+          * Account number (not formatted)
          */
         "number"?: string;
     }
