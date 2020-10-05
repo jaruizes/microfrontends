@@ -14,17 +14,21 @@ import { MatCardModule } from '@angular/material/card';
 import { GlobalPositionComponent } from './components/global-position/global-position.component';
 import { CardsComponent } from './components/cards/cards.component';
 import { AccountsComponent } from './components/accounts/accounts.component';
-
-
+import { CardDetailComponent } from './components/card-detail/card-detail.component';
+import { AccountDetailComponent } from './components/account-detail/account-detail.component';
+import { LocaleService } from './services/locale/locale.service';
 
 @NgModule({
   declarations: [
     PrivateComponent,
     GlobalPositionComponent,
     AccountsComponent,
-    CardsComponent
+    CardsComponent,
+    CardDetailComponent,
+    AccountDetailComponent
   ],
   providers: [
+    LocaleService
   ],
   imports: [
     CommonModule,

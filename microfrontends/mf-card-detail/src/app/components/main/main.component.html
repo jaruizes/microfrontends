@@ -1,33 +1,34 @@
-
+<ng-template [ngIf]="cardInfo">
     <section class="content-section">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12">
-                    <mat-card class="card" >
+                    <mat-card class="card">
                         <div class="container-fluid">
                             <div class="row">
                                 <div class="col-xl-4 d-xl-block d-lg-none d-sm-none d-md-none d-none">
                                     <credit-card *axLazyElement="urlCard; module: true"
-                                                 id="debit-card"
-                                                 name="Jose Miguel González del Campo"
-                                                 number="XXXX XXXX XXXX XXXX"
+                                                 id="{{cardInfo.id}}"
+                                                 name="{{cardInfo.name}}"
+                                                 number="{{cardInfo.number}}"
                                                  entity="TECHNOLOGY BANK"
-                                                 expiration="10/24"
-                                                 type="0">
+                                                 expiration="{{cardInfo.expires}}"
+                                                 type="{{cardInfo.type}}"
+                                                 [locale]="locale">
                                     </credit-card>
                                 </div>
                                 <div class="col-xl-8 col-lg-12">
                                     <div>
-                                        <h4 class="text-dark text-black-50">Tarjeta</h4>
-                                        <h2 class="text-muted text-dark">2048 3076 6630 1000 5214</h2>
+                                        <h4 class="text-dark text-black-50">{{ 'card' | translate }}</h4>
+                                        <h2 class="text-muted text-dark">{{cardInfo.number}}</h2>
                                     </div>
                                     <div>
-                                        <h4 class="text-dark text-black-50">Titular</h4>
-                                        <h2 class="text-muted">Pepe Pepe Pepe</h2>
+                                        <h4 class="text-dark text-black-50">{{ 'holder' | translate }}</h4>
+                                        <h2 class="text-muted">{{cardInfo.name}}</h2>
                                     </div>
                                     <div>
-                                        <h4 class="text-dark text-black-50">Saldo</h4>
-                                        <h2 class="text-dark">469 €</h2>
+                                        <h4 class="text-dark text-black-50">{{ 'balance' | translate }}</h4>
+                                        <h2 class="text-dark">{{cardInfo.balance}} €</h2>
                                     </div>
                                 </div>
                             </div>
@@ -65,5 +66,5 @@
             </div>
         </div>
     </section>
-
+</ng-template>
 

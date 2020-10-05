@@ -1,62 +1,57 @@
-
     <section class="content-section">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12">
-                    <mat-card class="card" >
+                    <div class="card account-info" *ngIf="account">
+                        <div class="card-title" style="padding-bottom: 1em">
+                            <h3>{{ 'account-detail' | translate }}</h3>
+                        </div>
                         <div class="container-fluid">
                             <div class="row">
-                                <div class="col-12">
-                                    <h3>Cuenta Naranja</h3>
-                                    <h5 class="text-muted text-dark">ES63 2048 3076 6630 1000 5214</h5>
+                                <div class="col-md-6 col-sm-12">
+                                    <h5 class="text-dark text-black-50">{{ 'nick-name' | translate }}</h5>
+                                    <h4 class="text-dark">{{account.name}}</h4>
+
+                                </div>
+                                <div class="col-md-6 col-sm-12">
+                                    <h5 class="text-dark text-black-50">IBAN</h5>
+                                    <h4 class="text-dark">{{account.number}}</h4>
                                 </div>
                             </div>
                             <div class="row" style="margin-top: 2em">
                                 <div class="col-md-3 col-sm-12">
-                                    <h3 class="text-dark">Titular</h3>
-                                    <h4 class="text-muted">Pepe Pepe Pepe</h4>
-                                </div>
-                            </div>
-                            <div class="row" style="margin-top: 2em">
-                                <div class="col-md-3 col-sm-12">
-                                    <h5>Saldo</h5>
-                                    <h2 class="text-dark">46789 €</h2>
+                                    <h5 class="text-dark text-black-50">{{ 'holder' | translate }}</h5>
+                                    <h4 class="text-dark">{{account.holder}}</h4>
                                 </div>
                                 <div class="col-md-3 col-sm-12">
-                                    <h5>Disponible</h5>
-                                    <h2 class="text-dark">46789 €</h2>
+                                    <h5 class="text-dark text-black-50">{{ 'balance' | translate }}</h5>
+                                    <h4 class="text-dark">{{account.balance}} €</h4>
+                                </div>
+                                <div class="col-md-3 col-sm-12">
+                                    <h5 class="text-dark text-black-50">{{ 'available' | translate }}</h5>
+                                    <h4 class="text-dark">{{account.available}} €</h4>
                                 </div>
                             </div>
+
                         </div>
-                    </mat-card>
+                    </div>
                 </div>
             </div>
         </div>
-
     </section>
 
     <section class="content-section">
-        <div class="container-fluid">
+        <div class="container-fluid" *ngIf="account && movements">
             <div class="row">
                 <div class="col-12">
-                    <mat-card class="card" >
-                        <mat-card-title fxLayout.gt-xs="row" fxLayout.xs="column">
-                            <div class="container-fluid">
-                                <div class="row">
-                                    <div class="col-md-8 col-sm-6 justify-content-start">
-                                        <h3>{{ 'movements' | translate }}</h3>
-                                    </div>
-                                </div>
-                            </div>
-                        </mat-card-title>
-                        <mat-card-content>
-                            <div class="cards-container mat-elevation-z8">
-                                <section style="width: 100%;">
-                                    <items-table *axLazyElement="urlMovements; module: true" [items]="movements"></items-table>
-                                </section>
-                            </div>
-                        </mat-card-content>
-                    </mat-card>
+                    <div class="card" >
+                        <div class="card-title" style="margin: 0; padding-left: 2em; padding-top: 2em">
+                            <h3>{{ 'movements' | translate }}</h3>
+                        </div>
+                        <div class="card-body">
+                            <items-table *axLazyElement="urlItemsTable; module: true" [items]="movements"></items-table>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

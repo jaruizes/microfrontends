@@ -2,6 +2,7 @@ import { Component, Input, NgZone, OnInit, ViewEncapsulation } from '@angular/co
 import { AccountsService } from '../../services/accounts.service';
 import { Account } from '../../model/account';
 import { TranslateService } from '@ngx-translate/core';
+import { ItemTable } from '../../model/item-table';
 
 @Component({
     selector: 'app-main',
@@ -15,62 +16,105 @@ export class MainComponent implements OnInit {
     @Input()
     public locale: string;
 
-    public urlMovements = 'http://microfrontends-cdn.s3-website.eu-west-2.amazonaws.com/web-components/items-table/items-table.esm.js';
-    public movements = [
-        {
-            "header": "01/01/2020 10:00",
-            "title1": "MERCADONA",
-            "subtitle1": "Cuenta corriente",
-            "title2": "645 €",
-            "subtitle2": "1028 €"
-        },
-        {
-            "header": "01/01/2020 10:00",
-            "title1": "MERCADONA",
-            "subtitle1": "Cuenta corriente",
-            "title2": "645 €",
-            "subtitle2": "1028 €"
-        },
-        {
-            "header": "01/01/2020 10:00",
-            "title1": "MERCADONA",
-            "subtitle1": "Cuenta corriente",
-            "title2": "645 €",
-            "subtitle2": "1028 €"
-        },
-        {
-            "header": "01/01/2020 10:00",
-            "title1": "MERCADORNA",
-            "subtitle1": "Cuenta corriente",
-            "title2": "645 €",
-            "subtitle2": "1028 €"
-        },
-        {
-            "header": "01/01/2020 10:00",
-            "title1": "MERCADONA",
-            "subtitle1": "Cuenta corriente",
-            "title2": "645 €",
-            "subtitle2": "1028 €"
-        }
-    ];
+    @Input()
+    public channel: string;
+    
+    @Input()
+    public accountId: number;
+
+    public account: Account;
+    public movements: ItemTable[] = [];
+    public urlItemsTable = '/webcomponents/items-table/v1/items-table.esm.js';
+
+    /**
+     * This is the parentChannel used by an instance of this microfrontend
+     */
+    private parentChannel;
+
+    /**
+     * This is the general channel used by manage events in broadcast
+     */
+    private generalChannel;
 
     constructor(private accountsService: AccountsService, private ngZone: NgZone, private translate: TranslateService){
-        this.locale = 'en';
-        translate.setDefaultLang(this.locale);
-        translate.use(this.locale);
+        console.log('[mf-account-detail] starting....');
+        this.initI18n();
     }
 
     ngOnInit() {
-        /*this.accountsService.getAccounts().subscribe((accounts) => {
-            accounts.forEach((account) => this.totalBalance = this.totalBalance + account.amount);
-            this.accounts = accounts;
-        });*/
+        console.log('[mf-account-detail] initializing....');
+        this.accountsService.getAccount(this.accountId).subscribe((account: Account) => {
+           this.account = account;
+           account.movements.forEach((movement) => {
+               const item: ItemTable = {
+                   header: movement.date,
+                   title1: movement.subject,
+                   subtitle1: movement.account,
+                   title2: movement.amount + ' €'
+               };
+               this.movements.push(item);
+           })
+        });
+
+        this.initBroadcastChannels();
+        console.log('[mf-account-detail] initialized....');
     }
 
-    handleMessage(message) {
+    /**
+     * Handle messages received by the parent channel
+     * @param message
+     */
+    handleParentMessage(message) {
+        console.log('[mf-account-detail] Message received from parent: ' + message.cmd);
         if (message.cmd === 'changeLocale') {
             this.locale = message.payload.locale;
             this.translate.use(this.locale);
+        }
+    }
+
+    /**
+     * Handle messages received by the general broadcast channel
+     * @param message
+     */
+    handleGeneralMessages(message) {
+        console.log('[mf-account-detail] Message received from general channel: ' + message.cmd);
+        if (message.cmd === 'changeLocale') {
+            this.locale = message.payload.locale;
+            this.translate.use(this.locale);
+        }
+    }
+
+    /**
+     * Initializes translate service
+     */
+    private initI18n() {
+        this.locale = 'en';
+        this.translate.setDefaultLang(this.locale);
+        this.translate.use(this.locale);
+    }
+
+
+    /**
+     * Initializes the channels used by this microfrontend
+     * The parent channel is specified by the property @channel
+     */
+    private initBroadcastChannels() {
+        console.log('[mf-account-detail] Initializing general channel....');
+        this.generalChannel = new BroadcastChannel('microfrontends');
+        this.generalChannel.onmessage = (message) => {
+            this.ngZone.run(() => {
+                this.handleGeneralMessages(message.data);
+            });
+        };
+
+        if (this.channel) {
+            console.log('[mf-account-detail] Initializing parent channel: ' + this.channel);
+            this.parentChannel = new BroadcastChannel(this.channel);
+            this.parentChannel.onmessage = (message) => {
+                this.ngZone.run(() => {
+                    this.handleParentMessage(message.data);
+                });
+            };
         }
     }
 }

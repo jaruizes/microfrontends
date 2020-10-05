@@ -1,42 +1,125 @@
-import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, Input, NgZone, OnInit, ViewEncapsulation } from '@angular/core';
 import { CardsService } from '../services/cards.service';
 import { Card } from '../model/card';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
     selector: 'app-main',
     templateUrl: './main.component.html',
     styleUrls: [
-      '../../../../node_modules/bootstrap/dist/css/bootstrap.css',
       './main.component.scss'
-    ]
+    ],
+    encapsulation: ViewEncapsulation.ShadowDom
 })
 export class MainComponent implements OnInit {
-    public elementUrl: string = 'http://microfrontends-cdn.s3-website.eu-west-2.amazonaws.com/web-components/credit-card-resume/credit-card-resume.esm.js';
+    /**
+     * Microfrontend specified properties
+     */
+    @Input()
+    public locale: string;
+
+    @Input()
+    public channel: string;
+
+    public elementUrl: string = '/webcomponents/card-overview/v1/card-overview.esm.js';
 
     @Input()
     public title;
 
     public cards: Card[];
 
-    focus: any;
+    /**
+     * This is the parentChannel used by an instance of this microfrontend
+     */
+    private parentChannel;
 
-    private channel;
+    /**
+     * This is the general channel used by manage events in broadcast
+     */
+    private generalChannel;
 
-    constructor(private cardsService: CardsService) {
-        this.channel = new BroadcastChannel("mfs-channel");
+    constructor(private cardsService: CardsService, private ngZone: NgZone, private translate: TranslateService){
+        console.log('[mf-cards-summary] starting....');
+        this.initI18n();
     }
 
     ngOnInit() {
-        if (!this.title) {
-            this.title = 'Welcome to the future'
-        }
-
+        console.log('[mf-cards-summary] initializing....');
         this.cardsService.getCards().subscribe((cards) => this.cards = cards);
+        this.initBroadcastChannels();
+
+        console.log('[mf-cards-summary] initialized....');
     }
 
-    login() {
-        console.log("-----------");
-        this.channel.postMessage({ type: "login" });
+    /**
+     * Handle messages received by the parent channel
+     * @param message
+     */
+    handleParentMessage(message) {
+        console.log('[mf-cards-summary] Message received from parent: ' + message.cmd);
+        if (message.cmd === 'changeLocale') {
+            this.locale = message.payload.locale;
+            this.translate.use(this.locale);
+        }
+    }
+
+    /**
+     * Handle messages received by the general broadcast channel
+     * @param message
+     */
+    handleGeneralMessages(message) {
+        console.log('[mf-cards-summary] Message received from general channel: ' + message.cmd);
+        if (message.cmd === 'changeLocale') {
+            this.locale = message.payload.locale;
+            this.translate.use(this.locale);
+        }
+    }
+
+    /**
+     * Sends a message using the parentChannel
+     * @param cardId
+     */
+    handleCardClick(cardId) {
+        this.parentChannel.postMessage({
+            cmd: 'cardClick',
+            payload: {
+                id: cardId
+            }
+        });
+    }
+
+    /**
+     * Initializes the channels used by this microfrontend
+     * The parent channel is specified by the property @channel
+     */
+    private initBroadcastChannels() {
+        console.log('[mf-cards-summary] Initializing general channel....');
+        this.generalChannel = new BroadcastChannel('microfrontends');
+        this.generalChannel.onmessage = (message) => {
+            this.ngZone.run(() => {
+                this.handleGeneralMessages(message.data);
+            });
+        };
+
+
+        if (this.channel) {
+            console.log('[mf-cards-summary] Initializing parent channel: ' + this.channel);
+            this.parentChannel = new BroadcastChannel(this.channel);
+            this.parentChannel.onmessage = (message) => {
+                this.ngZone.run(() => {
+                    this.handleParentMessage(message.data);
+                });
+            };
+        }
+    }
+
+    /**
+     * Initializes translate service
+     */
+    private initI18n() {
+        this.locale = 'en';
+        this.translate.setDefaultLang(this.locale);
+        this.translate.use(this.locale);
     }
 
 }

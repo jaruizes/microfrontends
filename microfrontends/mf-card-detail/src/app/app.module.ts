@@ -25,14 +25,14 @@ import { MatCardModule } from '@angular/material/card';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MainComponent } from './components/main/main.component';
 import { LazyElementsModule } from '@angular-extensions/elements';
-import { AccountsService } from './services/accounts.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { CardService } from './services/card.service';
 
 // AoT requires an exported function for factories
 export function createTranslateLoader(http: HttpClient) {
-  return new TranslateHttpLoader(http, './assets/mf-card-detail/i18n/', '.json');
+  return new TranslateHttpLoader(http, './assets/microfrontends/mf-card-detail/v1/i18n/', '.json');
 }
 
 @NgModule({
@@ -75,7 +75,7 @@ export function createTranslateLoader(http: HttpClient) {
     })
   ],
   providers: [
-      AccountsService
+      CardService
   ],
   bootstrap: [],
   schemas: [

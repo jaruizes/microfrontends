@@ -4,5 +4,11 @@
     "secure": false,
     "logLevel": "debug",
     "changeOrigin" : true
+  },
+  "/webcomponents": {
+    "target": "http://microfrontends-cdn.s3-website.eu-west-2.amazonaws.com",
+    "secure": false,
+    "logLevel": "debug",
+    "changeOrigin" : true
   }
 }

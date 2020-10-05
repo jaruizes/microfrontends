@@ -21,7 +21,7 @@ export class MainComponent implements OnInit {
     @Input()
     public channel: string;
 
-    public elementUrl: string = './web-components/account-overview/account-overview.esm.js';
+    public elementUrl: string = './webcomponents/account-overview/v1/account-overview.esm.js';
     public accounts: Account[];
     public totalBalance: number;
 
@@ -53,6 +53,19 @@ export class MainComponent implements OnInit {
     }
 
     /**
+     * Sends a message using the parentChannel
+     * @param accountId
+     */
+    handleAccountClick(accountId) {
+        this.parentChannel.postMessage({
+            cmd: 'accountClick',
+            payload: {
+                id: accountId
+            }
+        });
+    }
+
+    /**
      * Handle messages received by the parent channel
      * @param message
      */
@@ -76,18 +89,7 @@ export class MainComponent implements OnInit {
         }
     }
 
-    /**
-     * Sends a message using the parentChannel
-     * @param accountId
-     */
-    handleAccountClick(accountId) {
-        this.parentChannel.postMessage({
-            cmd: 'accountClick',
-            payload: {
-                id: accountId
-            }
-        });
-    }
+
 
     /**
      * Initializes the channels used by this microfrontend

@@ -3,14 +3,21 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "mocks-server": "json-server --routes mocks/routes.json --watch mocks/api-mock.json &",
-    "start": "npm run mocks-server && ng serve",
+    "mocks-server": "json-server --routes mocks/routes.json --port 3011 --watch mocks/api-mock.json &",
+    "start": "npm run mocks-server && ng serve --port 4211",
     "build:prod": "ng build --prod --output-hashing=none --single-bundle",
     "build": "ng build --output-hashing=none --single-bundle",
     "test": "npm run build && cd dist/mf-card-detail && npx static-server",
     "expose": "cd dist/mf-card-detail && npx static-server",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "s3-delete-js": "aws s3 rm s3://microfrontends-cdn/microfrontends/mf-card-detail/v1 --recursive",
+    "s3-delete-assets": "aws s3 rm s3://microfrontends-cdn/assets/microfrontends/mf-card-detail/v1 --recursive",
+    "s3-upload-js": "aws s3 cp dist/mf-card-detail/v1 s3://microfrontends-cdn/microfrontends/mf-card-detail/v1 --recursive --exclude 'assets/*'",
+    "s3-upload-assets": "aws s3 cp dist/mf-card-detail/v1/assets/microfrontends s3://microfrontends-cdn/assets/microfrontends --recursive",
+    "s3-delete": "npm run s3-delete-assets && npm run s3-delete-js",
+    "s3-upload": "npm run s3-upload-assets && npm run s3-upload-js",
+    "publish": "npm run build:prod && npm run s3-delete && npm run s3-upload"
   },
   "private": true,
   "dependencies": {

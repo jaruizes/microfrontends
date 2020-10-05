@@ -10,7 +10,7 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
   <script>
-    const channel = new BroadcastChannel("mfs-channel");
+    const channel = new BroadcastChannel("microfrontends");
     channel.onmessage = function (e) {
       console.log(e);
     };
@@ -34,7 +34,7 @@
   </div>
 
   <div style="margin-top: 2em">
-    <mf-card-detail locale="en"></mf-card-detail>
+    <mf-card-detail locale="en" card="1"></mf-card-detail>
   </div>
 
 </body>

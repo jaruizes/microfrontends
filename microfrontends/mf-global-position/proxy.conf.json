@@ -5,28 +5,28 @@
     "logLevel": "debug",
     "changeOrigin" : true
   },
-  "/mf-accounts-summary": {
-    "target": "http://microfrontends-cdn.s3-website.eu-west-2.amazonaws.com/mf-accounts-summary",
-    "secure": false,
-    "logLevel": "debug",
-    "changeOrigin" : true,
-    "pathRewrite": {
-      "^/mf-accounts-summary": ""
-    }
-  },
-  "/assets/mf-accounts-summary": {
-    "target": "http://microfrontends-cdn.s3-website.eu-west-2.amazonaws.com/mf-accounts-summary",
+  "/microfrontends": {
+    "target": "http://microfrontends-cdn.s3-website.eu-west-2.amazonaws.com",
     "secure": false,
     "logLevel": "debug",
     "changeOrigin" : true
   },
-  "/web-components": {
-    "target": "http://microfrontends-cdn.s3-website.eu-west-2.amazonaws.com/web-components",
+  "/assets/microfrontends": {
+    "target": "http://microfrontends-cdn.s3-website.eu-west-2.amazonaws.com",
     "secure": false,
     "logLevel": "debug",
-    "changeOrigin" : true,
-    "pathRewrite": {
-      "^/web-components": ""
-    }
-  }
+    "changeOrigin" : true
+  },
+  "/webcomponents": {
+    "target": "http://microfrontends-cdn.s3-website.eu-west-2.amazonaws.com",
+    "secure": false,
+    "logLevel": "debug",
+    "changeOrigin" : true
+  },
+  "/assets/webcomponents": {
+  "target": "http://microfrontends-cdn.s3-website.eu-west-2.amazonaws.com",
+  "secure": false,
+  "logLevel": "debug",
+  "changeOrigin" : true
+}
 }

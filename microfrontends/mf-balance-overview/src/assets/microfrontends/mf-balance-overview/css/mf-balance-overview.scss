@@ -1,0 +1,53 @@
+@import "../../../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
+@import "../../../../../node_modules/bootstrap-vue/dist/bootstrap-vue.min.css";
+
+h1, h2 {
+  font-weight: normal;
+}
+hr {
+  background-color: transparent;
+  border: none;
+  display: block;
+  height: inherit;
+  margin: 1.5rem 0;
+  border-top: dashed 1px;
+}
+li {
+  display: inline-block;
+  margin: 0 10px;
+}
+a {
+  color: #0b99b9;
+  text-decoration: underline;
+}
+.text-medium-grey {
+  color: #333;
+}
+.text-light-grey {
+  color: #888;
+}
+.box.formated {
+  position: relative;
+  padding: 0;
+}
+.box.formated .heading {
+  font-size: 1rem;
+  text-transform: capitalize;
+  padding: .8rem 1.5rem;
+  background-color: #fafafa;
+}
+.box.formated .content {
+  padding: 1rem 2rem;
+}
+i.top-left {
+  position: absolute;
+  left: 1.5rem;
+  top: 0.8rem;
+}
+.vertical-separator {
+  display: flex;
+  justify-content: space-around;
+}
+.vertical-separator .line {
+  border-right: 1px solid #cccccc;
+}

@@ -7,11 +7,11 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AccountsService {
-  private cardsURL = '/api/accounts';
+  private accountURL = '/api/accounts/';
 
   constructor(private http: HttpClient) { }
 
-  getAccounts(): Observable<Account[]> {
-    return this.http.get<Account[]>(this.cardsURL)
+  getAccount(accountId): Observable<Account> {
+    return this.http.get<Account>(this.accountURL + accountId)
   }
 }

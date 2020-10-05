@@ -26,7 +26,8 @@
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "node_modules/@fortawesome/fontawesome-free/css/fontawesome.min.css",
-              "node_modules/simple-line-icons/css/simple-line-icons.css"
+              "node_modules/simple-line-icons/css/simple-line-icons.css",
+              "node_modules/flag-icon-css/css/flag-icon.min.css"
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js",

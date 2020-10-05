@@ -1,6 +1,30 @@
 {
-  "/api/*": {
-    "target": "http://localhost:3000/api/*",
+  "/microfrontends": {
+    "target": "http://microfrontends-cdn.s3-website.eu-west-2.amazonaws.com",
+    "secure": false,
+    "logLevel": "debug",
+    "changeOrigin" : true
+  },
+  "/assets/microfrontends": {
+    "target": "http://microfrontends-cdn.s3-website.eu-west-2.amazonaws.com",
+    "secure": false,
+    "logLevel": "debug",
+    "changeOrigin" : true
+  },
+  "/webcomponents": {
+    "target": "http://microfrontends-cdn.s3-website.eu-west-2.amazonaws.com",
+    "secure": false,
+    "logLevel": "debug",
+    "changeOrigin" : true
+  },
+  "/assets/webcomponents": {
+    "target": "http://microfrontends-cdn.s3-website.eu-west-2.amazonaws.com",
+    "secure": false,
+    "logLevel": "debug",
+    "changeOrigin" : true
+  },
+  "/api": {
+    "target": "http://localhost:3010",
     "secure": false,
     "logLevel": "debug",
     "changeOrigin" : true

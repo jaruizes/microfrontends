@@ -1,66 +1,30 @@
 {
-  "/mfs-home": {
-    "target": "http://microfrontends-cdn.s3-website.eu-west-2.amazonaws.com/mfs-home",
-    "secure": false,
-    "logLevel": "debug",
-    "changeOrigin" : true,
-    "pathRewrite": {
-      "^/mfs-home": ""
-    }
-  },
-  "/assets/mfs-home": {
-    "target": "http://microfrontends-cdn.s3-website.eu-west-2.amazonaws.com/mfs-home",
+  "/microfrontends": {
+    "target": "http://microfrontends-cdn.s3-website.eu-west-2.amazonaws.com",
     "secure": false,
     "logLevel": "debug",
     "changeOrigin" : true
   },
-  "/mf-global-position": {
-    "target": "http://microfrontends-cdn.s3-website.eu-west-2.amazonaws.com/mf-global-position",
-    "secure": false,
-    "logLevel": "debug",
-    "changeOrigin" : true,
-    "pathRewrite": {
-      "^/mf-global-position": ""
-    }
-  },
-  "/assets/mf-global-position": {
-    "target": "http://microfrontends-cdn.s3-website.eu-west-2.amazonaws.com/mf-global-position",
+  "/assets/microfrontends": {
+    "target": "http://microfrontends-cdn.s3-website.eu-west-2.amazonaws.com",
     "secure": false,
     "logLevel": "debug",
     "changeOrigin" : true
   },
-  "/mf-accounts-summary": {
-    "target": "http://microfrontends-cdn.s3-website.eu-west-2.amazonaws.com/mf-accounts-summary",
-    "secure": false,
-    "logLevel": "debug",
-    "changeOrigin" : true,
-    "pathRewrite": {
-      "^/mf-accounts-summary": ""
-    }
-  },
-  "/assets/mf-accounts-summary": {
-    "target": "http://microfrontends-cdn.s3-website.eu-west-2.amazonaws.com/mf-accounts-summary",
+  "/webcomponents": {
+    "target": "http://microfrontends-cdn.s3-website.eu-west-2.amazonaws.com",
     "secure": false,
     "logLevel": "debug",
     "changeOrigin" : true
   },
-  "/mf-cards-summary": {
-    "target": "http://microfrontends-cdn.s3-website.eu-west-2.amazonaws.com/mf-cards-summary",
-    "secure": false,
-    "logLevel": "debug",
-    "changeOrigin" : true,
-    "pathRewrite": {
-      "^/mf-cards-summary": ""
-    }
-  },
-  "/assets/mf-cards-summary": {
-    "target": "http://microfrontends-cdn.s3-website.eu-west-2.amazonaws.com/mf-cards-summary",
+  "/assets/webcomponents": {
+    "target": "http://microfrontends-cdn.s3-website.eu-west-2.amazonaws.com",
     "secure": false,
     "logLevel": "debug",
     "changeOrigin" : true
   },
-  "/api/*": {
-    "target": "http://localhost:3000/api/*",
+  "/api": {
+    "target": "http://localhost:3000",
     "secure": false,
     "logLevel": "debug",
     "changeOrigin" : true

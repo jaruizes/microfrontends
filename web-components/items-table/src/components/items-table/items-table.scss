@@ -1,0 +1,38 @@
+@import "~bootstrap/scss/bootstrap";
+
+.items {
+  color: black;
+}
+
+.items-card {
+  border: 0px;
+  border-top: lightgray 2px solid;
+  margin-top: 0;
+  cursor: pointer;
+  padding: 0em;
+}
+
+.items-card:hover {
+  background-color: #fafafa;
+  text-decoration: none;
+}
+
+.items-date {
+  font-size: 0.7em;
+}
+
+.items-title2 {
+  font-weight: bolder;
+}
+
+.items-title1 {
+  font-weight: bolder;
+}
+
+.items-data {
+  padding: 0.4em;
+}
+
+.items-data p {
+  margin: 0em;
+}

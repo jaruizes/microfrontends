@@ -1,23 +1,18 @@
-
-
 <div class="container-fluid">
     <div class="row">
         <!-- Accounts & Cards -->
         <div class="col-xl-8 col-lg-12 col-sm-12">
             <section style="width: 100%;">
-                <ng-template #loading>
-                    <div class="container-fluid" style="width: 100%; border: black solid 2px">
-                        <div class="row">
-                            <div class="col-6">
-                                <div class="spinner-border"></div>
-                            </div>
-                        </div>
-                    </div>
-                </ng-template>
-                <mf-accounts-summary *axLazyElement="urlAccountsSummary; loadingTemplate: loading"></mf-accounts-summary>
+                <mf-accounts-summary *axLazyElement="urlAccountsSummary;"
+                                     channel="mf-global-position-accounts"
+                                     [locale]="locale">
+                </mf-accounts-summary>
             </section>
             <section style="width: 100%;">
-                <mf-cards-summary *axLazyElement="urlCardsSummary; loadingTemplate: loading"></mf-cards-summary>
+                <mf-cards-summary *axLazyElement="urlCardsSummary;"
+                                  channel="mf-global-position-cards"
+                                  [locale]="locale">
+                </mf-cards-summary>
             </section>
         </div>
 
@@ -25,32 +20,15 @@
         <div class="col-xl-4 col-lg-12 col-sm-12">
             <!-- Summary -->
             <section style="width: 100%;">
-                <div class="card text-center">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ 'Summary' | translate }}</h5>
-                        <div style="padding: 0.3em">
-                            <div class="d-flex justify-content-start">
-                                <span class="text-muted font-italic">{{ 'Incomes' | translate }}</span>
-                            </div>
-                            <div class="progress">
-                                <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">2467 €</div>
-                            </div>
-                        </div>
-                        <div style="padding: 0.3em">
-                            <div class="d-flex justify-content-start">
-                                <span class="text-muted font-italic">{{ 'Expenses' | translate }}</span>
-                            </div>
-                            <div class="progress">
-                                <div class="progress-bar bg-danger" role="progressbar" aria-valuenow="1000" aria-valuemin="0" aria-valuemax="100" style="width: 40%">1267 €</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <mf-balance-overview *axLazyElement="urlBalanceOverview;"
+                                     [locale]="locale"></mf-balance-overview>
             </section>
 
             <!-- Accesos directos -->
             <section style="width: 100%;">
-                <wc-shortcuts *axLazyElement="urlShortcuts; module: true; loadingTemplate: loading" [data]="shortcuts" [locale]="locale"></wc-shortcuts>
+                <wc-shortcuts *axLazyElement="urlShortcuts; module: true;"
+                              [data]="shortcuts"
+                              [locale]="locale"></wc-shortcuts>
             </section>
 
 
@@ -66,8 +44,12 @@
             </section>
 
             <!-- last movements -->
-            <section style="width: 100%;">
-                <items-table header="{{ 'last-movements' | translate }}" *axLazyElement="urlMovements; module: true; loadingTemplate: loading" [items]="movements"></items-table>
+            <section style="width: 100%;" *ngIf="showMovements">
+                <items-table header="{{ 'last-movements' | translate }}"
+                             *axLazyElement="urlMovements; module: true;"
+                             [items]="movementsItems"
+                             (itemClick)="handleItemClick($event)">
+                </items-table>
             </section>
         </div>
     </div>

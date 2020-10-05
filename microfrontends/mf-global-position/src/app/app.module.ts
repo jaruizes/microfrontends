@@ -12,10 +12,11 @@ import { GlobalPositionComponent } from './components/global-position/global-pos
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { MovementsService } from './services/movements.service';
 
 // AoT requires an exported function for factories
 export function createTranslateLoader(http: HttpClient) {
-  return new TranslateHttpLoader(http, './assets/mf-global-position/i18n/', '.json');
+  return new TranslateHttpLoader(http, './assets/microfrontends/mf-global-position/v1/i18n/', '.json');
 }
 
 @NgModule({
@@ -40,7 +41,9 @@ export function createTranslateLoader(http: HttpClient) {
       }
     })
   ],
-  providers: [],
+  providers: [
+    MovementsService
+  ],
   bootstrap: [],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA

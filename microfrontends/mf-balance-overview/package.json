@@ -1,0 +1,46 @@
+{
+  "name": "mf-balance-overview",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "mocks-server": "json-server --routes mocks/routes.json --watch mocks/api-mock.json --port 3015 &",
+    "start": "npm run mocks-server && npm run serve",
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "build:prod": "rimraf dist && vue-cli-service build --inline-vue --target wc --name mf-balance-overview ./src/components/Overview.vue",
+    "expose": "cd dist && npm run mocks-server && npx static-server",
+    "lint": "vue-cli-service lint",
+    "s3-delete": "aws s3 rm s3://microfrontends-cdn/microfrontends/mf-balance-overview/v1 --recursive",
+    "s3-upload": "aws s3 cp dist s3://microfrontends-cdn/microfrontends/mf-balance-overview/v1 --recursive --exclude 'assets/*'",
+    "publish": "npm run build:prod && npm run s3-delete && npm run s3-upload"
+  },
+  "dependencies": {
+    "axios": "^0.20.0",
+    "bootstrap": "^4.5.2",
+    "bootstrap-vue": "^2.17.3",
+    "chart.js": "^2.9.3",
+    "core-js": "^3.6.5",
+    "vue": "^2.6.12",
+    "vue-chartjs": "^3.5.1",
+    "vue-class-component": "^7.2.3",
+    "vue-i18n": "^8.21.1",
+    "vue-property-decorator": "^8.4.2"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^2.33.0",
+    "@typescript-eslint/parser": "^2.33.0",
+    "@vue/cli-plugin-babel": "~4.5.0",
+    "@vue/cli-plugin-eslint": "~4.5.0",
+    "@vue/cli-plugin-typescript": "~4.5.0",
+    "@vue/cli-service": "~4.5.0",
+    "@vue/eslint-config-typescript": "^5.0.2",
+    "eslint": "^6.7.2",
+    "eslint-plugin-vue": "^6.2.2",
+    "node-sass": "^4.14.1",
+    "sass-loader": "^10.0.2",
+    "typescript": "~3.9.3",
+    "vue-template-compiler": "^2.6.11",
+    "vuelidate": "^0.7.5",
+    "json-server": "^0.16.1"
+  }
+}

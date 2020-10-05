@@ -6,40 +6,206 @@
       "name" : "Cuenta Nómina",
       "lastmovement": "2 days ago",
       "newmovements": "5",
-      "amount": 345
+      "holder": "Sergio Ramos García",
+      "balance": 345,
+      "amount": 345,
+      "available": 300,
+      "movements": [
+        {
+          "id": 1,
+          "date": "01/01/2020",
+          "subject": "CONSUM SUPERMERCADO",
+          "account": "CUENTA NARANJA",
+          "amount": "200"
+        },
+        {
+          "id": 2,
+          "date": "01/02/2020",
+          "subject": "REINTEGRO CAJERO",
+          "account": "CUENTA NARANJA",
+          "amount": "100"
+        },
+        {
+          "id": 3,
+          "date": "01/03/2020",
+          "subject": "AMAZON",
+          "account": "CUENTA NARANJA",
+          "amount": "350"
+        },
+        {
+          "id": 4,
+          "date": "01/04/2020",
+          "subject": "TELEFONICA FIBRA",
+          "account": "CUENTA NARANJA",
+          "amount": "120"
+        },
+        {
+          "id": 5,
+          "date": "01/05/2020",
+          "subject": "MEDITERRANEA COMEDOR",
+          "account": "CUENTA NARANJA",
+          "amount": "250"
+        }
+      ]
     },
     {
       "id": 2,
       "number" : "123412341234",
       "name" : "Cuenta Naranja",
       "lastmovement": "2 days ago",
+      "holder": "Sergio Ramos García",
       "newmovements": 5,
-      "amount": 30000
+      "balance": 30000,
+      "amount": 30000,
+      "available": 30000,
+      "movements": [
+        {
+          "id": 1,
+          "date": "01/01/2020",
+          "subject": "CONSUM SUPERMERCADO",
+          "account": "CUENTA NARANJA",
+          "amount": "200"
+        },
+        {
+          "id": 2,
+          "date": "01/02/2020",
+          "subject": "REINTEGRO CAJERO",
+          "account": "CUENTA NARANJA",
+          "amount": "100"
+        },
+        {
+          "id": 3,
+          "date": "01/03/2020",
+          "subject": "AMAZON",
+          "account": "CUENTA NARANJA",
+          "amount": "350"
+        }
+      ]
     }
   ],
   "cards" : [
     {
       "id": 1,
-      "number" : "123412341234",
+      "name" : "Fernando Alonso Díaz",
+      "number" : "1234123412341234",
       "type" : 0,
+      "expires": "10/24",
+      "balance": 345,
+      "amount": 345,
       "lastmovement": "2 days ago",
-      "amount": 345
+      "movements": [
+        {
+          "id": 1,
+          "date": "01/01/2020",
+          "subject": "CONSUM SUPERMERCADO",
+          "account": "CUENTA NARANJA",
+          "amount": "200"
+        },
+        {
+          "id": 2,
+          "date": "01/02/2020",
+          "subject": "REINTEGRO CAJERO",
+          "account": "CUENTA NARANJA",
+          "amount": "100"
+        },
+        {
+          "id": 3,
+          "date": "01/03/2020",
+          "subject": "AMAZON",
+          "account": "CUENTA NARANJA",
+          "amount": "350"
+        },
+        {
+          "id": 4,
+          "date": "01/04/2020",
+          "subject": "TELEFONICA FIBRA",
+          "account": "CUENTA NARANJA",
+          "amount": "120"
+        },
+        {
+          "id": 5,
+          "date": "01/05/2020",
+          "subject": "MEDITERRANEA COMEDOR",
+          "account": "CUENTA NARANJA",
+          "amount": "250"
+        }
+      ]
     },
     {
       "id": 2,
-      "number" : "3333333344445555",
+      "name" : "Sergio Ramos Rodríguez",
+      "number" : "1234123412341234",
       "type" : 1,
-      "lastmovement": "2 days ago",
-      "amount": 478,
-      "limit": 2500
+      "expires": "10/24",
+      "balance": 500,
+      "amount": 500,
+      "limit": 2500,
+      "lastmovement": "3 days ago",
+      "movements": [
+        {
+          "id": 1,
+          "date": "01/01/2020",
+          "subject": "CONSUM SUPERMERCADO",
+          "account": "CUENTA NARANJA",
+          "amount": "200"
+        },
+        {
+          "id": 2,
+          "date": "01/02/2020",
+          "subject": "REINTEGRO CAJERO",
+          "account": "CUENTA NARANJA",
+          "amount": "100"
+        },
+        {
+          "id": 3,
+          "date": "01/03/2020",
+          "subject": "AMAZON",
+          "account": "CUENTA NARANJA",
+          "amount": "350"
+        }
+      ]
+    }
+  ],
+  "movements": [
+    {
+      "id": 1,
+      "date": "01/01/2020",
+      "subject": "CONSUM SUPERMERCADO",
+      "account": "CUENTA NARANJA",
+      "amount": "200"
+    },
+    {
+      "id": 2,
+      "date": "01/02/2020",
+      "subject": "REINTEGRO CAJERO",
+      "account": "CUENTA NARANJA",
+      "amount": "100"
     },
     {
       "id": 3,
-      "number" : "3333333344445555",
-      "type" : 1,
-      "lastmovement": "2 days ago",
-      "amount": 478,
-      "limit": 2500
+      "date": "01/03/2020",
+      "subject": "AMAZON",
+      "account": "CUENTA NARANJA",
+      "amount": "350"
+    },
+    {
+      "id": 4,
+      "date": "01/04/2020",
+      "subject": "TELEFONICA FIBRA",
+      "account": "CUENTA NARANJA",
+      "amount": "120"
+    },
+    {
+      "id": 5,
+      "date": "01/05/2020",
+      "subject": "MEDITERRANEA COMEDOR",
+      "account": "CUENTA NARANJA",
+      "amount": "250"
     }
-  ]
+  ],
+  "summary": {
+    "incomes": [2500, 2700, 3000, 2500, 6000, 4000, 2360, 3000, 3200, 2900, 3000, 3200],
+    "expenses": [1500, 1700, 2000, 2000, 3000, 2000, 1360, 2000, 1200, 1900, 2000, 1200],
+    "dates": ["10/2019", "11/2019", "12/2019", "01/2020", "02/2020", "03/2020", "04/2020", "05/2020", "06/2020", "07/2020", "08/2020", "09/2020"]
+  }
 }

@@ -6,8 +6,11 @@
     </button>
     <span>Technology Bank</span>
     <span class="example-spacer"></span>
-    <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
-      <mat-icon>person_outline</mat-icon>
+    <button mat-icon-button (click)="changeLocale('en')">
+      <span class="flag-icon flag-icon-gb"></span>
+    </button>
+    <button mat-icon-button style="margin-left: 0.3em" (click)="changeLocale('es')">
+      <span class="flag-icon flag-icon-es"></span>
     </button>
   </mat-toolbar-row>
   <mat-toolbar-row fxShow="true" fxHide.lt-md class="toolbar-color">
@@ -17,6 +20,7 @@
       <a mat-button routerLink="/private/accounts">Accounts</a>
       <a mat-button routerLink="/private/cards">Cards</a>
     </div>
+    <span class="example-spacer"></span>
   </mat-toolbar-row>
 </mat-toolbar>
 

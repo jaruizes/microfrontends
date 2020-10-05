@@ -1,20 +1,49 @@
 {
-  "accounts" : [
+  "cards" : [
     {
       "id": 1,
-      "number" : "123412341234",
-      "name" : "Cuenta Nómina",
-      "lastmovement": "2 days ago",
-      "newmovements": "5",
-      "amount": 345
-    },
-    {
-      "id": 2,
-      "number" : "123412341234",
-      "name" : "Cuenta Naranja",
-      "lastmovement": "2 days ago",
-      "newmovements": 5,
-      "amount": 30000
+      "name" : "Fernando Alonso Díaz",
+      "number" : "1234123412341234",
+      "type" : 0,
+      "expires": "10/24",
+      "balance": 345,
+      "movements": [
+        {
+          "id": 1,
+          "date": "01/01/2020",
+          "subject": "CONSUM SUPERMERCADO",
+          "account": "CUENTA NARANJA",
+          "amount": "200"
+        },
+        {
+          "id": 2,
+          "date": "01/02/2020",
+          "subject": "REINTEGRO CAJERO",
+          "account": "CUENTA NARANJA",
+          "amount": "100"
+        },
+        {
+          "id": 3,
+          "date": "01/03/2020",
+          "subject": "AMAZON",
+          "account": "CUENTA NARANJA",
+          "amount": "350"
+        },
+        {
+          "id": 4,
+          "date": "01/04/2020",
+          "subject": "TELEFONICA FIBRA",
+          "account": "CUENTA NARANJA",
+          "amount": "120"
+        },
+        {
+          "id": 5,
+          "date": "01/05/2020",
+          "subject": "MEDITERRANEA COMEDOR",
+          "account": "CUENTA NARANJA",
+          "amount": "250"
+        }
+      ]
     }
   ]
 }
