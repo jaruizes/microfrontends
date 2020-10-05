@@ -1,0 +1,40 @@
+<!--Navbar-->
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <button mat-icon-button (click)="sidenav.toggle()" fxShow="true" fxHide.gt-sm>
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span>Technology Bank (Backoffice)</span>
+    <span class="example-spacer"></span>
+    <button mat-icon-button (click)="changeLocale('en')">
+      <span class="flag-icon flag-icon-gb"></span>
+    </button>
+    <button mat-icon-button style="margin-left: 0.3em" (click)="changeLocale('es')">
+      <span class="flag-icon flag-icon-es"></span>
+    </button>
+  </mat-toolbar-row>
+  <mat-toolbar-row fxShow="true" fxHide.lt-md class="toolbar-color">
+    <span class="menu-spacer"></span>
+    <div fxShow="true" fxHide.lt-md>
+      <a mat-button routerLink="/private"><mat-icon>home</mat-icon></a>
+      <a mat-button routerLink="/private/accounts">Customers</a>
+    </div>
+    <span class="example-spacer"></span>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<mat-sidenav-container fxFlexFill>
+  <mat-sidenav #sidenav>
+    <mat-nav-list>
+      <a (click)="sidenav.toggle()" href="" mat-list-item>Close</a>
+      <a mat-button routerLink="/private"><mat-icon>home</mat-icon></a>
+      <a mat-button routerLink="/private/accounts">Customers</a>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content fxFlexFill class="main-content">
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+<!--/.Navbar-->

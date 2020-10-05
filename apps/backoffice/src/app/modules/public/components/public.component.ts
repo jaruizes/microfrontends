@@ -10,7 +10,6 @@ import { OAuthService } from 'angular-oauth2-oidc';
 export class PublicComponent implements OnInit {
 
   constructor(private router: Router) {
-
   }
 
   ngOnInit() {

@@ -1,0 +1,41 @@
+<div class="container-fluid" *ngIf="showCustomers">
+  <mat-card class="card" >
+    <mat-card-title fxLayout.gt-xs="row" fxLayout.xs="column">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-8 col-sm-6 justify-content-start">
+            <h3>Customers List</h3>
+          </div>
+        </div>
+      </div>
+    </mat-card-title>
+    <mat-card-content>
+      <div class="cards-container mat-elevation-z8">
+        <div class="table-responsive">
+          <table class="table table-hover">
+            <thead>
+            <tr>
+              <th scope="col">Id</th>
+              <th scope="col">Name</th>
+              <th scope="col">Age</th>
+              <th scope="col">Entry</th>
+              <th scope="col">Balance (€)</th>
+            </tr>
+            </thead>
+            <tbody>
+              <tr (click)="goToGlobalPosition()" *ngFor="let customer of customers">
+                <th scope="row">{{customer.id}}</th>
+                <td>{{customer.name}}</td>
+                <td>{{customer.age}}</td>
+                <td>{{customer.entry}}</td>
+                <td>{{customer.balance}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+
