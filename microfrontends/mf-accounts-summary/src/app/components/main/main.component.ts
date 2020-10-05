@@ -21,6 +21,11 @@ export class MainComponent implements OnInit {
     @Input()
     public channel: string;
 
+    @Input()
+    public customer: string;
+
+    public show = false;
+
     public elementUrl: string = './webcomponents/account-overview/v1/account-overview.esm.js';
     public accounts: Account[];
     public totalBalance: number;
@@ -43,9 +48,11 @@ export class MainComponent implements OnInit {
 
     ngOnInit() {
         console.log('[mf-accounts-summary] initializing....');
-        this.accountsService.getAccounts().subscribe((accounts: Account[]) => {
+        this.show = false;
+        this.accountsService.getAccounts(this.customer).subscribe((accounts: Account[]) => {
             accounts.forEach((account) => this.totalBalance = this.totalBalance + account.amount);
             this.accounts = accounts;
+            this.show = true;
         });
 
         this.initBroadcastChannels();

@@ -3,18 +3,38 @@
     {
       "id": 1,
       "number" : "123412341234",
-      "name" : "Cuenta Nómina",
+      "name" : "Cuenta Nómina 1",
       "lastmovement": "2 days ago",
       "newmovements": "5",
-      "amount": 345
+      "amount": 345,
+      "customer": "0001"
     },
     {
       "id": 2,
       "number" : "123412341234",
-      "name" : "Cuenta Naranja",
+      "name" : "Cuenta Naranja 1",
       "lastmovement": "2 days ago",
       "newmovements": 5,
-      "amount": 30000
+      "amount": 30000,
+      "customer": "0001"
+    },
+    {
+      "id": 1,
+      "number" : "123412341234",
+      "name" : "Cuenta Nómina 2",
+      "lastmovement": "2 days ago",
+      "newmovements": "5",
+      "amount": 345,
+      "customer": "0002"
+    },
+    {
+      "id": 2,
+      "number" : "123412341234",
+      "name" : "Cuenta Naranja 2",
+      "lastmovement": "2 days ago",
+      "newmovements": 5,
+      "amount": 30000,
+      "customer": "0002"
     }
   ]
 }
