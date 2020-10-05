@@ -21,6 +21,11 @@ export class MainComponent implements OnInit {
     @Input()
     public channel: string;
 
+    @Input()
+    public customer: string;
+
+    public show;
+
     public elementUrl: string = '/webcomponents/card-overview/v1/card-overview.esm.js';
 
     @Input()
@@ -40,12 +45,17 @@ export class MainComponent implements OnInit {
 
     constructor(private cardsService: CardsService, private ngZone: NgZone, private translate: TranslateService){
         console.log('[mf-cards-summary] starting....');
+        this.show = false;
         this.initI18n();
     }
 
     ngOnInit() {
         console.log('[mf-cards-summary] initializing....');
-        this.cardsService.getCards().subscribe((cards) => this.cards = cards);
+        this.show = false;
+        this.cardsService.getCards(this.customer).subscribe((cards) => {
+            this.cards = cards;
+            this.show = true;
+        });
         this.initBroadcastChannels();
 
         console.log('[mf-cards-summary] initialized....');

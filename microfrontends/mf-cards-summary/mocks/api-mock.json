@@ -5,7 +5,8 @@
       "number" : "123412341234",
       "type" : 0,
       "lastmovement": "2 days ago",
-      "amount": 345
+      "amount": 345,
+      "customer": "0001"
     },
     {
       "id": 2,
@@ -13,7 +14,8 @@
       "type" : 1,
       "lastmovement": "2 days ago",
       "amount": 478,
-      "limit": 2500
+      "limit": 2500,
+      "customer": "0001"
     },
     {
       "id": 3,
@@ -21,7 +23,25 @@
       "type" : 1,
       "lastmovement": "2 days ago",
       "amount": 478,
-      "limit": 2500
+      "limit": 2500,
+      "customer": "0001"
+    },
+    {
+      "id": 4,
+      "number" : "123412341234",
+      "type" : 0,
+      "lastmovement": "2 days ago",
+      "amount": 345,
+      "customer": "0002"
+    },
+    {
+      "id": 5,
+      "number" : "3333333344445555",
+      "type" : 1,
+      "lastmovement": "2 days ago",
+      "amount": 478,
+      "limit": 2500,
+      "customer": "0002"
     }
   ]
 }

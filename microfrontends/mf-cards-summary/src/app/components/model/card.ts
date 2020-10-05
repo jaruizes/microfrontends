@@ -5,4 +5,5 @@ export interface Card {
     amount: number;
     lastmovement: string;
     type: number;
+    customer: string;
 }
