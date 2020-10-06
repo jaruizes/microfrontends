@@ -44,7 +44,7 @@ export class CustomersListComponent implements OnInit {
     });
   }
 
-  goToGlobalPosition() {
-    this.router.navigateByUrl('/private/global');
+  goToGlobalPosition(customer) {
+    this.router.navigateByUrl('/private/global?customer=' + customer);
   }
 }

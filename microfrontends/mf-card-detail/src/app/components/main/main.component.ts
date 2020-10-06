@@ -1,8 +1,9 @@
 import { Component, Input, NgZone, OnChanges, OnInit, ViewEncapsulation } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { CardService } from '../../services/card.service';
+import { CardService } from '../../services/card/card.service';
 import { Card } from '../../model/card';
 import { ItemTable } from '../../model/item-table';
+import { ConfigService } from '../../services/config/config.service';
 
 @Component({
     selector: 'app-main',
@@ -41,11 +42,16 @@ export class MainComponent implements OnInit {
      */
     private generalChannel;
 
-    public urlCard = '/webcomponents/credit-card/v1/credit-card.esm.js';
-    public urlMovements = '/webcomponents/items-table/v1/items-table.esm.js';
+    public urlCard; //= '/webcomponents/credit-card/v1/credit-card.esm.js';
+    public urlMovements; // = '/webcomponents/items-table/v1/items-table.esm.js';
 
-    constructor(private cardService: CardService, private ngZone: NgZone, private translate: TranslateService){
+    constructor(private cardService: CardService,
+                private ngZone: NgZone,
+                private translate: TranslateService,
+                private configService: ConfigService){
         console.log('[mf-card-detail] starting....');
+        this.urlCard = this.configService.getWebComponentURL('card');
+        this.urlMovements = this.configService.getWebComponentURL('items-table');
         this.initI18n();
     }
 

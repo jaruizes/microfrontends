@@ -1,4 +1,13 @@
 {
+  "config": [
+    {
+      "id": "cards-summary-mf-config",
+      "microfrontends": {},
+      "webcomponents": {
+        "card-overview": "/webcomponents/card-overview/v1/card-overview.esm.js"
+      }
+    }
+  ],
   "cards" : [
     {
       "id": 1,

@@ -1,8 +1,9 @@
-    <section class="content-section">
+<div *ngIf="show">
+    <section class="content-section" >
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12">
-                    <div class="card account-info" *ngIf="account">
+                    <div class="card account-info">
                         <div class="card-title" style="padding-bottom: 1em">
                             <h3>{{ 'account-detail' | translate }}</h3>
                         </div>
@@ -10,26 +11,26 @@
                             <div class="row">
                                 <div class="col-md-6 col-sm-12">
                                     <h5 class="text-dark text-black-50">{{ 'nick-name' | translate }}</h5>
-                                    <h4 class="text-dark">{{account.name}}</h4>
+                                    <h4 class="text-dark">{{accountData.name}}</h4>
 
                                 </div>
                                 <div class="col-md-6 col-sm-12">
                                     <h5 class="text-dark text-black-50">IBAN</h5>
-                                    <h4 class="text-dark">{{account.number}}</h4>
+                                    <h4 class="text-dark">{{accountData.number}}</h4>
                                 </div>
                             </div>
                             <div class="row" style="margin-top: 2em">
                                 <div class="col-md-3 col-sm-12">
                                     <h5 class="text-dark text-black-50">{{ 'holder' | translate }}</h5>
-                                    <h4 class="text-dark">{{account.holder}}</h4>
+                                    <h4 class="text-dark">{{accountData.holder}}</h4>
                                 </div>
                                 <div class="col-md-3 col-sm-12">
                                     <h5 class="text-dark text-black-50">{{ 'balance' | translate }}</h5>
-                                    <h4 class="text-dark">{{account.balance}} €</h4>
+                                    <h4 class="text-dark">{{accountData.balance}} €</h4>
                                 </div>
                                 <div class="col-md-3 col-sm-12">
                                     <h5 class="text-dark text-black-50">{{ 'available' | translate }}</h5>
-                                    <h4 class="text-dark">{{account.available}} €</h4>
+                                    <h4 class="text-dark">{{accountData.available}} €</h4>
                                 </div>
                             </div>
 
@@ -41,7 +42,7 @@
     </section>
 
     <section class="content-section">
-        <div class="container-fluid" *ngIf="account && movements">
+        <div class="container-fluid">
             <div class="row">
                 <div class="col-12">
                     <div class="card" >
@@ -56,5 +57,5 @@
             </div>
         </div>
     </section>
-
+</div>
 

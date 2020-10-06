@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Account } from '../model/account';
+import { Account } from '../../model/account';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
@@ -7,11 +7,11 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AccountsService {
-  private accountsURL = '/api/accounts';
+  private accountURL = '/api/accounts/';
 
   constructor(private http: HttpClient) { }
 
-  getAccounts(customer): Observable<Account[]> {
-    return this.http.get<Account[]>(this.accountsURL + '?customer=' + customer)
+  getAccount(accountId): Observable<Account> {
+    return this.http.get<Account>(this.accountURL + accountId)
   }
 }

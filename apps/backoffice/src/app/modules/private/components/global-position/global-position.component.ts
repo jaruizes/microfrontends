@@ -1,6 +1,10 @@
 import { Component, NgZone, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { LocaleService } from '../../services/locale/locale.service';
+import { CustomersService } from '../../services/customers/customers.service';
+import { Customer } from '../../models/customer';
+import { TranslateService } from '@ngx-translate/core';
+import { ConfigService } from '../../../../services/config/config.service';
 
 @Component({
   selector: 'app-global-position',
@@ -8,8 +12,11 @@ import { LocaleService } from '../../services/locale/locale.service';
   styleUrls: ['./global-position.component.css']
 })
 export class GlobalPositionComponent implements OnInit {
-  public globalPositionURL = '/microfrontends/mf-global-position/v1/main.js';
+  public globalPositionURL; // = '/microfrontends/mf-global-position/v1/main.js';
   public locale;
+  public customer;
+  public customerData: Customer;
+  public show;
   public channel = 'customers-app';
 
   /**
@@ -17,13 +24,25 @@ export class GlobalPositionComponent implements OnInit {
    */
   private parentChannel;
 
-  constructor(private ngZone: NgZone, private router: Router, private localeService: LocaleService) {
+  constructor(private ngZone: NgZone, private router: Router,
+              private localeService: LocaleService,
+              private customerService: CustomersService,
+              private translate: TranslateService,
+              private config: ConfigService,
+              private route: ActivatedRoute) {
+    this.show = false;
+    this.customer = '';
+    this.globalPositionURL = this.config.getMicrofrontendURL('global-position');
+    this.route.queryParams.subscribe(params => {
+      this.customer = params['customer'];
+      this.getCustomerData();
+      console.log('-----> customer id: ' + this.customer);
+    });
   }
 
   ngOnInit(): void {
     this.locale = undefined;
     this.locale = this.localeService.getLocale();
-    console.log('locale: ' + this.locale);
     this.initBroadcastChannel();
   }
 
@@ -60,6 +79,14 @@ export class GlobalPositionComponent implements OnInit {
         this.handleInstanceMessage(message.data);
       });
     };
+  }
+
+  private getCustomerData() {
+    this.show = false;
+    this.customerService.getCustomer(this.customer).subscribe((customer) => {
+      this.customerData = customer;
+      this.show = true;
+    });
   }
 
 }

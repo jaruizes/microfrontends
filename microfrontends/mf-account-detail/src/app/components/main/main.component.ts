@@ -1,8 +1,9 @@
 import { Component, Input, NgZone, OnInit, ViewEncapsulation } from '@angular/core';
-import { AccountsService } from '../../services/accounts.service';
+import { AccountsService } from '../../services/accounts/accounts.service';
 import { Account } from '../../model/account';
 import { TranslateService } from '@ngx-translate/core';
 import { ItemTable } from '../../model/item-table';
+import { ConfigService } from '../../services/config/config.service';
 
 @Component({
     selector: 'app-main',
@@ -18,13 +19,19 @@ export class MainComponent implements OnInit {
 
     @Input()
     public channel: string;
-    
-    @Input()
-    public accountId: number;
 
-    public account: Account;
+    @Input()
+    get account(): string { return this._account; }
+    set account(card: string) {
+        this._account = card;
+        this.getAccountData();
+    }
+    private _account = '';
+    public show = false;
+
+    public accountData: Account;
     public movements: ItemTable[] = [];
-    public urlItemsTable = '/webcomponents/items-table/v1/items-table.esm.js';
+    public urlItemsTable;
 
     /**
      * This is the parentChannel used by an instance of this microfrontend
@@ -36,26 +43,17 @@ export class MainComponent implements OnInit {
      */
     private generalChannel;
 
-    constructor(private accountsService: AccountsService, private ngZone: NgZone, private translate: TranslateService){
+    constructor(private accountsService: AccountsService,
+                private ngZone: NgZone,
+                private translate: TranslateService,
+                private configService: ConfigService){
         console.log('[mf-account-detail] starting....');
+        this.urlItemsTable = this.configService.getWebComponentURL('items-table');
         this.initI18n();
     }
 
     ngOnInit() {
         console.log('[mf-account-detail] initializing....');
-        this.accountsService.getAccount(this.accountId).subscribe((account: Account) => {
-           this.account = account;
-           account.movements.forEach((movement) => {
-               const item: ItemTable = {
-                   header: movement.date,
-                   title1: movement.subject,
-                   subtitle1: movement.account,
-                   title2: movement.amount + ' €'
-               };
-               this.movements.push(item);
-           })
-        });
-
         this.initBroadcastChannels();
         console.log('[mf-account-detail] initialized....');
     }
@@ -93,6 +91,23 @@ export class MainComponent implements OnInit {
         this.translate.use(this.locale);
     }
 
+    private getAccountData() {
+        this.show = false;
+        this.accountsService.getAccount(this._account).subscribe((account: Account) => {
+            this.accountData = account;
+            account.movements.forEach((movement) => {
+                const item: ItemTable = {
+                    header: movement.date,
+                    title1: movement.subject,
+                    subtitle1: movement.account,
+                    title2: movement.amount + ' €'
+                };
+                this.movements.push(item);
+            });
+
+            this.show = true;
+        });
+    }
 
     /**
      * Initializes the channels used by this microfrontend

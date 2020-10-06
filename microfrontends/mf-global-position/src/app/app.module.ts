@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, Injector, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NgModule, Injector, CUSTOM_ELEMENTS_SCHEMA, APP_INITIALIZER } from '@angular/core';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { createCustomElement } from '@angular/elements';
@@ -12,11 +12,16 @@ import { GlobalPositionComponent } from './components/global-position/global-pos
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { MovementsService } from './services/movements.service';
+import { MovementsService } from './services/movements/movements.service';
+import { ConfigService } from './services/config/config.service';
 
 // AoT requires an exported function for factories
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/microfrontends/mf-global-position/v1/i18n/', '.json');
+}
+
+export function appInit(appConfigService: ConfigService) {
+  return () => appConfigService.load();
 }
 
 @NgModule({
@@ -42,6 +47,12 @@ export function createTranslateLoader(http: HttpClient) {
     })
   ],
   providers: [
+    {
+      provide: APP_INITIALIZER,
+      useFactory: appInit,
+      multi: true,
+      deps: [ConfigService]
+    },
     MovementsService
   ],
   bootstrap: [],

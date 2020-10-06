@@ -13,4 +13,8 @@ export class CustomersService {
   getCustomers(): Observable<Customer[]> {
     return this.http.get<Customer[]>('/api/customers');
   }
+
+  getCustomer(customer): Observable<Customer> {
+    return this.http.get<Customer>('/api/customers/' + customer);
+  }
 }

@@ -1,8 +1,9 @@
 import { Component, HostListener, Input, NgZone, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { MovementsService } from '../../services/movements.service';
+import { MovementsService } from '../../services/movements/movements.service';
 import { Movement } from '../../model/movement';
 import { ItemTable } from '../../model/item-table';
+import { ConfigService } from '../../services/config/config.service';
 
 @Component({
   selector: 'app-global-position',
@@ -23,7 +24,11 @@ export class GlobalPositionComponent implements OnInit {
     get customer(): string { return this._customer; }
     set customer(customer: string) {
         this._customer = customer;
+        this.getData();
     }
+
+    @Input()
+    public mode: number = 0;
 
     public _customer: string;
 
@@ -41,9 +46,9 @@ export class GlobalPositionComponent implements OnInit {
     private cardsChannel;
 
 
-    public urlCardsSummary = '/microfrontends/mf-cards-summary/v1/main.js';
-    public urlAccountsSummary = '/microfrontends/mf-accounts-summary/v1/main.js';
-    public urlShortcuts = '/webcomponents/wc-shortcuts/v1/wc-shortcuts.bundled.js';
+    public urlCardsSummary; // = '/microfrontends/mf-cards-summary/v1/main.js';
+    public urlAccountsSummary; // = '/microfrontends/mf-accounts-summary/v1/main.js';
+    public urlShortcuts;
     public shortcuts = [
     {
       icon: 'unfold_less',
@@ -63,34 +68,23 @@ export class GlobalPositionComponent implements OnInit {
     }
     ];
 
-    public urlMovements = '/webcomponents/items-table/v1/items-table.esm.js';
+    public urlMovements;
     public movementsItems = [];
     public showMovements = false;
 
-    public urlBalanceOverview = '/microfrontends/mf-balance-overview/v1/mf-balance-overview.js';
+    public urlBalanceOverview;
 
-    constructor(private translate: TranslateService, private ngZone: NgZone, private movementsService: MovementsService) {
-      this.initI18n();
-      console.log('Customer (const): ' + this.customer);
+    constructor(private translate: TranslateService,
+                private ngZone: NgZone,
+                private movementsService: MovementsService,
+                private configService: ConfigService) {
+        this.initURLs();
+        this.initI18n();
+        console.log('Customer (const): ' + this.customer);
     }
 
     ngOnInit(): void {
         console.log('Customer (ngOnInit): ' + this.customer);
-        this.showMovements = false;
-        this.movementsService.getMovements(this.customer).subscribe((movements: Movement[]) => {
-            movements.forEach((movement) => {
-                const item: ItemTable = {
-                    header: movement.date,
-                    title1: movement.subject,
-                    subtitle1: movement.account,
-                    title2: movement.amount + ' €'
-                };
-
-                this.movementsItems.push(item);
-            });
-            this.showMovements = true;
-        });
-
         this.initBroadcastChannel();
     }
 
@@ -139,6 +133,23 @@ export class GlobalPositionComponent implements OnInit {
         console.log(e);
     }
 
+    getData() {
+        this.showMovements = false;
+        this.movementsService.getMovements(this.customer).subscribe((movements: Movement[]) => {
+            movements.forEach((movement) => {
+                const item: ItemTable = {
+                    header: movement.date,
+                    title1: movement.subject,
+                    subtitle1: movement.account,
+                    title2: movement.amount + ' €'
+                };
+
+                this.movementsItems.push(item);
+            });
+            this.showMovements = true;
+        });
+    }
+
     /**
      * Initializes the broadcastChannel object used by this microfrontend
      * The channel is specified by the property @channel
@@ -182,6 +193,14 @@ export class GlobalPositionComponent implements OnInit {
         this.locale = 'en';
         this.translate.setDefaultLang(this.locale);
         this.translate.use(this.locale);
+    }
+
+    private initURLs() {
+        this.urlAccountsSummary = this.configService.getMicrofrontendURL('accounts-summary');
+        this.urlCardsSummary = this.configService.getMicrofrontendURL('cards-summary');
+        this.urlBalanceOverview = this.configService.getMicrofrontendURL('balance-overview');
+        this.urlShortcuts = this.configService.getWebComponentURL('shortcuts');
+        this.urlMovements = this.configService.getWebComponentURL('items-table');
     }
 
 }

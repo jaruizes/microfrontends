@@ -1,6 +1,8 @@
 import { Component, NgZone, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LocaleService } from '../../services/locale/locale.service';
+import { ConfigService } from '../../../../services/config/config.service';
+import { CustomerService } from '../../services/customer/customer.service';
 
 @Component({
   selector: 'app-global-position',
@@ -8,16 +10,23 @@ import { LocaleService } from '../../services/locale/locale.service';
   styleUrls: ['./global-position.component.css']
 })
 export class GlobalPositionComponent implements OnInit {
-  public globalPositionURL = '/microfrontends/mf-global-position/v1/main.js';
+  public globalPositionURL;
   public locale;
   public channel = 'customers-app';
+  public customer;;
 
   /**
    * This is the parentChannel used by an instance of this microfrontend
    */
   private parentChannel;
 
-  constructor(private ngZone: NgZone, private router: Router, private localeService: LocaleService) {
+  constructor(private ngZone: NgZone,
+              private router: Router,
+              private localeService: LocaleService,
+              private customerService: CustomerService,
+              private configService: ConfigService) {
+    this.customer = this.customerService.getCustomer();
+    this.globalPositionURL = this.configService.getMicrofrontendURL('global-position');
   }
 
   ngOnInit(): void {

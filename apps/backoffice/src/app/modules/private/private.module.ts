@@ -20,6 +20,7 @@ import { LocaleService } from './services/locale/locale.service';
 import { CustomersListComponent } from './components/customers-list/customers-list.component';
 import { MatTable, MatTableModule } from '@angular/material/table';
 import { CustomersService } from './services/customers/customers.service';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { CustomersService } from './services/customers/customers.service';
     MatSidenavModule,
     FlexLayoutModule,
     MatCardModule,
-    MatListModule
+    MatListModule,
+    TranslateModule
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA

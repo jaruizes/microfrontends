@@ -3,7 +3,9 @@
         <div class="col-12">
             <section>
                 <mf-cards-summary *axLazyElement="urlCardsSummary"
-                                  channel="customer-app-cards"></mf-cards-summary>
+                                  channel="customer-app-cards"
+                                  [customer]="customer">
+                </mf-cards-summary>
             </section>
         </div>
     </div>

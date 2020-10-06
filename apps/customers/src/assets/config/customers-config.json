@@ -1,0 +1,10 @@
+{
+  "version": "1.0.0",
+  "microfrontends": {
+    "global-position": "/microfrontends/mf-global-position/v1/main.js",
+    "account-detail": "/microfrontends/mf-account-detail/v1/main.js",
+    "card-detail": "/microfrontends/mf-card-detail/v1/main.js",
+    "cards-summary": "/microfrontends/mf-cards-summary/v1/main.js",
+    "accounts-summary": "/microfrontends/mf-accounts-summary/v1/main.js"
+  }
+}

@@ -1,7 +1,8 @@
 import { Component, Input, NgZone, OnInit, ViewEncapsulation } from '@angular/core';
-import { AccountsService } from '../../services/accounts.service';
+import { AccountsService } from '../../services/accounts/accounts.service';
 import { Account } from '../../model/account';
 import { TranslateService } from '@ngx-translate/core';
+import { ConfigService } from '../../services/config/config.service';
 
 @Component({
     selector: 'app-main',
@@ -32,7 +33,7 @@ export class MainComponent implements OnInit {
 
     public show = false;
 
-    public elementUrl: string = './webcomponents/account-overview/v1/account-overview.esm.js';
+    public elementUrl: string;
     public accounts: Account[];
     public totalBalance: number;
 
@@ -46,8 +47,12 @@ export class MainComponent implements OnInit {
      */
     private generalChannel;
 
-    constructor(private accountsService: AccountsService, private ngZone: NgZone, private translate: TranslateService){
+    constructor(private accountsService: AccountsService,
+                private ngZone: NgZone,
+                private translate: TranslateService,
+                private configService: ConfigService){
         console.log('[mf-accounts-summary] starting....');
+        this.elementUrl = this.configService.getWebComponentURL('account-overview');
         this.totalBalance = 0;
         this.initI18n();
     }

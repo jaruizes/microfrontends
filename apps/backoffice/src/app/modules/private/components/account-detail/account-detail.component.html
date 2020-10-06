@@ -1,5 +1,5 @@
 <div *ngIf="account > 0">
   <mf-account-detail *axLazyElement="accountDetailURL;"
-                     locale="en" account-id="1">
+                     locale="en" [account]="account">
   </mf-account-detail>
 </div>

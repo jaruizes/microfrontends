@@ -1,4 +1,13 @@
 {
+  "config": [
+    {
+      "id": "accounts-summary-mf-config",
+      "microfrontends": {},
+      "webcomponents": {
+        "account-overview": "/webcomponents/account-overview/v1/account-overview.esm.js"
+      }
+    }
+  ],
   "accounts" : [
     {
       "id": 1,

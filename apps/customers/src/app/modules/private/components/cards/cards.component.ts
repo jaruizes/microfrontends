@@ -1,5 +1,7 @@
 import { Component, NgZone, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ConfigService } from '../../../../services/config/config.service';
+import { CustomerService } from '../../services/customer/customer.service';
 
 @Component({
   selector: 'app-cards',
@@ -7,9 +9,10 @@ import { Router } from '@angular/router';
   styleUrls: ['./cards.component.css']
 })
 export class CardsComponent implements OnInit {
-  public urlCardsSummary = '/microfrontends/mf-cards-summary/v1/main.js';
+  public urlCardsSummary;
 
   public channel = 'customers-app';
+  public customer;
 
   /**
    * This is the parentChannel used by an instance of this microfrontend
@@ -22,7 +25,13 @@ export class CardsComponent implements OnInit {
    */
   private generalChannel;
 
-  constructor(private ngZone: NgZone, private router: Router) { }
+  constructor(private ngZone: NgZone,
+              private router: Router,
+              private configService: ConfigService,
+              private customerService: CustomerService) {
+    this.customer = this.customerService.getCustomer();
+    this.urlCardsSummary = this.configService.getMicrofrontendURL('cards-summary');
+  }
 
   ngOnInit(): void {
     this.initBroadcastChannel();

@@ -1,0 +1,639 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "API PoC Microfrontends",
+    "version": "2020-10-06T13:55:21Z",
+    "title": "Microfrontends"
+  },
+  "host": "ppqzm7uohd.execute-api.eu-west-2.amazonaws.com",
+  "basePath": "/mock",
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+    "/accounts": {
+      "get": {
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "customer",
+            "in": "query",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "schema": {
+              "$ref": "#/definitions/Empty"
+            }
+          }
+        },
+        "x-amazon-apigateway-integration": {
+          "responses": {
+            "default": {
+              "statusCode": "200",
+              "responseTemplates": {
+                "application/json": "[\n  #if( $input.params('customer') == \"0001\" )\n    {\n      \"id\": 1,\n      \"number\" : \"ES0221009668423617394699\",\n      \"name\" : \"MICROSERVICIOS 1,2,3\",\n      \"holder\" : \"Fernando Alonso Díaz\",\n      \"lastmovement\": \"2 days ago\",\n      \"newmovements\": \"5\",\n      \"amount\": 24500,\n      \"balance\": 24500,\n      \"customer\": \"0001\",\n      \"movements\": [\n        {\n          \"id\": 1,\n          \"date\": \"06/10/2020\",\n          \"subject\": \"CONSUM SUPERMERCADO\",\n          \"account\": \"MICROSERVICIOS 1,2,3\",\n          \"amount\": \"200\"\n        },\n        {\n          \"id\": 2,\n          \"date\": \"05/10/2020\",\n          \"subject\": \"REINTEGRO CAJERO\",\n          \"account\": \"TARJETA DYNAMODB\",\n          \"amount\": \"100\"\n        },\n        {\n          \"id\": 3,\n          \"date\": \"05/10/2020\",\n          \"subject\": \"AMAZON\",\n          \"account\": \"TARJETA DYNAMODB\",\n          \"amount\": \"350\"\n        },\n        {\n          \"id\": 4,\n          \"date\": \"04/10/2020\",\n          \"subject\": \"TELEFONICA FIBRA\",\n          \"account\": \"MICROSERVICIOS 1,2,3\",\n          \"amount\": \"120\"\n        },\n        {\n          \"id\": 5,\n          \"date\": \"02/10/2020\",\n          \"subject\": \"MEDITERRANEA COMEDOR\",\n          \"account\": \"MICROSERVICIOS 1,2,3\",\n          \"amount\": \"250\"\n        }\n      ]\n    },\n    {\n      \"id\": 2,\n      \"number\" : \"ES4631907381837349335673\",\n      \"name\" : \"EVENT DRIVEN\",\n      \"holder\" : \"Fernando Alonso Díaz\",\n      \"lastmovement\": \"10 days ago\",\n      \"newmovements\": \"3\",\n      \"amount\": 2500,\n      \"balance\": 2500,\n      \"customer\": \"0001\",\n      \"movements\": [\n        {\n          \"id\": 1,\n          \"date\": \"06/10/2020\",\n          \"subject\": \"CONSUM SUPERMERCADO\",\n          \"account\": \"MICROSERVICIOS 1,2,3\",\n          \"amount\": \"200\"\n        },\n        {\n          \"id\": 2,\n          \"date\": \"05/10/2020\",\n          \"subject\": \"REINTEGRO CAJERO\",\n          \"account\": \"TARJETA DYNAMODB\",\n          \"amount\": \"100\"\n        },\n        {\n          \"id\": 3,\n          \"date\": \"05/10/2020\",\n          \"subject\": \"AMAZON\",\n          \"account\": \"TARJETA DYNAMODB\",\n          \"amount\": \"350\"\n        }\n      ]\n    }\n  #end\n  \n  #if( $input.params('customer') == \"0002\" )\n    {\n      \"id\": 3,\n      \"number\" : \"ES9500813272801199584722\",\n      \"name\" : \"MICROSERVICIOS 1,2,3\",\n      \"holder\" : \"Nicolas Camara Sanchez\",\n      \"lastmovement\": \"8 days ago\",\n      \"newmovements\": \"3\",\n      \"amount\": 4500,\n      \"balance\": 4500,\n      \"customer\": \"0002\",\n      \"movements\": [\n        {\n          \"id\": 1,\n          \"date\": \"06/10/2020\",\n          \"subject\": \"VODAFONE TV\",\n          \"account\": \"MICROSERVICIOS 1,2,3\",\n          \"amount\": \"200\"\n        },\n        {\n          \"id\": 2,\n          \"date\": \"05/10/2020\",\n          \"subject\": \"TRANSFERENCIA GASTOS\",\n          \"account\": \"MICROSERVICIOS 1,2,3\",\n          \"amount\": \"100\"\n        },\n        {\n          \"id\": 3,\n          \"date\": \"05/10/2020\",\n          \"subject\": \"AMAZON\",\n          \"account\": \"MICROSERVICIOS 1,2,3\",\n          \"amount\": \"250\"\n        }\n      ]\n    },\n    {\n      \"id\": 4,\n      \"number\" : \"ES4631907381837349335673\",\n      \"name\" : \"EVENT DRIVEN\",\n      \"holder\" : \"Nicolas Camara Sanchez\",\n      \"lastmovement\": \"20 days ago\",\n      \"newmovements\": \"1\",\n      \"amount\": 222500,\n      \"balance\": 222500,\n      \"customer\": \"0002\",\n      \"movements\": [\n        {\n          \"id\": 1,\n          \"date\": \"06/10/2020\",\n          \"subject\": \"CONSUM SUPERMERCADO\",\n          \"account\": \"EVENT DRIVEN\",\n          \"amount\": \"200\"\n        },\n        {\n          \"id\": 2,\n          \"date\": \"05/10/2020\",\n          \"subject\": \"REINTEGRO CAJERO\",\n          \"account\": \"EVENT DRIVEN\",\n          \"amount\": \"100\"\n        },\n        {\n          \"id\": 3,\n          \"date\": \"05/10/2020\",\n          \"subject\": \"AMAZON\",\n          \"account\": \"EVENT DRIVEN\",\n          \"amount\": \"350\"\n        }\n      ]\n    },\n    {\n      \"id\": 5,\n      \"number\" : \"ES1900814364508875831369\",\n      \"name\" : \"CONFLUENT\",\n      \"holder\" : \"Nicolas Camara Sanchez\",\n      \"lastmovement\": \"30 days ago\",\n      \"newmovements\": \"2\",\n      \"amount\": 522500,\n      \"balance\": 522500,\n      \"customer\": \"0002\",\n      \"movements\": [\n        {\n          \"id\": 1,\n          \"date\": \"06/10/2020\",\n          \"subject\": \"APORTACION PPP\",\n          \"account\": \"CONFLUENT\",\n          \"amount\": \"200\"\n        },\n        {\n          \"id\": 2,\n          \"date\": \"05/09/2020\",\n          \"subject\": \"APORTACION PPP\",\n          \"account\": \"CONFLUENT\",\n          \"amount\": \"100\"\n        },\n        {\n          \"id\": 3,\n          \"date\": \"05/08/2020\",\n          \"subject\": \"APORTACION PPP\",\n          \"account\": \"CONFLUENT\",\n          \"amount\": \"350\"\n        },\n        {\n          \"id\": 4,\n          \"date\": \"05/08/2020\",\n          \"subject\": \"APORTACION PPP\",\n          \"account\": \"CONFLUENT\",\n          \"amount\": \"350\"\n        },\n        {\n          \"id\": 5,\n          \"date\": \"05/08/2020\",\n          \"subject\": \"APORTACION PPP\",\n          \"account\": \"CONFLUENT\",\n          \"amount\": \"350\"\n        },\n        {\n          \"id\": 6,\n          \"date\": \"05/08/2020\",\n          \"subject\": \"APORTACION PPP\",\n          \"account\": \"CONFLUENT\",\n          \"amount\": \"350\"\n        }\n      ]\n    }\n  #end\n]"
+              }
+            }
+          },
+          "requestTemplates": {
+            "application/json": "{\"statusCode\": 200}"
+          },
+          "passthroughBehavior": "when_no_match",
+          "type": "mock"
+        }
+      },
+      "options": {
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "schema": {
+              "$ref": "#/definitions/Empty"
+            },
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "type": "string"
+              },
+              "Access-Control-Allow-Methods": {
+                "type": "string"
+              },
+              "Access-Control-Allow-Headers": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "x-amazon-apigateway-integration": {
+          "responses": {
+            "default": {
+              "statusCode": "200",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Methods": "'OPTIONS'",
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              }
+            }
+          },
+          "requestTemplates": {
+            "application/json": "{\"statusCode\": 200}"
+          },
+          "passthroughBehavior": "when_no_match",
+          "type": "mock"
+        }
+      }
+    },
+    "/accounts/{account}": {
+      "get": {
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "account",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "schema": {
+              "$ref": "#/definitions/Empty"
+            },
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "x-amazon-apigateway-integration": {
+          "responses": {
+            "default": {
+              "statusCode": "200",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              },
+              "responseTemplates": {
+                "application/json": "\n  #if( $input.params('account') == \"1\" )\n    {\n      \"id\": 1,\n      \"number\" : \"ES0221009668423617394699\",\n      \"name\" : \"MICROSERVICIOS 1,2,3\",\n      \"holder\" : \"Fernando Alonso Díaz\",\n      \"lastmovement\": \"2 days ago\",\n      \"newmovements\": \"5\",\n      \"amount\": 24500,\n      \"balance\": 24500,\n      \"customer\": \"0001\",\n      \"movements\": [\n        {\n          \"id\": 1,\n          \"date\": \"06/10/2020\",\n          \"subject\": \"CONSUM SUPERMERCADO\",\n          \"account\": \"MICROSERVICIOS 1,2,3\",\n          \"amount\": \"200\"\n        },\n        {\n          \"id\": 2,\n          \"date\": \"05/10/2020\",\n          \"subject\": \"REINTEGRO CAJERO\",\n          \"account\": \"TARJETA DYNAMODB\",\n          \"amount\": \"100\"\n        },\n        {\n          \"id\": 3,\n          \"date\": \"05/10/2020\",\n          \"subject\": \"AMAZON\",\n          \"account\": \"TARJETA DYNAMODB\",\n          \"amount\": \"350\"\n        },\n        {\n          \"id\": 4,\n          \"date\": \"04/10/2020\",\n          \"subject\": \"TELEFONICA FIBRA\",\n          \"account\": \"MICROSERVICIOS 1,2,3\",\n          \"amount\": \"120\"\n        },\n        {\n          \"id\": 5,\n          \"date\": \"02/10/2020\",\n          \"subject\": \"MEDITERRANEA COMEDOR\",\n          \"account\": \"MICROSERVICIOS 1,2,3\",\n          \"amount\": \"250\"\n        }\n      ]\n    }\n #end\n #if( $input.params('account') == \"2\" )\n    {\n      \"id\": 2,\n      \"number\" : \"ES4631907381837349335673\",\n      \"name\" : \"EVENT DRIVEN\",\n      \"holder\" : \"Fernando Alonso Díaz\",\n      \"lastmovement\": \"10 days ago\",\n      \"newmovements\": \"3\",\n      \"amount\": 2500,\n      \"balance\": 2500,\n      \"customer\": \"0001\",\n      \"movements\": [\n        {\n          \"id\": 1,\n          \"date\": \"06/10/2020\",\n          \"subject\": \"CONSUM SUPERMERCADO\",\n          \"account\": \"MICROSERVICIOS 1,2,3\",\n          \"amount\": \"200\"\n        },\n        {\n          \"id\": 2,\n          \"date\": \"05/10/2020\",\n          \"subject\": \"REINTEGRO CAJERO\",\n          \"account\": \"TARJETA DYNAMODB\",\n          \"amount\": \"100\"\n        },\n        {\n          \"id\": 3,\n          \"date\": \"05/10/2020\",\n          \"subject\": \"AMAZON\",\n          \"account\": \"TARJETA DYNAMODB\",\n          \"amount\": \"350\"\n        }\n      ]\n    }\n  #end\n  #if( $input.params('account') == \"3\" )\n    {\n      \"id\": 3,\n      \"number\" : \"ES9500813272801199584722\",\n      \"name\" : \"MICROSERVICIOS 1,2,3\",\n      \"holder\" : \"Nicolas Camara Sanchez\",\n      \"lastmovement\": \"8 days ago\",\n      \"newmovements\": \"3\",\n      \"amount\": 4500,\n      \"balance\": 4500,\n      \"customer\": \"0002\",\n      \"movements\": [\n        {\n          \"id\": 1,\n          \"date\": \"06/10/2020\",\n          \"subject\": \"VODAFONE TV\",\n          \"account\": \"MICROSERVICIOS 1,2,3\",\n          \"amount\": \"200\"\n        },\n        {\n          \"id\": 2,\n          \"date\": \"05/10/2020\",\n          \"subject\": \"TRANSFERENCIA GASTOS\",\n          \"account\": \"MICROSERVICIOS 1,2,3\",\n          \"amount\": \"100\"\n        },\n        {\n          \"id\": 3,\n          \"date\": \"05/10/2020\",\n          \"subject\": \"AMAZON\",\n          \"account\": \"MICROSERVICIOS 1,2,3\",\n          \"amount\": \"250\"\n        }\n      ]\n    }\n    #end\n    #if( $input.params('account') == \"4\" )\n    {\n      \"id\": 4,\n      \"number\" : \"ES4631907381837349335673\",\n      \"name\" : \"EVENT DRIVEN\",\n      \"holder\" : \"Nicolas Camara Sanchez\",\n      \"lastmovement\": \"20 days ago\",\n      \"newmovements\": \"1\",\n      \"amount\": 222500,\n      \"balance\": 222500,\n      \"customer\": \"0002\",\n      \"movements\": [\n        {\n          \"id\": 1,\n          \"date\": \"06/10/2020\",\n          \"subject\": \"CONSUM SUPERMERCADO\",\n          \"account\": \"EVENT DRIVEN\",\n          \"amount\": \"200\"\n        },\n        {\n          \"id\": 2,\n          \"date\": \"05/10/2020\",\n          \"subject\": \"REINTEGRO CAJERO\",\n          \"account\": \"EVENT DRIVEN\",\n          \"amount\": \"100\"\n        },\n        {\n          \"id\": 3,\n          \"date\": \"05/10/2020\",\n          \"subject\": \"AMAZON\",\n          \"account\": \"EVENT DRIVEN\",\n          \"amount\": \"350\"\n        }\n      ]\n    }\n    #end\n    #if( $input.params('account') == \"5\" )\n    {\n      \"id\": 5,\n      \"number\" : \"ES1900814364508875831369\",\n      \"name\" : \"CONFLUENT\",\n      \"holder\" : \"Nicolas Camara Sanchez\",\n      \"lastmovement\": \"30 days ago\",\n      \"newmovements\": \"2\",\n      \"amount\": 522500,\n      \"balance\": 522500,\n      \"customer\": \"0002\",\n      \"movements\": [\n        {\n          \"id\": 1,\n          \"date\": \"06/10/2020\",\n          \"subject\": \"APORTACION PPP\",\n          \"account\": \"CONFLUENT\",\n          \"amount\": \"200\"\n        },\n        {\n          \"id\": 2,\n          \"date\": \"05/09/2020\",\n          \"subject\": \"APORTACION PPP\",\n          \"account\": \"CONFLUENT\",\n          \"amount\": \"100\"\n        },\n        {\n          \"id\": 3,\n          \"date\": \"05/08/2020\",\n          \"subject\": \"APORTACION PPP\",\n          \"account\": \"CONFLUENT\",\n          \"amount\": \"350\"\n        },\n        {\n          \"id\": 4,\n          \"date\": \"05/08/2020\",\n          \"subject\": \"APORTACION PPP\",\n          \"account\": \"CONFLUENT\",\n          \"amount\": \"350\"\n        },\n        {\n          \"id\": 5,\n          \"date\": \"05/08/2020\",\n          \"subject\": \"APORTACION PPP\",\n          \"account\": \"CONFLUENT\",\n          \"amount\": \"350\"\n        },\n        {\n          \"id\": 6,\n          \"date\": \"05/08/2020\",\n          \"subject\": \"APORTACION PPP\",\n          \"account\": \"CONFLUENT\",\n          \"amount\": \"350\"\n        }\n      ]\n    }\n  #end"
+              }
+            }
+          },
+          "requestTemplates": {
+            "application/json": "{\"statusCode\": 200}"
+          },
+          "passthroughBehavior": "when_no_match",
+          "type": "mock"
+        }
+      },
+      "options": {
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "schema": {
+              "$ref": "#/definitions/Empty"
+            },
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "type": "string"
+              },
+              "Access-Control-Allow-Methods": {
+                "type": "string"
+              },
+              "Access-Control-Allow-Headers": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "x-amazon-apigateway-integration": {
+          "responses": {
+            "default": {
+              "statusCode": "200",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Methods": "'GET,OPTIONS'",
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              }
+            }
+          },
+          "requestTemplates": {
+            "application/json": "{\"statusCode\": 200}"
+          },
+          "passthroughBehavior": "when_no_match",
+          "type": "mock"
+        }
+      }
+    },
+    "/cards": {
+      "get": {
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "schema": {
+              "$ref": "#/definitions/Empty"
+            }
+          }
+        },
+        "x-amazon-apigateway-integration": {
+          "responses": {
+            "default": {
+              "statusCode": "200",
+              "responseTemplates": {
+                "application/json": "[\n  #if( $input.params('customer') == \"0001\" )\n    {\n      \"id\": 1,\n      \"name\" : \"Fernando Alonso Díaz\",\n      \"number\" : \"5575906874102181\",\n      \"type\" : 0,\n      \"expires\": \"10/24\",\n      \"balance\": 897,\n      \"amount\": 897,\n      \"customer\": \"0001\",\n      \"lastmovement\": \"2 days ago\",\n      \"movements\": [\n        {\n          \"id\": 1,\n          \"date\": \"06/10/2020\",\n          \"subject\": \"REINTEGRO SERVICIO\",\n          \"account\": \"MICROSERVICIOS 1,2,3\",\n          \"amount\": \"200\"\n        },\n        {\n          \"id\": 2,\n          \"date\": \"05/10/2020\",\n          \"subject\": \"OPERACION DEVOPS\",\n          \"account\": \"MICROSERVICIOS 1,2,3\",\n          \"amount\": \"100\"\n        },\n        {\n          \"id\": 3,\n          \"date\": \"05/10/2020\",\n          \"subject\": \"SPRINT PLANNING\",\n          \"account\": \"MICROSERVICIOS 1,2,3\",\n          \"amount\": \"350\"\n        },\n        {\n          \"id\": 4,\n          \"date\": \"04/10/2020\",\n          \"subject\": \"HOTFIX PRODUCTION\",\n          \"account\": \"MICROSERVICIOS 1,2,3\",\n          \"amount\": \"120\"\n        },\n        {\n          \"id\": 5,\n          \"date\": \"02/10/2020\",\n          \"subject\": \"RELEASE\",\n          \"account\": \"MICROSERVICIOS 1,2,3\",\n          \"amount\": \"250\"\n        }\n      ]\n    },\n    {\n      \"id\": 2,\n      \"name\" : \"Fernando Alonso Díaz\",\n      \"number\" : \"5345718131468563\",\n      \"type\" : 1,\n      \"expires\": \"10/24\",\n      \"balance\": 2456,\n      \"amount\": 2456,\n      \"limit\": 3000,\n      \"customer\": \"0001\",\n      \"lastmovement\": \"2 days ago\",\n      \"movements\": [\n        {\n          \"id\": 1,\n          \"date\": \"06/10/2020\",\n          \"subject\": \"DEFINICION MICROSERVICIO\",\n          \"account\": \"MICROSERVICIOS 1,2,3\",\n          \"amount\": \"200\"\n        },\n        {\n          \"id\": 2,\n          \"date\": \"05/10/2020\",\n          \"subject\": \"ENVIO DE TOPIC A KAFKA\",\n          \"account\": \"MICROSERVICIOS 1,2,3\",\n          \"amount\": \"100\"\n        },\n        {\n          \"id\": 3,\n          \"date\": \"05/10/2020\",\n          \"subject\": \"AÑADIR NODO A K8S\",\n          \"account\": \"MICROSERVICIOS 1,2,3\",\n          \"amount\": \"350\"\n        }\n      ]\n    }\n  #end\n  \n  #if( $input.params('customer') == \"0002\" )\n    {\n      \"id\": 3,\n      \"name\" : \"Nicolas Camara Sanchez\",\n      \"number\" : \"5238082108806473\",\n      \"type\" : 0,\n      \"expires\": \"10/24\",\n      \"balance\": 500,\n      \"amount\": 500,\n      \"customer\": \"0002\",\n      \"lastmovement\": \"2 days ago\",\n      \"movements\": [\n        {\n          \"id\": 1,\n          \"date\": \"06/10/2020\",\n          \"subject\": \"REINTEGRO SERVICIO\",\n          \"account\": \"MICROSERVICIOS 1,2,3\",\n          \"amount\": \"200\"\n        },\n        {\n          \"id\": 2,\n          \"date\": \"05/10/2020\",\n          \"subject\": \"OPERACION DEVOPS\",\n          \"account\": \"MICROSERVICIOS 1,2,3\",\n          \"amount\": \"100\"\n        },\n        {\n          \"id\": 3,\n          \"date\": \"05/10/2020\",\n          \"subject\": \"SPRINT PLANNING\",\n          \"account\": \"MICROSERVICIOS 1,2,3\",\n          \"amount\": \"350\"\n        },\n        {\n          \"id\": 4,\n          \"date\": \"04/10/2020\",\n          \"subject\": \"HOTFIX PRODUCTION\",\n          \"account\": \"MICROSERVICIOS 1,2,3\",\n          \"amount\": \"120\"\n        },\n        {\n          \"id\": 5,\n          \"date\": \"02/10/2020\",\n          \"subject\": \"RELEASE\",\n          \"account\": \"MICROSERVICIOS 1,2,3\",\n          \"amount\": \"250\"\n        }\n      ]\n    },\n    {\n      \"id\": 4,\n      \"name\" : \"Nicolas Camara Sanchez\",\n      \"number\" : \"5238082108806473\",\n      \"type\" : 1,\n      \"expires\": \"10/24\",\n      \"balance\": 2500,\n      \"amount\": 2500,\n      \"limit\": 4000,\n      \"customer\": \"0002\",\n      \"lastmovement\": \"2 days ago\",\n      \"movements\": [\n        {\n          \"id\": 1,\n          \"date\": \"06/10/2020\",\n          \"subject\": \"DEFINICION MICROSERVICIO\",\n          \"account\": \"MICROSERVICIOS 1,2,3\",\n          \"amount\": \"200\"\n        },\n        {\n          \"id\": 2,\n          \"date\": \"05/10/2020\",\n          \"subject\": \"ENVIO DE TOPIC A KAFKA\",\n          \"account\": \"MICROSERVICIOS 1,2,3\",\n          \"amount\": \"100\"\n        },\n        {\n          \"id\": 3,\n          \"date\": \"05/10/2020\",\n          \"subject\": \"AÑADIR NODO A K8S\",\n          \"account\": \"MICROSERVICIOS 1,2,3\",\n          \"amount\": \"350\"\n        }\n      ]\n    }\n  #end\n]"
+              }
+            }
+          },
+          "requestTemplates": {
+            "application/json": "{\"statusCode\": 200}"
+          },
+          "passthroughBehavior": "when_no_match",
+          "type": "mock"
+        }
+      },
+      "options": {
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "schema": {
+              "$ref": "#/definitions/Empty"
+            },
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "type": "string"
+              },
+              "Access-Control-Allow-Methods": {
+                "type": "string"
+              },
+              "Access-Control-Allow-Headers": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "x-amazon-apigateway-integration": {
+          "responses": {
+            "default": {
+              "statusCode": "200",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Methods": "'OPTIONS'",
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              }
+            }
+          },
+          "requestTemplates": {
+            "application/json": "{\"statusCode\": 200}"
+          },
+          "passthroughBehavior": "when_no_match",
+          "type": "mock"
+        }
+      }
+    },
+    "/cards/{card}": {
+      "get": {
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "card",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "schema": {
+              "$ref": "#/definitions/Empty"
+            },
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "x-amazon-apigateway-integration": {
+          "responses": {
+            "default": {
+              "statusCode": "200",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              },
+              "responseTemplates": {
+                "application/json": "\n  #if( $input.params('card') == \"1\" )\n    {\n      \"id\": 1,\n      \"name\" : \"Fernando Alonso Díaz\",\n      \"number\" : \"5575906874102181\",\n      \"type\" : 0,\n      \"expires\": \"10/24\",\n      \"balance\": 897,\n      \"amount\": 897,\n      \"customer\": \"0001\",\n      \"lastmovement\": \"2 days ago\",\n      \"movements\": [\n        {\n          \"id\": 1,\n          \"date\": \"06/10/2020\",\n          \"subject\": \"REINTEGRO SERVICIO\",\n          \"account\": \"MICROSERVICIOS 1,2,3\",\n          \"amount\": \"200\"\n        },\n        {\n          \"id\": 2,\n          \"date\": \"05/10/2020\",\n          \"subject\": \"OPERACION DEVOPS\",\n          \"account\": \"MICROSERVICIOS 1,2,3\",\n          \"amount\": \"100\"\n        },\n        {\n          \"id\": 3,\n          \"date\": \"05/10/2020\",\n          \"subject\": \"SPRINT PLANNING\",\n          \"account\": \"MICROSERVICIOS 1,2,3\",\n          \"amount\": \"350\"\n        },\n        {\n          \"id\": 4,\n          \"date\": \"04/10/2020\",\n          \"subject\": \"HOTFIX PRODUCTION\",\n          \"account\": \"MICROSERVICIOS 1,2,3\",\n          \"amount\": \"120\"\n        },\n        {\n          \"id\": 5,\n          \"date\": \"02/10/2020\",\n          \"subject\": \"RELEASE\",\n          \"account\": \"MICROSERVICIOS 1,2,3\",\n          \"amount\": \"250\"\n        }\n      ]\n    }\n    #end\n    #if( $input.params('card') == \"2\" )\n    {\n      \"id\": 2,\n      \"name\" : \"Fernando Alonso Díaz\",\n      \"number\" : \"5345718131468563\",\n      \"type\" : 1,\n      \"expires\": \"10/24\",\n      \"balance\": 2456,\n      \"amount\": 2456,\n      \"limit\": 3000,\n      \"customer\": \"0001\",\n      \"lastmovement\": \"2 days ago\",\n      \"movements\": [\n        {\n          \"id\": 1,\n          \"date\": \"06/10/2020\",\n          \"subject\": \"DEFINICION MICROSERVICIO\",\n          \"account\": \"MICROSERVICIOS 1,2,3\",\n          \"amount\": \"200\"\n        },\n        {\n          \"id\": 2,\n          \"date\": \"05/10/2020\",\n          \"subject\": \"ENVIO DE TOPIC A KAFKA\",\n          \"account\": \"MICROSERVICIOS 1,2,3\",\n          \"amount\": \"100\"\n        },\n        {\n          \"id\": 3,\n          \"date\": \"05/10/2020\",\n          \"subject\": \"AÑADIR NODO A K8S\",\n          \"account\": \"MICROSERVICIOS 1,2,3\",\n          \"amount\": \"350\"\n        }\n      ]\n    }\n  #end\n    #if( $input.params('card') == \"3\" )\n    {\n      \"id\": 3,\n      \"name\" : \"Nicolas Camara Sanchez\",\n      \"number\" : \"5238082108806473\",\n      \"type\" : 0,\n      \"expires\": \"10/24\",\n      \"balance\": 500,\n      \"amount\": 500,\n      \"customer\": \"0002\",\n      \"lastmovement\": \"2 days ago\",\n      \"movements\": [\n        {\n          \"id\": 1,\n          \"date\": \"06/10/2020\",\n          \"subject\": \"REINTEGRO SERVICIO\",\n          \"account\": \"MICROSERVICIOS 1,2,3\",\n          \"amount\": \"200\"\n        },\n        {\n          \"id\": 2,\n          \"date\": \"05/10/2020\",\n          \"subject\": \"OPERACION DEVOPS\",\n          \"account\": \"MICROSERVICIOS 1,2,3\",\n          \"amount\": \"100\"\n        },\n        {\n          \"id\": 3,\n          \"date\": \"05/10/2020\",\n          \"subject\": \"SPRINT PLANNING\",\n          \"account\": \"MICROSERVICIOS 1,2,3\",\n          \"amount\": \"350\"\n        },\n        {\n          \"id\": 4,\n          \"date\": \"04/10/2020\",\n          \"subject\": \"HOTFIX PRODUCTION\",\n          \"account\": \"MICROSERVICIOS 1,2,3\",\n          \"amount\": \"120\"\n        },\n        {\n          \"id\": 5,\n          \"date\": \"02/10/2020\",\n          \"subject\": \"RELEASE\",\n          \"account\": \"MICROSERVICIOS 1,2,3\",\n          \"amount\": \"250\"\n        }\n      ]\n    }\n    #end\n    #if( $input.params('card') == \"4\" )\n    {\n      \"id\": 4,\n      \"name\" : \"Nicolas Camara Sanchez\",\n      \"number\" : \"5238082108806473\",\n      \"type\" : 1,\n      \"expires\": \"10/24\",\n      \"balance\": 2500,\n      \"amount\": 2500,\n      \"limit\": 4000,\n      \"customer\": \"0002\",\n      \"lastmovement\": \"2 days ago\",\n      \"movements\": [\n        {\n          \"id\": 1,\n          \"date\": \"06/10/2020\",\n          \"subject\": \"DEFINICION MICROSERVICIO\",\n          \"account\": \"MICROSERVICIOS 1,2,3\",\n          \"amount\": \"200\"\n        },\n        {\n          \"id\": 2,\n          \"date\": \"05/10/2020\",\n          \"subject\": \"ENVIO DE TOPIC A KAFKA\",\n          \"account\": \"MICROSERVICIOS 1,2,3\",\n          \"amount\": \"100\"\n        },\n        {\n          \"id\": 3,\n          \"date\": \"05/10/2020\",\n          \"subject\": \"AÑADIR NODO A K8S\",\n          \"account\": \"MICROSERVICIOS 1,2,3\",\n          \"amount\": \"350\"\n        }\n      ]\n    }\n  #end\n"
+              }
+            }
+          },
+          "requestTemplates": {
+            "application/json": "{\"statusCode\": 200}"
+          },
+          "passthroughBehavior": "when_no_match",
+          "type": "mock"
+        }
+      },
+      "options": {
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "schema": {
+              "$ref": "#/definitions/Empty"
+            },
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "type": "string"
+              },
+              "Access-Control-Allow-Methods": {
+                "type": "string"
+              },
+              "Access-Control-Allow-Headers": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "x-amazon-apigateway-integration": {
+          "responses": {
+            "default": {
+              "statusCode": "200",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Methods": "'GET,OPTIONS'",
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              }
+            }
+          },
+          "requestTemplates": {
+            "application/json": "{\"statusCode\": 200}"
+          },
+          "passthroughBehavior": "when_no_match",
+          "type": "mock"
+        }
+      }
+    },
+    "/config": {
+      "options": {
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "schema": {
+              "$ref": "#/definitions/Empty"
+            },
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "type": "string"
+              },
+              "Access-Control-Allow-Methods": {
+                "type": "string"
+              },
+              "Access-Control-Allow-Headers": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "x-amazon-apigateway-integration": {
+          "responses": {
+            "default": {
+              "statusCode": "200",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Methods": "'OPTIONS'",
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              }
+            }
+          },
+          "requestTemplates": {
+            "application/json": "{\"statusCode\": 200}"
+          },
+          "passthroughBehavior": "when_no_match",
+          "type": "mock"
+        }
+      }
+    },
+    "/config/{component}": {
+      "get": {
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "component",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "schema": {
+              "$ref": "#/definitions/Empty"
+            },
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "x-amazon-apigateway-integration": {
+          "responses": {
+            "default": {
+              "statusCode": "200",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              },
+              "responseTemplates": {
+                "application/json": "{\n  #if( $input.params('component') == \"customers-app-config\" )\n    \"id\": \"customers-app-config\",\n      \"microfrontends\": {\n        \"global-position\": \"/microfrontends/mf-global-position/v1/main.js\",\n        \"account-detail\": \"/microfrontends/mf-account-detail/v1/main.js\",\n        \"card-detail\": \"/microfrontends/mf-card-detail/v1/main.js\",\n        \"cards-summary\": \"/microfrontends/mf-cards-summary/v1/main.js\",\n        \"accounts-summary\": \"/microfrontends/mf-accounts-summary/v1/main.js\"\n      }\n  #end\n  \n  #if( $input.params('component') == \"global-position-mf-config\" )\n    \"id\": \"global-position-mf-config\",\n      \"microfrontends\": {\n        \"cards-summary\": \"/microfrontends/mf-cards-summary/v1/main.js\",\n        \"accounts-summary\": \"/microfrontends/mf-accounts-summary/v1/main.js\",\n        \"balance-overview\": \"/microfrontends/mf-balance-overview/v1/mf-balance-overview.js\"\n      },\n      \"webcomponents\": {\n        \"shortcuts\": \"/webcomponents/wc-shortcuts/v1/wc-shortcuts.bundled.js\",\n        \"items-table\": \"/webcomponents/items-table/v1/items-table.esm.js\"\n      }\n  #end\n  \n  #if( $input.params('component') == \"account-detail-mf-config\" )\n    \"id\": \"account-detail-mf-config\",\n      \"microfrontends\": {},\n      \"webcomponents\": {\n        \"items-table\": \"/webcomponents/items-table/v1/items-table.esm.js\"\n      }\n  #end\n  \n  #if( $input.params('component') == \"accounts-summary-mf-config\" )\n    \"id\": \"accounts-summary-mf-config\",\n      \"microfrontends\": {},\n      \"webcomponents\": {\n        \"account-overview\": \"/webcomponents/account-overview/v1/account-overview.esm.js\"\n      }\n  #end\n  \n  #if( $input.params('component') == \"card-detail-mf-config\" )\n    \"id\": \"card-detail-mf-config\",\n      \"microfrontends\": {},\n      \"webcomponents\": {\n        \"items-table\": \"/webcomponents/items-table/v1/items-table.esm.js\",\n        \"card\": \"/webcomponents/credit-card/v1/credit-card.esm.js\"\n      }\n  #end\n  \n  #if( $input.params('component') == \"cards-summary-mf-config\" )\n    \"id\": \"cards-summary-mf-config\",\n      \"microfrontends\": {},\n      \"webcomponents\": {\n        \"card-overview\": \"/webcomponents/card-overview/v1/card-overview.esm.js\"\n      }\n  #end\n}"
+              }
+            }
+          },
+          "requestTemplates": {
+            "application/json": "{\"statusCode\": 200}"
+          },
+          "passthroughBehavior": "when_no_match",
+          "type": "mock"
+        }
+      },
+      "options": {
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "schema": {
+              "$ref": "#/definitions/Empty"
+            },
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "type": "string"
+              },
+              "Access-Control-Allow-Methods": {
+                "type": "string"
+              },
+              "Access-Control-Allow-Headers": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "x-amazon-apigateway-integration": {
+          "responses": {
+            "default": {
+              "statusCode": "200",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Methods": "'GET,OPTIONS'",
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              }
+            }
+          },
+          "requestTemplates": {
+            "application/json": "{\"statusCode\": 200}"
+          },
+          "passthroughBehavior": "when_no_match",
+          "type": "mock"
+        }
+      }
+    },
+    "/customers": {
+      "options": {
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "schema": {
+              "$ref": "#/definitions/Empty"
+            },
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "type": "string"
+              },
+              "Access-Control-Allow-Methods": {
+                "type": "string"
+              },
+              "Access-Control-Allow-Headers": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "x-amazon-apigateway-integration": {
+          "responses": {
+            "default": {
+              "statusCode": "200",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Methods": "'OPTIONS'",
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              }
+            }
+          },
+          "requestTemplates": {
+            "application/json": "{\"statusCode\": 200}"
+          },
+          "passthroughBehavior": "when_no_match",
+          "type": "mock"
+        }
+      }
+    },
+    "/customers/{customer}": {
+      "get": {
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "customer",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "schema": {
+              "$ref": "#/definitions/Empty"
+            }
+          }
+        },
+        "x-amazon-apigateway-integration": {
+          "responses": {
+            "default": {
+              "statusCode": "200",
+              "responseTemplates": {
+                "application/json": "{\n  #if( $input.params('customer') == \"0001\" )\n      \"name\": \"Fernando Alonso Díaz\",\n      \"age\": 39,\n      \"balance\": 50000,\n      \"entry\": \"24/08/2008\",\n      \"summary\": {\n        \"incomes\": [2500, 2700, 3000, 2500, 6000, 4000, 2360, 3000, 3200, 2900, 3000, 3200],\n        \"expenses\": [1500, 1700, 2000, 2000, 3000, 2000, 1360, 2000, 1200, 1900, 2000, 1200],\n        \"dates\": [\"10/2019\", \"11/2019\", \"12/2019\", \"01/2020\", \"02/2020\", \"03/2020\", \"04/2020\", \"05/2020\", \"06/2020\", \"07/2020\", \"08/2020\", \"09/2020\"]\n      },\n      \"lastmovements\": [\n        {\n          \"id\": 1,\n          \"date\": \"06/10/2020\",\n          \"subject\": \"CONSUM SUPERMERCADO\",\n          \"account\": \"MICROSERVICIOS 1,2,3\",\n          \"amount\": \"200\"\n        },\n        {\n          \"id\": 2,\n          \"date\": \"05/10/2020\",\n          \"subject\": \"REINTEGRO CAJERO\",\n          \"account\": \"TARJETA DYNAMODB\",\n          \"amount\": \"100\"\n        },\n        {\n          \"id\": 3,\n          \"date\": \"05/10/2020\",\n          \"subject\": \"AMAZON\",\n          \"account\": \"TARJETA DYNAMODB\",\n          \"amount\": \"350\"\n        },\n        {\n          \"id\": 4,\n          \"date\": \"04/10/2020\",\n          \"subject\": \"TELEFONICA FIBRA\",\n          \"account\": \"MICROSERVICIOS 1,2,3\",\n          \"amount\": \"120\"\n        },\n        {\n          \"id\": 5,\n          \"date\": \"02/10/2020\",\n          \"subject\": \"MEDITERRANEA COMEDOR\",\n          \"account\": \"MICROSERVICIOS 1,2,3\",\n          \"amount\": \"250\"\n        }\n      ]\n  #end\n  #if( $input.params('customer') == \"0002\" )\n      \"name\": \"Nicolas Camara Sanchez\",\n      \"age\": 65,\n      \"balance\": 30000,\n      \"entry\": \"24/08/2000\",\n      \"summary\": {\n        \"incomes\": [2500, 2700, 3000, 2500, 6000, 4000, 2360, 3000, 3200, 2900, 3000, 3200],\n        \"expenses\": [1500, 1700, 2000, 2000, 3000, 2000, 1360, 2000, 1200, 1900, 2000, 1200],\n        \"dates\": [\"10/2019\", \"11/2019\", \"12/2019\", \"01/2020\", \"02/2020\", \"03/2020\", \"04/2020\", \"05/2020\", \"06/2020\", \"07/2020\", \"08/2020\", \"09/2020\"]\n      },\n      \"lastmovements\": [\n        {\n          \"id\": 1,\n          \"date\": \"06/10/2020\",\n          \"subject\": \"VODAFONE TV\",\n          \"account\": \"MICROSERVICIOS 1,2,3\",\n          \"amount\": \"200\"\n        },\n        {\n          \"id\": 2,\n          \"date\": \"05/10/2020\",\n          \"subject\": \"TRANSFERENCIA GASTOS\",\n          \"account\": \"MICROSERVICIOS 1,2,3\",\n          \"amount\": \"100\"\n        },\n        {\n          \"id\": 3,\n          \"date\": \"05/10/2020\",\n          \"subject\": \"AMAZON\",\n          \"account\": \"TARJETA AURORA\",\n          \"amount\": \"250\"\n        }\n      ]\n  #end\n}"
+              }
+            }
+          },
+          "requestTemplates": {
+            "application/json": "{\"statusCode\": 200}"
+          },
+          "passthroughBehavior": "when_no_match",
+          "type": "mock"
+        }
+      },
+      "options": {
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "schema": {
+              "$ref": "#/definitions/Empty"
+            },
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "type": "string"
+              },
+              "Access-Control-Allow-Methods": {
+                "type": "string"
+              },
+              "Access-Control-Allow-Headers": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "x-amazon-apigateway-integration": {
+          "responses": {
+            "default": {
+              "statusCode": "200",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Methods": "'OPTIONS'",
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              }
+            }
+          },
+          "requestTemplates": {
+            "application/json": "{\"statusCode\": 200}"
+          },
+          "passthroughBehavior": "when_no_match",
+          "type": "mock"
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Empty": {
+      "type": "object",
+      "title": "Empty Schema"
+    }
+  }
+}

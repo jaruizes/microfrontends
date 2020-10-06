@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ConfigService } from '../../../../services/config/config.service';
 
 @Component({
   selector: 'app-account-detail',
@@ -9,10 +10,10 @@ import { ActivatedRoute } from '@angular/router';
 export class AccountDetailComponent implements OnInit {
   public account: number;
 
-  public accountDetailURL = '/microfrontends/mf-account-detail/v1/main.js';
+  public accountDetailURL;
 
-  constructor(private route: ActivatedRoute) {
-
+  constructor(private route: ActivatedRoute, private config: ConfigService) {
+    this.accountDetailURL = this.config.getMicrofrontendURL('account-detail');
   }
 
   ngOnInit(): void {

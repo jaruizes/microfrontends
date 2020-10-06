@@ -1,7 +1,8 @@
 import { Component, Input, NgZone, OnInit, ViewEncapsulation } from '@angular/core';
-import { CardsService } from '../services/cards.service';
+import { CardsService } from '../services/cards/cards.service';
 import { Card } from '../model/card';
 import { TranslateService } from '@ngx-translate/core';
+import { ConfigService } from '../services/config/config.service';
 
 @Component({
     selector: 'app-main',
@@ -32,7 +33,7 @@ export class MainComponent implements OnInit {
 
     public show;
 
-    public elementUrl: string = '/webcomponents/card-overview/v1/card-overview.esm.js';
+    public elementUrl: string;
 
     @Input()
     public title;
@@ -49,9 +50,13 @@ export class MainComponent implements OnInit {
      */
     private generalChannel;
 
-    constructor(private cardsService: CardsService, private ngZone: NgZone, private translate: TranslateService){
+    constructor(private cardsService: CardsService,
+                private ngZone: NgZone,
+                private translate: TranslateService,
+                private configService: ConfigService){
         console.log('[mf-cards-summary] starting....');
         this.show = false;
+        this.elementUrl = this.configService.getWebComponentURL('card-overview');
         this.initI18n();
     }
 

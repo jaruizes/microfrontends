@@ -1,4 +1,13 @@
 {
+  "config": [
+    {
+      "id": "account-detail-mf-config",
+      "microfrontends": {},
+      "webcomponents": {
+        "items-table": "/webcomponents/items-table/v1/items-table.esm.js"
+      }
+    }
+  ],
   "accounts" : [
     {
       "id": 1,

@@ -1,6 +1,39 @@
-<div *ngIf="locale">
-  <mf-global-position *axLazyElement="globalPositionURL;"
-                      channel="customers-app"
-                      [locale]="locale">
-  </mf-global-position>
+<div *ngIf="show">
+  <section>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <div class="card account-info">
+            <div class="card-title" style="padding-bottom: 1em; padding-top: 1em">
+              <h3>{{ 'customer-detail' | translate }}</h3>
+            </div>
+            <div class="container-fluid">
+              <div class="row" style="margin-top: 2em">
+                <div class="col-md-3 col-sm-12">
+                  <h5 class="text-dark text-black-50">{{ 'name' | translate }}</h5>
+                  <h4 class="text-dark">{{customerData.name}}</h4>
+                </div>
+                <div class="col-md-3 col-sm-12">
+                  <h5 class="text-dark text-black-50">{{ 'age' | translate }}</h5>
+                  <h4 class="text-dark">{{customerData.age}}</h4>
+                </div>
+                <div class="col-md-3 col-sm-12">
+                  <h5 class="text-dark text-black-50">{{ 'entry' | translate }}</h5>
+                  <h4 class="text-dark">{{customerData.entry}}</h4>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section>
+    <mf-global-position *axLazyElement="globalPositionURL;"
+                        channel="customers-app"
+                        [locale]="locale"
+                        [customer]="customer"
+                        mode="1">
+    </mf-global-position>
+  </section>
 </div>

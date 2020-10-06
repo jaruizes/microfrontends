@@ -3,7 +3,7 @@
 </style>
 
 <template>
-    <div>
+    <div >
         <link rel="stylesheet" type="text/css" href="https://unpkg.com/bootstrap/dist/css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.css">
 

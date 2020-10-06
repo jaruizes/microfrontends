@@ -1,4 +1,14 @@
 {
+  "config": [
+    {
+      "id": "card-detail-mf-config",
+      "microfrontends": {},
+      "webcomponents": {
+        "items-table": "/webcomponents/items-table/v1/items-table.esm.js",
+        "card": "/webcomponents/credit-card/v1/credit-card.esm.js"
+      }
+    }
+  ],
   "cards" : [
     {
       "id": 1,

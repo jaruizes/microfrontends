@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ConfigService } from '../../../../services/config/config.service';
 
 @Component({
   selector: 'app-card-detail',
@@ -12,9 +13,11 @@ export class CardDetailComponent implements OnInit {
   public card: number = 0;
   public isCard = false;
 
-  public cardDetailURL = '/microfrontends/mf-card-detail/v1/main.js';
+  public cardDetailURL;
 
-  constructor(private route: ActivatedRoute) {
+  constructor(private route: ActivatedRoute, private config: ConfigService) {
+    this.cardDetailURL = this.config.getMicrofrontendURL('card-detail');
+
     //this.card = '1';
     this.route.queryParams.subscribe(params => {
       this.card = params['card'];

@@ -21,15 +21,14 @@ a:hover {
 
 .toolbar-color {
   background-color: white;
-  border: #3f51b5 0.1em solid;
+  border: red 0.1em solid;
 }
 
 .toolbar-color>div {
-  color: #3f51b5;
+  color: red;
 }
 
 .toolbar-color>div>a:hover {
-  color: darkblue;
   font-weight: bold;
   text-decoration: none;
   background-color: lightblue;
