@@ -12,7 +12,7 @@ import { ConfigService } from './services/config/config.service';
 
 // AoT requires an exported function for factories
 export function createTranslateLoader(http: HttpClient) {
-  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+  return new TranslateHttpLoader(http, './assets/apps/customers/i18n/', '.json');
 }
 
 export function appInit(appConfigService: ConfigService) {

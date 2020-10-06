@@ -24,12 +24,9 @@
     "changeOrigin" : true
   },
   "/api": {
-    "target": "https://ppqzm7uohd.execute-api.eu-west-2.amazonaws.com/mock",
+    "target": "https://ppqzm7uohd.execute-api.eu-west-2.amazonaws.com",
     "secure": false,
     "logLevel": "debug",
-    "changeOrigin" : true,
-    "pathRewrite": {
-      "^/api": ""
-    }
+    "changeOrigin" : true
   }
 }
