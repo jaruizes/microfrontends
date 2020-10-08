@@ -17,6 +17,7 @@ import { AccountsComponent } from './components/accounts/accounts.component';
 import { CardDetailComponent } from './components/card-detail/card-detail.component';
 import { AccountDetailComponent } from './components/account-detail/account-detail.component';
 import { LocaleService } from './services/locale/locale.service';
+import { UserService } from './services/user/user.service';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { LocaleService } from './services/locale/locale.service';
     AccountDetailComponent
   ],
   providers: [
-    LocaleService
+    LocaleService,
+    UserService
   ],
   imports: [
     CommonModule,

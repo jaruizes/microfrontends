@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "start-storybook -p 6006",
-    "build": "build-storybook -o storybook"
+    "build": "build-storybook -o storybook",
+    "deploy-storybook": "storybook-to-aws-s3 --bucket-path microfrontends-cdn-storybook"
   },
   "repository": {
     "type": "git",
@@ -23,6 +24,8 @@
     "@storybook/addon-actions": "^6.0.21",
     "@storybook/addon-essentials": "^6.0.21",
     "@storybook/addon-links": "^6.0.21",
+    "@storybook/addon-notes": "^5.3.21",
+    "@storybook/storybook-deployer": "^2.8.7",
     "@storybook/web-components": "^6.0.21",
     "babel-loader": "^8.1.0",
     "body-parser": "^1.19.0",

@@ -10,13 +10,16 @@ export class AppComponent {
   title = 'customersapp';
 
   private authConfig: AuthConfig = {
-    issuer: 'http://localhost:8080/auth/realms/microfrontends',
+    issuer: 'https://cognito-idp.eu-west-2.amazonaws.com/eu-west-2_L3ZWLjOCy',
     redirectUri: window.location.origin + "/private",
-    clientId: 'backoffice',
-    scope: 'openid profile email offline_access',
+    clientId: '2f6ohjv469v0lpqqfr8oej5mo3',
+    scope: 'openid profile email aws.cognito.signin.user.admin',
     responseType: 'code',
-    disableAtHashCheck: true,
-    showDebugInformation: true
+    showDebugInformation: true,
+    strictDiscoveryDocumentValidation: false,
+    //logoutUrl: 'https://microfrontends.auth.eu-west-2.amazoncognito.com/logout?client_id=63h0d80c0spg132td0ipksgcv0&response_type=code&redirect_uri=http://localhost:4200',
+    logoutUrl: 'https://microfrontends.auth.eu-west-2.amazoncognito.com/logout?client_id=63h0d80c0spg132td0ipksgcv0&logout_uri=customers:' + window.location.origin,
+    postLogoutRedirectUri: window.location.origin
   };
 
   constructor(private oauthService: OAuthService) {

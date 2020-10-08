@@ -1,0 +1,18 @@
+{
+  "version": 1.1,
+  "tags": [
+    {
+      "name": "items-table",
+      "description": {
+        "kind": "markdown",
+        "value": ""
+      },
+      "attributes": [
+        {
+          "name": "header",
+          "description": "Table header"
+        }
+      ]
+    }
+  ]
+}

@@ -4,11 +4,15 @@
   "scripts": {
     "ng": "ng",
     "mocks-server": "json-server --routes mocks/routes.json --watch mocks/api-mock.json --port 3050 &",
-    "start": "npm run mocks-server && ng serve --port 4250",
+    "start": "ng serve --port 4250",
     "build": "ng build",
+    "build:prod": "rimraf dist && ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "s3-delete": "aws s3 rm s3://microfrontends-cdn-backoffice --recursive",
+    "s3-upload": "aws s3 cp dist/backoffice s3://microfrontends-cdn-backoffice --recursive",
+    "publish": "npm run build:prod && npm run s3-delete && npm run s3-upload"
   },
   "private": true,
   "dependencies": {

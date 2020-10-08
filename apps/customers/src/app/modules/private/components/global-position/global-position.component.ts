@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { LocaleService } from '../../services/locale/locale.service';
 import { ConfigService } from '../../../../services/config/config.service';
 import { CustomerService } from '../../services/customer/customer.service';
+import { UserService } from '../../services/user/user.service';
 
 @Component({
   selector: 'app-global-position',
@@ -13,18 +14,21 @@ export class GlobalPositionComponent implements OnInit {
   public globalPositionURL;
   public locale;
   public channel = 'customers-app';
-  public customer;;
+  public customer;
 
   /**
    * This is the parentChannel used by an instance of this microfrontend
    */
   private parentChannel;
 
+  private username;
+
   constructor(private ngZone: NgZone,
               private router: Router,
               private localeService: LocaleService,
               private customerService: CustomerService,
-              private configService: ConfigService) {
+              private configService: ConfigService,
+              private userService: UserService) {
     this.customer = this.customerService.getCustomer();
     this.globalPositionURL = this.configService.getMicrofrontendURL('global-position');
   }

@@ -7,6 +7,7 @@
             <div class="cards-container mat-elevation-z8">
                 <div *ngFor="let card of cards">
                     <card-overview *axLazyElement="elementUrl; module: true"
+                                    class="card-overview"
                                     [locale]="locale"
                                     number="{{card.number}}"
                                     lastmovement="{{card.lastmovement}}"

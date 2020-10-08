@@ -1,15 +1,29 @@
 const { createProxyMiddleware } = require('http-proxy-middleware');
-const express  = require('express');
-const bodyParser = require('body-parser');
 
-const CARDS = require('../stories/mf-cards-summary/data/cards');
+module.exports = function expressMiddleware (router) {
+    router.use('/api', createProxyMiddleware({
+        target: 'https://ppqzm7uohd.execute-api.eu-west-2.amazonaws.com',
+        changeOrigin: true
+    }));
 
-const expressMiddleWare = (router) => {
-    router.get('/api/cards', (request, response) => {
-        response.send(CARDS)
-    });
+    router.use('/webcomponents', createProxyMiddleware({
+        target: 'http://microfrontends-cdn.s3-website.eu-west-2.amazonaws.com',
+        changeOrigin: true
+    }));
+
+    router.use('/assets/microfrontends', createProxyMiddleware({
+        target: 'http://microfrontends-cdn.s3-website.eu-west-2.amazonaws.com',
+        changeOrigin: true
+    }));
+
+    router.use('/assets/webcomponents', createProxyMiddleware({
+        target: 'http://microfrontends-cdn.s3-website.eu-west-2.amazonaws.com',
+        changeOrigin: true
+    }));
+
+    router.use('/microfrontends', createProxyMiddleware({
+        target: 'http://microfrontends-cdn.s3-website.eu-west-2.amazonaws.com',
+        changeOrigin: true
+    }));
 };
-
-module.exports = expressMiddleWare;
-
 

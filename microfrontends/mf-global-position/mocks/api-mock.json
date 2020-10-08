@@ -1,18 +1,4 @@
 {
-  "config": [
-    {
-      "id": "global-position-mf-config",
-      "microfrontends": {
-        "cards-summary": "/microfrontends/mf-cards-summary/v1/main.js",
-        "accounts-summary": "/microfrontends/mf-accounts-summary/v1/main.js",
-        "balance-overview": "/microfrontends/mf-balance-overview/v1/mf-balance-overview.js"
-      },
-      "webcomponents": {
-        "shortcuts": "/webcomponents/wc-shortcuts/v1/wc-shortcuts.bundled.js",
-        "items-table": "/webcomponents/items-table/v1/items-table.esm.js"
-      }
-    }
-  ],
   "accounts" : [
     {
       "id": 1,

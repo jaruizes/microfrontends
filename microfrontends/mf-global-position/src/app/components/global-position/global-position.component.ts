@@ -4,6 +4,7 @@ import { MovementsService } from '../../services/movements/movements.service';
 import { Movement } from '../../model/movement';
 import { ItemTable } from '../../model/item-table';
 import { ConfigService } from '../../services/config/config.service';
+import { UserService } from '../../services/user/user.service';
 
 @Component({
   selector: 'app-global-position',
@@ -73,19 +74,23 @@ export class GlobalPositionComponent implements OnInit {
     public showMovements = false;
 
     public urlBalanceOverview;
+    public nickName;
 
     constructor(private translate: TranslateService,
                 private ngZone: NgZone,
                 private movementsService: MovementsService,
-                private configService: ConfigService) {
+                private configService: ConfigService,
+                private userService: UserService) {
         this.initURLs();
         this.initI18n();
+        this.userService.initUser();
         console.log('Customer (const): ' + this.customer);
     }
 
     ngOnInit(): void {
         console.log('Customer (ngOnInit): ' + this.customer);
         this.initBroadcastChannel();
+        this.nickName = this.userService.getUser().nickname;
     }
 
     handleParentMessage(message) {

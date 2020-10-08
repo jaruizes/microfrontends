@@ -1,0 +1,42 @@
+{
+  "version": 1.1,
+  "tags": [
+    {
+      "name": "credit-card",
+      "description": {
+        "kind": "markdown",
+        "value": ""
+      },
+      "attributes": [
+        {
+          "name": "entity",
+          "description": "Card entity"
+        },
+        {
+          "name": "expiration",
+          "description": "Card expiration"
+        },
+        {
+          "name": "locale",
+          "description": "lang"
+        },
+        {
+          "name": "logo",
+          "description": "Card logo"
+        },
+        {
+          "name": "name",
+          "description": "Card onwer's name"
+        },
+        {
+          "name": "number",
+          "description": "Card number"
+        },
+        {
+          "name": "type",
+          "description": "Card expiration"
+        }
+      ]
+    }
+  ]
+}

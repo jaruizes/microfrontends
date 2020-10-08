@@ -105,6 +105,11 @@
             el2.setAttribute('type', 'text/css');
             el2.setAttribute('href', 'https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.css');
             document.head.appendChild(el2);
+
+            console.log('[mf-balance-overview: mounted] Customer: ' + this.customer);
+            if (this.customer) {
+                this.initData();
+            }
         },
         data() {
             return {

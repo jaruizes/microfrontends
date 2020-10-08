@@ -17,7 +17,13 @@ export class MainComponent implements OnInit {
      * Microfrontend specified properties
      */
     @Input()
-    public locale: string;
+    get locale(): string { return this._locale; }
+    set locale(locale: string) {
+        console.log('Locale: ' + locale);
+        this._locale = locale;
+        this.changeLocale(locale);
+    }
+    public _locale: string;
 
     @Input()
     public channel: string;
@@ -34,10 +40,6 @@ export class MainComponent implements OnInit {
     public show;
 
     public elementUrl: string;
-
-    @Input()
-    public title;
-
     public cards: Card[];
 
     /**
@@ -75,8 +77,7 @@ export class MainComponent implements OnInit {
     handleParentMessage(message) {
         console.log('[mf-cards-summary] Message received from parent: ' + message.cmd);
         if (message.cmd === 'changeLocale') {
-            this.locale = message.payload.locale;
-            this.translate.use(this.locale);
+            this.changeLocale(message.payload.locale);
         }
     }
 
@@ -87,8 +88,7 @@ export class MainComponent implements OnInit {
     handleGeneralMessages(message) {
         console.log('[mf-cards-summary] Message received from general channel: ' + message.cmd);
         if (message.cmd === 'changeLocale') {
-            this.locale = message.payload.locale;
-            this.translate.use(this.locale);
+            this.changeLocale(message.payload.locale);
         }
     }
 
@@ -110,6 +110,13 @@ export class MainComponent implements OnInit {
         this.cardsService.getCards(this.customer).subscribe((cards) => {
             this.cards = cards;
             this.show = true;
+        });
+    }
+
+    private changeLocale(locale) {
+        this._locale = locale;
+        this.translate.getTranslation(locale).subscribe((obj) => {
+            this.translate.setTranslation(locale, obj);
         });
     }
 
@@ -142,9 +149,9 @@ export class MainComponent implements OnInit {
      * Initializes translate service
      */
     private initI18n() {
-        this.locale = 'en';
-        this.translate.setDefaultLang(this.locale);
-        this.translate.use(this.locale);
+        //this._locale = 'en';
+        this.translate.setDefaultLang(this._locale);
+        this.translate.use(this._locale);
     }
 
 }

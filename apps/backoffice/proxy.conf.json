@@ -24,7 +24,7 @@
     "changeOrigin" : true
   },
   "/api": {
-    "target": "http://localhost:3050",
+    "target": "https://ppqzm7uohd.execute-api.eu-west-2.amazonaws.com",
     "secure": false,
     "logLevel": "debug",
     "changeOrigin" : true

@@ -21,6 +21,9 @@
       <a mat-button routerLink="/private/cards">Cards</a>
     </div>
     <span class="example-spacer"></span>
+    <div fxShow="true" fxHide.lt-md>
+      <a mat-button href="{{logoutURL}}">Close session</a>
+    </div>
   </mat-toolbar-row>
 </mat-toolbar>
 
