@@ -30,7 +30,7 @@ export function appInit(appConfigService: ConfigService) {
     HttpClientModule,
     OAuthModule.forRoot({
       resourceServer: {
-        allowedUrls: ['http://localhost:4200/api/*'],
+        allowedUrls: ['/api/*'],
         sendAccessToken: true
       }
     }),

@@ -106,6 +106,8 @@
             el2.setAttribute('href', 'https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.css');
             document.head.appendChild(el2);
 
+            this.initAuth();
+
             console.log('[mf-balance-overview: mounted] Customer: ' + this.customer);
             if (this.customer) {
                 this.initData();
@@ -131,8 +133,16 @@
             };
         },
         methods: {
+            initAuth() {
+                const accessToken = sessionStorage.getItem('access_token');
+                if (accessToken) {
+                    axios.defaults.headers.common['Authorization'] = 'Bearer ' + accessToken;
+                }
+            },
             initData() {
                 this.show = false;
+
+
                 axios.get("/api/customers/" + this.customer).then((result) => {
                     console.log(result.data);
                     this.summaryData = result.data.summary;

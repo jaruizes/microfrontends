@@ -16,6 +16,7 @@ import { MovementsService } from './services/movements/movements.service';
 import { ConfigService } from './services/config/config.service';
 import { UserService } from './services/user/user.service';
 import { JwtModule } from '@auth0/angular-jwt';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 // AoT requires an exported function for factories
 export function createTranslateLoader(http: HttpClient) {

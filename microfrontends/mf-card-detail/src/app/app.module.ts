@@ -13,6 +13,7 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { CardService } from './services/card/card.service';
 import { ConfigService } from './services/config/config.service';
+import { JwtModule } from '@auth0/angular-jwt';
 
 // AoT requires an exported function for factories
 export function createTranslateLoader(http: HttpClient) {
@@ -21,6 +22,10 @@ export function createTranslateLoader(http: HttpClient) {
 
 export function appInit(appConfigService: ConfigService) {
   return () => appConfigService.load();
+}
+
+export function tokenGetter() {
+  return sessionStorage.getItem("access_token");
 }
 
 @NgModule({
@@ -42,6 +47,12 @@ export function appInit(appConfigService: ConfigService) {
         useFactory: createTranslateLoader,
         deps: [HttpClient]
       }
+    }),
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        allowedDomains: ["localhost:4202"]
+      },
     })
   ],
   providers: [

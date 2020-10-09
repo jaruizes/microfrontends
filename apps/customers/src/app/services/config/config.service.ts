@@ -10,7 +10,7 @@ export class ConfigService {
   constructor(private http: HttpClient) {}
 
   load() :Promise<any>  {
-    const promise = this.http.get('https://ppqzm7uohd.execute-api.eu-west-2.amazonaws.com/mock/config/customers-app-config')
+    const promise = this.http.get('/api/config/customers-app-config')
       .toPromise()
       .then(data => {
         this.configData = data;

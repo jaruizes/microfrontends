@@ -5,6 +5,7 @@ import { Movement } from '../../model/movement';
 import { ItemTable } from '../../model/item-table';
 import { ConfigService } from '../../services/config/config.service';
 import { UserService } from '../../services/user/user.service';
+import { User } from '../../model/user';
 
 @Component({
   selector: 'app-global-position',
@@ -47,8 +48,8 @@ export class GlobalPositionComponent implements OnInit {
     private cardsChannel;
 
 
-    public urlCardsSummary; // = '/microfrontends/mf-cards-summary/v1/main.js';
-    public urlAccountsSummary; // = '/microfrontends/mf-accounts-summary/v1/main.js';
+    public urlCardsSummary;
+    public urlAccountsSummary;
     public urlShortcuts;
     public shortcuts = [
     {
@@ -74,23 +75,25 @@ export class GlobalPositionComponent implements OnInit {
     public showMovements = false;
 
     public urlBalanceOverview;
-    public nickName;
+    public user: User;
 
     constructor(private translate: TranslateService,
                 private ngZone: NgZone,
                 private movementsService: MovementsService,
                 private configService: ConfigService,
                 private userService: UserService) {
-        this.initURLs();
-        this.initI18n();
-        this.userService.initUser();
+        this.userService.getUser().subscribe((user) => {
+            this.user = user;
+            this.initURLs();
+            this.initI18n();
+        });
         console.log('Customer (const): ' + this.customer);
     }
 
     ngOnInit(): void {
         console.log('Customer (ngOnInit): ' + this.customer);
         this.initBroadcastChannel();
-        this.nickName = this.userService.getUser().nickname;
+        //this.nickName = this.userService.getUser().nickname;
     }
 
     handleParentMessage(message) {

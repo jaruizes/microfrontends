@@ -16,6 +16,8 @@ export class AppComponent {
     scope: 'openid profile email aws.cognito.signin.user.admin',
     responseType: 'code',
     showDebugInformation: true,
+    logoutUrl: 'https://microfrontends.auth.eu-west-2.amazoncognito.com/logout',
+    postLogoutRedirectUri: window.location.origin + "/home",
     strictDiscoveryDocumentValidation: false
   };
 

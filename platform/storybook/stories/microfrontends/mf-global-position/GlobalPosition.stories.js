@@ -31,13 +31,16 @@ export default {
         options: [0, 1]
       },
       description: 'desc'
-    },
+    }
   },
+  Storage
 };
 
-const Template = ({ locale, customer, mode }) => `
+const Template = ({ locale, customer, mode }) => {
+  return `
     <mf-global-position locale="${locale}" customer="${customer}" mode="${mode}"></mf-global-position>
-`;
+    `;
+}
 
 export const GlobalPositionCustomer = Template.bind();
 GlobalPositionCustomer.storyname = "Global Position (Customer)";
