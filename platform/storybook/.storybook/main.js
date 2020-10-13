@@ -7,6 +7,6 @@ module.exports = {
     "@storybook/addon-links",
     "@storybook/addon-essentials",
     '@storybook/addon-notes/register',
-      './storage-addon/register'
+      './microfrontends-addon/register'
   ]
 }

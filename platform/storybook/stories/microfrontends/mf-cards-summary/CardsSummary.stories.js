@@ -7,11 +7,12 @@ export default {
   component: 'mf-cards-summary'
 };
 
-const CardsSummaryTemplate = ({ locale, customer }) => `<mf-cards-summary locale="${locale}" customer="${customer}"></mf-cards-summary>`;
+const CardsSummaryTemplate = ({ locale, customer, channel }) => `<mf-cards-summary locale="${locale}" customer="${customer}" channel="${channel}"></mf-cards-summary>`;
 
 export const CardsSummary = CardsSummaryTemplate.bind();
 CardsSummary.storyname = "Cards Summary";
 CardsSummary.args = {
   customer: '0001',
-  locale: 'es'
+  locale: 'es',
+  channel: 'cards-summary'
 };
