@@ -2,64 +2,83 @@
 
 ## Description
 
-Displays a source attribution in block capitals in the bottom-right of the parent element. This implementation is primarily intended for use alongside images.
+This Micro Frontend provides the global position for a given customer. It has two different views depending on the "mode" parameter (customer vs backoffice) containing information about:
 
-## Installation
+**Customer Mode:**
 
-`npm install @bbc/psammead-copyright`
+- **Accounts**: lists the two principals accounts of the customer
+- **Cards**: lists the two principals cards of the customer
+- **Summary**: shows incomes versus expenses during the last twelve months
+- Shortcuts: shows customer shortcuts
+- **Notifications**: show the main notification for a customer
+- **Last Movements**: shows the recent movements from the all accounts of the customers
+
+
+
+**Backoffice Mode:**
+
+- **Accounts**: lists the two principals accounts of the customer
+- **Cards**: lists the two principals cards of the customer
+- **Summary**: shows incomes versus expenses during the last twelve months
+
+<br />
 
 ## Props
 
-| Argument  | Type | Required | Default | Example |
-| --------- | ---- | -------- | ------- | ------- |
-| No props. |      |          |         |         |
+| Name     | Description                                                  | Required | Default |
+| -------- | ------------------------------------------------------------ | -------- | ------- |
+| locale   | This is the lang used by the component                       | Not      | "en"    |
+| mode     | Mode in which the component works. The possbible values are<br />- 0: customer mode<br />- 1: backoffice mode | Not      | 0       |
+| customer | Customer id. This parameter is required in "backoffice mode" but in "customer mode", the customer id is retrieved from the id token. | Not      |         |
+| channel  | This is the channel (DOM) used to exchange messages with its parent | Not      |         |
 
-## Usage
+<br />
 
-Commonly used alongside [`psammead-figure`](https://github.com/BBC-News/psammead/tree/latest/packages/components/psammead-figure), [`psammead-image`](https://github.com/BBC-News/psammead/tree/latest/packages/components/psammead-image) and [`psammead-image-placeholder`](https://github.com/BBC-News/psammead/tree/latest/packages/components/psammead-image-placeholder). Can also pass in [`psammead-visually-hidden-text`](https://github.com/BBC-News/psammead/tree/latest/packages/components/psammead-visually-hidden-text) in order to announce the component.
+## Events
+
+### Input events
+
+| Type         | Description                                                  | Payload |
+| ------------ | ------------------------------------------------------------ | ------- |
+| changeLocale | This event is listened and when it's received, the lang of the component is changed | Not     |
+
+
+
+### Output events
+
+| Type         | Description                                    | Payload           |
+| ------------ | ---------------------------------------------- | ----------------- |
+| accountClick | This event is fired when an account is clicked | {id: <accountId>} |
+| cardClick    | This event is fired when an account is clicked | {id: <cardId>}    |
+
+<br />
+
+## How can I use it?
+
+### Load
+
+This microfrontend is located in the URI '**/microfrontends/global-position-mf/v1/main.js**'
+
+### Usage
+
+This component has two different usages:
+
+#### Customer mode
 
 ```jsx
-const WrapperComponent = ({ alt, ratio, src, width }) => (
-  <Figure>
-    <ImagePlaceholder ratio={ratio}>
-      <Image alt={alt} src={src} width={width} />
-      <Copyright>
-        <VisuallyHiddenText>Image source, </VisuallyHiddenText>
-        Getty Images
-      </Copyright>
-    </ImagePlaceholder>
-  </Figure>
-);
+<mf-global-position locale="en" channel="global-position"></mf-global-position>
 ```
 
-### When to use this component
+In this mode, customer id is retrieved from the id token storaged in session storage, so it's necessary that the customer must be logged and the JWT tokens (access_token & id_token) have been storaged
 
-This component is intended to be used alongside images or diagrams contained within a [Figure component](https://github.com/BBC-News/psammead/tree/latest/packages/components/psammead-figure).
+#### Backoffice mode
 
-### When not to use this component
+```jsx
+<mf-global-position locale="en" 
+  customer="0001" 
+  channel="global-position"
+  mode="1">
+</mf-global-position>
+```
 
-This component should not be used arbitrarily to represent source attribution across the page. As above, it is not intended to be used outside the [Figure component](https://github.com/BBC-News/psammead/tree/latest/packages/components/psammead-figure). The accessibility text would be incorrect and potentially confusing.
-
-Do not use this component if you know the source attribution is already covered by another copyright disclosure on the page, such as in [`psammead-sitewide-links` component](https://github.com/BBC-News/psammead/tree/latest/packages/components/psammead-sitewide-links).
-
-### Accessibility notes
-
-The default styling of this component is intended to comply with WCAG colour contrast standards.
-
-The `VisuallyHiddenText` component can be used as a child of `Copyright` to add additional context to screen reader users. An example of this can be found in [our storybook](https://bbc.github.io/psammead/?selectedKind=Copyright&selectedStory=with%20visually%20hidden%20text)
-
-This component uses aria role text, to stop '[text splitting](https://axesslab.com/text-splitting/)' that is observed when using VoiceOver on iPhone and therefore improve the screen reader UX. Without this, the image source element is 2 swipes on VoiceOver (left to right), one for 'Image source' and one for the actual source such as 'Getty images'.
-
-<!-- ## Roadmap -->
-
-## Contributing
-
-Psammead is completely open source. We are grateful for any contributions, whether they be new components, bug fixes or general improvements. Please see our primary contributing guide which can be found at [the root of the Psammead respository](https://github.com/BBC-News/psammead/blob/latest/CONTRIBUTING.md).
-
-### [Code of Conduct](https://github.com/BBC-News/psammead/blob/latest/CODE_OF_CONDUCT.md)
-
-We welcome feedback and help on this work. By participating in this project, you agree to abide by the [code of conduct](https://github.com/BBC-News/psammead/blob/latest/CODE_OF_CONDUCT.md). Please take a moment to read it.
-
-### License
-
-Psammead is [Apache 2.0 licensed](https://github.com/BBC-News/psammead/blob/latest/LICENSE).
+In this mode, customer id is retrieved from the id token storaged in session storage, so it's necessary that the customer must be logged and the JWT tokens (access_token & id_token) have been storaged
