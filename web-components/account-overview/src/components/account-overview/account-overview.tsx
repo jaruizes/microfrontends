@@ -77,25 +77,25 @@ export class AccountOverview {
     return (
       <div class="container-fluid card-main-container">
         <div class="row">
-          <div class="col-12 mt-3">
+          <div class="col-12 mt-3 left-col">
             <div class="card">
               <div class="card-body">
                 <div class="container-fluid">
                   <div class="row">
-                    <div class="col-xl-4 col-lg-4 col-sm-4 col-6">
+                    <div class="col-xl-4 col-lg-4 col-sm-7 col-7 left-col">
                       <h4 class="card-title">{this.name}</h4>
-                      <p class="text-muted">{this.formatIBAN(this.number)}</p>
+                      <p class="text-muted card-number">{this.formatIBAN(this.number)}</p>
                     </div>
-                    <div class="col-xl-4 col-lg-4 col-sm-4 d-none d-sm-block">
-                      <div class="d-flex justify-content-center">
+                    <div class="col-xl-4 col-lg-4 col-sm-3 col-3 middle-col">
+                      <div class="d-flex justify-content-center new-movememnts">
                         <p class="text-muted">{this.i18nStrings['new-transactions']}</p>
                       </div>
                       <div class="d-flex justify-content-center">
                         <h3 class="card-movements">{this.newmovements}</h3>
                       </div>
                     </div>
-                    <div class="col-xl-4 col-lg-4 col-sm-4 col-6">
-                      <div class="d-flex justify-content-end">
+                    <div class="col-xl-4 col-lg-4 col-sm-2 col-2 right-col">
+                      <div class="d-flex justify-content-end balance">
                         <p class="text-muted">{this.i18nStrings['balance']}</p>
                       </div>
                       <div class="d-flex justify-content-end">
@@ -108,7 +108,7 @@ export class AccountOverview {
               <div class="card-footer">
                 <div class="container-fluid">
                   <div class="row">
-                    <div class="col-12">
+                    <div class="col-12 card-last-movement">
                       <small class="text-muted font-weight-bold">{this.i18nStrings['last-movement']}: {this.lastmovement}</small>
                     </div>
                   </div>

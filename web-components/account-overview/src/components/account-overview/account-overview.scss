@@ -35,17 +35,6 @@
   display: block;
 }
 
-@media (max-width: 600px) {
-  .card-img {
-    display: none;
-  }
-
-  .progress-bar-container {
-    display: none;
-  }
-}
-
-
 .card-title {
   font-weight:900;
 }
@@ -83,5 +72,51 @@
   font-size:0.8em;
   font-weight: bold;
   color: black;
+}
+
+@media screen and (max-width: 600px) {
+  .card-title {
+    font-size: 3vw;
+  }
+
+  .middle-col {
+    padding-right: 0em;
+    padding-left: 0em;
+  }
+
+  .right-col {
+    padding-left: 0.2em;
+    padding-right: 0.2em;
+  }
+
+  .left-col {
+    padding-left: 0.2em;
+    padding-right: 0.2em;
+  }
+
+
+  .balance, .new-movememnts {
+    font-size: 3vw;
+  }
+
+  .card-amount {
+    font-size: large;
+  }
+
+  .card-movements {
+    font-size: large;
+  }
+
+  .card-number {
+    font-size: 3.5vw;
+  }
+
+  p {
+    line-height: 0em;
+  }
+
+  .card-last-movement {
+    font-size: x-small;
+  }
 }
 
