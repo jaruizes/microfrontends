@@ -6,7 +6,7 @@
                     <mat-card class="card">
                         <div class="container-fluid">
                             <div class="row">
-                                <div class="col-xl-4 d-xl-block d-lg-none d-sm-none d-md-none d-none">
+                                <div class="col-5 col-xl-5 col-lg-6 col-md-8" style="padding-left: 0.3em">
                                     <credit-card *axLazyElement="urlCard; module: true"
                                                  id="{{cardInfo.id}}"
                                                  name="{{cardInfo.name}}"
@@ -17,18 +17,18 @@
                                                  [locale]="locale">
                                     </credit-card>
                                 </div>
-                                <div class="col-xl-8 col-lg-12">
+                                <div class="col-7 col-xl-7 col-lg-4 col-md-4" >
                                     <div>
-                                        <h4 class="text-dark text-black-50">{{ 'card' | translate }}</h4>
-                                        <h2 class="text-muted text-dark">{{cardInfo.number}}</h2>
+                                        <h4 class="text-dark text-black-50 title-header">{{ 'card' | translate }}</h4>
+                                        <h2 class="text-muted text-dark title-content">{{cardInfo.number}}</h2>
                                     </div>
                                     <div>
-                                        <h4 class="text-dark text-black-50">{{ 'holder' | translate }}</h4>
-                                        <h2 class="text-muted">{{cardInfo.name}}</h2>
+                                        <h4 class="text-dark text-black-50 title-header">{{ 'holder' | translate }}</h4>
+                                        <h2 class="text-muted title-content">{{cardInfo.name}}</h2>
                                     </div>
                                     <div>
-                                        <h4 class="text-dark text-black-50">{{ 'balance' | translate }}</h4>
-                                        <h2 class="text-dark">{{cardInfo.balance}} €</h2>
+                                        <h4 class="text-dark text-black-50 title-header">{{ 'balance' | translate }}</h4>
+                                        <h2 class="text-dark title-content">{{cardInfo.balance}} €</h2>
                                     </div>
                                 </div>
                             </div>
@@ -49,7 +49,7 @@
                             <div class="container-fluid">
                                 <div class="row">
                                     <div class="col-md-8 col-sm-6 justify-content-start">
-                                        <h3>{{ 'movements' | translate }}</h3>
+                                        <h2 class="title-content">{{ 'movements' | translate }}</h2>
                                     </div>
                                 </div>
                             </div>
