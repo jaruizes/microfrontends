@@ -27,19 +27,10 @@
   display: block;
 }
 
-@media (max-width: 600px) {
-  .card-img {
-    display: none;
-  }
-
-  .progress-bar-container {
-    display: none;
-  }
-}
-
 
 .card-title {
   font-weight:900;
+  font-size: 2em;
 }
 
 .card-name{
@@ -59,7 +50,7 @@
 }
 
 .card-amount{
-  font-size:2em;
+  font-size:3em;
   font-weight: bold;
   text-transform:uppercase;
   color: red;
@@ -69,5 +60,32 @@
   font-size:0.8em;
   font-weight: bold;
   color: black;
+}
+
+@media screen and (max-width: 600px) {
+  .card-img {
+    display: none;
+  }
+
+  .progress-bar-container {
+    display: none;
+  }
+
+  .card-amount {
+    font-size: 5vw;
+    padding-right: 1vw;
+  }
+
+  .card-title {
+    font-size: 5vw;
+  }
+
+  .card-last-movement {
+    font-size: 3vw;
+  }
+
+  .card-body {
+    padding: 0.2vw;
+  }
 }
 

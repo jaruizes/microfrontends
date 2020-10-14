@@ -132,7 +132,7 @@ export class CardOverview {
                 <div class="container-fluid">
                   <div class="row">
                     <div class="col-8">
-                      <small class="text-muted font-weight-bold">{this.i18nStrings['last-movement']}: {this.lastmovement}</small>
+                      <small class="text-muted font-weight-bold card-last-movement">{this.i18nStrings['last-movement']}: {this.lastmovement}</small>
                     </div>
                   </div>
                 </div>
