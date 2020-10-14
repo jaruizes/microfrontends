@@ -100,12 +100,12 @@ export class CardOverview {
                 <div class="card-body">
                   <div class="container-fluid">
                     <div class="row">
-                      <div class="col-7 col-sm-8 justify-content-start middle-col">
+                      <div class="col-9 col-sm-8 justify-content-start middle-col">
                         <h4 class="card-title">{this.formatCardNumber()}</h4>
                         <p class="text-muted card-type">{cardType}</p>
                       </div>
-                      <div class="col-5 col-sm-4 justify-content-end right-col">
-                        <div class="row justify-content-end">
+                      <div class="col-3 col-sm-4 justify-content-end right-col">
+                        <div class="row justify-content-md-end justify-content-center">
                           <p class="card-amount">{this.amount}€</p>
                         </div>
                           { this.isCredit() ?
