@@ -70,10 +70,12 @@ export class CreditCardComponent {
     this.i18nStrings = await this.fetchLocaleStringsForComponent();
   }
 
+
   render() {
-    let background: string = getAssetPath('./assets/images/background-debit.png');
+    const screenWidth = window.screen.width;
+    let background: string = screenWidth > 600 ? getAssetPath('./assets/images/background-debit.png') : getAssetPath('./assets/images/background-debit-mobile.png');
     if (this.type === 1) {
-      background = getAssetPath('./assets/images/background-credit.jpg');
+      background = screenWidth > 600 ? getAssetPath('./assets/images/background-credit.jpg') : getAssetPath('./assets/images/background-credit-mobile.png');
     }
 
     return (
@@ -87,14 +89,12 @@ export class CreditCardComponent {
           <div class="mk-icon-sim"></div>
           <div class="credit-font credit-card-number">{this.number}</div>
           <footer class="footer">
-            <div class="clearfix">
-              <div class="pull-left">
-                <div class="credit-card-date"><span class="title">{this.i18nStrings['end-date']}</span><span class="credit-font">{this.expiration}</span></div>
-                <div class="credit-font credit-owner">{this.name}</div>
-              </div>
-              <div class="pull-right">
-                <div class="mk-icon-visa">
-                  <img src={getAssetPath(`./assets/images/mc_vrt_rev.svg`)}></img>
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-9">
+                  <div class="credit-card-date"><span class="title">{this.i18nStrings['end-date']}</span><span
+                    class="credit-font">{this.expiration}</span></div>
+                  <div class="credit-font credit-owner">{this.name}</div>
                 </div>
               </div>
             </div>

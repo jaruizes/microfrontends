@@ -69,7 +69,6 @@ body{
   white-space:nowrap;
 }
 .credit-card-wrap .credit-card-number:before{
-  font-size:1.5em;
   font-family:Roboto;
 }
 .credit-card-wrap .credit-card-date{
@@ -110,11 +109,50 @@ body{
   position:relative;
 }
 .credit-card-wrap .footer{
-  right:2em;
+  width: 80%;
   left: 0.5em;
   bottom: 1.5em;
   position:absolute;
 }
 .credit-card-wrap .footer .pull-left{
   width:70%;
+}
+
+@media screen and (max-width: 600px) {
+  .credit-card-wrap {
+    width: 18em;
+    height:11.4em;
+  }
+  .credit-card-wrap .credit-card-number {
+    font-size:8vw;
+  }
+  .credit-card-wrap .credit-logo .text {
+    font-size:3vw;
+  }
+
+  .credit-card-wrap .credit-owner {
+    font-size:3vw;
+  }
+
+  .credit-card-wrap .credit-card-number {
+    font-size:4.5vw;
+  }
+
+  .credit-card-wrap .credit-card-date {
+    font-size:2.5vw;
+  }
+
+  .mk-icon-sim{
+    background-size:1.6em;
+  }
+
+  .credit-card-wrap .mk-icon-sim {
+    width: 1.6em;
+    height: 1.2em;
+    margin: 0.8em 0;
+  }
+
+  .credit-card-wrap .credit-card-date .title {
+    font-size: 2vw;
+  }
 }
