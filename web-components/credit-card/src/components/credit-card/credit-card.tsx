@@ -85,8 +85,9 @@ export class CreditCardComponent {
             <div class="credit-logo">
               <span class="text credit-font">{this.entity}</span>
             </div>
+            <div class="mk-icon-sim"></div>
           </header>
-          <div class="mk-icon-sim"></div>
+
           <div class="credit-font credit-card-number">{this.number}</div>
           <footer class="footer">
             <div class="container-fluid">
