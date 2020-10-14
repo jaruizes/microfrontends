@@ -82,11 +82,11 @@ export class AccountOverview {
               <div class="card-body">
                 <div class="container-fluid">
                   <div class="row">
-                    <div class="col-xl-4 col-lg-4 col-sm-7 col-7 left-col">
+                    <div class="col-xl-4 col-lg-5 col-sm-6 col-6 left-col">
                       <h4 class="card-title">{this.name}</h4>
                       <p class="text-muted card-number">{this.formatIBAN(this.number)}</p>
                     </div>
-                    <div class="col-xl-4 col-lg-4 col-sm-3 col-3 middle-col">
+                    <div class="col-xl-4 col-lg-3 col-sm-3 col-3 middle-col">
                       <div class="d-flex justify-content-center new-movememnts">
                         <p class="text-muted">{this.i18nStrings['new-transactions']}</p>
                       </div>
@@ -94,7 +94,7 @@ export class AccountOverview {
                         <h3 class="card-movements">{this.newmovements}</h3>
                       </div>
                     </div>
-                    <div class="col-xl-4 col-lg-4 col-sm-2 col-2 right-col">
+                    <div class="col-xl-4 col-lg-4 col-sm-3 col-3 right-col">
                       <div class="d-flex justify-content-end balance">
                         <p class="text-muted">{this.i18nStrings['balance']}</p>
                       </div>
