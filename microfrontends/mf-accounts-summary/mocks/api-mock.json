@@ -11,8 +11,8 @@
   "accounts" : [
     {
       "id": 1,
-      "number" : "123412341234",
-      "name" : "Cuenta Nómina 1",
+      "number" : "ES7331903942805611326745",
+      "name" : "MICROSERVICIOS 1,2,3",
       "lastmovement": "2 days ago",
       "newmovements": "5",
       "amount": 345,
@@ -20,11 +20,11 @@
     },
     {
       "id": 2,
-      "number" : "123412341234",
-      "name" : "Cuenta Naranja 1",
+      "number" : "ES5430041589258358423886",
+      "name" : "APACHE KAFKA",
       "lastmovement": "2 days ago",
       "newmovements": 5,
-      "amount": 30000,
+      "amount": 3000000,
       "customer": "0001"
     },
     {
