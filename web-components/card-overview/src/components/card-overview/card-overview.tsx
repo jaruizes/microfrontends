@@ -28,7 +28,7 @@ export class CardOverview {
   /**
    * Card type
    */
-  @Prop() type: number;
+  @Prop() type: number = 0;
 
   /**
    * Card last movement
@@ -46,7 +46,7 @@ export class CardOverview {
   private i18nStrings: Array<string>;
 
   isCredit() {
-    return this.type === 1;
+    return this.type && this.type === 1;
   }
 
   getProgress() {
@@ -55,8 +55,6 @@ export class CardOverview {
 
   formatCardNumber(): string {
     const formated = this.number.replace(/[^\dA-Z]/g, '').replace(/(.{4})/g, '$1 ').trim();
-
-    console.log('Formated: ' + formated);
     return formated;
   }
 
@@ -85,12 +83,10 @@ export class CardOverview {
 
   render() {
 
-    let cardImg: string = getAssetPath('./assets/debit-card.png');
-    let cardType: string = this.i18nStrings['debit-card'];
-    if (this.isCredit()) {
-      cardImg = getAssetPath('./assets/credit-card.png');
-      cardType = this.i18nStrings['credit-card'];
-    }
+    let cardImg = this.isCredit() ? './assets/credit-card.png' : './assets/debit-card.png';
+    let cardType = this.isCredit() ? this.i18nStrings['credit-card'] : this.i18nStrings['debit-card'];
+
+    console.log('number: ' + this.number + ' / type: ' + cardType + ' / imgt: ' + cardImg);
 
     return (
       <div class="container-fluid card-main-container">
@@ -99,16 +95,16 @@ export class CardOverview {
             <div class="card">
               <div class="card-horizontal">
                 <div class="img-square-wrapper align-middle">
-                  <img class="card-img" src={cardImg} alt="Card image cap"/>
+                  <img class="card-img" src={getAssetPath(cardImg)} alt="Card image cap"/>
                 </div>
                 <div class="card-body">
                   <div class="container-fluid">
                     <div class="row">
-                      <div class="col-10 col-sm-8 justify-content-start">
+                      <div class="col-7 col-sm-8 justify-content-start middle-col">
                         <h4 class="card-title">{this.formatCardNumber()}</h4>
-                        <p class="text-muted">{cardType}</p>
+                        <p class="text-muted card-type">{cardType}</p>
                       </div>
-                      <div class="col-2 col-sm-4 justify-content-end">
+                      <div class="col-5 col-sm-4 justify-content-end right-col">
                         <div class="row justify-content-end">
                           <p class="card-amount">{this.amount}€</p>
                         </div>
@@ -118,7 +114,7 @@ export class CardOverview {
                                 <div class="progress-bar bg-danger" role="progressbar" style={{width: `${this.getProgress()}%`}} aria-valuenow={this.getProgress()} aria-valuemin="0" aria-valuemax="100"></div>
                               </div>
                               <div class="d-flex justify-content-end" style={{"padding-top": "0.2em"}}>
-                                <small class="text-muted font-italic">{this.i18nStrings['credit-limit']}: {this.limit} €</small>
+                                <small class="text-muted font-italic credit-limit">{this.i18nStrings['credit-limit']}: {this.limit} €</small>
                               </div>
                             </div>
                             : <div></div>

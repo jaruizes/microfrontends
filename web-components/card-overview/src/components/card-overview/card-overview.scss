@@ -62,30 +62,50 @@
   color: black;
 }
 
+.card-type {
+  font-size: x-large;
+}
+
 @media screen and (max-width: 600px) {
-  .card-img {
-    display: none;
+  .card {
+    padding-top: 0.2em;
   }
 
-  .progress-bar-container {
-    display: none;
+  .card-img {
+    max-width: 80px;
+  }
+
+  .credit-limit {
+    font-size: xx-small;
   }
 
   .card-amount {
     font-size: 5vw;
-    padding-right: 1vw;
+    padding-right: 1em;
   }
 
   .card-title {
-    font-size: 5vw;
+    font-size: 3vw;
+  }
+
+  .card-type {
+    font-size: 3vw;
   }
 
   .card-last-movement {
-    font-size: 3vw;
+    font-size: x-small;
   }
 
   .card-body {
     padding: 0.2vw;
+  }
+
+  .middle-col {
+    padding-top: 0.5em;
+  }
+  .right-col {
+    padding-left: 0em;
+    padding-right: 0.2em;
   }
 }
 

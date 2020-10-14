@@ -14,7 +14,7 @@
 | `limit`        | `limit`        | Card limit         | `number` | `undefined` |
 | `locale`       | `locale`       | locale             | `string` | `undefined` |
 | `number`       | `number`       | Card number        | `string` | `undefined` |
-| `type`         | `type`         | Card type          | `number` | `undefined` |
+| `type`         | `type`         | Card type          | `number` | `0`         |
 
 
 ----------------------------------------------
