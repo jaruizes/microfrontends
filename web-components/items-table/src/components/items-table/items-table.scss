@@ -36,3 +36,43 @@
 .items-data p {
   margin: 0em;
 }
+
+.items-right {
+  padding-right: 2em;
+  padding-top: 0.5em
+}
+
+.item-row {
+  border-top: lightgray 2px solid;
+  cursor: pointer;
+}
+
+.items-title {
+  font-size: x-large;
+}
+
+@media screen and (max-width: 600px) {
+  .items-title1 {
+    font-size: large;
+  }
+
+  .items-title2 {
+    font-size: large;
+  }
+
+  .items-subtitle1 {
+    font-size: 2.5vw;
+  }
+
+  .items-subtitle2 {
+    font-size: 3.5vw;
+  }
+
+  .items-right {
+    padding: 0em
+  }
+  .items-left {
+    padding-left: 0.2em;
+  }
+
+}
