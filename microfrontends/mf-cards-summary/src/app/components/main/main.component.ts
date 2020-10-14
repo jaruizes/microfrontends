@@ -117,6 +117,7 @@ export class MainComponent implements OnInit {
         this._locale = locale;
         this.translate.getTranslation(locale).subscribe((obj) => {
             this.translate.setTranslation(locale, obj);
+            this.translate.use(locale);
         });
     }
 
