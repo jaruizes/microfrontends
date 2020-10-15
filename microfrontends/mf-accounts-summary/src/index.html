@@ -27,6 +27,14 @@
       });
     }
 
+    function showDetails() {
+      generalChannel.postMessage({
+        cmd: 'showMFDetail'
+      });
+    }
+
+
+
   </script>
 </head>
 <body>
@@ -34,6 +42,7 @@
     <p>Language</p>
     <button onclick="changeLanguage('es')">ES</button>
     <button onclick="changeLanguage('en')">EN</button>
+    <button onclick="showDetails()">Show</button>
   </div>
 
   <div style="margin-top: 2em">

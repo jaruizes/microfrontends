@@ -1,0 +1,95 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
+import { html } from 'lit-html';
+import { wcloader } from '../../../utils/wc-loader';
+
+export const AccountsSummaryArgTypes = {
+            locale: {
+              control: {
+                type: 'text'
+              }
+            },
+            channel: {
+              control: {
+                type: 'text'
+              }
+            },
+            customer: {
+              control: {
+                required: true,
+                type: 'select',
+                options: ['0001', '0002']
+              }
+            }
+        };
+
+<Meta title="Microfrontends/Account Detail"
+        component="mf-account-detail"
+        argTypes={AccountsSummaryArgTypes} />
+
+export const AccountTemplate = ({ locale, account, channel }) => html`<mf-account-detail locale="${locale}" account="${account}" channel="${channel}"></mf-account-detail>`;
+wcloader('/microfrontends/mf-account-detail/v1/main.js');
+
+# Account Detail
+
+<br />
+<br />
+
+## Description
+
+This component provides the detail of an account, including its movements.
+
+An example of this component is the following one:
+
+
+<Story name="Account Detail" args={{ locale: 'es', account: '1', channel: 'account-detail'}}>
+  { AccountTemplate.bind() }
+</Story>
+
+
+<br />
+
+## Props
+This component declares the following properties:
+
+| Name    | Description                                                  | Required | Default |
+| ------- | ------------------------------------------------------------ | -------- | ------- |
+| locale  | This is the lang used by the component                       | Not      | "en"    |
+| account | Account id.                                                  | Yes      |         |
+| channel | This is the channel (DOM) used to exchange messages with its parent | Not      |         |
+
+<br />
+
+## Events
+
+### Input events
+This component listens the following properties:
+
+| Type         | Description                                                  | Example |
+| ------------ | ------------------------------------------------------------ | ------- |
+| changeLocale | This event is listened and when it's received, the lang of the component is changed | {<br />&nbsp; &nbsp; "cmd": "changeLocale",<br /> &nbsp; &nbsp; "payload": { <br /> &nbsp; &nbsp; &nbsp; &nbsp;  "locale": "en"<br />&nbsp; &nbsp; }<br />}     |
+
+<br />
+
+### Output events
+
+This component doesn't throw any event
+
+<br />
+
+## How can I use it?
+
+### Load
+
+This microfrontend is located in the URI '**/microfrontends/mf-account-detail/v1/main.js**'
+
+### Usage
+
+The HTML tag associated to this component is **mf-account-detail**. An example of use is the following:
+
+```jsx
+<mf-account-detail
+  locale="en"
+  channel="cards-summary"
+  customer="12345">
+</mf-account-detail>
+```

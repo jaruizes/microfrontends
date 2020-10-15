@@ -1,21 +1,58 @@
 <style scoped>
+    h3 {
+        font-size: 4vw;
+    }
 
+    .main-title {
+        font-size: 2.5vw;
+        margin-bottom: 0.1em
+    }
+
+    .title {
+        font-size: 1vw;
+        margin-bottom: 0.1em
+    }
+
+    @media screen and (max-width: 1024px) {
+        .main-title {
+            font-size: 4vw;
+        }
+
+        .title {
+            font-size: 2vw;
+        }
+
+        .subtitle {
+            font-size: 2vw;
+        }
+
+        h3 {
+            font-size: 4vw;
+        }
+
+        .header {
+            line-height: 0.2em;
+        }
+    }
 </style>
 
 <template>
-    <div >
+    <div>
         <link rel="stylesheet" type="text/css" href="https://unpkg.com/bootstrap/dist/css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.css">
 
         <a v-b-modal.modal-1 v-if="show">
             <div class="card text-center" >
                 <div class="card-body">
-                    <h5 class="card-title">{{ $t("summary") }}
-                        <span class="text-black-50 font-italic">({{ $t("detail") }})</span>
-                    </h5>
+                    <div class="header d-flex justify-content-md-start justify-content-lg-start justify-content-xl-center">
+                        <h3 class="card-title main-title">{{ $t("summary") }}</h3>
+                    </div>
+                    <div class="header d-flex justify-content-md-start justify-content-lg-start justify-content-xl-center">
+                        <h4 class="subtitle text-muted">({{ $t("detail") }})</h4>
+                    </div>
                     <div style="padding: 0.3em">
                         <div class="d-flex justify-content-start">
-                            <span class="text-muted font-italic">{{ $t("incomes") }}</span>
+                            <span class="text-muted font-italic title">{{ $t("incomes") }}</span>
                         </div>
                         <div class="progress">
                             <div class="progress-bar" role="progressbar" :aria-valuenow="this.incomes" aria-valuemin="0" aria-valuemax="100" style="width: 60%">{{this.incomes}} €</div>
@@ -23,7 +60,7 @@
                     </div>
                     <div style="padding: 0.3em">
                         <div class="d-flex justify-content-start">
-                            <span class="text-muted font-italic">{{ $t("expenses") }}</span>
+                            <span class="text-muted font-italic title">{{ $t("expenses") }}</span>
                         </div>
                         <div class="progress">
                             <div class="progress-bar bg-danger" role="progressbar" :aria-valuenow="this.expenses" aria-valuemin="0" aria-valuemax="100" style="width: 40%">{{this.expenses}} €</div>

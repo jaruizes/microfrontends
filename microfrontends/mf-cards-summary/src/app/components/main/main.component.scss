@@ -1,5 +1,18 @@
 @import '~bootstrap/scss/bootstrap.scss';
 
+.main-container {
+  padding-right: 0;
+  padding-left: 0;
+}
+
+h3 {
+  font-size: 4vw;
+}
+
+.card-overview {
+  margin-top: 1em;
+}
+
 .cards-container {
   display: flex;
   flex-direction: column;
@@ -13,4 +26,11 @@
 
 .card-overview {
   cursor: pointer;
+}
+
+@media screen and (max-width: 767px) {
+
+  .card-overview {
+    margin-top: 0.5em;
+  }
 }

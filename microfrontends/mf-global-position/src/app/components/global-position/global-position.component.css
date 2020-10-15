@@ -36,3 +36,16 @@ section {
 .items-data p {
     margin: 0em;
 }
+
+@media screen and (max-width: 767px) {
+    .gp-main-content {
+        padding-right: 0.1em;
+        padding-leftt: 0;
+    }
+
+    .gb-section {
+        padding-right: 0;
+        padding-leftt: 0;
+        width: 100%;
+    }
+}

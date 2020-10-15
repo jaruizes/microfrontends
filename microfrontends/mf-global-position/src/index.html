@@ -23,6 +23,12 @@
       });
     }
 
+    function showDetails() {
+      channel.postMessage({
+        cmd: 'showMFDetail'
+      });
+    }
+
   </script>
 </head>
 <body>
@@ -30,6 +36,7 @@
   <p>Language</p>
   <button onclick="changeLanguage('es')">ES</button>
   <button onclick="changeLanguage('en')">EN</button>
+  <button onclick="showDetails()">Show</button>
 </div>
   <mf-global-position customer="0001" mode="0"></mf-global-position>
 </body>

@@ -1,4 +1,4 @@
-import { wcloader } from '../../../utils/wc-loader';
+import { wcloader } from '../utils/wc-loader';
 
 wcloader('/microfrontends/mf-cards-summary/v1/main.js');
 

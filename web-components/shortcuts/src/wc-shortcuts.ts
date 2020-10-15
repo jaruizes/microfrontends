@@ -28,8 +28,23 @@ export class ShortCutsElement extends LitElement {
     
     .shortcut-icon-text {
       display: flex;
-      font-size: 0.8em;
+      font-size: 0.9vw;
       font-weight: bold;
+    }
+    
+    .shortcuts-title {
+        font-size: 2.5vw;
+    } 
+    
+    
+    @media screen and (max-width: 1024px) {  
+      .shortcuts-title {
+        font-size: 4vw;
+      }
+      
+      .shortcut-icon-text {
+        font-size: 3vw;
+      }    
     }
   `;
 
@@ -75,7 +90,9 @@ export class ShortCutsElement extends LitElement {
       
       <div class="card text-center">
             <div class="card-body">
-                <h5 class="card-title">${translate("title")}</h5>
+                <div class="d-flex justify-content-md-start justify-content-lg-start justify-content-xl-center">
+                    <h3 class="card-title shortcuts-title">${translate("title")}</h3>
+                </div>
                 <div class="container-fluid" style="padding-top: 0.3em">
                     <div class="row" style="border-bottom: lightgray 0.1em solid;">
                         <div class="col-6 d-flex justify-content-center" style="border-right: lightgray 0.1em solid;">

@@ -1,4 +1,13 @@
-import { Component, Input, NgZone, OnInit, ViewEncapsulation } from '@angular/core';
+import {
+    AfterViewInit,
+    Component,
+    ElementRef,
+    Input,
+    NgZone,
+    OnInit,
+    ViewChild,
+    ViewEncapsulation
+} from '@angular/core';
 import { AccountsService } from '../../services/accounts/accounts.service';
 import { Account } from '../../model/account';
 import { TranslateService } from '@ngx-translate/core';
@@ -12,7 +21,7 @@ import { ConfigService } from '../../services/config/config.service';
     ],
     encapsulation: ViewEncapsulation.ShadowDom
 })
-export class MainComponent implements OnInit {
+export class MainComponent implements OnInit, AfterViewInit {
     /**
      * Microfrontend specified properties
      */
@@ -36,6 +45,7 @@ export class MainComponent implements OnInit {
     public elementUrl: string;
     public accounts: Account[];
     public totalBalance: number;
+    public displayOverlay = 'none';
 
     /**
      * This is the parentChannel used by an instance of this microfrontend
@@ -47,6 +57,11 @@ export class MainComponent implements OnInit {
      */
     private generalChannel;
 
+    @ViewChild('contentCard', {read: ElementRef, static:false}) elementView: ElementRef;
+
+    public overlayHeight: number;
+    public overlayWidth: number;
+
     constructor(private accountsService: AccountsService,
                 private ngZone: NgZone,
                 private translate: TranslateService,
@@ -55,6 +70,10 @@ export class MainComponent implements OnInit {
         this.elementUrl = this.configService.getWebComponentURL('account-overview');
         this.totalBalance = 0;
         this.initI18n();
+    }
+
+    ngAfterViewInit() {
+
     }
 
     ngOnInit() {
@@ -97,6 +116,14 @@ export class MainComponent implements OnInit {
         if (message.cmd === 'changeLocale') {
             this.locale = message.payload.locale;
             this.translate.use(this.locale);
+        }
+
+        if (message.cmd === 'showMFDetail') {
+            this.overlayHeight = this.elementView.nativeElement.offsetHeight;
+            this.overlayWidth = this.elementView.nativeElement.clientWidth;
+            console.log('height: ' + this.overlayHeight);
+            console.log('width: ' + this.overlayWidth);
+            this.displayOverlay = 'block';
         }
     }
 

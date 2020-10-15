@@ -1,13 +1,12 @@
-<div class="container-fluid" *ngIf="show">
+<div class="container-fluid main-container" *ngIf="show">
     <mat-card class="card" >
         <mat-card-title fxLayout.gt-xs="row" fxLayout.xs="column">
             <h3>{{ 'cards' | translate }}</h3>
         </mat-card-title>
         <mat-card-content>
             <div class="cards-container mat-elevation-z8">
-                <div *ngFor="let card of cards">
+                <div *ngFor="let card of cards" class="card-overview">
                     <card-overview *axLazyElement="elementUrl; module: true"
-                                    class="card-overview"
                                     [locale]="locale"
                                     number="{{card.number}}"
                                     lastmovement="{{card.lastmovement}}"

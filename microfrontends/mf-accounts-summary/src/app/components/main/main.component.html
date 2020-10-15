@@ -1,13 +1,18 @@
-<div class="container-fluid" *ngIf="show">
-    <mat-card class="card" >
+<div class="container-fluid main-container" *ngIf="show">
+    <div id="overlay" [ngStyle]="{'display': displayOverlay, 'height': overlayHeight + 'px', 'width': overlayWidth + 'px'}">
+        <div id="text">Angular</div>
+    </div>
+    <mat-card class="card" #contentCard>
         <mat-card-title fxLayout.gt-xs="row" fxLayout.xs="column">
-            <div class="container-fluid">
+            <div class="container-fluid header">
                 <div class="row">
-                    <div class="col-md-4 col-sm-4 col-4 justify-content-start">
+                    <div class="col-12 justify-content-start">
                         <h3>{{ 'accounts' | translate }}</h3>
                     </div>
-                    <div class="col-md-8 col-sm-8 col-8 d-flex justify-content-end">
-                        <h3>{{ 'balance' | translate }}: {{totalBalance}} €</h3>
+                </div>
+                <div class="row">
+                    <div class="col-12 d-flex justify-content-end">
+                        <h5 class="balance"><span style="font-weight: bold">{{ 'balance' | translate }}</span>: {{totalBalance}} €</h5>
                     </div>
                 </div>
             </div>
@@ -15,9 +20,8 @@
         </mat-card-title>
         <mat-card-content>
             <div class="cards-container mat-elevation-z8">
-                <div *ngFor="let account of accounts">
+                <div *ngFor="let account of accounts" class="account-overview">
                     <account-overview *axLazyElement="elementUrl; module: true"
-                                      class="account-overview"
                                       [locale]="locale"
                                       number="{{account.number}}"
                                       name="{{account.name}}"

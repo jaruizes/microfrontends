@@ -1,0 +1,103 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
+import { html } from 'lit-html';
+import { wcloader } from '../../../utils/wc-loader';
+
+export const CardsSummaryArgTypes = {
+            locale: {
+              control: {
+                type: 'text'
+              }
+            },
+            channel: {
+              control: {
+                type: 'text'
+              }
+            },
+            customer: {
+              control: {
+                required: true,
+                type: 'select',
+                options: ['0001', '0002']
+              }
+            }
+        };
+
+<Meta title="Microfrontends/Cards Summary"
+        component="mf-cards-summary"
+        argTypes={CardsSummaryArgTypes} />
+
+export const CardsSummaryTemplate = ({ locale, customer, channel }) => html`<mf-cards-summary locale="${locale}" customer="${customer}" channel="${channel}"></mf-cards-summary>`;
+wcloader('/microfrontends/mf-cards-summary/v1/main.js');
+
+# Cards Summary
+
+<br />
+<br />
+
+## Description
+
+This component provides the **list of customer's cards**. When a card is clicked, an event containing the card id is fired.
+
+An example of this component is the following one:
+
+<Canvas>
+    <Story name="Cards Summary" height="220px" args={{ locale: 'es', customer: '0001', channel: 'cards-summary'}}>
+      { CardsSummaryTemplate.bind() }
+    </Story>
+</Canvas>
+
+<br />
+
+## Props
+This component declares the following properties:
+
+| Name    | Description                                                  | Required | Default |
+| ------- | ------------------------------------------------------------ | -------- | ------- |
+| locale  | This is the lang used by the component                       | Not      | "en"    |
+| customer| Customer id.                                                 | Yes      |         |
+| channel | This is the channel (DOM) used to exchange messages with its parent | Not      |         |
+
+<br />
+
+## Events
+
+### Input events
+This component listens the following properties:
+
+| Type         | Description                                                  | Example |
+| ------------ | ------------------------------------------------------------ | ------- |
+| changeLocale | This event is listened and when it's received, the lang of the component is changed | {<br />&nbsp; &nbsp; "cmd": "changeLocale",<br /> &nbsp; &nbsp; "payload": { <br /> &nbsp; &nbsp; &nbsp; &nbsp;  "locale": "en"<br />&nbsp; &nbsp; }<br />}     |
+
+<br />
+
+### Output events
+
+This component throws the following properties:
+
+<div style={{width: '100%'}}>
+
+| Type         | Description                                                  | Example |
+| ------------ | ------------------------------------------------------------ | ------- |
+| cardClick | This event is fired when a click is performed over a card  | {<br />&nbsp; &nbsp; "cmd": "cardClick",<br /> &nbsp; &nbsp; "payload": { <br /> &nbsp; &nbsp; &nbsp; &nbsp;  "value": "0001"<br />&nbsp; &nbsp; }<br />}   |
+
+</div>
+
+<br />
+
+## How can I use it?
+
+### Load
+
+This microfrontend is located in the URI '**/microfrontends/mf-cards-summary/v1/main.js**'
+
+### Usage
+
+The HTML tag associated to this component is **mf-cards-summary**. An example of use is the following:
+
+```jsx
+<mf-cards-summary
+  locale="en"
+  channel="cards-summary"
+  customer="12345">
+</mf-cards-summary>
+```

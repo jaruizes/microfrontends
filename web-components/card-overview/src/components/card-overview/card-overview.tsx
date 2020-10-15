@@ -91,7 +91,7 @@ export class CardOverview {
     return (
       <div class="container-fluid card-main-container">
         <div class="row">
-          <div class="col-12 mt-3">
+          <div class="col-12 left-col">
             <div class="card">
               <div class="card-horizontal">
                 <div class="img-square-wrapper align-middle">
