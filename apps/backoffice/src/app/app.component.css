@@ -1,1 +1,7 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+#backoffice {
+  background-color: darkblue;
+  height: 100vh;
+  box-sizing: border-box;
+}

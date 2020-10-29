@@ -1,12 +1,15 @@
 <ng-template [ngIf]="cardInfo">
-    <section class="content-section">
+    <section class="content-section" >
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12">
-                    <mat-card class="card">
+                    <div class="card card-info">
+                        <div class="card-title">
+                            <h3>{{ 'card-detail' | translate }}</h3>
+                        </div>
                         <div class="container-fluid">
                             <div class="row">
-                                <div class="col-5 col-xl-5 col-lg-6 col-md-8" style="padding-left: 0.3em">
+                                <div class="col-5 col-xl-5 col-lg-6 col-md-8">
                                     <credit-card *axLazyElement="urlCard; module: true"
                                                  id="{{cardInfo.id}}"
                                                  name="{{cardInfo.name}}"
@@ -19,49 +22,34 @@
                                 </div>
                                 <div class="col-7 col-xl-7 col-lg-4 col-md-4" >
                                     <div>
-                                        <h4 class="text-dark text-black-50 title-header">{{ 'card' | translate }}</h4>
-                                        <h2 class="text-muted text-dark title-content">{{cardInfo.number}}</h2>
+                                        <h5 class="text-dark text-black-50 title-header">{{ 'card' | translate }}</h5>
+                                        <h4 class="text-muted text-dark title-content">{{formatCardNumber(cardInfo.number)}}</h4>
                                     </div>
                                     <div>
-                                        <h4 class="text-dark text-black-50 title-header">{{ 'holder' | translate }}</h4>
-                                        <h2 class="text-muted title-content">{{cardInfo.name}}</h2>
+                                        <h5 class="text-dark text-black-50 title-header">{{ 'holder' | translate }}</h5>
+                                        <h4 class="text-muted title-content">{{cardInfo.name}}</h4>
                                     </div>
                                     <div>
-                                        <h4 class="text-dark text-black-50 title-header">{{ 'balance' | translate }}</h4>
-                                        <h2 class="text-dark title-content">{{cardInfo.balance}} €</h2>
+                                        <h5 class="text-dark text-black-50 title-header">{{ 'balance' | translate }}</h5>
+                                        <h4 class="text-dark title-content">{{cardInfo.balance}} €</h4>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </mat-card>
+                    </div>
                 </div>
             </div>
         </div>
-
     </section>
 
     <section class="content-section">
         <div class="container-fluid">
-            <div class="row">
-                <div class="col-12">
-                    <mat-card class="card" >
-                        <mat-card-title fxLayout.gt-xs="row" fxLayout.xs="column">
-                            <div class="container-fluid">
-                                <div class="row">
-                                    <div class="col-md-8 col-sm-6 justify-content-start">
-                                        <h2 class="title-content">{{ 'movements' | translate }}</h2>
-                                    </div>
-                                </div>
-                            </div>
-                        </mat-card-title>
-                        <mat-card-content>
-                            <div class="cards-container mat-elevation-z8">
-                                <section style="width: 100%;">
-                                    <items-table *axLazyElement="urlMovements; module: true" [items]="movements"></items-table>
-                                </section>
-                            </div>
-                        </mat-card-content>
-                    </mat-card>
+            <div class="card card-movements" >
+                <div class="card-title">
+                    <h3>{{ 'movements' | translate }}</h3>
+                </div>
+                <div class="card-body">
+                    <items-table *axLazyElement="urlMovements; module: true" [items]="movements"></items-table>
                 </div>
             </div>
         </div>

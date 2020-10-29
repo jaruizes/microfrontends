@@ -1,10 +1,10 @@
-<div class="container-fluid">
+<div class="container-fluid" *ngIf="customer">
     <div class="row">
         <div class="col-12">
             <section>
                 <mf-cards-summary *axLazyElement="urlCardsSummary"
                                   channel="customer-app-cards"
-                                  [customer]="customer">
+                                  [customer]="customer['custom:customerid']">
                 </mf-cards-summary>
             </section>
         </div>

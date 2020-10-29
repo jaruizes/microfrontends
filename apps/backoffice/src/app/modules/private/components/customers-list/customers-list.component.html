@@ -1,4 +1,4 @@
-<div class="container-fluid" *ngIf="showCustomers">
+<div class="container-fluid main-content" *ngIf="showCustomers">
   <mat-card class="card" >
     <mat-card-title fxLayout.gt-xs="row" fxLayout.xs="column">
       <div class="container-fluid">
@@ -14,17 +14,17 @@
         <div class="table-responsive">
           <table class="table table-hover">
             <thead>
-            <tr>
-              <th scope="col">Id</th>
-              <th scope="col">{{ 'name' | translate }}</th>
-              <th scope="col">{{ 'age' | translate }}</th>
-              <th scope="col">{{ 'entry' | translate }}</th>
-              <th scope="col">{{ 'balance' | translate }} (€)</th>
-            </tr>
+              <tr>
+                <th scope="col">Id</th>
+                <th scope="col">{{ 'name' | translate }}</th>
+                <th scope="col">{{ 'age' | translate }}</th>
+                <th scope="col">{{ 'entry' | translate }}</th>
+                <th scope="col">{{ 'balance' | translate }} (€)</th>
+              </tr>
             </thead>
             <tbody>
               <tr (click)="goToGlobalPosition(customer.id)" *ngFor="let customer of customers">
-                <th scope="row">{{customer.id}}</th>
+                <td scope="row">{{customer.id}}</td>
                 <td>{{customer.name}}</td>
                 <td>{{customer.age}}</td>
                 <td>{{customer.entry}}</td>

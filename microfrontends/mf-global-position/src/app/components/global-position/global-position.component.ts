@@ -4,8 +4,9 @@ import { MovementsService } from '../../services/movements/movements.service';
 import { Movement } from '../../model/movement';
 import { ItemTable } from '../../model/item-table';
 import { ConfigService } from '../../services/config/config.service';
-import { UserService } from '../../services/user/user.service';
 import { User } from '../../model/user';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ModalComponent } from '../modal/modal.component';
 
 @Component({
   selector: 'app-global-position',
@@ -28,6 +29,9 @@ export class GlobalPositionComponent implements OnInit {
         this._customer = customer;
         this.getData();
     }
+
+    @Input()
+    public nickname: string;
 
     @Input()
     public mode: number = 0;
@@ -72,7 +76,7 @@ export class GlobalPositionComponent implements OnInit {
 
     public urlMovements;
     public movementsItems = [];
-    public showMovements = false;
+    public show = false;
 
     public urlBalanceOverview;
     public user: User;
@@ -81,19 +85,16 @@ export class GlobalPositionComponent implements OnInit {
                 private ngZone: NgZone,
                 private movementsService: MovementsService,
                 private configService: ConfigService,
-                private userService: UserService) {
-        this.userService.getUser().subscribe((user) => {
-            this.user = user;
-            this.initURLs();
-            this.initI18n();
-        });
+                private modalService: NgbModal) {
+
+        this.initURLs();
+        this.initI18n();
         console.log('Customer (const): ' + this.customer);
     }
 
     ngOnInit(): void {
         console.log('Customer (ngOnInit): ' + this.customer);
         this.initBroadcastChannel();
-        //this.nickName = this.userService.getUser().nickname;
     }
 
     handleParentMessage(message) {
@@ -139,10 +140,11 @@ export class GlobalPositionComponent implements OnInit {
 
     handleShortcutClick(e) {
         console.log(e);
+        this.open(e.detail.shortcut);
     }
 
     getData() {
-        this.showMovements = false;
+        this.show = false;
         this.movementsService.getMovements(this.customer).subscribe((movements: Movement[]) => {
             movements.forEach((movement) => {
                 const item: ItemTable = {
@@ -154,8 +156,14 @@ export class GlobalPositionComponent implements OnInit {
 
                 this.movementsItems.push(item);
             });
-            this.showMovements = true;
+            this.show = true;
         });
+    }
+
+    open(shortcut) {
+        const modalRef = this.modalService.open(ModalComponent);
+        const shortcutobj = this.shortcuts[shortcut];
+        modalRef.componentInstance.title = shortcutobj.text;
     }
 
     /**

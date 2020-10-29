@@ -1,5 +1,6 @@
 {
-  "customer-list": "Customers List",
+  "close-session": "Cerrar Sesión",
+  "customer-list": "Listado de Clientes",
   "customer-detail": "Detalles de Cliente",
   "name": "Nombre",
   "age": "Edad",

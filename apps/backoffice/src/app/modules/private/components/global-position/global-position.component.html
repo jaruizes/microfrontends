@@ -1,25 +1,25 @@
 <div *ngIf="show">
   <section>
-    <div class="container-fluid">
+    <div class="container-fluid gp-header">
       <div class="row">
         <div class="col-12">
           <div class="card account-info">
-            <div class="card-title" style="padding-bottom: 1em; padding-top: 1em">
+            <div class="card-title">
               <h3>{{ 'customer-detail' | translate }}</h3>
             </div>
-            <div class="container-fluid">
-              <div class="row" style="margin-top: 2em">
+            <div class="container-fluid customer-info">
+              <div class="row">
                 <div class="col-md-3 col-sm-12">
-                  <h5 class="text-dark text-black-50">{{ 'name' | translate }}</h5>
-                  <h4 class="text-dark">{{customerData.name}}</h4>
+                  <h5 class="text-white">{{ 'name' | translate }}</h5>
+                  <h4 class="text-white">{{customerData.name}}</h4>
                 </div>
                 <div class="col-md-3 col-sm-12">
-                  <h5 class="text-dark text-black-50">{{ 'age' | translate }}</h5>
-                  <h4 class="text-dark">{{customerData.age}}</h4>
+                  <h5 class="text-white">{{ 'age' | translate }}</h5>
+                  <h4 class="text-white">{{customerData.age}}</h4>
                 </div>
                 <div class="col-md-3 col-sm-12">
-                  <h5 class="text-dark text-black-50">{{ 'entry' | translate }}</h5>
-                  <h4 class="text-dark">{{customerData.entry}}</h4>
+                  <h5 class="text-white">{{ 'entry' | translate }}</h5>
+                  <h4 class="text-white">{{customerData.entry}}</h4>
                 </div>
               </div>
             </div>
@@ -28,7 +28,8 @@
       </div>
     </div>
   </section>
-  <section>
+
+  <section class="global-position-section">
     <mf-global-position *axLazyElement="globalPositionURL;"
                         channel="customers-app"
                         [locale]="locale"

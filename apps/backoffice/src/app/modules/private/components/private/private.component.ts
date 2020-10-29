@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { OAuthService } from 'angular-oauth2-oidc';
 import { LocaleService } from '../../services/locale/locale.service';
 import { TranslateService } from '@ngx-translate/core';
+import { SecurityService } from '../../../../services/security/security.service';
 
 @Component({
   selector: 'app-private',
@@ -10,12 +10,12 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class PrivateComponent implements OnInit {
   private locale;
+  public logoutURL;
 
-  constructor(private oauthService: OAuthService, private localeService: LocaleService, private translate: TranslateService) { }
+  constructor(private securityService: SecurityService, private localeService: LocaleService, private translate: TranslateService) { }
 
   ngOnInit(): void {
-    console.log(this.oauthService.getAccessToken());
-    console.log(this.oauthService.getIdToken());
+    this.logoutURL = this.securityService.getLogoutURL();
   }
 
   changeLocale(locale) {

@@ -121,9 +121,11 @@ export class MainComponent implements OnInit, AfterViewInit {
         if (message.cmd === 'showMFDetail') {
             this.overlayHeight = this.elementView.nativeElement.offsetHeight;
             this.overlayWidth = this.elementView.nativeElement.clientWidth;
-            console.log('height: ' + this.overlayHeight);
-            console.log('width: ' + this.overlayWidth);
             this.displayOverlay = 'block';
+        }
+
+        if (message.cmd === 'hideMFDetail') {
+            this.displayOverlay = 'none';
         }
     }
 

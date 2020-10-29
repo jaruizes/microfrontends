@@ -1,36 +1,111 @@
 @import '~bootstrap/scss/bootstrap.scss';
 
-.main-container {
-  padding-right: 0;
-  padding-left: 0;
-}
-
-h3 {
-  font-size: 4vw;
-}
-
-.card-overview {
-  margin-top: 1em;
-}
-
 .cards-container {
   display: flex;
   flex-direction: column;
   width: 100%;
 }
 
-.mat-table {
-  overflow: auto;
-  max-height: 500px;
+.card-title {
+  color: var(--titleColor, black);
 }
 
-.card-overview {
+.account-overview {
   cursor: pointer;
 }
 
-@media screen and (max-width: 767px) {
+h3 {
+  font-size: 3vw;
+}
+
+.header {
+  padding-right: 0;
+  padding-left: 0;
+}
+
+.card-overview {
+  margin-top: 1em;
+}
+
+.main-container {
+  padding-right: 0;
+  padding-left: 0;
+}
+
+#overlay {
+  background-color: #fafafa;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  z-index: 999;
+  opacity: 0.6;
+}
+
+#text{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: 50px;
+  color: red;
+  transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+}
+
+.account-info {
+  padding: 1.5em;
+  background-color: var(--bgCardColor, white);
+}
+
+@media screen and (max-width: 1024px) {
+
+  .balance {
+    font-size: 3vw;
+    margin-bottom: 0;
+  }
 
   .card-overview {
     margin-top: 0.5em;
   }
+
+  .container-fluid {
+    padding-left: 0.2em;
+    padding-right: 0.2em;
+    padding-bottom: 0.3em;
+  }
+  .account-info {
+    padding: 0.2em;
+  }
+
+  .card-title {
+    padding-bottom: 0;
+    padding-left: 0.4em;
+    margin-bottom: 0.5em;
+  }
+
+  h3, h4, h5{
+    line-height: 1.5em;
+    margin-bottom: 0.2em;
+  }
+  h3{
+    font-size: 5vw;
+  }
+
+  h5{
+    font-size: 2vw;
+  }
+
+  h4{
+    font-size: 2.5vw;
+  }
+
+  .card-body {
+    padding: 0.3em;
+  }
+
+  .content-section {
+    padding: 0.2em 0 0.2em 0;
+  }
 }
+
+
+

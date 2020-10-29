@@ -1,22 +1,22 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Router } from '@angular/router';
-import { Observable } from 'rxjs';
 import { OAuthService } from 'angular-oauth2-oidc';
+import { SecurityService } from '../services/security/security.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PrivateGuard implements CanActivate {
-  constructor(private oauthService: OAuthService, private router: Router) {
+  constructor(private securityService: SecurityService,
+              private router: Router) {
   }
 
   canActivate(
     route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-    const hasIdToken = this.oauthService.hasValidIdToken();
-    const hasAccessToken = this.oauthService.hasValidAccessToken();
 
-    if (!hasIdToken || !hasAccessToken) {
-      this.router.navigateByUrl('/home');
+    if (!this.securityService.isAuthenticated()) {
+      console.log('User not authenticated');
+      this.securityService.logout();
       return false;
     }
 

@@ -8,16 +8,17 @@
     "build:prod": "ng build --prod --output-hashing=none --single-bundle",
     "build": "ng build --output-hashing=none --single-bundle",
     "test": "npm run build && cd dist/mf-global-position && npx static-server",
-    "expose": "cd dist/mf-global-position && npx static-server",
+    "expose": "cd dist/mf-global-position/v1 && npx static-server",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "s3-delete-js": "aws s3 rm s3://microfrontends-cdn/microfrontends/mf-global-position/v1 --recursive",
-    "s3-delete-assets": "aws s3 rm s3://microfrontends-cdn/assets/microfrontends/mf-global-position/v1 --recursive",
-    "s3-upload-js": "aws s3 cp dist/mf-global-position/v1 s3://microfrontends-cdn/microfrontends/mf-global-position/v1 --recursive --exclude 'assets/*'",
-    "s3-upload-assets": "aws s3 cp dist/mf-global-position/v1/assets/microfrontends s3://microfrontends-cdn/assets/microfrontends --recursive",
+    "s3-delete-js": "aws s3 rm s3://microfrontends-bucket/microfrontends/mf-global-position/v1 --recursive",
+    "s3-delete-assets": "aws s3 rm s3://microfrontends-bucket/assets/microfrontends/mf-global-position/v1 --recursive",
+    "s3-upload-js": "aws s3 cp dist/mf-global-position/v1 s3://microfrontends-bucket/microfrontends/mf-global-position/v1 --recursive --exclude 'assets/*'",
+    "s3-upload-assets": "aws s3 cp dist/mf-global-position/v1/assets/microfrontends s3://microfrontends-bucket/assets/microfrontends --recursive",
     "s3-delete": "npm run s3-delete-assets && npm run s3-delete-js",
     "s3-upload": "npm run s3-upload-assets && npm run s3-upload-js",
-    "publish": "npm run build:prod && npm run s3-delete && npm run s3-upload"
+    "publish": "npm run build:prod && npm run s3-delete && npm run s3-upload",
+    "publish:local": "npm run build:prod && cp -R ./dist/ ../../platform/mf-server/microfrontends-server/content/microfrontends/"
   },
   "private": true,
   "dependencies": {

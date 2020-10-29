@@ -10,7 +10,7 @@ export class ConfigService {
   constructor(private http: HttpClient) {}
 
   load() :Promise<any>  {
-    const promise = this.http.get('/assets/config/backoffice-config.json')
+    const promise = this.http.get('/api/config/backoffice-app-config')
       .toPromise()
       .then(data => {
         this.configData = data;

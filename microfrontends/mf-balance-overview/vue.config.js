@@ -1,4 +1,5 @@
 module.exports = {
+    outputDir: 'dist/mf-balance-overview/v1',
     devServer: {
         proxy: {
             '^/api': {

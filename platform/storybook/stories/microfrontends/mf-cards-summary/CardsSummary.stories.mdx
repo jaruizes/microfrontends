@@ -29,6 +29,8 @@ export const CardsSummaryArgTypes = {
 export const CardsSummaryTemplate = ({ locale, customer, channel }) => html`<mf-cards-summary locale="${locale}" customer="${customer}" channel="${channel}"></mf-cards-summary>`;
 wcloader('/microfrontends/mf-cards-summary/v1/main.js');
 
+export const CardsSummaryTemplateCustom = ({ locale, customer, channel }) => html`<div style="--titleColor: darkgreen; --bgCardColor: lightgreen"><mf-cards-summary locale="${locale}" customer="${customer}" channel="${channel}"></mf-cards-summary></div>`;
+
 # Cards Summary
 
 <br />
@@ -83,6 +85,20 @@ This component throws the following properties:
 </div>
 
 <br />
+
+## CSS Props
+This component declares the following CSS properties:
+
+| Name         | Description                                                  | Default |
+| ------------ | ------------------------------------------------------------ | --------|
+| titleColor   | Set the color of the title                                   | white   |
+| bgCardColor  | Set the color of the title                                   | white   |
+
+For instance, the following story shows how the component is customized with a light green background and dark green text color for the title:
+
+<Story name="Cards Summary Custom" height="220px" args={{ locale: 'es', customer: '0001', channel: 'cards-summary'}}>
+  { CardsSummaryTemplateCustom.bind() }
+</Story>
 
 ## How can I use it?
 

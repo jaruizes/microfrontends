@@ -7,34 +7,33 @@
     <span>Technology Bank</span>
     <span class="example-spacer"></span>
     <button mat-icon-button (click)="changeLocale('en')">
-      <span class="flag-icon flag-icon-gb"></span>
+      <span class="flags-icon flags-icon-en"></span>
     </button>
     <button mat-icon-button style="margin-left: 0.3em" (click)="changeLocale('es')">
-      <span class="flag-icon flag-icon-es"></span>
+      <span class="flags-icon flags-icon-es"></span>
     </button>
   </mat-toolbar-row>
   <mat-toolbar-row fxShow="true" fxHide.lt-md class="toolbar-color">
     <span class="menu-spacer"></span>
     <div fxShow="true" fxHide.lt-md>
       <a mat-button routerLink="/private"><mat-icon>home</mat-icon></a>
-      <a mat-button routerLink="/private/accounts">Accounts</a>
-      <a mat-button routerLink="/private/cards">Cards</a>
+      <a mat-button routerLink="/private/accounts">{{ 'accounts' | translate }}</a>
+      <a mat-button routerLink="/private/cards">{{ 'cards' | translate }}</a>
     </div>
     <span class="example-spacer"></span>
     <div fxShow="true" fxHide.lt-md>
-      <a mat-button href="{{logoutURL}}">Close session</a>
+      <a mat-button href="{{logoutURL}}">{{ 'close-session' | translate }}</a>
     </div>
   </mat-toolbar-row>
 </mat-toolbar>
 
 <mat-sidenav-container fxFlexFill>
   <mat-sidenav #sidenav>
-    <mat-nav-list>
-      <a (click)="sidenav.toggle()" href="" mat-list-item>Close</a>
-      <a mat-button routerLink="/private"><mat-icon>home</mat-icon></a>
-      <a mat-button routerLink="/private/accounts">Accounts</a>
-      <a mat-button routerLink="/private/cards">Cards</a>
-    </mat-nav-list>
+    <mat-list>
+      <a mat-list-item routerLink="/private">{{ 'global' | translate }}</a>
+      <a mat-list-item routerLink="/private/accounts">{{ 'accounts' | translate }}</a>
+      <a mat-list-item routerLink="/private/cards">{{ 'cards' | translate }}</a>
+    </mat-list>
   </mat-sidenav>
 
   <mat-sidenav-content fxFlexFill class="main-content">

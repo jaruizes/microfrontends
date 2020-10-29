@@ -1,3 +1,59 @@
-section {
-  padding: 0.5em;
+.account-info {
+  padding: 1em;
+  background-color: lightskyblue;
+}
+
+h5{
+  font-size: 1.5vw;
+  color: white;
+}
+
+h4{
+  font-size: 2vw;
+}
+
+h3 {
+  font-size: 3vw;
+  color: white;
+}
+
+.gp-header {
+  padding: 1.5rem;
+}
+
+.global-position-section {
+  --GlobalPosition-bgColor: darkblue;
+  --bgCardsColor: lightskyblue;
+  --titlesColor: white;
+}
+
+@media screen and (max-width: 1024px) {
+  .account-info {
+    padding: 0.2em;
+  }
+
+  .customer-info {
+    padding: 0.2em
+  }
+
+  .gp-header {
+    padding: 0.1rem;
+    padding-bottom: 0.5rem;
+  }
+
+  h3, h4, h5{
+    line-height: 1.5em;
+    margin-bottom: 0.2em;
+  }
+  h3{
+    font-size: 5vw;
+  }
+
+  h5{
+    font-size: 2vw;
+  }
+
+  h4{
+    font-size: 2.5vw;
+  }
 }

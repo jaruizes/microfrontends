@@ -6,14 +6,15 @@ import { CardsComponent } from './components/cards/cards.component';
 import { AccountsComponent } from './components/accounts/accounts.component';
 import { AccountDetailComponent } from './components/account-detail/account-detail.component';
 import { CardDetailComponent } from './components/card-detail/card-detail.component';
+import { PrivateGuard } from '../../guards/private.guard';
 
 export const routes: Routes = [
   { path: '', component: PrivateComponent, children: [
-      { path: '', component: GlobalPositionComponent, pathMatch: 'full'},
-      { path: 'accounts', component: AccountsComponent },
-      { path: 'cards', component: CardsComponent },
-      { path: 'account-detail', component: AccountDetailComponent },
-      { path: 'card-detail', component: CardDetailComponent }
+      { path: '', component: GlobalPositionComponent, pathMatch: 'full', canActivate: [PrivateGuard]},
+      { path: 'accounts', component: AccountsComponent, canActivate: [PrivateGuard] },
+      { path: 'cards', component: CardsComponent, canActivate: [PrivateGuard] },
+      { path: 'account-detail', component: AccountDetailComponent, canActivate: [PrivateGuard] },
+      { path: 'card-detail', component: CardDetailComponent, canActivate: [PrivateGuard] }
     ]
   }
 ];

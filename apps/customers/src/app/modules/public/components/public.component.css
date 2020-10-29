@@ -323,10 +323,41 @@ a:hover, a:focus, a:active {
   background-color: #1D809F !important;
 }
 
-.text-primary {
-  color: #1D809F !important;
-}
-
 .text-secondary {
   color: #ecb807 !important;
+}
+
+@media screen and (max-width: 767px) {
+
+  .masthead h1 {
+    font-size: 6vw;
+  }
+
+  .masthead h3 {
+    font-size: 4vw;
+  }
+
+  .btn {
+    font-size: 0.6em;
+  }
+
+  .content-section-heading h2 {
+    font-size: 7vw;
+  }
+
+  .content-section-heading h4 {
+    font-size: 5vw;
+  }
+
+  h1 {
+    font-size: 6vw;
+  }
+
+  h4 {
+    font-size: 4vw;
+  }
+
+  .title-container {
+    margin-top: 40% !important;
+  }
 }

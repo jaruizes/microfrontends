@@ -9,6 +9,11 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
+    path: 'logout',
+    redirectTo: 'home',
+    pathMatch: 'full'
+  },
+  {
     path: 'home',
     loadChildren: () => import('./modules/public/public.module').then(m => m.PublicModule)
   },
@@ -19,6 +24,10 @@ const routes: Routes = [
   {
     path: 'private',
     loadChildren: () => import('./modules/private/private.module').then(m => m.PrivateModule)
+  },
+  {
+    path: 'doc',
+    loadChildren: () => import('./modules/doc/doc.module').then(m => m.DocModule)
   }
 ];
 

@@ -78,6 +78,8 @@ export class AppModule {
 
   ngDoBootstrap() {
     const mainCE = createCustomElement(MainComponent, { injector: this.injector });
-    customElements.define('mf-card-detail', mainCE);
+    if (!customElements.get('mf-card-detail')) {
+      customElements.define('mf-card-detail', mainCE);
+    }
   }
 }

@@ -1,8 +1,6 @@
 {
-  "customer-list": "Customers List",
-  "customer-detail": "Customer Detail",
-  "name": "Name",
-  "age": "Age",
-  "entry": "Entry Date",
-  "balance": "Balance"
+  "close-session": "Close Session",
+  "global": "Global Position",
+  "accounts": "Accounts",
+  "cards": "Cards"
 }

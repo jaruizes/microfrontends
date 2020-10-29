@@ -17,7 +17,8 @@
     "s3-upload-assets": "aws s3 cp dist/mf-account-detail/v1/assets/microfrontends s3://microfrontends-cdn/assets/microfrontends --recursive",
     "s3-delete": "npm run s3-delete-assets && npm run s3-delete-js",
     "s3-upload": "npm run s3-upload-assets && npm run s3-upload-js",
-    "publish": "npm run build:prod && npm run s3-delete && npm run s3-upload"
+    "publish": "npm run build:prod && npm run s3-delete && npm run s3-upload",
+    "publish:local": "npm run build:prod && cp -R ./dist/ ../../platform/mf-server/microfrontends-server/content/microfrontends/"
   },
   "private": true,
   "dependencies": {

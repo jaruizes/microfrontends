@@ -28,7 +28,6 @@ section {
 
 }
 
-
 .items-data {
     padding: 0.4em;
 }
@@ -37,15 +36,25 @@ section {
     margin: 0em;
 }
 
+.gp-main-content {
+    background-color: var(--GlobalPosition-bgColor, white);
+    --bgCardColor: var(--bgCardsColor, white);
+}
+
+.gb-section {
+    --bgCardColor: var(--bgCardsColor, white);
+    --titleColor: var(--titlesColor, black);
+}
+
 @media screen and (max-width: 767px) {
     .gp-main-content {
-        padding-right: 0.1em;
-        padding-leftt: 0;
+        padding-right: 0.2em;
+        padding-left: 0.2em;
     }
 
     .gb-section {
         padding-right: 0;
-        padding-leftt: 0;
+        padding-left: 0;
         width: 100%;
     }
 }

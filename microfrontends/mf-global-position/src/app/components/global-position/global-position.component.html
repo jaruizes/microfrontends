@@ -1,5 +1,5 @@
-<div class="container-fluid" class="gp-main-content" *ngIf="user">
-    <div *ngIf="mode == 0">
+<div class="container-fluid gp-main-content" *ngIf="show">
+   <div *ngIf="mode == 0">
         <div class="row">
             <!-- Accounts & Cards -->
             <div class="col-xl-8 col-lg-12 col-sm-12">
@@ -43,7 +43,7 @@
                 <section class="gb-section">
                     <div class="card text-center">
                         <div class="card-body">
-                            <h5 class="card-title">Hello {{user.nickname}}</h5>
+                            <h5 class="card-title">Hello {{nickname}}</h5>
                             <p class="card-text">You have a pre-approved one of up to 12.340 EUR</p>
                             <a href="#" class="btn btn-primary">I'm interested</a>
                         </div>
@@ -61,22 +61,20 @@
             </div>
         </div>
     </div>
+
     <div *ngIf="mode == 1">
         <div class="row">
             <div class="col-12">
                 <section class="gb-section">
-                    <div class="container-fluid">
-                        <mf-balance-overview *axLazyElement="urlBalanceOverview;"
-                                             [locale]="locale"
-                                             [customer]="customer">
-                        </mf-balance-overview>
-                    </div>
-
+                    <mf-balance-overview *axLazyElement="urlBalanceOverview;"
+                                         [locale]="locale"
+                                         [customer]="customer">
+                    </mf-balance-overview>
                 </section>
             </div>
         </div>
         <div class="row">
-            <div class="col-6">
+            <div class="col-12" style="padding: 0">
                 <section class="gb-section">
                     <mf-accounts-summary *axLazyElement="urlAccountsSummary;"
                                          channel="mf-global-position-accounts"
@@ -85,7 +83,9 @@
                     </mf-accounts-summary>
                 </section>
             </div>
-            <div class="col-6">
+        </div>
+        <div class="row">
+            <div class="col-12" style="padding: 0">
                 <section class="gb-section">
                     <mf-cards-summary *axLazyElement="urlCardsSummary;"
                                       channel="mf-global-position-cards"

@@ -18,6 +18,7 @@ import { CardDetailComponent } from './components/card-detail/card-detail.compon
 import { AccountDetailComponent } from './components/account-detail/account-detail.component';
 import { LocaleService } from './services/locale/locale.service';
 import { UserService } from './services/user/user.service';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { UserService } from './services/user/user.service';
     MatSidenavModule,
     FlexLayoutModule,
     MatCardModule,
-    MatListModule
+    MatListModule,
+    TranslateModule
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA

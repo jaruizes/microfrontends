@@ -1,24 +1,38 @@
 <div class="container-fluid main-container" *ngIf="show">
-    <mat-card class="card" >
-        <mat-card-title fxLayout.gt-xs="row" fxLayout.xs="column">
-            <h3>{{ 'cards' | translate }}</h3>
-        </mat-card-title>
-        <mat-card-content>
-            <div class="cards-container mat-elevation-z8">
-                <div *ngFor="let card of cards" class="card-overview">
-                    <card-overview *axLazyElement="elementUrl; module: true"
-                                    [locale]="locale"
-                                    number="{{card.number}}"
-                                    lastmovement="{{card.lastmovement}}"
-                                    amount="{{card.amount}}"
-                                    limit="{{card.limit}}"
-                                    type="{{card.type}}"
-                                    id="{{card.id}}"
-                                    (click)="handleCardClick(card.id)">
-                    </card-overview>
+    <div id="overlay" [ngStyle]="{'display': displayOverlay, 'height': overlayHeight + 'px', 'width': overlayWidth + 'px'}">
+        <div id="text">Angular</div>
+    </div>
+
+    <div class="container-fluid" #contentCard>
+        <div class="row">
+            <div class="col-12">
+                <div class="card account-info">
+                    <div class="card-title">
+                        <h3>{{ 'cards' | translate }}</h3>
+                    </div>
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="cards-container mat-elevation-z8">
+                                    <div *ngFor="let card of cards" class="card-overview">
+                                        <card-overview *axLazyElement="elementUrl; module: true"
+                                                       [locale]="locale"
+                                                       number="{{card.number}}"
+                                                       lastmovement="{{card.lastmovement}}"
+                                                       amount="{{card.amount}}"
+                                                       limit="{{card.limit}}"
+                                                       type="{{card.type}}"
+                                                       id="{{card.id}}"
+                                                       (click)="handleCardClick(card.id)">
+                                        </card-overview>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </mat-card-content>
-    </mat-card>
+        </div>
+    </div>
 </div>
 

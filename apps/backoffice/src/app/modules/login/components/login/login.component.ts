@@ -1,5 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthConfig, JwksValidationHandler, NullValidationHandler, OAuthService } from 'angular-oauth2-oidc';
+import {
+  AuthConfig,
+  JwksValidationHandler,
+  NullValidationHandler,
+  OAuthErrorEvent,
+  OAuthService
+} from 'angular-oauth2-oidc';
+import { SecurityService } from '../../../../services/security/security.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'login',
@@ -8,13 +16,23 @@ import { AuthConfig, JwksValidationHandler, NullValidationHandler, OAuthService 
 })
 export class LogInComponent implements OnInit {
 
-  constructor(private oauthService: OAuthService) {
-  }
+  constructor(private securityService: SecurityService, private authService: OAuthService, private route: ActivatedRoute, private router: Router) {}
 
   ngOnInit() {
-    console.log('ngOnInit init...........');
-    this.oauthService.initLoginFlow();
-    console.log('ngOnInit end...........');
-  }
+    this.route.queryParams.subscribe(params => {
+      if (this.route.snapshot.paramMap.get('doLogin') === 'true') {
+        this.securityService.login();
+      }
+    });
 
+    this.authService.events.subscribe(event => {
+      if (event instanceof OAuthErrorEvent) {
+        console.error(event);
+      } else {
+        if (event.type === 'token_received') {
+          this.router.navigateByUrl('/private');
+        }
+      }
+    });
+  }
 }

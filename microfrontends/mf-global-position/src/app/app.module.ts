@@ -14,9 +14,9 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { MovementsService } from './services/movements/movements.service';
 import { ConfigService } from './services/config/config.service';
-import { UserService } from './services/user/user.service';
 import { JwtModule } from '@auth0/angular-jwt';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ModalComponent } from './components/modal/modal.component';
 
 // AoT requires an exported function for factories
 export function createTranslateLoader(http: HttpClient) {
@@ -33,7 +33,8 @@ export function tokenGetter() {
 
 @NgModule({
   declarations: [
-    GlobalPositionComponent
+    GlobalPositionComponent,
+    ModalComponent
   ],
   imports: [
     BrowserModule,
@@ -66,8 +67,7 @@ export function tokenGetter() {
       multi: true,
       deps: [ConfigService]
     },
-    MovementsService,
-    UserService
+    MovementsService
   ],
   bootstrap: [],
   schemas: [
@@ -83,6 +83,8 @@ export class AppModule {
 
   ngDoBootstrap() {
     const mainCE = createCustomElement(GlobalPositionComponent, { injector: this.injector });
-    customElements.define('mf-global-position', mainCE);
+    if (!customElements.get('mf-global-position')) {
+      customElements.define('mf-global-position', mainCE);
+    }
   }
 }

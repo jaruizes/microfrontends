@@ -3,7 +3,6 @@ import { NgModule, Injector, CUSTOM_ELEMENTS_SCHEMA, APP_INITIALIZER } from '@an
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { createCustomElement } from '@angular/elements';
-import { MatCardModule } from '@angular/material/card';
 import { MainComponent } from './components/main/main.component';
 import { LazyElementsModule } from '@angular-extensions/elements';
 import { CardsService } from './components/services/cards/cards.service';
@@ -36,7 +35,6 @@ export function tokenGetter() {
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    MatCardModule,
     LazyElementsModule,
     HttpClientModule,
     TranslateModule.forRoot({
@@ -77,6 +75,8 @@ export class AppModule {
 
   ngDoBootstrap() {
     const mainCE = createCustomElement(MainComponent, { injector: this.injector });
-    customElements.define('mf-cards-summary', mainCE);
+    if (!customElements.get('mf-cards-summary')) {
+      customElements.define('mf-cards-summary', mainCE);
+    }
   }
 }

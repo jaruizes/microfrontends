@@ -10,8 +10,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "s3-delete": "aws s3 rm s3://microfrontends-cdn-backoffice --recursive",
-    "s3-upload": "aws s3 cp dist/backoffice s3://microfrontends-cdn-backoffice --recursive",
+    "s3-delete": "aws s3 rm s3://microfrontends-applications-backoffice --recursive",
+    "s3-upload": "aws s3 cp dist/backoffice s3://microfrontends-applications-backoffice --recursive",
     "publish": "npm run build:prod && npm run s3-delete && npm run s3-upload"
   },
   "private": true,

@@ -1,12 +1,14 @@
-body {
-  background-color: black;
-}
 .main-content {
   padding: 1em;
+  background-color: darkblue;
 }
 
 section {
   padding: 0.5em;
+}
+
+a {
+  color: white;
 }
 
 a:hover {
@@ -18,12 +20,11 @@ a:hover {
 }
 
 .toolbar-color {
-  background-color: white;
-  border: red 0.1em solid;
+  background-color: darkblue;
 }
 
 .toolbar-color>div {
-  color: red;
+  color: darkblue;
 }
 
 .toolbar-color>div>a:hover {

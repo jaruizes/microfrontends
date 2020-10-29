@@ -1,7 +1,8 @@
-<div *ngIf="locale">
+<div *ngIf="customer">
   <mf-global-position *axLazyElement="globalPositionURL;"
                       channel="customers-app"
                       [locale]="locale"
-                      [customer]="customer">
+                      [customer]="customer['custom:customerid']"
+                      nickname="Fernando">
   </mf-global-position>
 </div>

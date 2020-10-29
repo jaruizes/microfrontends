@@ -29,3 +29,31 @@ a:hover {
   text-decoration: none;
   background-color: lightblue;
 }
+
+.flags-icon {
+  background-size:contain;
+  background-position:50%;
+  background-repeat:no-repeat;
+  position:relative;
+  display:inline-block;
+  width:1.33333333em;
+  line-height:1em
+}
+
+.flags-icon:before {
+  content:'\00a0'
+}
+
+.flags-icon-es {
+  background-image:url('../../../../../assets/apps/customers/img/icons/es-flag.svg');
+}
+
+.flags-icon-en {
+  background-image:url('../../../../../assets/apps/customers/img/icons/en-flag.svg');
+}
+
+@media screen and (max-width: 767px) {
+  .main-content {
+    padding: 0.1em;
+  }
+}

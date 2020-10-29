@@ -4,6 +4,7 @@ import { LocaleService } from '../../services/locale/locale.service';
 import { ConfigService } from '../../../../services/config/config.service';
 import { CustomerService } from '../../services/customer/customer.service';
 import { UserService } from '../../services/user/user.service';
+import { UserInfo } from 'angular-oauth2-oidc';
 
 @Component({
   selector: 'app-global-position',
@@ -14,7 +15,7 @@ export class GlobalPositionComponent implements OnInit {
   public globalPositionURL;
   public locale;
   public channel = 'customers-app';
-  public customer;
+  public customer: UserInfo;
 
   /**
    * This is the parentChannel used by an instance of this microfrontend
@@ -29,7 +30,6 @@ export class GlobalPositionComponent implements OnInit {
               private customerService: CustomerService,
               private configService: ConfigService,
               private userService: UserService) {
-    this.customer = this.customerService.getCustomer();
     this.globalPositionURL = this.configService.getMicrofrontendURL('global-position');
   }
 
@@ -38,18 +38,20 @@ export class GlobalPositionComponent implements OnInit {
     this.locale = this.localeService.getLocale();
     console.log('locale: ' + this.locale);
     this.initBroadcastChannel();
+    this.userService.getUserInfo().subscribe(userInfo => {
+      this.customer = userInfo;
+    });
+
   }
 
   handleInstanceMessage(message) {
     console.log('[customers-app] Received microfrontend message: ' + message.cmd);
 
     if (message.cmd === 'accountClick') {
-      console.log('Navigateeeeee');
       this.router.navigateByUrl('/private/account-detail?account=' + message.payload.id);
     }
 
     if (message.cmd === 'cardClick') {
-      console.log('Navigateeeeee');
       this.router.navigateByUrl('/private/card-detail?card=' + message.payload.id);
     }
   }

@@ -17,7 +17,8 @@
     "s3-upload-assets": "aws s3 cp dist/mf-accounts-summary/v1/assets/microfrontends s3://microfrontends-cdn/assets/microfrontends --recursive",
     "s3-delete": "npm run s3-delete-assets && npm run s3-delete-js",
     "s3-upload": "npm run s3-upload-assets && npm run s3-upload-js",
-    "publish": "npm run build:prod && npm run s3-delete && npm run s3-upload"
+    "publish": "npm run build:prod && npm run s3-delete && npm run s3-upload",
+    "publish:local": "npm run build:prod && cp -R ./dist/ ../../platform/mf-server/microfrontends-server/content/microfrontends/"
   },
   "private": true,
   "dependencies": {
@@ -30,7 +31,6 @@
     "@angular/elements": "^10.1.0",
     "@angular/flex-layout": "^10.0.0-beta.32",
     "@angular/forms": "~10.1.0",
-    "@angular/material": "^10.2.0",
     "@angular/platform-browser": "~10.1.0",
     "@angular/platform-browser-dynamic": "~10.1.0",
     "@ng-bootstrap/ng-bootstrap": "~7.0.0",

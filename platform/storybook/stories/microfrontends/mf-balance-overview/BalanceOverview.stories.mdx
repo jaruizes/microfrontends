@@ -1,0 +1,115 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
+import { html } from 'lit-html';
+import { wcloader } from '../../../utils/wc-loader';
+
+export const ComponentArgTypes = {
+            locale: {
+              control: {
+                type: 'text'
+              }
+            },
+            channel: {
+              control: {
+                type: 'text'
+              }
+            },
+            customer: {
+              control: {
+                required: true,
+                type: 'select',
+                options: ['0001', '0002']
+              }
+            }
+        };
+
+<Meta title="Microfrontends/Balance Overview"
+        component="mf-balance-overview"
+        argTypes={ComponentArgTypes} />
+
+export const BalanceTemplate = ({ locale, customer, channel }) => html`<mf-balance-overview locale="${locale}" customer="${customer}"></mf-balance-overview>`;
+wcloader('/microfrontends/mf-balance-overview/v1/mf-balance-overview.min.js');
+
+export const BalanceTemplateCustom = ({ locale, customer, channel }) => html`<div style="--titleColor: darkgreen; --bgCardColor: lightgreen; height: 220px"><mf-balance-overview locale="${locale}" customer="${customer}"></mf-balance-overview></div>`;
+
+
+# Balance Overview
+
+<br />
+<br />
+
+## Description
+
+This component show the different between incomes and expenses
+
+An example of this component is the following one:
+
+<Canvas>
+    <Story name="Balance Overview" height="220px" args={{ locale: 'es', customer: '0001', channel: 'balance'}}>
+      { BalanceTemplate.bind() }
+    </Story>
+</Canvas>
+
+<br />
+
+## Props
+This component declares the following properties:
+
+| Name    | Description                                                  | Required | Default |
+| ------- | ------------------------------------------------------------ | -------- | ------- |
+| locale  | This is the lang used by the component                       | Not      | "en"    |
+| customer| Customer id.                                                 | Yes      |         |
+| channel | This is the channel (DOM) used to exchange messages with its parent | Not      |         |
+
+<br />
+
+## Events
+
+### Input events
+This component listens the following properties:
+
+| Type         | Description                                                  | Example |
+| ------------ | ------------------------------------------------------------ | ------- |
+| changeLocale | This event is listened and when it's received, the lang of the component is changed | {<br />&nbsp; &nbsp; "cmd": "changeLocale",<br /> &nbsp; &nbsp; "payload": { <br /> &nbsp; &nbsp; &nbsp; &nbsp;  "locale": "en"<br />&nbsp; &nbsp; }<br />}     |
+
+<br />
+
+### Output events
+
+This component doesn't throw any events
+
+<br />
+
+## CSS Props
+This component declares the following CSS properties:
+
+| Name         | Description                                                  | Default |
+| ------------ | ------------------------------------------------------------ | --------|
+| titleColor   | Set the color of the title                                   | white   |
+| bgCardColor  | Set the color of the title                                   | white   |
+
+For instance, the following story shows how the component is customized with a light green background and dark green text color for the title:
+
+<Story name="Balance Overview Custom" height="220px" args={{ locale: 'es', customer: '0001', channel: 'balance'}}>
+  { BalanceTemplateCustom.bind() }
+</Story>
+
+<br />
+<br />
+
+## How can I use it?
+
+### Load
+
+This microfrontend is located in the URI '**//mf-balance-overview/v1/mf-balance-overview.min.js**'
+
+### Usage
+
+The HTML tag associated to this component is **mf-cards-summary**. An example of use is the following:
+
+```jsx
+<mf-balance-overview-summary
+  locale="en"
+  channel="balance"
+  customer="001">
+</mf-balance-overview>
+```

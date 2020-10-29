@@ -1,0 +1,32 @@
+default:
+  image: node:latest
+
+stages:
+  - build
+  - deploy
+
+# caching for reuse
+cache:
+  key: ${CI_COMMIT_REF_SLUG}
+  paths:
+    - node_modules/
+
+build_pro:
+  stage: build
+  script:
+    - npm install
+    - npm run build:prod
+  only: ['master']
+  artifacts:
+    paths:
+      - dist/
+
+deploy_S3:
+  stage: deploy
+  image: registry.gitlab.com/gitlab-org/cloud-deploy/aws-base:latest
+  script:
+    - aws s3 rm s3://microfrontends-cdn/microfrontends/mf-card-detail/v1 --recursive
+    - aws s3 rm s3://microfrontends-cdn/assets/microfrontends/mf-card-detail/v1 --recursive
+    - aws s3 cp dist/mf-card-detail/v1 s3://microfrontends-cdn/microfrontends/mf-card-detail/v1 --recursive --exclude 'assets/*'
+    - aws s3 cp dist/mf-card-detail/v1/assets/microfrontends s3://microfrontends-cdn/assets/microfrontends --recursive
+

@@ -91,6 +91,16 @@ export class MainComponent implements OnInit {
         this.translate.use(this.locale);
     }
 
+    /**
+     * IBAN Formatter
+     * @param accountNumber
+     */
+    public formatIBAN() {
+        if (this.accountData && this.accountData.number) {
+            return this.accountData.number.replace(/[^\dA-Z]/g, '').replace(/(.{4})/g, '$1 ').trim();
+        }
+    }
+
     private getAccountData() {
         this.show = false;
         this.accountsService.getAccount(this._account).subscribe((account: Account) => {

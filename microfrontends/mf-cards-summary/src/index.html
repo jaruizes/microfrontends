@@ -25,6 +25,13 @@
         }
       });
     }
+
+    function showDetails(hide) {
+      const cmd = hide ? 'hideMFDetail' : 'showMFDetail';
+      generalChannel.postMessage({
+        cmd: cmd
+      });
+    }
   </script>
 </head>
 <body>
@@ -33,6 +40,8 @@
     <p>Language</p>
     <button onclick="changeLanguage('es')">ES</button>
     <button onclick="changeLanguage('en')">EN</button>
+    <button onclick="showDetails(false)">Show</button>
+    <button onclick="showDetails(true)">Hide</button>
   </div>
 
   <div style="margin-top: 2em">

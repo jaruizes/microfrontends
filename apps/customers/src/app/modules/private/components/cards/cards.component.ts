@@ -1,7 +1,7 @@
 import { Component, NgZone, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ConfigService } from '../../../../services/config/config.service';
-import { CustomerService } from '../../services/customer/customer.service';
+import { UserService } from '../../services/user/user.service';
 
 @Component({
   selector: 'app-cards',
@@ -28,13 +28,15 @@ export class CardsComponent implements OnInit {
   constructor(private ngZone: NgZone,
               private router: Router,
               private configService: ConfigService,
-              private customerService: CustomerService) {
-    this.customer = this.customerService.getCustomer();
+              private userService: UserService) {
     this.urlCardsSummary = this.configService.getMicrofrontendURL('cards-summary');
   }
 
   ngOnInit(): void {
     this.initBroadcastChannel();
+    this.userService.getUserInfo().subscribe(userInfo => {
+      this.customer = userInfo;
+    });
   }
 
   handleInstanceMessage(message) {

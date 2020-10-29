@@ -11,11 +11,7 @@ import { CustomersListComponent } from './components/customers-list/customers-li
 export const routes: Routes = [
   { path: '', component: PrivateComponent, children: [
       { path: '', component: CustomersListComponent, pathMatch: 'full'},
-      { path: 'global', component: GlobalPositionComponent, pathMatch: 'full'},
-      { path: 'accounts', component: AccountsComponent },
-      { path: 'cards', component: CardsComponent },
-      { path: 'account-detail', component: AccountDetailComponent },
-      { path: 'card-detail', component: CardDetailComponent }
+      { path: 'global', component: GlobalPositionComponent, pathMatch: 'full'}
     ]
   }
 ];

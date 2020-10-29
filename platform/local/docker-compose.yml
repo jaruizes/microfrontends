@@ -1,0 +1,9 @@
+version: "3.8"
+services:
+  microfrontends-server:
+    image: "nginx"
+    ports:
+      - "8080:80"
+    volumes:
+      - ./microfrontends-server/content:/usr/share/nginx/html
+      - ./microfrontends-server/nginx-conf:/etc/nginx/conf.d

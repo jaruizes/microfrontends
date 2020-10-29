@@ -139,4 +139,11 @@ export class MainComponent implements OnInit {
             };
         }
     }
+
+    /**
+     * Card number formatter
+     */
+    public formatCardNumber(number): string {
+        return number.replace(/[^\dA-Z]/g, '').replace(/(.{4})/g, '$1 ').trim();
+    }
 }

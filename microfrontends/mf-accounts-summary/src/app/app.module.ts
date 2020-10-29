@@ -2,7 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, Injector, CUSTOM_ELEMENTS_SCHEMA, APP_INITIALIZER } from '@angular/core';
 
 import { createCustomElement } from '@angular/elements';
-import { MatCardModule } from '@angular/material/card';
 import { MainComponent } from './components/main/main.component';
 import { LazyElementsModule } from '@angular-extensions/elements';
 import { AccountsService } from './services/accounts/accounts.service';
@@ -48,8 +47,7 @@ export function tokenGetter() {
         tokenGetter: tokenGetter,
         allowedDomains: ["localhost:4202"]
       },
-    }),
-    MatCardModule
+    })
   ],
   providers: [
     {
@@ -74,6 +72,8 @@ export class AppModule {
 
   ngDoBootstrap() {
     const mainCE = createCustomElement(MainComponent, { injector: this.injector });
-    customElements.define('mf-accounts-summary', mainCE);
+    if (!customElements.get('mf-accounts-summary')) {
+      customElements.define('mf-accounts-summary', mainCE);
+    }
   }
 }

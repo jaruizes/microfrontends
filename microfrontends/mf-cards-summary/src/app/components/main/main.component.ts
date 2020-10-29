@@ -1,4 +1,4 @@
-import { Component, Input, NgZone, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, ElementRef, Input, NgZone, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { CardsService } from '../services/cards/cards.service';
 import { Card } from '../model/card';
 import { TranslateService } from '@ngx-translate/core';
@@ -41,6 +41,12 @@ export class MainComponent implements OnInit {
 
     public elementUrl: string;
     public cards: Card[];
+
+    @ViewChild('contentCard', {read: ElementRef, static:false}) elementView: ElementRef;
+
+    public displayOverlay = 'none';
+    public overlayHeight: number;
+    public overlayWidth: number;
 
     /**
      * This is the parentChannel used by an instance of this microfrontend
@@ -89,6 +95,16 @@ export class MainComponent implements OnInit {
         console.log('[mf-cards-summary] Message received from general channel: ' + message.cmd);
         if (message.cmd === 'changeLocale') {
             this.changeLocale(message.payload.locale);
+        }
+
+        if (message.cmd === 'showMFDetail') {
+            this.overlayHeight = this.elementView.nativeElement.offsetHeight;
+            this.overlayWidth = this.elementView.nativeElement.clientWidth;
+            this.displayOverlay = 'block';
+        }
+
+        if (message.cmd === 'hideMFDetail') {
+            this.displayOverlay = 'none';
         }
     }
 

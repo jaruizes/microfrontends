@@ -1,15 +1,26 @@
 <div class="public-home">
 
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-6"><product-item title="Pantalones" price="10" stars="2" description="djhdj dshsdjh jds dsjhjdsh dshj dsjdshjsd" img="./build/assets/img/3.jpg"></product-item></div>
+      <div class="col-6"><product-item title="Mochila" price="30" stars="5" description="djhdj dshsdjh jds dsjhjdsh dshj dsjdshjsd" img="./build/assets/img/4.jpg"></product-item></div>
+    </div>
+    <div class="row mt-2">
+      <div class="col-6"><product-item title="Camiseta" price="10" stars="3" description="djhdj dshsdjh jds dsjhjdsh dshj dsjdshjsd" img="./build/assets/img/1.jpg"></product-item></div>
+      <div class="col-6"><product-item title="Cazadora" price="30" stars="3" description="djhdj dshsdjh jds dsjhjdsh dshj dsjdshjsd" img="./build/assets/img/2.jpg"></product-item></div>
+    </div>
+  </div>
+
 
   <!-- Header -->
   <header class="masthead d-flex">
-    <div class="container text-center my-auto">
+    <div class="container text-center my-auto title-container">
       <h1 class="mb-1">Technology Bank</h1>
       <h3 class="mb-5">
         <em>A Bank for technology lovers</em>
       </h3>
-      <button class="btn btn-xl btn-primary mr-4" (click)="doLogin()">Login</button>
-      <button class="btn btn-xl btn-danger" href="#about">Register</button>
+      <button class="btn btn-lg btn-primary" (click)="doLogin()">Login</button>
+      <button class="btn btn-lg btn-primary" (click)="goToDoc()">Doc</button>
     </div>
     <div class="overlay"></div>
   </header>
@@ -79,7 +90,7 @@
                 <input type="text" class="form-control" placeholder="Name"/>
               </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6 pt-xl-0 pt-lg-0 pt-md-0 pt-sm-3 pt-3">
               <label><h4>Email</h4></label>
               <div class="input-group">
                 <input type="email" class="form-control" placeholder="Email"/>
@@ -96,7 +107,7 @@
           </div>
           <div class="row">
             <div class="col-4 mr-auto ml-auto">
-              <button class="btn btn-dark btn-xl" href="https://startbootstrap.com/themes/stylish-portfolio/">Send Message</button>
+              <button class="btn btn-dark btn-lg" href="https://startbootstrap.com/themes/stylish-portfolio/">Send Message</button>
             </div>
           </div>
         </div>

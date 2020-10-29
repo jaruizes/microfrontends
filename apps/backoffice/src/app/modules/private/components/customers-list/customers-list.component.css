@@ -1,0 +1,40 @@
+mat-card {
+  background-color: lightskyblue !important;
+  color: white;
+}
+
+table {
+  color: white;
+}
+
+@media screen and (max-width: 1024px) {
+  .main-content, .card {
+    padding-right: 0;
+    padding-left: 0;
+  }
+
+  mat-card-content {
+    padding: 0.3em;
+  }
+
+  h3 {
+    font-size: 4vw;
+  }
+
+  thead {
+    font-size: 2vw;
+  }
+
+  tbody {
+    font-size: 2vw;
+  }
+
+  th, td {
+    padding-left: 0.4em;
+  }
+
+  td {
+    padding-top: 0.4em;
+    padding-bottom: 0.4em;
+  }
+}

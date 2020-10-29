@@ -4,33 +4,29 @@
             <div class="row">
                 <div class="col-12">
                     <div class="card account-info">
-                        <div class="card-title" style="padding-bottom: 1em">
+                        <div class="card-title">
                             <h3>{{ 'account-detail' | translate }}</h3>
                         </div>
                         <div class="container-fluid">
                             <div class="row">
-                                <div class="col-md-6 col-sm-12">
+                                <div class="col-5">
                                     <h5 class="text-dark text-black-50">{{ 'nick-name' | translate }}</h5>
                                     <h4 class="text-dark">{{accountData.name}}</h4>
 
                                 </div>
-                                <div class="col-md-6 col-sm-12">
+                                <div class="col-7">
                                     <h5 class="text-dark text-black-50">IBAN</h5>
-                                    <h4 class="text-dark">{{accountData.number}}</h4>
+                                    <h4 class="text-dark">{{formatIBAN()}}</h4>
                                 </div>
                             </div>
-                            <div class="row" style="margin-top: 2em">
-                                <div class="col-md-3 col-sm-12">
+                            <div class="row">
+                                <div class="col-5">
                                     <h5 class="text-dark text-black-50">{{ 'holder' | translate }}</h5>
                                     <h4 class="text-dark">{{accountData.holder}}</h4>
                                 </div>
-                                <div class="col-md-3 col-sm-12">
+                                <div class="col-7">
                                     <h5 class="text-dark text-black-50">{{ 'balance' | translate }}</h5>
                                     <h4 class="text-dark">{{accountData.balance}} €</h4>
-                                </div>
-                                <div class="col-md-3 col-sm-12">
-                                    <h5 class="text-dark text-black-50">{{ 'available' | translate }}</h5>
-                                    <h4 class="text-dark">{{accountData.available}} €</h4>
                                 </div>
                             </div>
 
@@ -43,16 +39,12 @@
 
     <section class="content-section">
         <div class="container-fluid">
-            <div class="row">
-                <div class="col-12">
-                    <div class="card" >
-                        <div class="card-title" style="margin: 0; padding-left: 2em; padding-top: 2em">
-                            <h3>{{ 'movements' | translate }}</h3>
-                        </div>
-                        <div class="card-body">
-                            <items-table *axLazyElement="urlItemsTable; module: true" [items]="movements"></items-table>
-                        </div>
-                    </div>
+            <div class="card account-movements" >
+                <div class="card-title">
+                    <h3>{{ 'movements' | translate }}</h3>
+                </div>
+                <div class="card-body">
+                    <items-table *axLazyElement="urlItemsTable; module: true" [items]="movements"></items-table>
                 </div>
             </div>
         </div>

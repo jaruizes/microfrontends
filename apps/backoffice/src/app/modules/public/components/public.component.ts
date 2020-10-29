@@ -16,7 +16,7 @@ export class PublicComponent implements OnInit {
   }
 
   doLogin() {
-    this.router.navigate(['/login']);
+    this.router.navigate(['/login', { doLogin: 'true' }]);
   }
 
 }

@@ -24,7 +24,7 @@
     "changeOrigin" : true
   },
   "/api": {
-    "target": "https://ppqzm7uohd.execute-api.eu-west-2.amazonaws.com",
+    "target": "https://p68q2b84sa.execute-api.eu-west-2.amazonaws.com",
     "secure": false,
     "logLevel": "debug",
     "changeOrigin" : true
