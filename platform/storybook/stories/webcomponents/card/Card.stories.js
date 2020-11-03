@@ -1,4 +1,4 @@
-import { wcloader } from '../../utils/wc-loader';
+import { wcloader } from '../../../utils/wc-loader';
 import { setCustomElements } from '@storybook/web-components';
 
 import customElements from './credit-card.json';
@@ -7,7 +7,7 @@ setCustomElements(customElements);
 wcloader('/uicomponents/credit-card/v1/credit-card.esm.js', true);
 
 export default {
-  title: 'Web Components/Credit-Card',
+  title: 'UI Components/Credit-Card',
   component: 'credit-card',
   argTypes: {
     name: {

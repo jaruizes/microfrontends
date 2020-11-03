@@ -7,7 +7,7 @@ setCustomElements(customElements);
 wcloader('/uicomponents/card-overview/v1/card-overview.esm.js', true);
 
 export default {
-  title: 'Web Components/Card Overview',
+  title: 'UI Components/Card Overview',
   component: 'card-overview',
   argTypes: {
     number: {

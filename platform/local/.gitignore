@@ -39,3 +39,8 @@ realm/hsperfdata_jboss
 !.vscode/launch.json
 !.vscode/extensions.json
 .history/*
+
+/backoffice-server/content/
+/customers-server/content/
+/microfrontends-server/content/
+/portal-server/content/

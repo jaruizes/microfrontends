@@ -4,7 +4,7 @@ import { html } from 'lit-html';
 wcloader('/uicomponents/shortcuts-panel/v1/shortcuts-panel.bundled.js', true);
 
 export default {
-  title: 'Web Components/Shortcuts',
+  title: 'UI Components/Shortcuts',
   component: 'shortcuts-panel',
   argTypes: {
     locale: {

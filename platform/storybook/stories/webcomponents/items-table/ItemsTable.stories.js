@@ -8,7 +8,7 @@ setCustomElements(customElements);
 wcloader('/uicomponents/items-table/v1/items-table.esm.js', true);
 
 export default {
-  title: 'Web Components/Items Table',
+  title: 'UI Components/Items Table',
   component: 'items-table',
   argTypes: {
     header: {

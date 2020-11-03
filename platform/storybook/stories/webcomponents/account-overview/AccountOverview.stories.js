@@ -7,7 +7,7 @@ setCustomElements(customElements);
 wcloader('/uicomponents/account-overview/v1/account-overview.esm.js', true);
 
 export default {
-  title: 'Web Components/Account Overview',
+  title: 'UI Components/Account Overview',
   component: 'account-overview',
   parameters: {
     controls: { expanded: true }
