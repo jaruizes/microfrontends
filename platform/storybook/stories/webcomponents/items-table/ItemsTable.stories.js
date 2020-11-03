@@ -5,7 +5,7 @@ import { html } from 'lit-html';
 import customElements from './items-table.json';
 setCustomElements(customElements);
 
-wcloader('http://microfrontends-cdn.s3-website.eu-west-2.amazonaws.com/webcomponents/items-table/v1/items-table.esm.js', true);
+wcloader('/uicomponents/items-table/v1/items-table.esm.js', true);
 
 export default {
   title: 'Web Components/Items Table',

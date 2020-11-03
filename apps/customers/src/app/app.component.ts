@@ -9,14 +9,12 @@ import { TranslateService } from '@ngx-translate/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'customersapp';
 
   constructor(private securityService: SecurityService, private translate: TranslateService) {
     this.securityService.init();
   }
 
   private initI18n() {
-    //this._locale = 'en';
     this.translate.setDefaultLang('en');
     this.translate.use('en');
   }

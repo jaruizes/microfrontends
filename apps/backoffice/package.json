@@ -1,12 +1,14 @@
 {
-  "name": "backofiiceapp",
-  "version": "0.0.0",
+  "name": "backofficeapp",
+  "version": "1.0.0",
   "scripts": {
     "ng": "ng",
     "mocks-server": "json-server --routes mocks/routes.json --watch mocks/api-mock.json --port 3050 &",
     "start": "ng serve --port 4250",
+    "start:local": "npm run mocks-server && ng serve --port 4250 --configuration=local --proxy-config=proxy.conf-local.json",
     "build": "ng build",
     "build:prod": "rimraf dist && ng build --prod",
+    "build:prod-local": "rimraf dist && ng build --prod --configuration=local",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",

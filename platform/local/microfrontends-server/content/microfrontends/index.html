@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Global Position MF</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <script>
+    const channel = new BroadcastChannel("microfrontends");
+    channel.onmessage = function (e) {
+      console.log(e);
+    };
+
+    function changeLanguage(locale) {
+      channel.postMessage({
+        cmd: 'changeLocale',
+        payload: {
+          locale: locale
+        }
+      });
+    }
+
+    function showDetails() {
+      channel.postMessage({
+        cmd: 'showMFDetail'
+      });
+    }
+
+  </script>
+<link rel="stylesheet" href="styles.css"></head>
+<body>
+<div>
+  <p>Language</p>
+  <button onclick="changeLanguage('es')">ES</button>
+  <button onclick="changeLanguage('en')">EN</button>
+  <button onclick="showDetails()">Show</button>
+</div>
+  <mf-global-position customer="0002" mode="0" nickname="Fernando"></mf-global-position>
+<script src="polyfills.js" defer></script><script src="scripts.js" defer></script><script src="main.js" defer></script></body>
+</html>

@@ -2,8 +2,41 @@
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
+const version = 'v1';
+const name = 'backoffice';
+const assetsBase = `./assets/apps/${name}`;
+const apiBase = '/api';
+
 export const environment = {
-  production: false
+  production: false,
+  env: 'DEFAULT',
+  config: {
+    name: name,
+    version: version,
+    assets: assetsBase,
+    i18n: {
+      defaultLanguage: 'es',
+      localeUrls: `${assetsBase}/i18n/`,
+      suffix: '.json'
+    },
+    security: {
+      allowedDomains: ['/api/*'],
+      token: 'access_token',
+      issuer: 'https://cognito-idp.eu-west-2.amazonaws.com/eu-west-2_cWRpsv2T3',
+      clientid: 'k95pm6mikfr1oos31997m66ha',
+      scope: 'openid profile email aws.cognito.signin.user.admin',
+      logoutUrl: 'https://tf-microfrontends.auth.eu-west-2.amazoncognito.com/logout',
+      userinfoEndpoint: 'https://tf-microfrontends.auth.eu-west-2.amazoncognito.com/oauth2/userInfo'
+    }
+
+  },
+  api: {
+    base: apiBase,
+    endpoints: {
+      config: `${apiBase}/config/${name}-app-config`,
+      examples: `${apiBase}/examples/`
+    }
+  }
 };
 
 /*

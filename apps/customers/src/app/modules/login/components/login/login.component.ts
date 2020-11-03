@@ -17,6 +17,8 @@ export class LogInComponent implements OnInit {
     this.route.queryParams.subscribe(params => {
       if (this.route.snapshot.paramMap.get('doLogin') === 'true') {
         this.securityService.login();
+      } else if (this.authService.hasValidAccessToken()) {
+        this.router.navigateByUrl('/private');
       }
     });
 

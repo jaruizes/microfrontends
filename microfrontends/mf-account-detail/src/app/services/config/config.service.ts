@@ -29,6 +29,6 @@ export class ConfigService {
   }
 
   getWebComponentURL(wc: string) {
-    return this.configData['webcomponents'][wc];
+    return this.configData['uicomponents'][wc];
   }
 }

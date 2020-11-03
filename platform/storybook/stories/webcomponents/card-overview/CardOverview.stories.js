@@ -4,7 +4,7 @@ import { setCustomElements } from '@storybook/web-components';
 import customElements from './card-overview.json';
 setCustomElements(customElements);
 
-wcloader('http://microfrontends-cdn.s3-website.eu-west-2.amazonaws.com/webcomponents/card-overview/v1/card-overview.esm.js', true);
+wcloader('/uicomponents/card-overview/v1/card-overview.esm.js', true);
 
 export default {
   title: 'Web Components/Card Overview',

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AuthConfig, OAuthService } from 'angular-oauth2-oidc';
 import { ConfigService } from '../config/config.service';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -14,21 +15,18 @@ export class SecurityService {
   init() {
 
     const authConfig: AuthConfig = {
-      issuer: 'https://cognito-idp.eu-west-2.amazonaws.com/' + this.config.get('pool-id'),
+      issuer: environment.config.security.issuer,
       redirectUri: window.location.origin + "/login",
-      clientId: this.config.get('client-id'),
-      scope: 'openid profile email aws.cognito.signin.user.admin',
+      clientId: environment.config.security.clientid,
+      scope: environment.config.security.scope,
       responseType: 'code',
       showDebugInformation: true,
-      logoutUrl: 'https://tf-microfrontends.auth.eu-west-2.amazoncognito.com/logout?logout_uri=' + window.location.origin + "/logout" + '&client_id=' + this.config.get('client-id'),
+      logoutUrl: environment.config.security.logoutUrl,
       postLogoutRedirectUri: window.location.origin + "/home",
       strictDiscoveryDocumentValidation: false,
-      userinfoEndpoint: 'https://tf-microfrontends.auth.eu-west-2.amazoncognito.com/oauth2/userInfo'
+      userinfoEndpoint: environment.config.security.userinfoEndpoint
     };
 
-    console.log('------------------');
-    console.log(authConfig);
-    console.log('------------------');
     this.oauthService.configure(authConfig);
     this.oauthService.loadDiscoveryDocumentAndTryLogin();
     this.authConfig = authConfig;
@@ -36,7 +34,7 @@ export class SecurityService {
   }
 
   isAuthenticated() {
-    const accessToken = sessionStorage.getItem('access_token');
+    const accessToken = sessionStorage.getItem(environment.config.security.token);
     return accessToken;
   }
 

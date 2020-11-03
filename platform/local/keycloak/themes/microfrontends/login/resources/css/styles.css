@@ -1,0 +1,28 @@
+.login-pf body {
+    background-image: url('../img/software2.jpg');
+    background-size: cover;
+    height: 100%;
+}
+
+.card-pf {
+    width: 50%;
+    margin: auto;
+}
+
+#kc-header-wrapper {
+    font-size: 3vw;
+    color: white;
+    font-weight: bolder;
+}
+
+#kc-form-buttons {
+    width: 30%;
+    margin: auto;
+}
+
+@media screen and (max-width: 767px) {
+    .card-pf {
+        width: 80%;
+        margin: auto;
+    }
+}

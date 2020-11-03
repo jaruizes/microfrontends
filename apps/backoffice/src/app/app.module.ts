@@ -9,10 +9,11 @@ import { OAuthModule } from 'angular-oauth2-oidc';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { ConfigService } from './services/config/config.service';
+import { environment } from '../environments/environment';
 
 // AoT requires an exported function for factories
 export function createTranslateLoader(http: HttpClient) {
-  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+  return new TranslateHttpLoader(http, environment.config.i18n.localeUrls, environment.config.i18n.suffix);
 }
 
 export function appInit(appConfigService: ConfigService) {
@@ -30,12 +31,12 @@ export function appInit(appConfigService: ConfigService) {
     HttpClientModule,
     OAuthModule.forRoot({
       resourceServer: {
-        allowedUrls: ['http://localhost:4200/api/*'],
+        allowedUrls: environment.config.security.allowedDomains,
         sendAccessToken: true
       }
     }),
     TranslateModule.forRoot({
-      defaultLanguage: 'en',
+      defaultLanguage: environment.config.i18n.defaultLanguage,
       loader: {
         provide: TranslateLoader,
         useFactory: createTranslateLoader,

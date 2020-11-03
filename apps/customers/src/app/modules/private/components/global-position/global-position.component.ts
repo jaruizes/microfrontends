@@ -36,7 +36,6 @@ export class GlobalPositionComponent implements OnInit {
   ngOnInit(): void {
     this.locale = undefined;
     this.locale = this.localeService.getLocale();
-    console.log('locale: ' + this.locale);
     this.initBroadcastChannel();
     this.userService.getUserInfo().subscribe(userInfo => {
       this.customer = userInfo;

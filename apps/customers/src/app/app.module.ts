@@ -15,7 +15,7 @@ import { MarkdownModule } from 'ngx-markdown';
 
 // AoT requires an exported function for factories
 export function createTranslateLoader(http: HttpClient) {
-  return new TranslateHttpLoader(http, './assets/apps/customers/i18n/', '.json');
+  return new TranslateHttpLoader(http, environment.config.i18n.localeUrls, environment.config.i18n.suffix);
 }
 
 export function appInit(appConfigService: ConfigService) {
@@ -33,12 +33,12 @@ export function appInit(appConfigService: ConfigService) {
     HttpClientModule,
     OAuthModule.forRoot({
       resourceServer: {
-        allowedUrls: ['/api/*'],
+        allowedUrls: environment.config.security.allowedDomains,
         sendAccessToken: true
       }
     }),
     TranslateModule.forRoot({
-      defaultLanguage: 'en',
+      defaultLanguage: environment.config.i18n.defaultLanguage,
       loader: {
         provide: TranslateLoader,
         useFactory: createTranslateLoader,

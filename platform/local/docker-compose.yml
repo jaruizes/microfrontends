@@ -1,9 +1,90 @@
 version: "3.8"
 services:
+  authserver:
+    container_name: "microfrontends-keycloak"
+    image: "quay.io/keycloak/keycloak:11.0.2"
+    ports:
+      - "8100:8080"
+    environment:
+      - KEYCLOAK_USER=admin
+      - KEYCLOAK_PASSWORD=admin
+      - KEYCLOAK_IMPORT=/tmp/microfrontends-realm.json
+    volumes:
+      - type: bind
+        source: ./keycloak/realm
+        target: /tmp
+      - type: bind
+        source: ./keycloak/themes/microfrontends
+        target: /opt/jboss/keycloak/themes/microfrontends
+      - type: bind
+        source: ./keycloak/standalone/standalone.xml
+        target: /opt/jboss/keycloak/standalone/configuration/standalone.xml
+    restart: always
   microfrontends-server:
+    container_name: "microfrontends-server"
     image: "nginx"
     ports:
-      - "8080:80"
+      - "8080:8080"
     volumes:
-      - ./microfrontends-server/content:/usr/share/nginx/html
-      - ./microfrontends-server/nginx-conf:/etc/nginx/conf.d
+      - type: bind
+        source: ./microfrontends-server/nginx-conf
+        target: /etc/nginx/conf.d
+      - type: bind
+        source: ./microfrontends-server/content
+        target: /usr/share/nginx/html
+#      - ./microfrontends-server/content:/usr/share/nginx/html
+#      - ./microfrontends-server/nginx-conf:/etc/nginx/conf.d
+    restart: always
+  customers-server:
+    container_name: "customers-server"
+    image: "nginx"
+    ports:
+      - "9080:9080"
+    volumes:
+#      - ./customers-server/content:/usr/share/nginx/html
+#      - ./customers-server/nginx-conf:/etc/nginx/conf.d
+      - type: bind
+        source: ./customers-server/nginx-conf
+        target: /etc/nginx/conf.d
+      - type: bind
+        source: ./customers-server/content
+        target: /usr/share/nginx/html
+    restart: always
+  backoffice-server:
+    container_name: "backoffice-server"
+    image: "nginx"
+    ports:
+      - "9090:9090"
+    volumes:
+      - type: bind
+        source: ./backoffice-server/nginx-conf
+        target: /etc/nginx/conf.d
+      - type: bind
+        source: ./backoffice-server/content
+        target: /usr/share/nginx/html
+#      - ./backoffice-server/content:/usr/share/nginx/html
+#      - ./backoffice-server/nginx-conf:/etc/nginx/conf.d
+    restart: always
+  portal-server:
+    container_name: "portal-server"
+    image: "nginx"
+    ports:
+      - "9000:9000"
+    volumes:
+      - type: bind
+        source: ./portal-server/nginx-conf
+        target: /etc/nginx/conf.d
+      - type: bind
+        source: ./portal-server/content
+        target: /usr/share/nginx/html
+#      - ./portal-server/content:/usr/share/nginx/html
+#      - ./portal-server/nginx-conf:/etc/nginx/conf.d
+    restart: always
+  mocks-server:
+    container_name: "mocks-server"
+    build: ./mocks-server
+    ports:
+      - "9100:3000"
+    volumes:
+      - ./mocks-server/mocks:/data
+    restart: always

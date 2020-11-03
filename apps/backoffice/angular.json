@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "customersapp": {
+    "backofficeapp": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -37,6 +37,14 @@
             ]
           },
           "configurations": {
+            "local": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.local.ts"
+                }
+              ]
+            },
             "production": {
               "fileReplacements": [
                 {
@@ -71,18 +79,21 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
             "proxyConfig": "proxy.conf.json",
-            "browserTarget": "customersapp:build"
+            "browserTarget": "backofficeapp:build"
           },
           "configurations": {
+            "local": {
+              "browserTarget": "backofficeapp:build:local"
+            },
             "production": {
-              "browserTarget": "customersapp:build:production"
+              "browserTarget": "backofficeapp:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "customersapp:build"
+            "browserTarget": "backofficeapp:build"
           }
         },
         "test": {
@@ -120,16 +131,16 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "customersapp:serve"
+            "devServerTarget": "backofficeapp:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "customersapp:serve:production"
+              "devServerTarget": "backofficeapp:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "customersapp"
+  "defaultProject": "backofficeapp"
 }

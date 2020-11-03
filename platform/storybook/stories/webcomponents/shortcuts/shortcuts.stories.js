@@ -1,11 +1,11 @@
 import { wcloader } from '../../../utils/wc-loader';
 import { html } from 'lit-html';
 
-wcloader('http://microfrontends-cdn.s3-website.eu-west-2.amazonaws.com/webcomponents/wc-shortcuts/v1/wc-shortcuts.bundled.js', true);
+wcloader('/uicomponents/shortcuts-panel/v1/shortcuts-panel.bundled.js', true);
 
 export default {
   title: 'Web Components/Shortcuts',
-  component: 'wc-shortcuts',
+  component: 'shortcuts-panel',
   argTypes: {
     locale: {
       control: {
@@ -25,7 +25,7 @@ export default {
 
 
 const Template = ({ locale, data }) => html `
-    <wc-shortcuts id="shortcuts" .locale="${locale}" .data="${data}"></wc-shortcuts>
+    <shortcuts-panel id="shortcuts" .locale="${locale}" .data="${data}"></shortcuts-panel>
 `;
 
 export const Shortcuts = Template.bind();

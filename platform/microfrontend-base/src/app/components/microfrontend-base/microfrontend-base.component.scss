@@ -1,0 +1,20 @@
+@import '~bootstrap/scss/bootstrap.scss';
+
+.example {
+  width: 50%;
+}
+
+.card-img-top {
+  width: 20%;
+}
+
+@media screen and (max-width: 1024px) {
+
+  .example {
+    width: 80%;
+  }
+
+  .card-img-top {
+    width: 40%;
+  }
+}

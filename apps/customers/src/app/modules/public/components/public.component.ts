@@ -1,6 +1,7 @@
 import { Component, NgZone, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { defineCustomElements as p1} from '@jaruizes/product-item/dist/loader';
+import { environment } from '../../../../environments/environment';
+//import { defineCustomElements as p1} from '@jaruizes/product-item/dist/loader';
 //import { ProductItem } from '@jaruizes/product-item/dist/v1/collection/components/product-item/product-item';
 
 @Component({
@@ -9,10 +10,12 @@ import { defineCustomElements as p1} from '@jaruizes/product-item/dist/loader';
   styleUrls: ['./public.component.css']
 })
 export class PublicComponent implements OnInit {
+  public env: string;
 
   constructor(private router: Router) {
-    p1();
+    //p1();
     //new ProductItem();
+    this.env = environment.env;
   }
 
   ngOnInit() {

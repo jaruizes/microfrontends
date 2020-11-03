@@ -17,38 +17,38 @@
         "accounts-summary": "/microfrontends/mf-accounts-summary/v1/main.js",
         "balance-overview": "/microfrontends/mf-balance-overview/v1/mf-balance-overview.js"
       },
-      "webcomponents": {
-        "shortcuts": "/webcomponents/wc-shortcuts/v1/wc-shortcuts.bundled.js",
-        "items-table": "/webcomponents/items-table/v1/items-table.esm.js"
+      "uicomponents": {
+        "shortcuts": "/uicomponents/shortcuts-panel/v1/shortcuts-panel.bundled.js",
+        "items-table": "/uicomponents/items-table/v1/items-table.esm.js"
       }
     },
     {
       "id": "account-detail-mf-config",
       "microfrontends": {},
-      "webcomponents": {
-        "items-table": "/webcomponents/items-table/v1/items-table.esm.js"
+      "uicomponents": {
+        "items-table": "/uicomponents/items-table/v1/items-table.esm.js"
       }
     },
     {
       "id": "accounts-summary-mf-config",
       "microfrontends": {},
-      "webcomponents": {
-        "account-overview": "/webcomponents/account-overview/v1/account-overview.esm.js"
+      "uicomponents": {
+        "account-overview": "/uicomponents/account-overview/v1/account-overview.esm.js"
       }
     },
     {
       "id": "card-detail-mf-config",
       "microfrontends": {},
-      "webcomponents": {
-        "items-table": "/webcomponents/items-table/v1/items-table.esm.js",
-        "card": "/webcomponents/credit-card/v1/credit-card.esm.js"
+      "uicomponents": {
+        "items-table": "/uicomponents/items-table/v1/items-table.esm.js",
+        "card": "/uicomponents/credit-card/v1/credit-card.esm.js"
       }
     },
     {
       "id": "cards-summary-mf-config",
       "microfrontends": {},
-      "webcomponents": {
-        "card-overview": "/webcomponents/card-overview/v1/card-overview.esm.js"
+      "uicomponents": {
+        "card-overview": "/uicomponents/card-overview/v1/card-overview.esm.js"
       }
     }
   ],

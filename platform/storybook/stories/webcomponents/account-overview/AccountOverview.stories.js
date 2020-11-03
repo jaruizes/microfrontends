@@ -4,7 +4,7 @@ import { setCustomElements } from '@storybook/web-components';
 import customElements from './account-overview.json';
 setCustomElements(customElements);
 
-wcloader('http://microfrontends-cdn.s3-website.eu-west-2.amazonaws.com/webcomponents/account-overview/v1/account-overview.esm.js', true);
+wcloader('/uicomponents/account-overview/v1/account-overview.esm.js', true);
 
 export default {
   title: 'Web Components/Account Overview',
