@@ -3,8 +3,8 @@
     {
       "id": "accounts-summary-mf-config",
       "microfrontends": {},
-      "webcomponents": {
-        "account-overview": "/webcomponents/account-overview/v1/account-overview.esm.js"
+      "uicomponents": {
+        "account-overview": "/uicomponents/account-overview/v1/account-overview.esm.js"
       }
     }
   ],

@@ -1,10 +1,11 @@
-import { Component, NgZone, OnInit } from '@angular/core';
+import { Component, ElementRef, NgZone, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LocaleService } from '../../services/locale/locale.service';
 import { CustomersService } from '../../services/customers/customers.service';
 import { Customer } from '../../models/customer';
 import { TranslateService } from '@ngx-translate/core';
 import { ConfigService } from '../../../../services/config/config.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-global-position',
@@ -12,12 +13,19 @@ import { ConfigService } from '../../../../services/config/config.service';
   styleUrls: ['./global-position.component.css']
 })
 export class GlobalPositionComponent implements OnInit {
-  public globalPositionURL; // = '/microfrontends/mf-global-position/v1/main.js';
+  public globalPositionURL;
   public locale;
   public customer;
   public customerData: Customer;
   public show;
-  public channel = 'customers-app';
+  public channel = 'backoffice-app';
+
+  public displayOverlay = 'none';
+  public account: number;
+  public card: number;
+
+  @ViewChild('accountContent') accountContent: ElementRef;
+  @ViewChild('cardContent') cardContent: ElementRef;
 
   /**
    * This is the parentChannel used by an instance of this microfrontend
@@ -29,6 +37,7 @@ export class GlobalPositionComponent implements OnInit {
               private customerService: CustomersService,
               private translate: TranslateService,
               private config: ConfigService,
+              private modalService: NgbModal,
               private route: ActivatedRoute) {
     this.show = false;
     this.customer = '';
@@ -36,7 +45,6 @@ export class GlobalPositionComponent implements OnInit {
     this.route.queryParams.subscribe(params => {
       this.customer = params['customer'];
       this.getCustomerData();
-      console.log('-----> customer id: ' + this.customer);
     });
   }
 
@@ -50,13 +58,13 @@ export class GlobalPositionComponent implements OnInit {
     console.log('[customers-app] Received microfrontend message: ' + message.cmd);
 
     if (message.cmd === 'accountClick') {
-      console.log('Navigateeeeee');
-      this.router.navigateByUrl('/private/account-detail?account=' + message.payload.id);
+      this.account = message.payload.id;
+      this.modalService.open(this.accountContent, { windowClass : 'account-modal', scrollable: true, centered: true })
     }
 
     if (message.cmd === 'cardClick') {
-      console.log('Navigateeeeee');
-      this.router.navigateByUrl('/private/card-detail?card=' + message.payload.id);
+      this.card = message.payload.id;
+      this.modalService.open(this.cardContent, { windowClass : 'account-modal', scrollable: true, centered: true })
     }
   }
 

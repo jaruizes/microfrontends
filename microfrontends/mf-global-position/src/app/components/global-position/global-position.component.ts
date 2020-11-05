@@ -1,4 +1,4 @@
-import { Component, HostListener, Input, NgZone, OnInit } from '@angular/core';
+import { Component, Input, NgZone, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { MovementsService } from '../../services/movements/movements.service';
 import { Movement } from '../../model/movement';

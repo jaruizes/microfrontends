@@ -3,8 +3,8 @@
 // The list of file replacements can be found in `angular.json`.
 
 const version = 'v1';
-const name = 'customers';
-const assetsBase = `./assets/apps/${name}`;
+const name = 'backoffice';
+const assetsBase = `./assets`;
 const apiBase = '/api';
 
 export const environment = {

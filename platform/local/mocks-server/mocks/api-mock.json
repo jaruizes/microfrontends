@@ -486,5 +486,252 @@
     "incomes": [2500, 2700, 3000, 2500, 6000, 4000, 2360, 3000, 3200, 2900, 3000, 3200],
     "expenses": [1500, 1700, 2000, 2000, 3000, 2000, 1360, 2000, 1200, 1900, 2000, 1200],
     "dates": ["10/2019", "11/2019", "12/2019", "01/2020", "02/2020", "03/2020", "04/2020", "05/2020", "06/2020", "07/2020", "08/2020", "09/2020"]
-  }
+  },
+  "shares": [
+    {
+      "value": "91.8",
+      "percent": "-0.163132",
+      "name": "ACCIONA",
+      "market": "M.CONTINUO",
+      "short": "ANA"
+    },
+    {
+      "value": "7.066",
+      "percent": "3.304094",
+      "name": "ACERINOX",
+      "market": "M.CONTINUO",
+      "short": "ACX"
+    },
+    {
+      "value": "21.77",
+      "percent": "-2.507837",
+      "name": "ACS",
+      "market": "M.CONTINUO",
+      "short": "ACS"
+    },
+    {
+      "value": "124.9",
+      "percent": "1.215559",
+      "name": "AENA",
+      "market": "M.CONTINUO",
+      "short": "AENA"
+    },
+    {
+      "value": "9.86",
+      "percent": "3.844128",
+      "name": "ALMIRALL",
+      "market": "M.CONTINUO",
+      "short": "ALM"
+    },
+    {
+      "value": "44.27",
+      "percent": "3.579785",
+      "name": "AMADEUS",
+      "market": "M.CONTINUO",
+      "short": "AMS"
+    },
+    {
+      "value": "12.54",
+      "percent": "2.233817",
+      "name": "ARCELORMITTA",
+      "market": "M.CONTINUO",
+      "short": "MTS"
+    },
+    {
+      "value": "0.2702",
+      "percent": "-5.325858",
+      "name": "BANCO SABADELL",
+      "market": "M.CONTINUO",
+      "short": "SAB"
+    },
+    {
+      "value": "1.776",
+      "percent": "-4.093315",
+      "name": "BANCO SANTANDER",
+      "market": "M.CONTINUO",
+      "short": "SAN"
+    },
+    {
+      "value": "1.077",
+      "percent": "-2.75395",
+      "name": "BANKIA",
+      "market": "M.CONTINUO",
+      "short": "BKIA"
+    },
+    {
+      "value": "3.283",
+      "percent": "-3.66784",
+      "name": "BANKINTER",
+      "market": "M.CONTINUO",
+      "short": "BKT"
+    },
+    {
+      "value": "2.456",
+      "percent": "-6.651463",
+      "name": "BBVA",
+      "market": "M.CONTINUO",
+      "short": "BBVA"
+    },
+    {
+      "value": "1.5915",
+      "percent": "-2.66055",
+      "name": "CAIXABANK",
+      "market": "M.CONTINUO",
+      "short": "CABK"
+    },
+    {
+      "value": "57.1",
+      "percent": "5.740741",
+      "name": "CELLNEX",
+      "market": "M.CONTINUO",
+      "short": "CLNX"
+    },
+    {
+      "value": "17.06",
+      "percent": "-0.929152",
+      "name": "CIE AUTOMOTIVE",
+      "market": "M.CONTINUO",
+      "short": "CIE"
+    },
+    {
+      "value": "6.515",
+      "percent": "0.617761",
+      "name": "COLONIAL",
+      "market": "M.CONTINUO",
+      "short": "COL"
+    },
+    {
+      "value": "18.96",
+      "percent": "0.931594",
+      "name": "ENAGAS",
+      "market": "M.CONTINUO",
+      "short": "ENG"
+    },
+    {
+      "value": "24.22",
+      "percent": "1.296529",
+      "name": "ENDESA",
+      "market": "M.CONTINUO",
+      "short": "ELE"
+    },
+    {
+      "value": "19.78",
+      "percent": "1.176471",
+      "name": "FERROVIAL",
+      "market": "M.CONTINUO",
+      "short": "FER"
+    },
+    {
+      "value": "25.27",
+      "percent": "-1.711396",
+      "name": "GAMESA",
+      "market": "M.CONTINUO",
+      "short": "GAM"
+    },
+    {
+      "value": "24.55",
+      "percent": "2.249063",
+      "name": "GRIFOLS",
+      "market": "M.CONTINUO",
+      "short": "GRF"
+    },
+    {
+      "value": "1.136",
+      "percent": "2.434626",
+      "name": "IAG",
+      "market": "M.CONTINUO",
+      "short": "IAG"
+    },
+    {
+      "value": "10.68",
+      "percent": "0.802265",
+      "name": "IBERDROLA",
+      "market": "M.CONTINUO",
+      "short": "IBE"
+    },
+    {
+      "value": "22.6",
+      "percent": "1.755966",
+      "name": "INDITEX",
+      "market": "M.CONTINUO",
+      "short": "ITX"
+    },
+    {
+      "value": "5.41",
+      "percent": "2.851711",
+      "name": "INDRA A",
+      "market": "M.CONTINUO",
+      "short": "IDR"
+    },
+    {
+      "value": "1.351",
+      "percent": "-1.745455",
+      "name": "MAPFRE",
+      "market": "M.CONTINUO",
+      "short": "MAP"
+    },
+    {
+      "value": "5.915",
+      "percent": "-0.252951",
+      "name": "MERLIN",
+      "market": "M.CONTINUO",
+      "short": "MRL"
+    },
+    {
+      "value": "17.19",
+      "percent": "2.078385",
+      "name": "NATURGY ENERGY",
+      "market": "M.CONTINUO",
+      "short": "NTGY"
+    },
+    {
+      "value": "122.2",
+      "percent": "3.559322",
+      "name": "PHARMAMAR",
+      "market": "M.CONTINUO",
+      "short": "PHM"
+    },
+    {
+      "value": "16",
+      "percent": "1.587302",
+      "name": "RED ELECTRICA",
+      "market": "M.CONTINUO",
+      "short": "REE"
+    },
+    {
+      "value": "5.9",
+      "percent": "1.970273",
+      "name": "REPSOL",
+      "market": "M.CONTINUO",
+      "short": "REP"
+    },
+    {
+      "value": "3.206",
+      "percent": "0.881057",
+      "name": "SOL MELIA",
+      "market": "M.CONTINUO",
+      "short": "MEL"
+    },
+    {
+      "value": "18.25",
+      "percent": "4.047891",
+      "name": "SOLARIA",
+      "market": "M.CONTINUO",
+      "short": "SLR"
+    },
+    {
+      "value": "2.886",
+      "percent": "-0.103842",
+      "name": "TELEFONICA",
+      "market": "M.CONTINUO",
+      "short": "TEF"
+    },
+    {
+      "value": "57.7",
+      "percent": "-0.345423",
+      "name": "VISCOFAN",
+      "market": "M.CONTINUO",
+      "short": "VIS"
+    }
+  ]
 }

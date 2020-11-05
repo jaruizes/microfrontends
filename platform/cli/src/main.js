@@ -27,7 +27,7 @@ function getUserData() {
     const questions = [
         {
             type: "list",
-            message: "Qué quieres hacer?",
+            message: "What do you want to do?",
             name: "command",
             when: (answers) => !answers.command ||  answers.option === 900,
             choices: [
@@ -89,8 +89,6 @@ function getUserData() {
     ];
 
     clear();
-
-    console.log(figlet.textSync('Micro Frontends', { horizontalLayout: 'full' }));
 
     inquirer.prompt(questions).then(function (answers) {
         const command = answers.command;

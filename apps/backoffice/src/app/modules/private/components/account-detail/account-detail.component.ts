@@ -1,13 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ConfigService } from '../../../../services/config/config.service';
 
 @Component({
-  selector: 'app-account-detail',
+  selector: 'account-detail',
   templateUrl: './account-detail.component.html',
   styleUrls: ['./account-detail.component.css']
 })
 export class AccountDetailComponent implements OnInit {
+  @Input()
   public account: number;
 
   public accountDetailURL;
@@ -17,10 +18,7 @@ export class AccountDetailComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.route.queryParams.subscribe(params => {
-      this.account = params['account'];
-      console.log('Account: ' + this.account);
-    });
+
   }
 
 }

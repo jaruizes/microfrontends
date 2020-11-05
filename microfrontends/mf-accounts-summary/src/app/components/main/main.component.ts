@@ -90,7 +90,8 @@ export class MainComponent implements OnInit, AfterViewInit {
         this.parentChannel.postMessage({
             cmd: 'accountClick',
             payload: {
-                id: accountId
+                id: accountId,
+                detail: this.accounts.filter(account => account.id = accountId)[0]
             }
         });
     }

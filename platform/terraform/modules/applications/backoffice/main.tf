@@ -1,8 +1,16 @@
+data "template_file" "policy" {
+  template = file("${path.module}/bucket-policy.json")
+
+  vars = {
+    bucket_prefix = var.bucket_prefix
+  }
+}
+
 // Bucket for backoffice application
 resource "aws_s3_bucket" "backoffice-bucket" {
-  bucket = "microfrontends-applications-backoffice"
+  bucket = "${var.bucket_prefix}-microfrontends-applications-backoffice"
   acl    = "public-read-write"
-  policy = file("${path.module}/bucket-policy.json")
+  policy = data.template_file.policy.rendered
 
   website {
     index_document = "index.html"
@@ -30,7 +38,7 @@ resource "aws_cloudfront_distribution" "backoffice_distribution" {
 
   // Origin microfrontends & webcomponents
   origin {
-    domain_name = "microfrontends-bucket.s3.amazonaws.com"
+    domain_name = "${var.bucket_prefix}-microfrontends-bucket.s3.amazonaws.com"
     origin_id   = "S3-microfrontends-bucket"
   }
 
@@ -147,7 +155,7 @@ resource "aws_cloudfront_distribution" "backoffice_distribution" {
 
   # Behaviour webcomponents
   ordered_cache_behavior {
-    path_pattern     = "/webcomponents/*"
+    path_pattern     = "/uicomponents/*"
     allowed_methods  = ["GET", "HEAD", "OPTIONS", "PUT", "POST", "PATCH", "DELETE"]
     cached_methods   = ["GET", "HEAD", "OPTIONS"]
     target_origin_id = "S3-microfrontends-bucket"
@@ -168,9 +176,9 @@ resource "aws_cloudfront_distribution" "backoffice_distribution" {
     viewer_protocol_policy = "allow-all"
   }
 
-  # Behaviour assets/webcomponents
+  # Behaviour assets/uicomponents
   ordered_cache_behavior {
-    path_pattern     = "/assets/webcomponents/*"
+    path_pattern     = "/assets/uicomponents/*"
     allowed_methods  = ["GET", "HEAD", "OPTIONS", "PUT", "POST", "PATCH", "DELETE"]
     cached_methods   = ["GET", "HEAD", "OPTIONS"]
     target_origin_id = "S3-microfrontends-bucket"

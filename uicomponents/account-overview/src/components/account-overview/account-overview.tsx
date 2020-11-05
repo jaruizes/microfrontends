@@ -88,7 +88,7 @@ export class AccountOverview {
                     </div>
                     <div class="col-xl-3 col-lg-3 col-sm-3 col-3 middle-col">
                       <div class="d-flex justify-content-center new-movememnts">
-                        <p class="text-muted">{this.i18nStrings['new-transactions']}</p>
+                        <p class="text-muted card-movements-header">{this.i18nStrings['new-transactions']}</p>
                       </div>
                       <div class="d-flex justify-content-center">
                         <h3 class="card-movements">{this.newmovements}</h3>
@@ -96,7 +96,7 @@ export class AccountOverview {
                     </div>
                     <div class="col-xl-3 col-lg-4 col-sm-3 col-3 right-col">
                       <div class="d-flex justify-content-end balance">
-                        <p class="text-muted">{this.i18nStrings['balance']}</p>
+                        <p class="text-muted card-balance-header">{this.i18nStrings['balance']}</p>
                       </div>
                       <div class="d-flex justify-content-end">
                         <h3 class="card-amount">{this.amount} €</h3>
@@ -109,7 +109,7 @@ export class AccountOverview {
                 <div class="container-fluid">
                   <div class="row">
                     <div class="col-12 card-last-movement">
-                      <small class="text-muted font-weight-bold">{this.i18nStrings['last-movement']}: {this.lastmovement}</small>
+                      <small class="text-muted font-weight-bold last-movements-text">{this.i18nStrings['last-movement']}: {this.lastmovement}</small>
                     </div>
                   </div>
                 </div>

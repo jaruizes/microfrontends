@@ -12,6 +12,14 @@
 
 .account-overview {
   cursor: pointer;
+  --accountBgColor: var(--accountsBgColor, white);
+  --accountTitleColor: var(--accountsTitleColor, black);
+  --accountNumberColor: var(--accountsNumberColor, #6c757d);
+  --accountBalanceColor: var(--accountsBalanceColor, red);
+  --accountNewMovementsColor: var(--accountsNewMovementsColor, darkgrey);
+  --accountMovementsHeaderColor: var(--accountsMovementsHeaderColor, #6c757d);
+  --accountBalanceHeaderColor: var(--accountsBalanceHeaderColor, #6c757d);
+  --accountLastMovementsTextColor: var(--accountsLastMovementsTextColor, #6c757d);
 }
 
 h3 {

@@ -1,38 +1,20 @@
 provider "aws" {
   region = "eu-west-2"
-  profile = "serverless"
+  profile = "jalb80-cli"
 }
 
-/*
-module "customers" {
-  source = "./modules/applications/customers"
-}
-
-module "backoffice" {
-  source = "./modules/applications/backoffice"
-}
-
-module "storybook" {
-  source = "./modules/applications/storybook"
-}
-
-module "api" {
-  source = "./modules/platform/api"
-}
-*/
-
-
-/*** PLATFORM ***/
 module "api" {
   source = "./modules/platform/api"
 }
 
 module "microfrontends" {
+  bucket_prefix = "jalb80"
   source = "./modules/applications/microfrontends"
 }
 
 module "backoffice" {
   api_id = module.api.api_id
+  bucket_prefix = "jalb80"
   source = "./modules/applications/backoffice"
 
   depends_on = [module.api, module.microfrontends]
@@ -40,6 +22,7 @@ module "backoffice" {
 
 module "storybook" {
   api_id = module.api.api_id
+  bucket_prefix = "jalb80"
   source = "./modules/applications/storybook"
 
   depends_on = [module.api, module.microfrontends]
@@ -47,6 +30,7 @@ module "storybook" {
 
 module "customers" {
   api_id = module.api.api_id
+  bucket_prefix = "jalb80"
   source = "./modules/applications/customers"
 
   depends_on = [module.api, module.microfrontends]

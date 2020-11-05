@@ -31,10 +31,28 @@
 
   <section class="global-position-section">
     <mf-global-position *axLazyElement="globalPositionURL;"
-                        channel="customers-app"
+                        channel="backoffice-app"
                         [locale]="locale"
                         [customer]="customer"
                         mode="1">
     </mf-global-position>
   </section>
 </div>
+
+<ng-template #accountContent let-modal>
+  <div class="modal-body">
+    <account-detail [account]="account"></account-detail>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close()">Close</button>
+  </div>
+</ng-template>
+
+<ng-template #cardContent let-modal>
+  <div class="modal-body">
+    <card-detail [card]="card"></card-detail>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close()">Close</button>
+  </div>
+</ng-template>
