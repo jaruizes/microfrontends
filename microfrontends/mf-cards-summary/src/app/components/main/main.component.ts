@@ -65,13 +65,13 @@ export class MainComponent implements OnInit {
         console.log('[mf-cards-summary] starting....');
         this.show = false;
         this.elementUrl = this.configService.getWebComponentURL('card-overview');
-        this.initI18n();
     }
 
     ngOnInit() {
         console.log('[mf-cards-summary] initializing....');
 
         this.initBroadcastChannels();
+        this.initI18n();
 
         console.log('[mf-cards-summary] initialized....');
     }

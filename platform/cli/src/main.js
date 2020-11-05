@@ -58,10 +58,6 @@ function getUserData() {
                 {
                     name: "UI Components",
                     value: 1.3
-                },
-                {
-                    name: "Portal",
-                    value: 'portal'
                 }
             ]
         },
@@ -97,13 +93,8 @@ function getUserData() {
         const microfrontend = answers.microfrontend;
         const uicomponent = answers.uicomponent;
 
-        console.log(answers);
         if (command === 0) {
             setupAll();
-        }
-
-        if (option === 'portal') {
-            buildPortal(portalSource, 'portal');
         }
 
         if (app) {
@@ -160,7 +151,7 @@ const setupAll = () => {
     buildAllApps();
     buildComponents(microfrontendsPath, buildMicrofrontend);
     buildComponents(uicomponentsPath, buildUIComponent);
-    buildPortal(portalSource, 'portal');
+    //buildPortal(portalSource, 'portal');
 
 };
 
@@ -168,6 +159,8 @@ const buildAllApps = () => {
     console.log('Building Apps...');
     buildApp('customers');
     buildApp('backoffice');
+    buildApp('broker');
+    buildApp('portal');
 };
 
 const install = (folder) => {
@@ -183,10 +176,11 @@ const build = (folder, script) => {
 
 const buildApp = (app) => {
     console.info(`Building app: ${app} ......`);
-    let source = customersSource;
-    if (app === 'backoffice') {
+    //let source = customersSource;
+    const source = path.join(__dirname, `../../../apps/${app}`);
+    /*if (app === 'backoffice') {
         source = backofficeSource;
-    }
+    }*/
 
     cleanFolder(source);
     install(source);
@@ -202,14 +196,15 @@ const buildPortal = (source, app) => {
 };
 
 const publishApp = (distFolder, app) => {
-    let deploymentFolder = customerDeploymentFolder;
+    const deploymentFolder = path.join(__dirname, `../../local/${app}-server/content`);
+    /*let deploymentFolder = customerDeploymentFolder;
     if (app === 'backoffice') {
         deploymentFolder = backofficeDeploymentFolder;
     }
 
     if (app === 'portal') {
         deploymentFolder = portalDeploymentFolder;
-    }
+    }*/
 
     if (!fs.existsSync(deploymentFolder)){
         fs.mkdirSync(deploymentFolder, { recursive: true });

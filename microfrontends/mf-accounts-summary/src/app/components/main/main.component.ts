@@ -69,7 +69,6 @@ export class MainComponent implements OnInit, AfterViewInit {
         console.log('[mf-accounts-summary] starting....');
         this.elementUrl = this.configService.getWebComponentURL('account-overview');
         this.totalBalance = 0;
-        this.initI18n();
     }
 
     ngAfterViewInit() {
@@ -79,6 +78,7 @@ export class MainComponent implements OnInit, AfterViewInit {
     ngOnInit() {
         console.log('[mf-accounts-summary] initializing....');
         this.initBroadcastChannels();
+        this.initI18n();
         console.log('[mf-accounts-summary] initialized....');
     }
 
@@ -168,7 +168,6 @@ export class MainComponent implements OnInit, AfterViewInit {
      * Initializes translate service
      */
     private initI18n() {
-        this.locale = 'en';
         this.translate.setDefaultLang(this.locale);
         this.translate.use(this.locale);
     }

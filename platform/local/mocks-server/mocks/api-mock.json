@@ -21,6 +21,16 @@
       }
     },
     {
+      "id": "broker-app-config",
+      "microfrontends": {
+        "accounts-summary": "/microfrontends/mf-accounts-summary/v1/main.js"
+      },
+      "uicomponents": {
+        "items-table": "/uicomponents/items-table/v1/items-table.esm.js",
+        "account-overview": "/uicomponents/account-overview/v1/account-overview.esm.js"
+      }
+    },
+    {
       "id": "global-position-mf-config",
       "microfrontends": {
         "cards-summary": "/microfrontends/mf-cards-summary/v1/main.js",
