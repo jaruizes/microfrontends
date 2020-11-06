@@ -4,18 +4,18 @@ provider "aws" {
 }
 
 module "api" {
-  source = "modules\/platform\/api"
+  source = "./modules/platform/api"
 }
 
 module "microfrontends" {
   bucket_prefix = "jalb80"
-  source = "modules\/applications\/microfrontends"
+  source = "./modules/applications/microfrontends"
 }
 
 module "backoffice" {
   api_id = module.api.api_id
   bucket_prefix = "jalb80"
-  source = "modules\/applications\/backoffice"
+  source = "./modules/applications/backoffice"
 
   depends_on = [module.api, module.microfrontends]
 }
@@ -23,7 +23,7 @@ module "backoffice" {
 module "storybook" {
   api_id = module.api.api_id
   bucket_prefix = "jalb80"
-  source = "modules\/applications\/storybook"
+  source = "./modules/applications/storybook"
 
   depends_on = [module.api, module.microfrontends]
 }
@@ -31,13 +31,21 @@ module "storybook" {
 module "customers" {
   api_id = module.api.api_id
   bucket_prefix = "jalb80"
-  source = "modules\/applications\/customers"
+  source = "./modules/applications/customers"
+
+  depends_on = [module.api, module.microfrontends]
+}
+
+module "broker" {
+  api_id = module.api.api_id
+  bucket_prefix = "jalb80"
+  source = "./modules/applications/broker"
 
   depends_on = [module.api, module.microfrontends]
 }
 
 module "cognito" {
-  source = "modules\/platform\/cognito"
+  source = "./modules/platform/cognito"
   customers_cf_url = module.customers.distribution_domain
   backoffice_cf_url = module.backoffice.distribution_domain
 
@@ -53,7 +61,11 @@ output "customers_client_id" {
 }
 
 output "backoffice_client_id" {
-  value = module.cognito.backoffice_id
+  value = module.cognito.backoffice_client_id
+}
+
+output "broker_client_id" {
+  value = module.cognito.broker_client_id
 }
 
 output "api_id" {

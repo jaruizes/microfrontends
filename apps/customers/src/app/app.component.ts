@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AuthConfig, NullValidationHandler, OAuthService } from 'angular-oauth2-oidc';
 import { SecurityService } from './services/security/security.service';
 import { TranslateService } from '@ngx-translate/core';
@@ -8,7 +8,7 @@ import { TranslateService } from '@ngx-translate/core';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 
   constructor(private securityService: SecurityService, private translate: TranslateService) {
     this.securityService.init();
@@ -17,6 +17,10 @@ export class AppComponent {
   private initI18n() {
     this.translate.setDefaultLang('en');
     this.translate.use('en');
+  }
+
+  ngOnInit(): void {
+    this.initI18n();
   }
 
 

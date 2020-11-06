@@ -21,9 +21,9 @@
     "test": "stencil test --spec --e2e",
     "test.watch": "stencil test --spec --e2e --watchAll",
     "generate": "stencil generate",
-    "s3-delete": "aws s3 rm s3://microfrontends-cdn/webcomponents/account-overview/v1 --recursive",
-    "s3-upload": "aws s3 cp dist/v1/account-overview s3://microfrontends-cdn/webcomponents/account-overview/v1 --recursive",
-    "publish": "npm run build && npm run s3-delete && npm run s3-upload"
+    "s3-delete": "aws --profile=jalb80-cli s3  rm s3://jalb80-microfrontends-bucket/uicomponents/account-overview/v1 --recursive",
+    "s3-upload": "aws --profile=jalb80-cli s3  cp dist/v1/account-overview s3://jalb80-microfrontends-bucket/uicomponents/account-overview/v1 --recursive",
+    "publish": "npm run s3-delete && npm run s3-upload"
   },
   "dependencies": {
     "@popperjs/core": "^2.4.4",

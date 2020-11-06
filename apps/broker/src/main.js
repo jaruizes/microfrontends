@@ -34,14 +34,21 @@ let initOptions = {
   clientId: 'broker-app'
 };
 
-const keycloak = Keycloak(initOptions);
-keycloak.init().then((auth) => {
-  if (auth) {
-    console.log("Authenticated");
-    router.push({ name: 'shares'});
-  }
-});
-Vue.prototype.$keycloak = keycloak;
+
+const loginActive = process.env.VUE_APP_LOGIN_ACTIVE === 'true';
+
+if (loginActive) {
+  const keycloak = Keycloak(initOptions);
+  keycloak.init().then((auth) => {
+    if (auth) {
+      console.log("Authenticated");
+      router.push({ name: 'shares'});
+    }
+  });
+  Vue.prototype.$keycloak = keycloak;
+}
+
+
 
 Vue.use(NowUiKit);
 Vue.use(BootstrapVue);

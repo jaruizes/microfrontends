@@ -94,12 +94,14 @@ export default {
   },
   methods: {
     login() {
-      console.log('--------------');
-      this.$keycloak.login({
-        redirectUri: window.location.origin + '/shares'
-      });
-
-      //VueKeycloakJs.login()
+      const loginActive = process.env.VUE_APP_LOGIN_ACTIVE === 'true';
+      if (loginActive) {
+        this.$keycloak.login({
+          redirectUri: window.location.origin + '/shares'
+        });
+      } else {
+        this.$router.push({ name: 'shares'});
+      }
     }
   }
 };

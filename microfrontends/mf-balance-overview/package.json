@@ -10,9 +10,9 @@
     "build:prod": "rimraf dist && vue-cli-service build --inline-vue --target wc --name mf-balance-overview ./src/components/Overview.vue",
     "expose": "cd dist && npm run mocks-server && npx static-server",
     "lint": "vue-cli-service lint",
-    "s3-delete": "aws s3 rm s3://microfrontends-cdn/microfrontends/mf-balance-overview/v1 --recursive",
-    "s3-upload": "aws s3 cp dist/mf-balance-overview/v1 s3://microfrontends-cdn/microfrontends/mf-balance-overview/v1 --recursive --exclude 'assets/*'",
-    "publish": "npm run build:prod && npm run s3-delete && npm run s3-upload",
+    "s3-delete": "aws --profile=jalb80-cli s3 rm s3://jalb80-microfrontends-bucket/microfrontends/mf-balance-overview/v1 --recursive",
+    "s3-upload": "aws --profile=jalb80-cli s3 cp dist/mf-balance-overview/v1 s3://jalb80-microfrontends-bucket/microfrontends/mf-balance-overview/v1 --recursive --exclude 'assets/*'",
+    "publish": "npm run s3-delete && npm run s3-upload",
     "publish:local": "npm run build:prod && cp -R ./dist/ ../../platform/mf-server/microfrontends-server/content/microfrontends/"
   },
   "dependencies": {

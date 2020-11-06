@@ -1,5 +1,5 @@
 output "user_pool_id" {
-  value       = aws_cognito_user_pool.user_pool.id
+  value       = aws_cognito_user_pool.microfrontends_user_pool.id
   description = "The id of the Cognito User Pool"
 }
 
@@ -8,7 +8,12 @@ output "customers_client_id" {
   description = "The id of the Customers Client"
 }
 
-output "backoffice_id" {
+output "backoffice_client_id" {
   value       = aws_cognito_user_pool_client.backoffice_client.id
-  description = "The id of the Customers Client"
+  description = "The id of the Backoffice Client"
+}
+
+output "broker_client_id" {
+  value       = aws_cognito_user_pool_client.broker_client.id
+  description = "The id of the Broker Client"
 }

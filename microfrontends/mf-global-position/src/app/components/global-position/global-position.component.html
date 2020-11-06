@@ -31,11 +31,11 @@
 
                 <!-- Accesos directos -->
                 <section class="gb-section">
-                    <wc-shortcuts *axLazyElement="urlShortcuts; module: true;"
+                    <shortcuts-panel *axLazyElement="urlShortcuts; module: true;"
                                   [data]="shortcuts"
                                   [locale]="locale"
                                   (shortcutClick)="handleShortcutClick($event)">
-                    </wc-shortcuts>
+                    </shortcuts-panel>
                 </section>
 
 

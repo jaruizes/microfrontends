@@ -166,9 +166,9 @@ export class MainComponent implements OnInit {
      * Initializes translate service
      */
     private initI18n() {
-        //this._locale = 'en';
-        this.translate.setDefaultLang(this._locale);
-        this.translate.use(this._locale);
+        let locale = this.locale ? this.locale : 'en';
+        this.translate.setDefaultLang(locale);
+        this.translate.use(locale);
     }
 
 }

@@ -30,13 +30,13 @@
     "test:prune-snapshots": "karma start karma.conf.cjs --prune-snapshots",
     "checksize": "rollup -c ; cat my-element.bundled.js | gzip -9 | wc -c ; rm my-element.bundled.js",
     "expose": "cd build && npx static-server",
-    "s3-delete-js": "aws s3 rm s3://microfrontends-cdn/webcomponents/shortcuts-panel/v1 --recursive",
-    "s3-delete-assets": "aws s3 rm s3://microfrontends-cdn/assets/webcomponents/shortcuts-panel/v1 --recursive",
-    "s3-upload-js": "aws s3 cp dist/shortcuts-panel/v1 s3://microfrontends-cdn/webcomponents/shortcuts-panel/v1 --recursive --exclude 'assets/*'",
-    "s3-upload-assets": "aws s3 cp dist/shortcuts-panel/v1/assets/webcomponents s3://microfrontends-cdn/assets/webcomponents --recursive",
+    "s3-delete-js": "aws --profile=jalb80-cli s3  rm s3://jalb80-microfrontends-bucket/uicomponents/shortcuts-panel/v1 --recursive",
+    "s3-delete-assets": "aws --profile=jalb80-cli s3  rm s3://jalb80-microfrontends-bucket/assets/uicomponents/shortcuts-panel/v1 --recursive",
+    "s3-upload-js": "aws --profile=jalb80-cli s3  cp dist/v1/shortcuts-panel s3://jalb80-microfrontends-bucket/uicomponents/shortcuts-panel/v1 --recursive --exclude 'assets/*'",
+    "s3-upload-assets": "aws --profile=jalb80-cli s3  cp dist/v1/shortcuts-panel/assets/uicomponents s3://jalb80-microfrontends-bucket/assets/uicomponents --recursive",
     "s3-delete": "npm run s3-delete-assets && npm run s3-delete-js",
     "s3-upload": "npm run s3-upload-assets && npm run s3-upload-js",
-    "publish": "npm run build:prod && npm run s3-delete && npm run s3-upload"
+    "publish": "npm run s3-delete && npm run s3-upload"
   },
   "keywords": [
     "web-components",

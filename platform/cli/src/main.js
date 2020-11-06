@@ -10,21 +10,28 @@ const figlet = require('figlet');
 const clear = require('clear');
 const { execSync } = require('child_process');
 
-
-const customersSource = path.join(__dirname, '../../../apps/customers');
-const customerDeploymentFolder = path.join(__dirname, '../../local/customers-server/content');
-
-const backofficeSource = path.join(__dirname, '../../../apps/backoffice');
-const backofficeDeploymentFolder = path.join(__dirname, '../../local/backoffice-server/content');
-
-const portalSource = path.join(__dirname, '../../../platform/storybook');
-const portalDeploymentFolder = path.join(__dirname, '../../local/portal-server/content');
-
 const uicomponentsPath = path.join(__dirname, '../../../uicomponents');
 const microfrontendsPath = path.join(__dirname, '../../../microfrontends');
 
+let environment;
+
 function getUserData() {
     const questions = [
+        {
+            type: "list",
+            message: "Choose environment",
+            name: "environment",
+            choices: [
+                {
+                    name: "Local",
+                    value: 'local'
+                },
+                {
+                    name: "Cloud",
+                    value: 'cloud'
+                }
+            ]
+        },
         {
             type: "list",
             message: "What do you want to do?",
@@ -92,6 +99,7 @@ function getUserData() {
         const option = answers.option;
         const microfrontend = answers.microfrontend;
         const uicomponent = answers.uicomponent;
+        environment = answers.environment;
 
         if (command === 0) {
             setupAll();
@@ -123,7 +131,6 @@ function getUserData() {
             }
         }
 
-        //servicebuild(type, version, groupId, artifactId, appName, osproject);
 
 
     });
@@ -159,8 +166,9 @@ const buildAllApps = () => {
     console.log('Building Apps...');
     buildApp('customers');
     buildApp('backoffice');
-    buildApp('broker');
     buildApp('portal');
+    buildApp('broker');
+
 };
 
 const install = (folder) => {
@@ -176,60 +184,36 @@ const build = (folder, script) => {
 
 const buildApp = (app) => {
     console.info(`Building app: ${app} ......`);
-    //let source = customersSource;
     const source = path.join(__dirname, `../../../apps/${app}`);
-    /*if (app === 'backoffice') {
-        source = backofficeSource;
-    }*/
 
     cleanFolder(source);
     install(source);
-    build(source);
+    if (environment === 'cloud') {
+        build(source, 'build:prod');
+    } else {
+        build(source);
+    }
+
     publishApp(path.join(source,'dist',app), app);
 };
 
-const buildPortal = (source, app) => {
-    cleanFolder(source);
-    install(source);
-    build(source, 'build');
-    publishApp(path.join(source,'dist'), app);
-};
-
 const publishApp = (distFolder, app) => {
-    const deploymentFolder = path.join(__dirname, `../../local/${app}-server/content`);
-    /*let deploymentFolder = customerDeploymentFolder;
-    if (app === 'backoffice') {
-        deploymentFolder = backofficeDeploymentFolder;
-    }
-
-    if (app === 'portal') {
-        deploymentFolder = portalDeploymentFolder;
-    }*/
-
-    if (!fs.existsSync(deploymentFolder)){
-        fs.mkdirSync(deploymentFolder, { recursive: true });
-    } else {
-        fs.rmdirSync(deploymentFolder, { recursive: true });
-    }
-
-    console.log('Copy from <' + distFolder + '> to <' + deploymentFolder + '>');
-    copydir.sync(distFolder, deploymentFolder);
-};
-
-
-/*const buildUIComponents = () => {
-    fs.readdir(uicomponentsPath, function (err, files) {
-        if (err) {
-            return console.log('Unable to scan directory: ' + err);
+    if (environment === 'local') {
+        const deploymentFolder = path.join(__dirname, `../../local/${app}-server/content`);
+        if (!fs.existsSync(deploymentFolder)) {
+            fs.mkdirSync(deploymentFolder, {recursive: true});
+        } else {
+            fs.rmdirSync(deploymentFolder, {recursive: true});
         }
-        files.forEach(function (file) {
-            if (!file.startsWith('.')) {
-                buildUIComponent(file);
-            }
 
-        });
-    });
-};*/
+        console.log('Copy from <' + distFolder + '> to <' + deploymentFolder + '>');
+        copydir.sync(distFolder, deploymentFolder);
+    }
+
+    if (environment === 'cloud') {
+        execSync(`npm run publish`, { silent: true, cwd: distFolder, stdio: 'ignore'  });
+    }
+};
 
 
 const buildComponents = (componentsRootPath, componentBuildFunction) => {
@@ -268,7 +252,11 @@ async function buildMicrofrontend(microfrontend) {
     console.log('\t - Building.....');
     execSync('npm run build:prod', { silent: true, cwd: folder, stdio: 'ignore'  });
     console.log('\t - Publishing....');
-    publishMicrofrontendToLocalServer(microfrontend, folder);
+    if (environment === 'local') {
+        publishMicrofrontendToLocalServer(microfrontend, folder);
+    } else {
+        execSync('npm run publish', { silent: true, cwd: folder, stdio: 'ignore'  });
+    }
 }
 
 async function buildUIComponent(component) {
@@ -281,7 +269,11 @@ async function buildUIComponent(component) {
     console.log('\t - Building.....');
     execSync('npm run build:prod', { silent: true, cwd: folder, stdio: 'ignore'  });
     console.log('\t - Publishing....');
-    publishUIComponentToLocalServer(component, folder);
+    if (environment === 'local') {
+        publishUIComponentToLocalServer(component, folder);
+    } else {
+        execSync('npm run publish', { cwd: folder  });
+    }
 }
 
 async function cleanFolder(folder) {

@@ -9,7 +9,7 @@ const apiBase = '/api';
 
 export const environment = {
   production: false,
-  env: 'DEFAULT',
+  env: 'CLOUD',
   config: {
     name: name,
     version: version,
@@ -22,13 +22,12 @@ export const environment = {
     security: {
       allowedDomains: ['/api/*'],
       token: 'access_token',
-      issuer: 'https://cognito-idp.eu-west-2.amazonaws.com/eu-west-2_cWRpsv2T3',
-      clientid: 'k95pm6mikfr1oos31997m66ha',
+      issuer: 'https://cognito-idp.eu-west-2.amazonaws.com/eu-west-2_3okwlgP1c',
+      clientid: '6t9p5j6emk4dip9qu0q611dd29',
       scope: 'openid profile email aws.cognito.signin.user.admin',
-      logoutUrl: 'https://tf-microfrontends.auth.eu-west-2.amazoncognito.com/logout',
-      userinfoEndpoint: 'https://tf-microfrontends.auth.eu-west-2.amazoncognito.com/oauth2/userInfo'
+      logoutUrl: 'https://jalb80-microfrontends.auth.eu-west-2.amazoncognito.com/logout?logout_uri=' + window.location.origin + "/logout" + '&client_id=6t9p5j6emk4dip9qu0q611dd29',
+      userinfoEndpoint: 'https://jalb80-microfrontends.auth.eu-west-2.amazoncognito.com/oauth2/userInfo'
     }
-
   },
   api: {
     base: apiBase,

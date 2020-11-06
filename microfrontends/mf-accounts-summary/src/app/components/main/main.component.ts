@@ -168,7 +168,8 @@ export class MainComponent implements OnInit, AfterViewInit {
      * Initializes translate service
      */
     private initI18n() {
-        this.translate.setDefaultLang(this.locale);
-        this.translate.use(this.locale);
+        let locale = this.locale ? this.locale : 'en';
+        this.translate.setDefaultLang(locale);
+        this.translate.use(locale);
     }
 }

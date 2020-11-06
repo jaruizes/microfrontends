@@ -88,13 +88,13 @@ export class GlobalPositionComponent implements OnInit {
                 private modalService: NgbModal) {
 
         this.initURLs();
-        this.initI18n();
         console.log('Customer (const): ' + this.customer);
     }
 
     ngOnInit(): void {
         console.log('Customer (ngOnInit): ' + this.customer);
         this.initBroadcastChannel();
+        this.initI18n();
     }
 
     handleParentMessage(message) {
@@ -206,7 +206,6 @@ export class GlobalPositionComponent implements OnInit {
      * Initializes translate service
      */
     private initI18n() {
-        this.locale = 'en';
         this.translate.setDefaultLang(this.locale);
         this.translate.use(this.locale);
     }

@@ -46,7 +46,7 @@ export const GlobalPositionCustomer = Template.bind();
 GlobalPositionCustomer.storyname = "Global Position (Customer)";
 GlobalPositionCustomer.args = {
   customer: '0001',
-  locale: 'es',
+  locale: 'en',
   mode: 0
 };
 
@@ -54,6 +54,6 @@ export const GlobalPositionBackoffice = Template.bind();
 GlobalPositionBackoffice.storyname = "Global Position (Backoffice)";
 GlobalPositionBackoffice.args = {
   customer: '0001',
-  locale: 'es',
+  locale: 'en',
   mode: 1
 };
