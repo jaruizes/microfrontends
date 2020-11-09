@@ -43,5 +43,6 @@ jobs:
       - uses: actions/checkout@v2
       - name: Build Microfrontend
         uses: ./.github/workflows/microfrontends
-        with:
-          source: ./microfrontends/mf-account-detail
+        defaults:
+          run:
+            working-directory: ./microfrontends/mf-account-detail

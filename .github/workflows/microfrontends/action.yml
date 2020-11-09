@@ -1,16 +1,6 @@
-inputs:
-  source:
-    description: 'Microfrontend source folder'
-    default: 'No name provided'
 runs:
   using: "composite"
-  defaults:
-    run:
-      working-directory: ${{ inputs.source }}
-
   steps:
-    - uses: actions/checkout@v2
-
     - name: Set Up
       uses: actions/setup-node@v1
 
