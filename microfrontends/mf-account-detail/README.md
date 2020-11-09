@@ -5,7 +5,6 @@
 This component provides the **account detail**, in addition to listing its movements
 
 <br />
-<br />
 
 ## Props
 
