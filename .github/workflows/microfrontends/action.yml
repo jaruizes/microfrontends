@@ -1,16 +1,22 @@
+inputs:
+  source:
+    description: 'Source'
 runs:
   using: "composite"
   steps:
     - name: Install packages
       run: npm install
       shell: bash
+      working-directory: ${{ inputs.source}}
 
     # Build
     - name: Build component
       run: npm run build:prod
       shell: bash
+      working-directory: ${{ inputs.source}}
 
     # Test
     - name: Test component
       run: npm run e2e
       shell: bash
+      working-directory: ${{ inputs.source}}
