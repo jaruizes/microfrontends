@@ -39,10 +39,10 @@ jobs:
     needs: check
     if: needs.check.outputs.run_mf-account-detail == 'true'
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./microfrontends/mf-account-detail
     steps:
       - uses: actions/checkout@v2
       - name: Build Microfrontend
         uses: ./.github/workflows/microfrontends
-        defaults:
-          run:
-            working-directory: ./microfrontends/mf-account-detail
