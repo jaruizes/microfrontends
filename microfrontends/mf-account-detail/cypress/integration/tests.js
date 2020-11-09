@@ -17,7 +17,7 @@ describe('Micro Frontend Test Suite', function () {
     });
 
     it('should be up & running, including all the components', () => {
-        cy.visit('http://localhost:5000/microfrontends/mf-account-detail/v1/index.html');
+        cy.visit('/');
         cy.contains('Account Detail', {includeShadowDom: true});
         cy.contains('Movements', {includeShadowDom: true});
     });

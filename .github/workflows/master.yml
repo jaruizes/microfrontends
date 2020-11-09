@@ -62,3 +62,7 @@ jobs:
       - name: Build component
         run: npm run build:prod
 
+      # Test
+      - name: Test component
+        run: npm run e2e
+
