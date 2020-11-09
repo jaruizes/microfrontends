@@ -4,7 +4,6 @@ inputs:
     default: 'No name provided'
 runs:
   using: "composite"
-  runs-on: ubuntu-latest
   defaults:
     run:
       working-directory: ${{ inputs.source }}

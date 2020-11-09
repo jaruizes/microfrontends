@@ -38,6 +38,7 @@ jobs:
   build_mf-account-detail:
     needs: check
     if: needs.check.outputs.run_mf-account-detail == 'true'
+    runs-on: ubuntu-latest
     steps:
       - name: Build Microfrontend
         uses: mf-actions/microfrontend@v1
