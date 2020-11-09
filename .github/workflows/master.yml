@@ -41,6 +41,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Build Microfrontend
-        uses: mf-actions/microfrontend@v1
+        uses: ./.github/workflows/mf-actions/microfrontend
         with:
           source: ./microfrontends/mf-account-detail
