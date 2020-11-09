@@ -20,9 +20,3 @@ runs:
       run: npm run e2e
       shell: bash
       working-directory: ${{ inputs.source}}
-
-    # Publish
-    - name: Deploy component
-      run: npm run publish
-      shell: bash
-      working-directory: ${{ inputs.source}}

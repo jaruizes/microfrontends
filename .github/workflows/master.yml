@@ -52,3 +52,7 @@ jobs:
         uses: ./.github/workflows/microfrontends
         with:
           source: ./microfrontends/mf-account-detail
+
+      - name: Deploy component
+        run: npm run publish
+        working-directory: ./microfrontends/mf-account-detail
