@@ -1,0 +1,27 @@
+inputs:
+  source:
+    description: 'Microfrontend source folder'
+    default: 'No name provided'
+runs:
+  using: "composite"
+  runs-on: ubuntu-latest
+  defaults:
+    run:
+      working-directory: ${{ inputs.source }}
+
+  steps:
+    - uses: actions/checkout@v2
+
+    - name: Set Up
+      uses: actions/setup-node@v1
+
+    - name: Install packages
+      run: npm install
+
+    # Build
+    - name: Build component
+      run: npm run build:prod
+
+    # Test
+    - name: Test component
+      run: npm run e2e
