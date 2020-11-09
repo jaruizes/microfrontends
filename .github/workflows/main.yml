@@ -1,32 +1,58 @@
 name: CI
 
-# Controls when the action will run. Triggers the workflow on push or pull request
-# events but only for the main branch
 on:
   push:
     branches: [ main ]
   pull_request:
     branches: [ main ]
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
-  build:
-    # The type of runner that the job will run on
+  check:
+    name: Check changes
+    outputs:
+      run_mf-account-detail: ${{ steps.check_changes.outputs.run_mf-account-detail }}
     runs-on: ubuntu-latest
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-outt
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 2
+
+      - name: check modified files
+        id: check_changes
+        run: |
+          echo "=============== list modified files ==============="
+          git diff --name-only HEAD^ HEAD
+
+          echo "========== check paths of modified files =========="
+          git diff --name-only HEAD^ HEAD > files.txt
+          while IFS= read -r file
+          do
+            echo $file
+            if [[ $file == microfrontends/mf-account-detail/* ]]; then
+              echo "::set-output name=run_mf-account-detail::true"
+              break
+            fi
+          done < files.txt
+
+  build_mf-account-detail:
+    needs: check
+    if: needs.check.outputs.run_mf-account-detail == 'true'
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./microfrontends/mf-account-detail
+
+    steps:
       - uses: actions/checkout@v2
 
       # Set Up Node & Registry
       - name: Set Up
         uses: actions/setup-node@v1
-        with:
-          node-version: '12.x'
-          registry-url: https://npm.pkg.github.com
-          scope: '@jaruizes'
+#        with:
+#          node-version: '12.x'
+#          registry-url: https://npm.pkg.github.com
+#          scope: '@jaruizes'
 
       # Install
       - name: Install packages
@@ -34,11 +60,5 @@ jobs:
 
       # Build
       - name: Build component
-        run: npm run build
-
-      # Publish
-      - name: Publish package
-        run: npm publish
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: npm run build:prod
 

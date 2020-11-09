@@ -96,6 +96,14 @@ export default {
     .main-title {
       font-size: 4.5vw;
     }
+
+    .shares {
+      padding-top: 1.2rem;
+    }
+
+    .card-body {
+      padding-top: 0px;
+    }
   }
 
 

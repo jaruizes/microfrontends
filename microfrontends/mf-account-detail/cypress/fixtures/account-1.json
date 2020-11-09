@@ -1,0 +1,41 @@
+{
+  "id": 1,
+  "number": "123412341234",
+  "name": "Test Account",
+  "holder": "Holder Account",
+  "lastmovement": "2 days ago",
+  "newmovements": "5",
+  "amount": 345,
+  "balance": 345,
+  "customer": "0001",
+  "movements": [
+    {
+      "id": 1,
+      "date": "01/01/2020",
+      "subject": "Movement 1",
+      "account": "Test Account",
+      "amount": "1"
+    },
+    {
+      "id": 2,
+      "date": "02/01/2020",
+      "subject": "Movement 2",
+      "account": "Test Account",
+      "amount": "2"
+    },
+    {
+      "id": 3,
+      "date": "03/01/2020",
+      "subject": "Movement 3",
+      "account": "Test Account",
+      "amount": "3"
+    },
+    {
+      "id": 4,
+      "date": "04/01/2020",
+      "subject": "Movement 4",
+      "account": "Test Account",
+      "amount": "4"
+    }
+  ]
+}
