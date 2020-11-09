@@ -1,16 +1,16 @@
 runs:
   using: "composite"
   steps:
-    - name: Set Up
-      uses: actions/setup-node@v1
-
     - name: Install packages
       run: npm install
+      shell: bash
 
     # Build
     - name: Build component
       run: npm run build:prod
+      shell: bash
 
     # Test
     - name: Test component
       run: npm run e2e
+      shell: bash
