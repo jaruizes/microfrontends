@@ -1,0 +1,48 @@
+{
+  "name": "Fernando Alonso Díaz",
+  "age": 39,
+  "balance": 50000,
+  "entry": "24/08/2008",
+  "summary": {
+    "incomes": [4500, 1700, 5000, 6500, 2000, 2500, 2360, 3400, 2200, 8900, 3500, 3200],
+    "expenses": [1500, 1200, 3000, 2200, 2000, 1000, 360, 1000, 1200, 1900, 2333, 4555],
+    "dates": ["10/2019", "11/2019", "12/2019", "01/2020", "02/2020", "03/2020", "04/2020", "05/2020", "06/2020", "07/2020", "08/2020", "09/2020"]
+  },
+  "lastmovements": [
+    {
+      "id": 1,
+      "date": "06/10/2020",
+      "subject": "CONSUM SUPERMERCADO",
+      "account": "MICROSERVICIOS 1,2,3",
+      "amount": "200"
+    },
+    {
+      "id": 2,
+      "date": "05/10/2020",
+      "subject": "REINTEGRO CAJERO",
+      "account": "TARJETA DYNAMODB",
+      "amount": "100"
+    },
+    {
+      "id": 3,
+      "date": "05/10/2020",
+      "subject": "AMAZON",
+      "account": "TARJETA DYNAMODB",
+      "amount": "350"
+    },
+    {
+      "id": 4,
+      "date": "04/10/2020",
+      "subject": "TELEFONICA FIBRA",
+      "account": "MICROSERVICIOS 1,2,3",
+      "amount": "120"
+    },
+    {
+      "id": 5,
+      "date": "02/10/2020",
+      "subject": "MEDITERRANEA COMEDOR",
+      "account": "MICROSERVICIOS 1,2,3",
+      "amount": "250"
+    }
+  ]
+}
