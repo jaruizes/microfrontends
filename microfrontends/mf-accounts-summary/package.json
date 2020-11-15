@@ -10,7 +10,9 @@
     "test": "npm run build && cd dist/mf-accounts-summary && npx static-server",
     "expose": "npm run mocks-server && cd dist/mf-accounts-summary/v1 && npx static-server",
     "lint": "ng lint",
-    "e2e": "ng e2e",
+    "e2e": "start-server-and-test start http://localhost:4205 cypress:run",
+    "cypress:run": "cypress run",
+    "cypress:open": "cypress open",
     "s3-delete-js": "aws --profile=jalb80-cli s3 rm s3://jalb80-microfrontends-bucket/microfrontends/mf-accounts-summary/v1 --recursive",
     "s3-delete-assets": "aws --profile=jalb80-cli s3 rm s3://jalb80-microfrontends-bucket/assets/microfrontends/mf-accounts-summary/v1 --recursive",
     "s3-upload-js": "aws --profile=jalb80-cli s3 cp dist/mf-accounts-summary/v1 s3://jalb80-microfrontends-bucket/microfrontends/mf-accounts-summary/v1 --recursive --exclude 'assets/*'",
@@ -52,6 +54,7 @@
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "^12.11.1",
     "codelyzer": "^6.0.0",
+    "cypress": "^5.5.0",
     "jasmine-core": "~3.6.0",
     "jasmine-spec-reporter": "~5.0.0",
     "json-server": "^0.16.1",
@@ -64,6 +67,7 @@
     "protractor": "~7.0.0",
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0",
-    "typescript": "~4.0.2"
+    "typescript": "~4.0.2",
+    "start-server-and-test": "^1.11.5"
   }
 }
