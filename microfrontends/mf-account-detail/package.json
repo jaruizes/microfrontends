@@ -12,6 +12,7 @@
     "lint": "ng lint",
     "e2e": "start-server-and-test start http://localhost:4210 cypress:run",
     "cypress:run": "cypress run",
+    "cypress:open": "cypress open",
     "s3-delete-js": "aws s3 rm s3://jalb80-microfrontends-bucket/microfrontends/mf-account-detail/v1 --recursive",
     "s3-delete-assets": "aws s3 rm s3://jalb80-microfrontends-bucket/assets/microfrontends/mf-account-detail/v1 --recursive",
     "s3-upload-js": "aws s3 cp dist/mf-account-detail/v1 s3://jalb80-microfrontends-bucket/microfrontends/mf-account-detail/v1 --recursive --exclude 'assets/*'",
