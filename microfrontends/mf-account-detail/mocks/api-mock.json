@@ -3,8 +3,8 @@
     {
       "id": "account-detail-mf-config",
       "microfrontends": {},
-      "webcomponents": {
-        "items-table": "/webcomponents/items-table/v1/items-table.esm.js"
+      "uicomponents": {
+        "items-table": "/uicomponents/items-table/v1/items-table.esm.js"
       }
     }
   ],
