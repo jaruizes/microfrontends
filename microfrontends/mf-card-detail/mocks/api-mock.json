@@ -3,9 +3,9 @@
     {
       "id": "card-detail-mf-config",
       "microfrontends": {},
-      "webcomponents": {
-        "items-table": "/webcomponents/items-table/v1/items-table.esm.js",
-        "card": "/webcomponents/credit-card/v1/credit-card.esm.js"
+      "uicomponents": {
+        "items-table": "/uicomponents/items-table/v1/items-table.esm.js",
+        "card": "/uicomponents/credit-card/v1/credit-card.esm.js"
       }
     }
   ],

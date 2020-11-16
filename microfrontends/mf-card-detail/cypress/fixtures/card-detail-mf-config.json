@@ -1,0 +1,8 @@
+{
+  "id": "card-detail-mf-config",
+  "microfrontends": {},
+  "uicomponents": {
+    "items-table": "/uicomponents/items-table/v1/items-table.esm.js",
+    "card": "/uicomponents/credit-card/v1/credit-card.esm.js"
+  }
+}
