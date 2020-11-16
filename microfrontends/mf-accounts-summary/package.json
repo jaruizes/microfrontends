@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "mocks-server": "json-server --routes mocks/routes.json --port 3005 --watch mocks/api-mock.json &",
-    "start": "npm run mocks-server && ng serve --port 4205",
+    "start": "ng serve --port 4205",
     "build:prod": "rimraf dist && ng build --prod --output-hashing=none --single-bundle",
     "build": "ng build --output-hashing=none --single-bundle",
     "test": "npm run build && cd dist/mf-accounts-summary && npx static-server",

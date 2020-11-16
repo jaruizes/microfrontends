@@ -13,6 +13,7 @@
     const generalChannel = new BroadcastChannel("microfrontends");
     const internalChannel = new BroadcastChannel("internal");
     internalChannel.onmessage = function (e) {
+      console.log(e.data);
       const pEL = document.createElement('p');
       pEL.innerText = 'cmd: ' + e.data.cmd + ' / accountId: ' + e.data.payload.id;
       document.getElementById('childmessages').appendChild(pEL);

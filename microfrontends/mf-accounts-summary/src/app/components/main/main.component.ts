@@ -91,7 +91,7 @@ export class MainComponent implements OnInit, AfterViewInit {
             cmd: 'accountClick',
             payload: {
                 id: accountId,
-                detail: this.accounts.filter(account => account.id = accountId)[0]
+                detail: this.accounts.filter(account => account.id === accountId)[0]
             }
         });
     }
