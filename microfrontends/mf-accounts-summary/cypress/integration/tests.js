@@ -34,11 +34,12 @@ describe('Micro Frontend Test Suite', function () {
         cy.get('.cards-container', {includeShadowDom: true}).find('.account-overview', {includeShadowDom: true}).should('have.length', NUM_ELEMENTS);
         cy.get('.cards-container', {includeShadowDom: true}).find('.account-overview', {includeShadowDom: true}).each(($el, index) => {
             //cy.wrap($el).find('account-overview').contains(formatIBAN(this.data[index]['number']));
-            cy.wrap($el).contains(formatIBAN(this.data[index]['number']), {includeShadowDom: true});
-            cy.wrap($el).contains(this.data[index]['name'], {includeShadowDom: true});
-            cy.wrap($el).contains(this.data[index]['lastmovement'], {includeShadowDom: true});
-            cy.wrap($el).contains(this.data[index]['newmovements'], {includeShadowDom: true});
-            cy.wrap($el).contains(this.data[index]['amount'], {includeShadowDom: true});
+            const account = this.data[index];
+            cy.wrap($el).contains(formatIBAN(account['number']), {includeShadowDom: true});
+            cy.wrap($el).contains(account['name'], {includeShadowDom: true});
+            cy.wrap($el).contains(account['lastmovement'], {includeShadowDom: true});
+            cy.wrap($el).contains(account['newmovements'], {includeShadowDom: true});
+            cy.wrap($el).contains(account['amount'], {includeShadowDom: true});
         });
     });
 
