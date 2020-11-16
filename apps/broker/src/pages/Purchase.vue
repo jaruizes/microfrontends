@@ -11,12 +11,12 @@
           <div class="card-body share-info">
             <div class="container-fluid">
               <div class="row ">
-                <div class="col-7 ">
+                <div class="col-6 ">
                   <h5 class="header">Value</h5>
                   <h4 class="value">{{share.value}} €</h4>
 
                 </div>
-                <div class="col-5 ">
+                <div class="col-6 ">
                   <h5 class="header">Percent</h5>
                   <h4 class="value">{{share.percent}} %</h4>
                 </div>
@@ -24,7 +24,7 @@
             </div>
           </div>
           <div class="card-footer text-center" v-if="!isAccountSelected">
-            <b-button variant="primary" v-b-modal="'modal-1'" class="btn-lg buy-button">Comprar</b-button>
+            <b-button variant="primary" v-b-modal="'modal-1'" class="btn buy-button">Comprar</b-button>
           </div>
         </div>
 
@@ -250,5 +250,37 @@ export default {
 
   .buy-button {
     font-weight: 600 !important;
+  }
+
+  @media screen and (max-width: 767px) {
+    .purchase {
+      padding-top: 1em;
+    }
+
+    .card-body {
+      padding-top: 0px;
+      margin-left: 0.5em;
+      margin-right: 0.5em;
+    }
+
+    .value, .header{
+      margin: 0;
+    }
+
+    .header {
+      font-size: 3vw;
+    }
+
+    .value {
+      font-size: 5vw;
+    }
+
+    .card-title h3 {
+      font-size: 5vw;
+    }
+
+    .share-info {
+      width: 100%;
+    }
   }
 </style>

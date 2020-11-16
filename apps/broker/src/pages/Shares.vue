@@ -32,25 +32,33 @@ export default {
   methods: {
     initData() {
       this.showShares = false;
-      axios.get('/api/shares/').then((result) => {
-        console.log(result.data);
-        result.data.forEach((share) => {
-          const item = {
-            id: share.short,
-            header: share.market,
-            title1: share.name,
-            subtitle1: share.percent + '%',
-            title2: share.value + ' €'
-          };
-
-          this.shares.items.push(item);
-        });
-
+      this.getShares().then(() => {
         this.showShares = true;
       });
     },
     handleItemClick(event) {
       this.$router.push({ path: 'purchase', query: { short: event.detail.id } })
+    },
+    getShares() {
+      return new Promise((resolve) => {
+        const apiGoogleSheets = 'https://spreadsheets.google.com/feeds/list/1o_XQkHbCVIxVdvXAydPP6fce0S_mkuVrwfMMYzLaYlw/od6/public/values?alt=json';
+        axios.get(apiGoogleSheets).then((result) => {
+          const entries = result.data['feed']['entry'];
+          entries.forEach((entry) => {
+            const item = {
+              id: entry['gsx$_cn6ca']['$t'],
+              header: 'CONTINUO',
+              title1: entry['gsx$_cokwr']['$t'],
+              subtitle1: entry['gsx$_chk2m']['$t'] + ' %',
+              title2: entry['gsx$_cpzh4']['$t'] + ' €'
+            };
+
+            this.shares.items.push(item);
+          });
+
+          resolve();
+        });
+      });
     }
   },
   data() {
@@ -66,7 +74,9 @@ export default {
     };
   },
   mounted() {
-
+    this.interval = setInterval(() => {
+      this.getShares();
+    }, 5000);
   }
 };
 </script>
