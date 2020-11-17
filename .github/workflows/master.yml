@@ -11,6 +11,11 @@ jobs:
     name: Check changes
     outputs:
       run_mf-account-detail: ${{ steps.check_changes.outputs.run_mf-account-detail }}
+      run_mf-accounts-summary: ${{ steps.check_changes.outputs.run_mf-accounts-summary }}
+      run_mf-card-detail: ${{ steps.check_changes.outputs.run_mf-card-detail }}
+      run_mf-cards-summary: ${{ steps.check_changes.outputs.run_mf-cards-summary }}
+      run_mf-balance-overview: ${{ steps.check_changes.outputs.run_mf-balance-overview }}
+      run_mf-global-position: ${{ steps.check_changes.outputs.run_mf-global-position }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
