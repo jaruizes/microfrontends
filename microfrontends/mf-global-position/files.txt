@@ -1,0 +1,1 @@
+microfrontends/mf-account-detail/mocks/api-mock.json

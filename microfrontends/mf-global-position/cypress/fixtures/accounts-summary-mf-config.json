@@ -1,0 +1,7 @@
+{
+  "id": "accounts-summary-mf-config",
+  "microfrontends": {},
+  "uicomponents": {
+    "account-overview": "/uicomponents/account-overview/v1/account-overview.esm.js"
+  }
+}

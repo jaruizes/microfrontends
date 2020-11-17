@@ -1,0 +1,7 @@
+{
+  "id": "cards-summary-mf-config",
+  "microfrontends": {},
+  "uicomponents": {
+    "card-overview": "/uicomponents/card-overview/v1/card-overview.esm.js"
+  }
+}

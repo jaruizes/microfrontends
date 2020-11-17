@@ -1,32 +1,32 @@
 {
   "/api": {
-    "target": "https://ppqzm7uohd.execute-api.eu-west-2.amazonaws.com",
+    "target": "http://localhost:3001",
     "secure": false,
     "logLevel": "debug",
     "changeOrigin" : true
   },
   "/microfrontends": {
-    "target": "http://microfrontends-cdn.s3-website.eu-west-2.amazonaws.com",
+    "target": "http://jalb80-microfrontends-bucket.s3-website.eu-west-2.amazonaws.com",
     "secure": false,
     "logLevel": "debug",
     "changeOrigin" : true
   },
   "/assets/microfrontends": {
-    "target": "http://microfrontends-cdn.s3-website.eu-west-2.amazonaws.com",
+    "target": "http://jalb80-microfrontends-bucket.s3-website.eu-west-2.amazonaws.com",
     "secure": false,
     "logLevel": "debug",
     "changeOrigin" : true
   },
-  "/webcomponents": {
-    "target": "http://microfrontends-cdn.s3-website.eu-west-2.amazonaws.com",
+  "/uicomponents": {
+    "target": "http://jalb80-microfrontends-bucket.s3-website.eu-west-2.amazonaws.com",
     "secure": false,
     "logLevel": "debug",
     "changeOrigin" : true
   },
-  "/assets/webcomponents": {
-  "target": "http://microfrontends-cdn.s3-website.eu-west-2.amazonaws.com",
-  "secure": false,
-  "logLevel": "debug",
-  "changeOrigin" : true
-}
+  "/assets/uicomponents": {
+    "target": "http://jalb80-microfrontends-bucket.s3-website.eu-west-2.amazonaws.com",
+    "secure": false,
+    "logLevel": "debug",
+    "changeOrigin" : true
+  }
 }
