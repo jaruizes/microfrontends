@@ -16,6 +16,15 @@ jobs:
       run_mf-cards-summary: ${{ steps.check_changes.outputs.run_mf-cards-summary }}
       run_mf-balance-overview: ${{ steps.check_changes.outputs.run_mf-balance-overview }}
       run_mf-global-position: ${{ steps.check_changes.outputs.run_mf-global-position }}
+      run_ui-account-overview: ${{ steps.check_changes.outputs.run_ui-account-overview }}
+      run_ui-card-overview: ${{ steps.check_changes.outputs.run_ui-card-overview }}
+      run_ui-credit-card: ${{ steps.check_changes.outputs.run_ui-credit-card }}
+      run_ui-items-table: ${{ steps.check_changes.outputs.run_ui-items-table }}
+      run_ui-shortcuts-panel: ${{ steps.check_changes.outputs.run_ui-shortcuts-panel }}
+      run_app-customers: ${{ steps.check_changes.outputs.run_app-customers }}
+      run_app-broker: ${{ steps.check_changes.outputs.run_app-broker }}
+      run_app-backoffice: ${{ steps.check_changes.outputs.run_app-backoffice }}
+      run_app-portal: ${{ steps.check_changes.outputs.run_app-portal }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -51,6 +60,33 @@ jobs:
               break
             elif [[ $file == microfrontends/mf-global-position/* ]]; then
               echo "::set-output name=run_mf-global-position::true"
+              break
+            elif [[ $file == uicomponents/account-overview/* ]]; then
+              echo "::set-output name=run_ui-account-overview::true"
+              break
+            elif [[ $file == uicomponents/card-overview/* ]]; then
+              echo "::set-output name=run_ui-card-overview::true"
+              break
+            elif [[ $file == uicomponents/credit-card/* ]]; then
+              echo "::set-output name=run_ui-credit-card::true"
+              break
+            elif [[ $file == uicomponents/items-table/* ]]; then
+              echo "::set-output name=run_ui-items-table::true"
+              break
+            elif [[ $file == uicomponents/shortcuts-panel/* ]]; then
+              echo "::set-output name=run_ui-shortcuts-panel::true"
+              break
+            elif [[ $file == apps/customers/* ]]; then
+              echo "::set-output name=run_app-customers::true"
+              break
+            elif [[ $file == apps/broker/* ]]; then
+              echo "::set-output name=run_app-broker::true"
+              break
+            elif [[ $file == apps/backoffice/* ]]; then
+              echo "::set-output name=run_app-backoffice::true"
+              break
+            elif [[ $file == apps/portal/* ]]; then
+              echo "::set-output name=run_app-portal::true"
               break
             fi
           done < files.txt
@@ -187,3 +223,196 @@ jobs:
       - name: Deploy component
         run: npm run publish
         working-directory: ./microfrontends/mf-global-position
+        
+  build_ui-account-overview:
+    needs: check
+    if: needs.check.outputs.run_ui-account-overview == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build UI Component
+        uses: ./.github/workflows/uicomponents
+        with:
+          source: ./uicomponents/account-overview
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.CLIENT_ID }}
+          aws-secret-access-key: ${{ secrets.CLIENT_SECRET }}
+          aws-region: eu-west-2
+
+      - name: Deploy component
+        run: npm run publish
+        working-directory: ./uicomponents/account-overview
+
+  build_ui-card-overview:
+    needs: check
+    if: needs.check.outputs.run_ui-card-overview == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build UI Component
+        uses: ./.github/workflows/uicomponents
+        with:
+          source: ./uicomponents/card-overview
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.CLIENT_ID }}
+          aws-secret-access-key: ${{ secrets.CLIENT_SECRET }}
+          aws-region: eu-west-2
+
+      - name: Deploy component
+        run: npm run publish
+        working-directory: ./uicomponents/card-overview
+        
+  build_ui-credit-card:
+    needs: check
+    if: needs.check.outputs.run_ui-credit-card == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build UI Component
+        uses: ./.github/workflows/uicomponents
+        with:
+          source: ./uicomponents/credit-card
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.CLIENT_ID }}
+          aws-secret-access-key: ${{ secrets.CLIENT_SECRET }}
+          aws-region: eu-west-2
+
+      - name: Deploy component
+        run: npm run publish
+        working-directory: ./uicomponents/credit-card
+        
+  build_ui-items-table:
+    needs: check
+    if: needs.check.outputs.run_ui-items-table == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build UI Component
+        uses: ./.github/workflows/uicomponents
+        with:
+          source: ./uicomponents/items-table
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.CLIENT_ID }}
+          aws-secret-access-key: ${{ secrets.CLIENT_SECRET }}
+          aws-region: eu-west-2
+
+      - name: Deploy component
+        run: npm run publish
+        working-directory: ./uicomponents/items-table
+        
+  build_ui-shortcuts-panel:
+    needs: check
+    if: needs.check.outputs.run_ui-shortcuts-panel == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build UI Component
+        uses: ./.github/workflows/uicomponents
+        with:
+          source: ./uicomponents/shortcuts-panel
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.CLIENT_ID }}
+          aws-secret-access-key: ${{ secrets.CLIENT_SECRET }}
+          aws-region: eu-west-2
+      - name: Deploy component
+        run: npm run publish
+        working-directory: ./uicomponents/shortcuts-panel
+
+  build_app-customers:
+    needs: check
+    if: needs.check.outputs.run_app-customers == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build
+        uses: ./.github/workflows/apps
+        with:
+          source: ./apps/customers
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.CLIENT_ID }}
+          aws-secret-access-key: ${{ secrets.CLIENT_SECRET }}
+          aws-region: eu-west-2
+      - name: Deploy component
+        run: npm run publish
+        working-directory: ./apps/customers
+        
+  build_app-broker:
+    needs: check
+    if: needs.check.outputs.run_app-broker == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build
+        uses: ./.github/workflows/apps
+        with:
+          source: ./apps/broker
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.CLIENT_ID }}
+          aws-secret-access-key: ${{ secrets.CLIENT_SECRET }}
+          aws-region: eu-west-2
+      - name: Deploy component
+        run: npm run publish
+        working-directory: ./apps/broker
+        
+  build_app-backoffice:
+    needs: check
+    if: needs.check.outputs.run_app-backoffice == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build
+        uses: ./.github/workflows/apps
+        with:
+          source: ./apps/backoffice
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.CLIENT_ID }}
+          aws-secret-access-key: ${{ secrets.CLIENT_SECRET }}
+          aws-region: eu-west-2
+      - name: Deploy component
+        run: npm run publish
+        working-directory: ./apps/backoffice
+        
+  build_app-portal:
+    needs: check
+    if: needs.check.outputs.run_app-portal == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build
+        uses: ./.github/workflows/apps
+        with:
+          source: ./apps/portal
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.CLIENT_ID }}
+          aws-secret-access-key: ${{ secrets.CLIENT_SECRET }}
+          aws-region: eu-west-2
+      - name: Deploy component
+        run: npm run publish
+        working-directory: ./apps/portal
