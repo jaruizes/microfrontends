@@ -14,7 +14,6 @@ This Micro Frontend provides the global position for a given customer. It has tw
 - **Last Movements**: shows the recent movements from the all accounts of the customers
 
 
-
 **Backoffice Mode:**
 
 - **Accounts**: lists the two principals accounts of the customer
