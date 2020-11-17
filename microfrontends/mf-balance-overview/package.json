@@ -1,6 +1,7 @@
 {
   "name": "mf-balance-overview",
-  "version": "0.1.0",
+  "version": "1.0.0",
+  "author": "José Alberto Ruiz <jalb80@gmail.com> (https://jaruiz.io)",
   "private": true,
   "scripts": {
     "mocks-server": "json-server --routes mocks/routes.json --watch mocks/api-mock.json --port 3015 &",

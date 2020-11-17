@@ -1,6 +1,7 @@
 {
   "name": "mf-account-detail",
-  "version": "0.0.0",
+  "version": "1.0.0",
+"author": "José Alberto Ruiz <jalb80@gmail.com> (https://jaruiz.io)",
   "scripts": {
     "ng": "ng",
     "mocks-server": "json-server --routes mocks/routes.json --watch mocks/api-mock.json --port 3010 &",

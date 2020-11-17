@@ -1,6 +1,7 @@
 {
   "name": "storybook",
   "version": "1.0.0",
+"author": "José Alberto Ruiz <jalb80@gmail.com> (https://jaruiz.io)",
   "description": "Storybook",
   "main": "index.js",
   "scripts": {

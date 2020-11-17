@@ -1,6 +1,7 @@
 {
   "name": "card-overview",
-  "version": "0.0.1",
+  "version": "1.0.0",
+"author": "José Alberto Ruiz <jalb80@gmail.com> (https://jaruiz.io)",
   "description": "Stencil card overview",
   "main": "dist/v1/index.cjs.js",
   "es2015": "dist/esm/index.mjs",

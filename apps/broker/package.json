@@ -1,6 +1,7 @@
 {
   "name": "vue-now-ui-kit",
-  "version": "1.1.0",
+  "version": "1.0.0",
+  "author": "José Alberto Ruiz <jalb80@gmail.com> (https://jaruiz.io)",
   "private": true,
   "scripts": {
     "start": "vue-cli-service serve --port 4280 --mode production",

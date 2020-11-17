@@ -1,6 +1,7 @@
 {
   "name": "account-overview",
-  "version": "0.0.1",
+  "version": "1.0.0",
+"author": "José Alberto Ruiz <jalb80@gmail.com> (https://jaruiz.io)",
   "description": "Stencil account overview",
   "main": "dist/index.cjs.js",
   "module": "dist/account-overview/index.js",

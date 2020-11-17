@@ -1,6 +1,7 @@
 {
   "name": "microfrontend-base",
   "version": "1.0.0",
+"author": "José Alberto Ruiz <jalb80@gmail.com> (https://jaruiz.io)",
   "scripts": {
     "ng": "ng",
     "mocks-server": "json-server --routes mocks/routes.json --port 3000 --watch mocks/api-mock.json &",

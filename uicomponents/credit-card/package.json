@@ -1,6 +1,7 @@
 {
   "name": "credit-card",
-  "version": "0.0.1",
+  "version": "1.0.0",
+"author": "José Alberto Ruiz <jalb80@gmail.com> (https://jaruiz.io)",
   "description": "Stencil Credit Card Web Component",
   "main": "dist/index.cjs.js",
   "module": "dist/credit-card/index.js",

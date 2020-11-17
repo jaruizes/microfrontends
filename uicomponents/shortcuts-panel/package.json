@@ -1,6 +1,7 @@
 {
   "name": "shortcuts-panel",
-  "version": "0.0.0",
+  "version": "1.0.0",
+"author": "José Alberto Ruiz <jalb80@gmail.com> (https://jaruiz.io)",
   "description": "Shortcuts for four elements",
   "main": "shortcuts-panel.js",
   "module": "shortcuts-panel.js",
