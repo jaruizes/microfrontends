@@ -6,7 +6,7 @@
     "changeOrigin" : true
   },
   "/uicomponents": {
-    "target": "http://localhost:8080",
+    "target": "http://jalb80-microfrontends-bucket.s3-website.eu-west-2.amazonaws.com",
     "secure": false,
     "logLevel": "debug",
     "changeOrigin" : true
