@@ -43,49 +43,34 @@ jobs:
             echo $file
             if [[ $file == microfrontends/mf-account-detail/* ]]; then
               echo "::set-output name=run_mf-account-detail::true"
-              break
             elif [[ $file == microfrontends/mf-accounts-summary/* ]]; then
               echo "::set-output name=run_mf-accounts-summary::true"
-              break
             elif [[ $file == microfrontends/mf-card-detail/* ]]; then
               echo "::set-output name=run_mf-card-detail::true"
-              break
             elif [[ $file == microfrontends/mf-cards-summary/* ]]; then
               echo "::set-output name=run_mf-cards-summary::true"
-              break
             elif [[ $file == microfrontends/mf-balance-overview/* ]]; then
               echo "::set-output name=run_mf-balance-overview::true"
-              break
             elif [[ $file == microfrontends/mf-global-position/* ]]; then
               echo "::set-output name=run_mf-global-position::true"
-              break
             elif [[ $file == uicomponents/account-overview/* ]]; then
               echo "::set-output name=run_ui-account-overview::true"
-              break
             elif [[ $file == uicomponents/card-overview/* ]]; then
               echo "::set-output name=run_ui-card-overview::true"
-              break
             elif [[ $file == uicomponents/credit-card/* ]]; then
               echo "::set-output name=run_ui-credit-card::true"
-              break
             elif [[ $file == uicomponents/items-table/* ]]; then
               echo "::set-output name=run_ui-items-table::true"
-              break
             elif [[ $file == uicomponents/shortcuts-panel/* ]]; then
               echo "::set-output name=run_ui-shortcuts-panel::true"
-              break
             elif [[ $file == apps/customers/* ]]; then
               echo "::set-output name=run_app-customers::true"
-              break
             elif [[ $file == apps/broker/* ]]; then
               echo "::set-output name=run_app-broker::true"
-              break
             elif [[ $file == apps/backoffice/* ]]; then
               echo "::set-output name=run_app-backoffice::true"
-              break
             elif [[ $file == apps/portal/* ]]; then
               echo "::set-output name=run_app-portal::true"
-              break
             fi
           done < files.txt
 
