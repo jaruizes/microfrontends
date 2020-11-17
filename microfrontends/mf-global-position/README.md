@@ -21,6 +21,7 @@ This Micro Frontend provides the global position for a given customer. It has tw
 - **Summary**: shows incomes versus expenses during the last twelve months
 
 <br />
+<br />
 
 ## Props
 
