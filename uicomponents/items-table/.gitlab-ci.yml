@@ -25,6 +25,6 @@ deploy_S3:
   stage: deploy
   image: registry.gitlab.com/gitlab-org/cloud-deploy/aws-base:latest
   script:
-    - aws --profile=jalb80-cli s3  rm s3://jalb80-microfrontends-bucket/uicomponents/items-table/v1 --recursive
-    - aws --profile=jalb80-cli s3  cp dist/v1/items-table s3://jalb80-microfrontends-bucket/uicomponents/items-table/v1 --recursive
+    - aws  s3  rm s3://jalb80-microfrontends-bucket/uicomponents/items-table/v1 --recursive
+    - aws  s3  cp dist/v1/items-table s3://jalb80-microfrontends-bucket/uicomponents/items-table/v1 --recursive
 
