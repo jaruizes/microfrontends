@@ -12,8 +12,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "s3-delete": "aws  s3 rm s3://jalb80-microfrontends-applications-customers --recursive",
-    "s3-upload": "aws  s3 cp dist/customers s3://jalb80-microfrontends-applications-customers --recursive",
+    "s3-delete": "aws s3 rm s3://jalb80-microfrontends-applications-customers --recursive",
+    "s3-upload": "aws s3 cp dist/customers s3://jalb80-microfrontends-applications-customers --recursive",
     "publish": "npm run s3-delete && npm run s3-upload"
   },
   "private": true,

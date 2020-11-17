@@ -20,8 +20,8 @@
     "test": "stencil test --spec --e2e",
     "test.watch": "stencil test --spec --e2e --watchAll",
     "generate": "stencil generate",
-    "s3-delete": "aws  s3  rm s3://jalb80-microfrontends-bucket/uicomponents/credit-card/v1 --recursive",
-    "s3-upload": "aws  s3  cp dist/v1/credit-card s3://jalb80-microfrontends-bucket/uicomponents/credit-card/v1 --recursive",
+    "s3-delete": "aws s3  rm s3://jalb80-microfrontends-bucket/uicomponents/credit-card/v1 --recursive",
+    "s3-upload": "aws s3  cp dist/v1/credit-card s3://jalb80-microfrontends-bucket/uicomponents/credit-card/v1 --recursive",
     "publish": "npm run s3-delete && npm run s3-upload",
     "publish:local": "npm run build && cp -R ./dist/v1/credit-card ../../platform/mf-server/microfrontends-server/content/webcomponents/credit-card/v1"
   },
