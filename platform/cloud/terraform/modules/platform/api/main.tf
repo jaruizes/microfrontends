@@ -1,7 +1,7 @@
 resource "aws_api_gateway_rest_api" "microfrontends_api" {
-  name = "TF Microfrontends"
+  name = "TF API Microfrontends"
   description = "TF - API Microfrontends"
-  body = file("${path.module}/microfrontends-api-oas30_v2.json")
+  body = file("${path.module}/microfrontends-api-oas30_v3.json")
   endpoint_configuration {
     types = ["REGIONAL"]
   }

@@ -79,43 +79,43 @@ resource "null_resource" "cognito_user" {
   }
 
   provisioner "local-exec" {
-    command = "aws --profile jalb80-cli cognito-idp admin-create-user --user-pool-id ${aws_cognito_user_pool.microfrontends_user_pool.id} --username customer1 --temporary-password customer1"
+    command = "aws --profile serverless cognito-idp admin-create-user --user-pool-id ${aws_cognito_user_pool.microfrontends_user_pool.id} --username customer1 --temporary-password customer1"
   }
 
   provisioner "local-exec" {
-    command = "aws --profile jalb80-cli cognito-idp admin-set-user-password --user-pool-id ${aws_cognito_user_pool.microfrontends_user_pool.id} --username customer1 --password sopra1234 --permanent"
+    command = "aws --profile serverless cognito-idp admin-set-user-password --user-pool-id ${aws_cognito_user_pool.microfrontends_user_pool.id} --username customer1 --password sopra1234 --permanent"
   }
 
   provisioner "local-exec" {
-    command = "aws --profile jalb80-cli cognito-idp admin-update-user-attributes --user-pool-id ${aws_cognito_user_pool.microfrontends_user_pool.id} --username customer1 --user-attributes Name=nickname,Value=Fernando"
+    command = "aws --profile serverless cognito-idp admin-update-user-attributes --user-pool-id ${aws_cognito_user_pool.microfrontends_user_pool.id} --username customer1 --user-attributes Name=nickname,Value=Fernando"
   }
 
   provisioner "local-exec" {
-    command = "aws --profile jalb80-cli cognito-idp admin-update-user-attributes --user-pool-id ${aws_cognito_user_pool.microfrontends_user_pool.id} --username customer1 --user-attributes Name=custom:customerid,Value=0001"
+    command = "aws --profile serverless cognito-idp admin-update-user-attributes --user-pool-id ${aws_cognito_user_pool.microfrontends_user_pool.id} --username customer1 --user-attributes Name=custom:customerid,Value=0001"
   }
 
   provisioner "local-exec" {
-    command = "aws --profile jalb80-cli cognito-idp admin-create-user --user-pool-id ${aws_cognito_user_pool.microfrontends_user_pool.id} --username customer2 --temporary-password customer1"
+    command = "aws --profile serverless cognito-idp admin-create-user --user-pool-id ${aws_cognito_user_pool.microfrontends_user_pool.id} --username customer2 --temporary-password customer1"
   }
 
   provisioner "local-exec" {
-    command = "aws --profile jalb80-cli cognito-idp admin-set-user-password --user-pool-id ${aws_cognito_user_pool.microfrontends_user_pool.id} --username customer2 --password sopra1234 --permanent"
+    command = "aws --profile serverless cognito-idp admin-set-user-password --user-pool-id ${aws_cognito_user_pool.microfrontends_user_pool.id} --username customer2 --password sopra1234 --permanent"
   }
 
   provisioner "local-exec" {
-    command = "aws --profile jalb80-cli cognito-idp admin-update-user-attributes --user-pool-id ${aws_cognito_user_pool.microfrontends_user_pool.id} --username customer2 --user-attributes Name=nickname,Value=Nicolás"
+    command = "aws --profile serverless cognito-idp admin-update-user-attributes --user-pool-id ${aws_cognito_user_pool.microfrontends_user_pool.id} --username customer2 --user-attributes Name=nickname,Value=Nicolás"
   }
 
   provisioner "local-exec" {
-    command = "aws --profile jalb80-cli cognito-idp admin-update-user-attributes --user-pool-id ${aws_cognito_user_pool.microfrontends_user_pool.id} --username customer2 --user-attributes Name=custom:customerid,Value=0002"
+    command = "aws --profile serverless cognito-idp admin-update-user-attributes --user-pool-id ${aws_cognito_user_pool.microfrontends_user_pool.id} --username customer2 --user-attributes Name=custom:customerid,Value=0002"
   }
 
   provisioner "local-exec" {
-    command = "aws --profile jalb80-cli cognito-idp admin-create-user --user-pool-id ${aws_cognito_user_pool.microfrontends_user_pool.id} --username admin --temporary-password customer1"
+    command = "aws --profile serverless cognito-idp admin-create-user --user-pool-id ${aws_cognito_user_pool.microfrontends_user_pool.id} --username admin --temporary-password customer1"
   }
 
   provisioner "local-exec" {
-    command = "aws --profile jalb80-cli cognito-idp admin-set-user-password --user-pool-id ${aws_cognito_user_pool.microfrontends_user_pool.id} --username admin --password sopra1234 --permanent"
+    command = "aws --profile serverless cognito-idp admin-set-user-password --user-pool-id ${aws_cognito_user_pool.microfrontends_user_pool.id} --username admin --password sopra1234 --permanent"
   }
 }
 
@@ -294,6 +294,6 @@ resource "aws_cognito_user_pool_client" "broker_client" {
 }
 
 resource "aws_cognito_user_pool_domain" "microfrontends" {
-  domain       = "jalb80-microfrontends"
+  domain       = "technology-bank"
   user_pool_id = aws_cognito_user_pool.microfrontends_user_pool.id
 }
