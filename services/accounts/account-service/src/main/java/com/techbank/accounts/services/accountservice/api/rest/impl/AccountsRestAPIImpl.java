@@ -1,18 +1,24 @@
 package com.techbank.accounts.services.accountservice.api.rest.impl;
 
+import com.techbank.accounts.services.accountservice.api.dto.MovementDTO;
 import com.techbank.accounts.services.accountservice.api.rest.AccountsRestAPI;
 import com.techbank.accounts.services.accountservice.api.dto.AccountDTO;
 import com.techbank.accounts.services.accountservice.business.AccountsService;
 import com.techbank.accounts.services.accountservice.business.exceptions.AccountNotFoundException;
 import com.techbank.accounts.services.accountservice.business.exceptions.ParameterRequiredException;
 import com.techbank.accounts.services.accountservice.business.model.Account;
+import com.techbank.accounts.services.accountservice.business.model.Movement;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @RestController
@@ -49,6 +55,13 @@ public class AccountsRestAPIImpl implements AccountsRestAPI {
                 .withHolder(account.getHolder())
                 .withName(account.getName())
                 .withIBAN(account.getIban())
+                .withMovements(Optional.ofNullable(account.getMovements()).orElse(new ArrayList<>()).stream().map(this::movementDTO).collect(Collectors.toList()))
                 .build();
+    }
+
+    private MovementDTO movementDTO(final Movement movement) {
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+
+        return new MovementDTO(movement.getId(), movement.getAccountId(), dateFormat.format(movement.getDate()), movement.getSubject(), movement.getAmount());
     }
 }

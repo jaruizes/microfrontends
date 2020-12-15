@@ -1,6 +1,7 @@
 package com.techbank.accounts.services.accountservice.api.dto;
 
 import java.io.Serializable;
+import java.util.List;
 
 public class AccountDTO implements Serializable {
 
@@ -9,13 +10,15 @@ public class AccountDTO implements Serializable {
     private String holder;
     private String iban;
     private Double balance;
+    private MovementsDTO movements;
 
-    private AccountDTO(final Integer id, final String name, final String holder, final String iban, final Double balance) {
+    private AccountDTO(final Integer id, final String name, final String holder, final String iban, final Double balance, final MovementsDTO movements) {
         this.id = id;
         this.name = name;
         this.holder = holder;
         this.iban = iban;
         this.balance = balance;
+        this.movements = movements;
     }
 
     public Integer getId() {
@@ -38,12 +41,17 @@ public class AccountDTO implements Serializable {
         return balance;
     }
 
+    public MovementsDTO getMovements() {
+        return movements;
+    }
+
     public static class Builder {
         private int id;
         private String iban;
         private String holder;
         private String name;
         private double balance;
+        private List<MovementDTO> movements;
 
         public Builder(int id){
             this.id = id;
@@ -69,8 +77,13 @@ public class AccountDTO implements Serializable {
             return this;
         }
 
+        public Builder withMovements(List<MovementDTO> movements) {
+            this.movements = movements;
+            return this;
+        }
+
         public AccountDTO build() {
-            return new AccountDTO(this.id, this.name, this.holder, this.iban, this.balance);
+            return new AccountDTO(this.id, this.name, this.holder, this.iban, this.balance, new MovementsDTO(this.movements));
         }
     }
 }

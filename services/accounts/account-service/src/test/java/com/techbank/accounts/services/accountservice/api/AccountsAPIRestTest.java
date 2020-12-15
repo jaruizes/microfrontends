@@ -8,12 +8,14 @@ import com.techbank.accounts.services.accountservice.business.exceptions.Account
 import com.techbank.accounts.services.accountservice.business.exceptions.ParameterRequiredException;
 import com.techbank.accounts.services.accountservice.business.impl.AccountsServiceImpl;
 import com.techbank.accounts.services.accountservice.business.model.Account;
+import com.techbank.accounts.services.accountservice.business.model.Movement;
 import com.techbank.accounts.services.accountservice.business.ports.PersistenceService;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -50,6 +52,8 @@ public class AccountsAPIRestTest {
             assertEquals(accountExpected.getHolder(), accountDTO.getHolder());
             assertEquals(accountExpected.getName(), accountDTO.getName());
             assertEquals(accountExpected.getIban(), accountDTO.getIban());
+            assertNotNull(accountDTO.getMovements());
+            assertEquals(1, accountDTO.getMovements().getMovements().size());
         });
     }
 
@@ -105,6 +109,8 @@ public class AccountsAPIRestTest {
         assertEquals(accountExpected.getName(), accountRetrieved.getName());
         assertEquals(accountExpected.getIban(), accountRetrieved.getIban());
         assertEquals(accountExpected.getId(), accountRetrieved.getId());
+        assertNotNull(accountRetrieved.getMovements());
+        assertEquals(1, accountRetrieved.getMovements().getMovements().size());
     }
 
     @Test
@@ -129,11 +135,14 @@ public class AccountsAPIRestTest {
     }
 
     private Account buildAccount(int id, String holder, String iban, String name, double balance) {
+        List<Movement> movements = new ArrayList<>();
+        movements.add(new Movement(1,1, new Date(), "Subject", 3000d));
         return new Account.Builder(id)
                 .withBalance(balance)
                 .withHolder(holder)
                 .withIBAN(iban)
                 .withName(name)
+                .withMovements(movements)
                 .build();
     }
 

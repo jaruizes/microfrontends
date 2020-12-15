@@ -1,6 +1,7 @@
 package com.techbank.accounts.services.accountservice.adapters.persistence.postgresql.entities;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name="accounts")
@@ -13,6 +14,10 @@ public class AccountEntity {
     private String name;
     private double balance;
     private String customer;
+
+    @OneToMany
+    @JoinColumn(name = "accountId")
+    private List<MovementEntity> movements;
 
     public int getId() {
         return id;
@@ -60,5 +65,13 @@ public class AccountEntity {
 
     public void setCustomer(final String customer) {
         this.customer = customer;
+    }
+
+    public List<MovementEntity> getMovements() {
+        return movements;
+    }
+
+    public void setMovements(final List<MovementEntity> movements) {
+        this.movements = movements;
     }
 }
