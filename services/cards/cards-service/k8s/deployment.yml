@@ -1,0 +1,94 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: cardss-service-srv
+  namespace: cardss
+  labels:
+    app: cardss-service
+    version: 1.0.0
+spec:
+  type: LoadBalancer
+  ports:
+    - name: 8080-tcp
+      protocol: TCP
+      port: 8080
+      targetPort: 8080
+  selector:
+    deployment: cardss-service-dp
+---
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: cardss-service-cm
+  namespace: cardss
+  labels:
+    app: cardss-service
+    version: 1.0.0
+data:
+  management.endpoints.web.exposure.include: 'health, info, prometheus'
+  management.endpoints.web.base-path: '/'
+  management.endpoints.web.path-mapping.prometheus: 'metrics'
+  logging.pattern.console: "%d{dd-MM-yyyy HH:mm:ss.SSS} %-5p [#APP#:#APP_VERSION#] [%X{X-B3-TraceId:-} - %X{X-B3-SpanId:-}] %logger{5} - %msg%n"
+  server.port: '8080'
+  springdoc.swagger-ui.path: "/swagger-ui.html"
+  spring.sleuth.traceId128: "true"
+  spring.sleuth.sampler.probability: "1.0"
+  spring.sleuth.opentracing.enabled: "true"
+  spring.zipkin.base-url: "http://jaeger-collector.infra-istio-system.svc.cluster.local:9411"
+
+  ## PROPIEDADES ESPECIFICAS ##
+  logging.level.org.hibernate.SQL: 'DEBUG'
+  spring.datasource.url: 'jdbc:postgresql://techbank-db.cqokfenc0w7y.eu-west-2.rds.amazonaws.com/techbank?currentSchema=cardss'
+  spring.jpa.show-sql: 'true'
+  server.error.whitelabel.enabled: 'false'
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: cardss-service-secret
+  namespace: cardss
+  labels:
+    app: cardss-service
+    version: 1.0.0
+type: Opaque
+stringData:
+  spring.datasource.username: 'techbank'
+  spring.datasource.password: 'techbank21'
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cardss-service-dp
+  namespace: cardss
+  labels:
+    app: cardss-service
+    version: 1.0.0
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cardss-service
+  template:
+    metadata:
+      labels:
+        app: cardss-service
+        version: 1.0.0
+        deployment: cardss-service-dp
+      annotations:
+        build_number: "#BUILD_NUMBER#"
+        git_commit: "#GIT_COMMIT#"
+        git_branch: "#GIT_BRANCH#"
+    spec:
+      containers:
+        - name: cardss-service
+          image: 297906742605.dkr.ecr.eu-west-2.amazonaws.com/cardss-service:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+          envFrom:
+            - secretRef:
+                name: cardss-service-secret
+            - configMapRef:
+                name: cardss-service-cm
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
