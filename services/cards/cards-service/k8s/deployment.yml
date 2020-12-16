@@ -1,10 +1,10 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: cardss-service-srv
-  namespace: cardss
+  name: cards-service-srv
+  namespace: cards
   labels:
-    app: cardss-service
+    app: cards-service
     version: 1.0.0
 spec:
   type: LoadBalancer
@@ -14,15 +14,15 @@ spec:
       port: 8080
       targetPort: 8080
   selector:
-    deployment: cardss-service-dp
+    deployment: cards-service-dp
 ---
 kind: ConfigMap
 apiVersion: v1
 metadata:
-  name: cardss-service-cm
-  namespace: cardss
+  name: cards-service-cm
+  namespace: cards
   labels:
-    app: cardss-service
+    app: cards-service
     version: 1.0.0
 data:
   management.endpoints.web.exposure.include: 'health, info, prometheus'
@@ -38,17 +38,17 @@ data:
 
   ## PROPIEDADES ESPECIFICAS ##
   logging.level.org.hibernate.SQL: 'DEBUG'
-  spring.datasource.url: 'jdbc:postgresql://techbank-db.cqokfenc0w7y.eu-west-2.rds.amazonaws.com/techbank?currentSchema=cardss'
+  spring.datasource.url: 'jdbc:postgresql://techbank-db.cqokfenc0w7y.eu-west-2.rds.amazonaws.com/techbank?currentSchema=cards'
   spring.jpa.show-sql: 'true'
   server.error.whitelabel.enabled: 'false'
 ---
 apiVersion: v1
 kind: Secret
 metadata:
-  name: cardss-service-secret
-  namespace: cardss
+  name: cards-service-secret
+  namespace: cards
   labels:
-    app: cardss-service
+    app: cards-service
     version: 1.0.0
 type: Opaque
 stringData:
@@ -58,37 +58,37 @@ stringData:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: cardss-service-dp
-  namespace: cardss
+  name: cards-service-dp
+  namespace: cards
   labels:
-    app: cardss-service
+    app: cards-service
     version: 1.0.0
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: cardss-service
+      app: cards-service
   template:
     metadata:
       labels:
-        app: cardss-service
+        app: cards-service
         version: 1.0.0
-        deployment: cardss-service-dp
+        deployment: cards-service-dp
       annotations:
         build_number: "#BUILD_NUMBER#"
         git_commit: "#GIT_COMMIT#"
         git_branch: "#GIT_BRANCH#"
     spec:
       containers:
-        - name: cardss-service
-          image: 297906742605.dkr.ecr.eu-west-2.amazonaws.com/cardss-service:latest
+        - name: cards-service
+          image: 297906742605.dkr.ecr.eu-west-2.amazonaws.com/cards-service:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
           envFrom:
             - secretRef:
-                name: cardss-service-secret
+                name: cards-service-secret
             - configMapRef:
-                name: cardss-service-cm
+                name: cards-service-cm
       restartPolicy: Always
       terminationGracePeriodSeconds: 30
