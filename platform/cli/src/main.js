@@ -226,22 +226,6 @@ const buildComponents = (componentsRootPath, componentBuildFunction) => {
     });
 };
 
-/*
-const buildMicrofrontends = () => {
-    fs.readdir(microfrontendsPath, function (err, files) {
-        if (err) {
-            return console.log('Unable to scan directory: ' + err);
-        }
-        files.forEach(function (file) {
-            const fullPath = path.join(microfrontendsPath,file);
-            if (!file.startsWith('.')) {
-                buildMicrofrontend(file);
-            }
-
-        });
-    });
-};*/
-
 async function buildMicrofrontend(microfrontend) {
     const folder = path.join(microfrontendsPath, microfrontend);
     console.log('Processing <' + folder + '>');

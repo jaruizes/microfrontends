@@ -1,4 +1,6 @@
-# techinvest
+# Broker App
+
+This app is building using Vue
 
 ## Project setup
 ```

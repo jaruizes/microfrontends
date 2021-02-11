@@ -6,10 +6,17 @@ public class Customer {
     private String id;
     private String name;
     private Summary summary;
+    private List<Movement> movements;
 
     public Customer(final String id, final String name) {
         this.id = id;
         this.name = name;
+    }
+
+    public Customer(final String id, final String name, List<Movement> movements) {
+        this.id = id;
+        this.name = name;
+        this.movements = movements;
     }
 
     public String getId() {
@@ -34,5 +41,9 @@ public class Customer {
 
     public void setSummary(final Summary summary) {
         this.summary = summary;
+    }
+
+    public List<Movement> getMovements() {
+        return movements;
     }
 }

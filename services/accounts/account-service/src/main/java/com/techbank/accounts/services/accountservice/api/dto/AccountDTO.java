@@ -2,6 +2,7 @@ package com.techbank.accounts.services.accountservice.api.dto;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Random;
 
 public class AccountDTO implements Serializable {
 
@@ -9,16 +10,20 @@ public class AccountDTO implements Serializable {
     private String name;
     private String holder;
     private String iban;
-    private Double balance;
-    private MovementsDTO movements;
+    private Double amount;
+    private Integer newmovements;
+    private List<MovementDTO> movements;
 
-    private AccountDTO(final Integer id, final String name, final String holder, final String iban, final Double balance, final MovementsDTO movements) {
+    private AccountDTO(final Integer id, final String name, final String holder, final String iban, final Double amount, final List<MovementDTO> movements) {
         this.id = id;
         this.name = name;
         this.holder = holder;
         this.iban = iban;
-        this.balance = balance;
+        this.amount = amount;
         this.movements = movements;
+
+        Random rand = new Random();
+        this.newmovements = rand.nextInt(10);
     }
 
     public Integer getId() {
@@ -37,12 +42,25 @@ public class AccountDTO implements Serializable {
         return iban;
     }
 
-    public Double getBalance() {
-        return balance;
+    public Double getAmount() {
+        return amount;
     }
 
-    public MovementsDTO getMovements() {
+    // TODO: Fix apps in order to unify API
+    public Double getBalance() {
+        return amount;
+    }
+
+    public String getNumber() {
+        return iban;
+    }
+
+    public List<MovementDTO> getMovements() {
         return movements;
+    }
+
+    public Integer getNewmovements() {
+        return newmovements;
     }
 
     public static class Builder {
@@ -83,7 +101,7 @@ public class AccountDTO implements Serializable {
         }
 
         public AccountDTO build() {
-            return new AccountDTO(this.id, this.name, this.holder, this.iban, this.balance, new MovementsDTO(this.movements));
+            return new AccountDTO(this.id, this.name, this.holder, this.iban, this.balance, this.movements);
         }
     }
 }

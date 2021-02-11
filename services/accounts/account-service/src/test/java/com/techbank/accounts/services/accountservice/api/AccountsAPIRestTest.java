@@ -6,10 +6,8 @@ import com.techbank.accounts.services.accountservice.api.rest.impl.AccountsRestA
 import com.techbank.accounts.services.accountservice.business.AccountsService;
 import com.techbank.accounts.services.accountservice.business.exceptions.AccountNotFoundException;
 import com.techbank.accounts.services.accountservice.business.exceptions.ParameterRequiredException;
-import com.techbank.accounts.services.accountservice.business.impl.AccountsServiceImpl;
 import com.techbank.accounts.services.accountservice.business.model.Account;
 import com.techbank.accounts.services.accountservice.business.model.Movement;
-import com.techbank.accounts.services.accountservice.business.ports.PersistenceService;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.server.ResponseStatusException;
@@ -17,10 +15,9 @@ import org.springframework.web.server.ResponseStatusException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.ArgumentMatchers.anyString;
@@ -48,12 +45,12 @@ public class AccountsAPIRestTest {
                     .filter(account -> account.getId() == accountDTO.getId())
                     .collect(Collectors.toList()).get(0);
 
-            assertEquals(accountExpected.getBalance(), accountDTO.getBalance().doubleValue());
+            assertEquals(accountExpected.getBalance(), accountDTO.getAmount().doubleValue());
             assertEquals(accountExpected.getHolder(), accountDTO.getHolder());
             assertEquals(accountExpected.getName(), accountDTO.getName());
             assertEquals(accountExpected.getIban(), accountDTO.getIban());
             assertNotNull(accountDTO.getMovements());
-            assertEquals(1, accountDTO.getMovements().getMovements().size());
+            assertEquals(1, accountDTO.getMovements().size());
         });
     }
 
@@ -104,13 +101,13 @@ public class AccountsAPIRestTest {
         assertEquals(accountDetailResponse.getStatusCodeValue(), 200);
 
         final AccountDTO accountRetrieved = accountDetailResponse.getBody();
-        assertEquals(accountExpected.getBalance(), accountRetrieved.getBalance().doubleValue());
+        assertEquals(accountExpected.getBalance(), accountRetrieved.getAmount().doubleValue());
         assertEquals(accountExpected.getHolder(), accountRetrieved.getHolder());
         assertEquals(accountExpected.getName(), accountRetrieved.getName());
         assertEquals(accountExpected.getIban(), accountRetrieved.getIban());
         assertEquals(accountExpected.getId(), accountRetrieved.getId());
         assertNotNull(accountRetrieved.getMovements());
-        assertEquals(1, accountRetrieved.getMovements().getMovements().size());
+        assertEquals(1, accountRetrieved.getMovements().size());
     }
 
     @Test

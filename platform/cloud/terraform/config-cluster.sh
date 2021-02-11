@@ -4,7 +4,7 @@
 #terraform apply -input=false tfplan
 
 ## Config kubectl
-aws eks --profile serverless --region eu-west-2 update-kubeconfig --name technology-bank_eks
+aws eks --region eu-west-2 update-kubeconfig --name technology-bank_eks
 
 ## Metrics server
 kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/download/v0.3.6/components.yaml
@@ -14,6 +14,11 @@ kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0-b
 
 ## Apply the service account and cluster role binding
 kubectl apply -f ./kubernetes-dashboard-admin.rbac.yaml
+
+## Create namespaces for services
+kubectl create namespace accounts
+kubectl create namespace cards
+kubectl create namespace customers
 
 ## Get token
 kubectl -n kube-system describe secret $(kubectl -n kube-system get secret | grep eks-admin | awk '{print $1}')

@@ -1,6 +1,5 @@
 provider "aws" {
   region = "eu-west-2"
-  profile = "serverless"
 }
 
 provider "kubernetes" {
@@ -24,7 +23,7 @@ locals {
 }
 
 
-/*module "api" {
+module "api" {
   source = "./modules/platform/api"
 }
 
@@ -71,7 +70,7 @@ module "cognito" {
   backoffice_cf_url = module.backoffice.distribution_domain
 
   depends_on = [module.customers, module.backoffice]
-}*/
+}
 
 module "vpc" {
   source = "./modules/platform/vpc"
@@ -93,6 +92,15 @@ module "eks" {
   eks_cluster_version = "1.17"
 }
 
+module "msk" {
+  source = "./modules/platform/msk"
+  vpc_id = module.vpc.id
+}
+
+module "ecr" {
+  source = "./modules/platform/ecr"
+}
+
 module "postgresql" {
   source = "./modules/platform/postgres"
   vpc_id = module.vpc.id
@@ -100,7 +108,7 @@ module "postgresql" {
   vpc_public_subnets = module.vpc.public_subnets
 }
 
-/*output "cognito_pool_id" {
+output "cognito_pool_id" {
   value = module.cognito.user_pool_id
 }
 
@@ -118,7 +126,7 @@ output "broker_client_id" {
 
 output "api_id" {
   value = module.api.api_id
-}*/
+}
 
 output "vpc_id" {
   value = module.vpc.id
@@ -127,3 +135,19 @@ output "vpc_id" {
 output "cluster_id" {
   value = module.eks.cluster_id
 }
+
+output "accounts-service-repository-url" {
+  description = "Repository URL"
+  value       = module.ecr.accounts-service-repository-url
+}
+
+output "cards-service-repository-url" {
+  description = "Repository URL"
+  value       = module.ecr.cards-service-repository-url
+}
+
+output "customers-service-repository-url" {
+  description = "Repository URL"
+  value       = module.ecr.customers-service-repository-url
+}
+

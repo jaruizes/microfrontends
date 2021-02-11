@@ -38,7 +38,7 @@ data:
 
   ## PROPIEDADES ESPECIFICAS ##
   logging.level.org.hibernate.SQL: 'DEBUG'
-  spring.datasource.url: 'jdbc:postgresql://techbank-db.cqokfenc0w7y.eu-west-2.rds.amazonaws.com/techbank?currentSchema=customers'
+  spring.datasource.url: 'jdbc:postgresql://techbank-db.cqokfenc0w7y.eu-west-2.rds.amazonaws.com/techbank21?currentSchema=customers'
   spring.jpa.show-sql: 'true'
   server.error.whitelabel.enabled: 'false'
 ---

@@ -10,6 +10,9 @@ public class CustomerEntity {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private String id;
     private String name;
+    @OneToMany
+    @JoinColumn(name = "customerId")
+    private List<MovementEntity> movements;
 
     public String getId() {
         return id;
@@ -25,5 +28,13 @@ public class CustomerEntity {
 
     public void setName(final String name) {
         this.name = name;
+    }
+
+    public List<MovementEntity> getMovements() {
+        return movements;
+    }
+
+    public void setMovements(final List<MovementEntity> movements) {
+        this.movements = movements;
     }
 }

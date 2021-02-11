@@ -1,18 +1,16 @@
 package com.techbank.accounts.services.accountservice.api.rest.impl;
 
+import com.techbank.accounts.services.accountservice.api.dto.AccountDTO;
 import com.techbank.accounts.services.accountservice.api.dto.MovementDTO;
 import com.techbank.accounts.services.accountservice.api.rest.AccountsRestAPI;
-import com.techbank.accounts.services.accountservice.api.dto.AccountDTO;
 import com.techbank.accounts.services.accountservice.business.AccountsService;
 import com.techbank.accounts.services.accountservice.business.exceptions.AccountNotFoundException;
 import com.techbank.accounts.services.accountservice.business.exceptions.ParameterRequiredException;
 import com.techbank.accounts.services.accountservice.business.model.Account;
 import com.techbank.accounts.services.accountservice.business.model.Movement;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -22,7 +20,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping
+@RequestMapping("/api")
 public class AccountsRestAPIImpl implements AccountsRestAPI {
     private AccountsService accountsService;
 
@@ -32,8 +30,8 @@ public class AccountsRestAPIImpl implements AccountsRestAPI {
 
     @Override
     @GetMapping(path = "/accounts", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<List<AccountDTO>> getAccounts(@RequestParam final String customerId) throws AccountNotFoundException, ParameterRequiredException {
-        final List<Account> customerAccounts = this.accountsService.getCustomerAccounts(customerId);
+    public ResponseEntity<List<AccountDTO>> getAccounts(@RequestParam final String customer) throws AccountNotFoundException, ParameterRequiredException {
+        final List<Account> customerAccounts = this.accountsService.getCustomerAccounts(customer);
         final List<AccountDTO> customerAccountsDTO = customerAccounts.stream()
                 .map(this::account2DTO)
                 .collect(Collectors.toList());

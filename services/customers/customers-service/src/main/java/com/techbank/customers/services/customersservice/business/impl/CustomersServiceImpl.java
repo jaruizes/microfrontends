@@ -8,7 +8,11 @@ import com.techbank.customers.services.customersservice.business.ports.Persisten
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Random;
+import java.util.stream.Collectors;
 
 public class CustomersServiceImpl implements CustomersService {
 
@@ -16,6 +20,14 @@ public class CustomersServiceImpl implements CustomersService {
 
     public CustomersServiceImpl(PersistenceService persistenceService) {
         this.persistenceService = persistenceService;
+    }
+
+    @Override
+    public List<Customer> getCustomers() {
+        final List<Customer> customers = this.persistenceService.getCustomers();
+        customers.forEach(customer -> customer.setSummary(buildSummary()));
+
+        return customers;
     }
 
     @Override

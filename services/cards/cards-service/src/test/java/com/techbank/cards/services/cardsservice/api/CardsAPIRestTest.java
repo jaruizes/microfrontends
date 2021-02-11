@@ -45,13 +45,13 @@ public class CardsAPIRestTest {
                     .filter(cards -> cards.getId() == cardDTO.getId())
                     .collect(Collectors.toList()).get(0);
 
-            assertEquals(cardExpected.getBalance(), cardDTO.getBalance().doubleValue());
+            assertEquals(cardExpected.getBalance(), cardDTO.getAmount().doubleValue());
             assertEquals(cardExpected.getExpires(), cardDTO.getExpires());
             assertEquals(cardExpected.getName(), cardDTO.getName());
             assertEquals(cardExpected.getNumber(), cardDTO.getNumber());
             assertEquals(cardExpected.getExpires(), cardDTO.getExpires());
             assertNotNull(cardDTO.getMovements());
-            assertEquals(1, cardDTO.getMovements().getMovements().size());
+            assertEquals(1, cardDTO.getMovements().size());
         });
     }
 
@@ -102,14 +102,14 @@ public class CardsAPIRestTest {
         assertEquals(cardsDetailResponse.getStatusCodeValue(), 200);
 
         final CardDTO cardsRetrieved = cardsDetailResponse.getBody();
-        assertEquals(cardsExpected.getBalance(), cardsRetrieved.getBalance().doubleValue());
+        assertEquals(cardsExpected.getBalance(), cardsRetrieved.getAmount().doubleValue());
         assertEquals(cardsExpected.getExpires(), cardsRetrieved.getExpires());
         assertEquals(cardsExpected.getName(), cardsRetrieved.getName());
         assertEquals(cardsExpected.getNumber(), cardsRetrieved.getNumber());
         assertEquals(cardsExpected.getType(), cardsRetrieved.getType());
         assertEquals(cardsExpected.getId(), cardsRetrieved.getId());
         assertNotNull(cardsRetrieved.getMovements());
-        assertEquals(1, cardsRetrieved.getMovements().getMovements().size());
+        assertEquals(1, cardsRetrieved.getMovements().size());
     }
 
     @Test

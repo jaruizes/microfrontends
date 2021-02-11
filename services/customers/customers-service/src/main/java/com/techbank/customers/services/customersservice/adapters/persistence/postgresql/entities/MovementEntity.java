@@ -9,7 +9,7 @@ public class MovementEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-    private int cardId;
+    private String customerId;
     private Date date;
     private String subject;
     private double amount;
@@ -22,12 +22,12 @@ public class MovementEntity {
         this.id = id;
     }
 
-    public int getCardId() {
-        return cardId;
+    public String getCustomerId() {
+        return customerId;
     }
 
-    public void setCardId(final int cardsId) {
-        this.cardId = cardsId;
+    public void setCustomerId(final String customerId) {
+        this.customerId = customerId;
     }
 
     public Date getDate() {

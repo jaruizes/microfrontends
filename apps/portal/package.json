@@ -1,7 +1,7 @@
 {
   "name": "storybook",
   "version": "1.0.0",
-"author": "José Alberto Ruiz <jalb80@gmail.com> (https://jaruiz.io)",
+  "author": "",
   "description": "Storybook",
   "main": "index.js",
   "scripts": {
@@ -11,15 +11,14 @@
     "build": "build-storybook -o dist/portal",
     "build:prod": "build-storybook -o dist/portal",
     "build:prod-local": "build-storybook -o dist/portal",
-    "s3-delete": "aws s3 rm s3://jalb80-microfrontends-applications-storybook --recursive",
-    "s3-upload": "aws s3 cp dist/portal s3://jalb80-microfrontends-applications-storybook --recursive",
+    "s3-delete": "aws s3 rm s3://technology-bank-microfrontends-applications-storybook --recursive",
+    "s3-upload": "aws s3 cp dist/portal s3://technology-bank-microfrontends-applications-storybook --recursive",
     "publish": "npm run s3-delete && npm run s3-upload"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jaruizes/storybook.git"
   },
-  "author": "",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/jaruizes/storybook/issues"

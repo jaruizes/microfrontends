@@ -24,7 +24,7 @@
     "changeOrigin" : true
   },
   "/api": {
-    "target": "http://localhost:3200",
+    "target": "http://localhost:7500",
     "secure": false,
     "logLevel": "debug",
     "changeOrigin" : true

@@ -10,17 +10,19 @@ public class CardDTO implements Serializable {
     private String number;
     private String name;
     private String expires;
-    private Double balance;
-    private MovementsDTO movements;
+    private Double amount;
+    private Integer limit;
+    private List<MovementDTO> movements;
 
-    public CardDTO(final Integer id, final String type, final String number, final String name, final String expires, final Double balance, final MovementsDTO movements) {
+    public CardDTO(final Integer id, final String type, final String number, final String name, final String expires, final Double amount, final List<MovementDTO> movements) {
         this.id = id;
         this.name = name;
         this.type = type;
         this.number = number;
         this.expires = expires;
-        this.balance = balance;
+        this.amount = amount;
         this.movements = movements;
+        this.limit = 3000;
     }
 
     public Integer getId() {
@@ -43,11 +45,20 @@ public class CardDTO implements Serializable {
         return expires;
     }
 
-    public Double getBalance() {
-        return balance;
+    public Double getAmount() {
+        return amount;
     }
 
-    public MovementsDTO getMovements() {
+    // TODO: Fix apps in order to unify API
+    public Double getBalance() {
+        return amount;
+    }
+
+    public Integer getLimit() {
+        return limit;
+    }
+
+    public List<MovementDTO> getMovements() {
         return movements;
     }
 

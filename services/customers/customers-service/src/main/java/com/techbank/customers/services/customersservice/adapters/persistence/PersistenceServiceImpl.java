@@ -6,7 +6,9 @@ import com.techbank.customers.services.customersservice.adapters.persistence.pos
 import com.techbank.customers.services.customersservice.business.model.Customer;
 import com.techbank.customers.services.customersservice.business.ports.PersistenceService;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class PersistenceServiceImpl implements PersistenceService {
 
@@ -14,6 +16,11 @@ public class PersistenceServiceImpl implements PersistenceService {
 
     public PersistenceServiceImpl(CustomersRepository customersRepository) {
         this.customersRepository = customersRepository;
+    }
+
+    @Override
+    public List<Customer> getCustomers() {
+        return customersRepository.findAll().stream().map(CustomerMapper::customerEntity2Customer).collect(Collectors.toList());
     }
 
     @Override

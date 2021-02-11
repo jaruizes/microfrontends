@@ -1,10 +1,9 @@
 package com.techbank.cards.services.cardsservice.api.rest.impl;
 
-import com.techbank.cards.services.cardsservice.api.dto.MovementDTO;
-import com.techbank.cards.services.cardsservice.api.dto.MovementsDTO;
-import com.techbank.cards.services.cardsservice.api.rest.CardsRestAPI;
 import com.techbank.cards.services.cardsservice.api.dto.CardDTO;
-import com.techbank.cards.services.cardsservice.business.CardsService ;
+import com.techbank.cards.services.cardsservice.api.dto.MovementDTO;
+import com.techbank.cards.services.cardsservice.api.rest.CardsRestAPI;
+import com.techbank.cards.services.cardsservice.business.CardsService;
 import com.techbank.cards.services.cardsservice.business.exceptions.CardsNotFoundException;
 import com.techbank.cards.services.cardsservice.business.exceptions.ParameterRequiredException;
 import com.techbank.cards.services.cardsservice.business.model.Card;
@@ -15,13 +14,11 @@ import org.springframework.web.bind.annotation.*;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping
+@RequestMapping("/api")
 public class CardsRestAPIImpl implements CardsRestAPI {
     private CardsService  cardsService ;
 
@@ -31,8 +28,8 @@ public class CardsRestAPIImpl implements CardsRestAPI {
 
     @Override
     @GetMapping(path = "/cards", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<List<CardDTO>> getCardss(@RequestParam final String customerId) throws CardsNotFoundException, ParameterRequiredException {
-        final List<Card> customerCards = this.cardsService.getCustomerCards(customerId);
+    public ResponseEntity<List<CardDTO>> getCardss(@RequestParam final String customer) throws CardsNotFoundException, ParameterRequiredException {
+        final List<Card> customerCards = this.cardsService.getCustomerCards(customer);
         final List<CardDTO> customerCardssDTO = customerCards.stream()
                 .map(this::cards2DTO)
                 .collect(Collectors.toList());
@@ -41,7 +38,7 @@ public class CardsRestAPIImpl implements CardsRestAPI {
     }
 
     @Override
-    @GetMapping(path = "/cardss/{cardsId}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(path = "/cards/{cardsId}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<CardDTO> getCardsDetail(@PathVariable("cardsId") final Integer cardsId) throws CardsNotFoundException {
         final Card cardsDetail = this.cardsService .getCardsDetail(cardsId);
 
@@ -49,7 +46,7 @@ public class CardsRestAPIImpl implements CardsRestAPI {
     }
 
     private CardDTO cards2DTO(final Card card) {
-        final MovementsDTO movementsDTO = new MovementsDTO(card.getMovements().stream().map(this::movementDTO).collect(Collectors.toList()));
+        final List<MovementDTO> movementsDTO = card.getMovements().stream().map(this::movementDTO).collect(Collectors.toList());
         return new CardDTO(card.getId(), card.getType(), card.getNumber(), card.getName(), card.getExpires(), card.getBalance(), movementsDTO);
     }
 

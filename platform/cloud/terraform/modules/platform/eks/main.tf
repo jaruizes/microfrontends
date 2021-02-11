@@ -11,23 +11,6 @@ module "eks" {
 
   vpc_id = var.vpc_id
 
-/*  worker_groups = [
-    {
-      name                          = "worker-group-1"
-      instance_type                 = "t2.small"
-      additional_userdata           = "echo foo bar"
-      asg_desired_capacity          = 2
-      additional_security_group_ids = [var.worker_group_mgmt_one_ids]
-    },
-    {
-      name                          = "worker-group-2"
-      instance_type                 = "t2.medium"
-      additional_userdata           = "echo foo bar"
-      additional_security_group_ids = [var.worker_group_mgmt_two_ids]
-      asg_desired_capacity          = 1
-    }
-  ]*/
-
   node_groups_defaults = {
     ami_type  = "AL2_x86_64"
     disk_size = 50

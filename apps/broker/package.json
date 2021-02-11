@@ -10,8 +10,8 @@
     "build:prod": "vue-cli-service build --mode production",
     "build:prod-local": "vue-cli-service build --mode localprod",
     "lint": "vue-cli-service lint",
-    "s3-delete": "aws s3 rm s3://jalb80-microfrontends-applications-broker --recursive",
-    "s3-upload": "aws s3 cp dist/broker s3://jalb80-microfrontends-applications-broker --recursive",
+    "s3-delete": "aws s3 rm s3://technology-bank-microfrontends-applications-broker --recursive",
+    "s3-upload": "aws s3 cp dist/broker s3://technology-bank-microfrontends-applications-broker --recursive",
     "publish": "npm run s3-delete && npm run s3-upload"
   },
   "dependencies": {

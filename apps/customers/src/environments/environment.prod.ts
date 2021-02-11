@@ -22,11 +22,11 @@ export const environment = {
     security: {
       allowedDomains: ['/api/*'],
       token: 'access_token',
-      issuer: 'https://cognito-idp.eu-west-2.amazonaws.com/eu-west-2_3okwlgP1c',
-      clientid: '6t9p5j6emk4dip9qu0q611dd29',
+      issuer: 'https://cognito-idp.eu-west-2.amazonaws.com/eu-west-2_oQZpUXu4v',
+      clientid: '6to8fkd0tp8qf4df4etgikloof',
       scope: 'openid profile email aws.cognito.signin.user.admin',
-      logoutUrl: 'https://jalb80-microfrontends.auth.eu-west-2.amazoncognito.com/logout?logout_uri=' + window.location.origin + "/logout" + '&client_id=6t9p5j6emk4dip9qu0q611dd29',
-      userinfoEndpoint: 'https://jalb80-microfrontends.auth.eu-west-2.amazoncognito.com/oauth2/userInfo'
+      logoutUrl: 'https://technology-bank.auth.eu-west-2.amazoncognito.com/logout?logout_uri=' + window.location.origin + "/logout" + '&client_id=6to8fkd0tp8qf4df4etgikloof',
+      userinfoEndpoint: 'https://technology-bank.auth.eu-west-2.amazoncognito.com/oauth2/userInfo'
     }
   },
   api: {

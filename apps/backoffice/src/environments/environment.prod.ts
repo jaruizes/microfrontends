@@ -22,10 +22,10 @@ export const environment = {
     security: {
       allowedDomains: ['/api/*'],
       token: 'access_token',
-      issuer: 'https://cognito-idp.eu-west-2.amazonaws.com/eu-west-2_3okwlgP1c',
-      clientid: '65stq0phk8qtlb7vuth8mgo043',
+      issuer: 'https://cognito-idp.eu-west-2.amazonaws.com/eu-west-2_oQZpUXu4v',
+      clientid: 'qblosr0ba12cmth543i47ikg3',
       scope: 'openid profile email aws.cognito.signin.user.admin',
-      logoutUrl: 'https://jalb80-microfrontends.auth.eu-west-2.amazoncognito.com/logout?logout_uri=' + window.location.origin + "/logout" + '&client_id=65stq0phk8qtlb7vuth8mgo043',
+      logoutUrl: 'https://jalb80-microfrontends.auth.eu-west-2.amazoncognito.com/logout?logout_uri=' + window.location.origin + "/logout" + '&client_id=qblosr0ba12cmth543i47ikg3',
       userinfoEndpoint: 'https://jalb80-microfrontends.auth.eu-west-2.amazoncognito.com/oauth2/userInfo'
     }
   },

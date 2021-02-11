@@ -20,6 +20,7 @@ services:
         source: ./keycloak/standalone/standalone.xml
         target: /opt/jboss/keycloak/standalone/configuration/standalone.xml
     restart: always
+
   microfrontends-server:
     container_name: "microfrontends-server"
     image: "nginx"
@@ -33,6 +34,7 @@ services:
         source: ./microfrontends-server/content
         target: /usr/share/nginx/html
     restart: always
+
   customers-server:
     container_name: "customers-server"
     image: "nginx"
@@ -46,6 +48,7 @@ services:
         source: ./customers-server/content
         target: /usr/share/nginx/html
     restart: always
+
   backoffice-server:
     container_name: "backoffice-server"
     image: "nginx"
@@ -59,6 +62,7 @@ services:
         source: ./backoffice-server/content
         target: /usr/share/nginx/html
     restart: always
+
   broker-server:
     container_name: "broker-server"
     image: "nginx"
@@ -72,6 +76,7 @@ services:
         source: ./broker-server/content
         target: /usr/share/nginx/html
     restart: always
+
   portal-server:
     container_name: "portal-server"
     image: "nginx"
@@ -85,6 +90,7 @@ services:
         source: ./portal-server/content
         target: /usr/share/nginx/html
     restart: always
+
   mocks-server:
     container_name: "mocks-server"
     build: ./mocks-server
@@ -93,3 +99,58 @@ services:
     volumes:
       - ./mocks-server/mocks:/data
     restart: always
+
+  api-server:
+    container_name: "api-server"
+    image: "nginx"
+    ports:
+      - "7500:7500"
+    volumes:
+      - type: bind
+        source: ./apis/nginx-conf
+        target: /etc/nginx/conf.d
+    restart: always
+
+  customers-service:
+    image: customers-service
+    container_name: customers-service
+    restart: always
+    environment:
+      SPRING.DATASOURCE.URL: jdbc:postgresql://db:5432/techbank?currentSchema=customers
+      SPRING.DATASOURCE.USERNAME: techbank
+      SPRING.DATASOURCE.PASSWORD: techbank21
+    ports:
+    - 8002:8002
+
+  accounts-service:
+    image: accounts-service
+    container_name: accounts-service
+    restart: always
+    environment:
+      SPRING.DATASOURCE.URL: jdbc:postgresql://db:5432/techbank?currentSchema=accounts
+      SPRING.DATASOURCE.USERNAME: techbank
+      SPRING.DATASOURCE.PASSWORD: techbank21
+    ports:
+      - 8000:8000
+
+  cards-service:
+    image: cards-service
+    container_name: cards-service
+    restart: always
+    environment:
+      SPRING.DATASOURCE.URL: jdbc:postgresql://db:5432/techbank?currentSchema=cards
+      SPRING.DATASOURCE.USERNAME: techbank
+      SPRING.DATASOURCE.PASSWORD: techbank21
+    ports:
+      - 8001:8001
+  db:
+    image: postgres
+    container_name: general-db
+    restart: always
+    environment:
+      POSTGRES_USER: techbank
+      POSTGRES_PASSWORD: techbank21
+    ports:
+      - "5000:5432"
+    volumes:
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql

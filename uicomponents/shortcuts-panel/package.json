@@ -1,7 +1,7 @@
 {
   "name": "shortcuts-panel",
   "version": "1.0.0",
-"author": "José Alberto Ruiz <jalb80@gmail.com> (https://jaruiz.io)",
+  "author": "The Polymer Authors",
   "description": "Shortcuts for four elements",
   "main": "shortcuts-panel.js",
   "module": "shortcuts-panel.js",
@@ -31,10 +31,10 @@
     "test:prune-snapshots": "karma start karma.conf.cjs --prune-snapshots",
     "checksize": "rollup -c ; cat my-element.bundled.js | gzip -9 | wc -c ; rm my-element.bundled.js",
     "expose": "cd build && npx static-server",
-    "s3-delete-js": "aws s3  rm s3://jalb80-microfrontends-bucket/uicomponents/shortcuts-panel/v1 --recursive",
-    "s3-delete-assets": "aws s3  rm s3://jalb80-microfrontends-bucket/assets/uicomponents/shortcuts-panel/v1 --recursive",
-    "s3-upload-js": "aws s3  cp dist/v1/shortcuts-panel s3://jalb80-microfrontends-bucket/uicomponents/shortcuts-panel/v1 --recursive --exclude 'assets/*'",
-    "s3-upload-assets": "aws s3  cp dist/v1/shortcuts-panel/assets/uicomponents s3://jalb80-microfrontends-bucket/assets/uicomponents --recursive",
+    "s3-delete-js": "aws s3  rm s3://technology-bank-microfrontends-bucket/uicomponents/shortcuts-panel/v1 --recursive",
+    "s3-delete-assets": "aws s3  rm s3://technology-bank-microfrontends-bucket/assets/uicomponents/shortcuts-panel/v1 --recursive",
+    "s3-upload-js": "aws s3  cp dist/v1/shortcuts-panel s3://technology-bank-microfrontends-bucket/uicomponents/shortcuts-panel/v1 --recursive --exclude 'assets/*'",
+    "s3-upload-assets": "aws s3  cp dist/v1/shortcuts-panel/assets/uicomponents s3://technology-bank-microfrontends-bucket/assets/uicomponents --recursive",
     "s3-delete": "npm run s3-delete-assets && npm run s3-delete-js",
     "s3-upload": "npm run s3-upload-assets && npm run s3-upload-js",
     "publish": "npm run s3-delete && npm run s3-upload"
@@ -44,7 +44,6 @@
     "lit-element",
     "typescript"
   ],
-  "author": "The Polymer Authors",
   "license": "BSD-3-Clause",
   "dependencies": {
     "@material/mwc-icon": "^0.18.0",
