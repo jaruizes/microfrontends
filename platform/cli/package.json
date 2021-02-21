@@ -1,12 +1,9 @@
 {
-  "name": "nextply-cli",
+  "name": "microfrontends-cli",
   "version": "1.1.0",
   "license": "MIT",
-  "publishConfig": {
-    "registry": "http://nexus.shared-nexus-mirror.svc.cluster.local/repository/npm-private/"
-  },
   "bin": {
-    "nextply": "src/main.js"
+    "mf": "src/main.js"
   },
   "scripts": {
     "start": "node src/main.js"
