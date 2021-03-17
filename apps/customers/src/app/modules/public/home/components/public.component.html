@@ -1,0 +1,98 @@
+<div class="public-home">
+
+  <!-- Header -->
+  <header class="masthead d-flex">
+    <div class="container text-center my-auto title-container">
+      <h1 class="mb-1">Micro Frontends Bank</h1>
+      <h3 class="mb-5">
+        <em>This is a Bank built on Micro Frontends!</em>
+      </h3>
+      <button class="btn btn-lg btn-primary" (click)="doLogin()">Get Started!</button>
+    </div>
+    <div class="overlay"></div>
+  </header>
+
+  <!-- About -->
+  <section class="content-section bg-dark text-center">
+    <div class="container">
+      <div class="content-section-heading">
+        <h3 class="text-info mb-0">Capabilities</h3>
+        <h2 class="text-light mb-5">What are we going to find here?</h2>
+      </div>
+      <div class="row">
+        <div class="col-lg-3 col-md-6 mb-5 mb-lg-0 text-info">
+          <span class="service-icon rounded-circle mx-auto mb-3">
+            <fa-icon [icon]="faCubes"></fa-icon>
+          </span>
+          <h4>
+            <strong>Micro Frontends</strong>
+          </h4>
+          <p class="mb-0 text-light">The key of this PoC! You'll find multiple FWs: Angular, Vue, Stencil, LitElements...</p>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-5 mb-lg-0 text-info">
+          <span class="service-icon rounded-circle mx-auto mb-3">
+            <fa-icon [icon]="faCloud"></fa-icon>
+          </span>
+          <h4>
+            <strong>Cloud & Local Architectures</strong>
+          </h4>
+          <p class="mb-0 text-light">Ready to deploy in AWS Architecture or in local by Docker Compose</p>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-5 mb-md-0 text-info">
+          <span class="service-icon rounded-circle mx-auto mb-3">
+            <i class="custom-icon storybook-icon"></i>
+          </span>
+          <h4>
+            <strong>Micro Frontends & UI Catalog</strong>
+          </h4>
+          <p class="mb-0 text-light">Catalog based on Storybook</p>
+        </div>
+        <div class="col-lg-3 col-md-6 text-info">
+          <span class="service-icon rounded-circle mx-auto mb-3">
+            <i class="custom-icon terraform-icon"></i>
+          </span>
+          <h4>
+            <strong>IaC</strong>
+          </h4>
+          <p class="mb-0 text-light">Terraform resources to create AWS resources</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer text-center">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 mr-auto ml-auto mb-4">
+          <div style="margin-bottom: 1em">
+            <h1 class="text-center">Need more detail? </h1>
+          </div>
+        </div>
+      </div>
+      <ul class="list-inline mb-5">
+        <li class="list-inline-item">
+          <a class="social-link rounded-circle text-white mr-3" href="https://jaruiz.io" target="_blank">
+            <fa-icon [icon]="faBlog"></fa-icon>
+          </a>
+        </li>
+        <li class="list-inline-item">
+          <a class="social-link rounded-circle text-white mr-3" href="https://www.linkedin.com/in/jaruizcasarrubios/?locale=en_US" target="_blank">
+            <i class="icon-social-linkedin"></i>
+          </a>
+        </li>
+        <li class="list-inline-item">
+          <a class="social-link rounded-circle text-white mr-3" href="https://twitter.com/jalb80" target="_blank">
+            <i class="icon-social-twitter"></i>
+          </a>
+        </li>
+        <li class="list-inline-item">
+          <a class="social-link rounded-circle text-white" href="https://github.com/jaruizes" target="_blank">
+            <i class="icon-social-github"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </footer>
+</div>
+

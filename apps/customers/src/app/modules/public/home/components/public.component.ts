@@ -1,8 +1,7 @@
-import { Component, NgZone, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { environment } from '../../../../environments/environment';
-//import { defineCustomElements as p1} from '@jaruizes/product-item/dist/loader';
-//import { ProductItem } from '@jaruizes/product-item/dist/v1/collection/components/product-item/product-item';
+import { environment } from '../../../../../environments/environment';
+import { faCloud, faCubes, faBlog } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-public',
@@ -11,10 +10,11 @@ import { environment } from '../../../../environments/environment';
 })
 export class PublicComponent implements OnInit {
   public env: string;
+  faCloud = faCloud;
+  faCubes = faCubes;
+  faBlog = faBlog;
 
   constructor(private router: Router) {
-    //p1();
-    //new ProductItem();
     this.env = environment.env;
   }
 

@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthConfig, NullValidationHandler, OAuthService } from 'angular-oauth2-oidc';
 import { SecurityService } from './services/security/security.service';
 import { TranslateService } from '@ngx-translate/core';
 

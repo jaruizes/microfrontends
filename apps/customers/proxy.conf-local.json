@@ -1,0 +1,32 @@
+{
+  "/microfrontends": {
+    "target": "http://localhost:8080",
+    "secure": false,
+    "logLevel": "debug",
+    "changeOrigin" : true
+  },
+  "/assets/microfrontends": {
+    "target": "http://localhost:8080",
+    "secure": false,
+    "logLevel": "debug",
+    "changeOrigin" : true
+  },
+  "/uicomponents": {
+    "target": "http://localhost:8080",
+    "secure": false,
+    "logLevel": "debug",
+    "changeOrigin" : true
+  },
+  "/assets/uicomponents": {
+    "target": "http://localhost:8080",
+    "secure": false,
+    "logLevel": "debug",
+    "changeOrigin" : true
+  },
+  "/api": {
+    "target": "http://localhost:3200",
+    "secure": false,
+    "logLevel": "debug",
+    "changeOrigin" : true
+  }
+}

@@ -1,7 +1,7 @@
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PublicRoutingModule } from './public-routing.module';
-import { PublicComponent } from './components/public.component';
+import { PublicComponent } from './home/components/public.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatBadgeModule } from '@angular/material/badge';
@@ -21,7 +21,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { LazyElementsModule } from '@angular-extensions/elements';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 
 
 @NgModule({
@@ -49,7 +49,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatTableModule,
     MatPaginatorModule,
     FlexLayoutModule,
-    LazyElementsModule
+    LazyElementsModule,
+    FontAwesomeModule
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA
