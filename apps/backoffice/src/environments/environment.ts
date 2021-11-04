@@ -22,8 +22,8 @@ export const environment = {
     security: {
       allowedDomains: ['/api/*'],
       token: 'access_token',
-      issuer: 'https://cognito-idp.eu-west-2.amazonaws.com/eu-west-2_cWRpsv2T3',
-      clientid: 'k95pm6mikfr1oos31997m66ha',
+      issuer: 'https://cognito-idp.eu-west-2.amazonaws.com/eu-west-2_B8GdfuFgX',
+      clientid: 'am6fslcmg5j7u0bdg0s2q5jkk',
       scope: 'openid profile email aws.cognito.signin.user.admin',
       logoutUrl: 'https://tf-microfrontends.auth.eu-west-2.amazoncognito.com/logout',
       userinfoEndpoint: 'https://tf-microfrontends.auth.eu-west-2.amazoncognito.com/oauth2/userInfo'
