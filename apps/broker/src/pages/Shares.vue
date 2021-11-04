@@ -46,11 +46,11 @@ export default {
           const entries = result.data['values'];
           entries.forEach((entry) => {
             const item = {
-              id: entry['gsx$_cn6ca']['$t'],
+              id: entry[0],
               header: 'CONTINUO',
-              title1: entry['gsx$_cokwr']['$t'],
-              subtitle1: entry['gsx$_chk2m']['$t'] + ' %',
-              title2: entry['gsx$_cpzh4']['$t'] + ' €'
+              title1: entry[1],
+              subtitle1: entry[3] + ' %',
+              title2: entry[2] + ' €'
             };
 
             this.shares.items.push(item);
