@@ -23,7 +23,7 @@ export const environment = {
       allowedDomains: ['/api/*'],
       token: 'access_token',
       issuer: 'https://cognito-idp.eu-west-2.amazonaws.com/eu-west-2_oQZpUXu4v',
-      clientid: 'qblosr0ba12cmth543i47ikg3',
+      clientid: 'am6fslcmg5j7u0bdg0s2q5jkk',
       scope: 'openid profile email aws.cognito.signin.user.admin',
       logoutUrl: 'https://jalb80-microfrontends.auth.eu-west-2.amazoncognito.com/logout?logout_uri=' + window.location.origin + "/logout" + '&client_id=qblosr0ba12cmth543i47ikg3',
       userinfoEndpoint: 'https://jalb80-microfrontends.auth.eu-west-2.amazoncognito.com/oauth2/userInfo'
