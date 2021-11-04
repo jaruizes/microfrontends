@@ -41,7 +41,7 @@ export default {
     },
     getShares() {
       return new Promise((resolve) => {
-        const apiGoogleSheets = 'https://spreadsheets.google.com/feeds/list/1o_XQkHbCVIxVdvXAydPP6fce0S_mkuVrwfMMYzLaYlw/od6/public/values?alt=json';
+        const apiGoogleSheets = 'https://sheets.googleapis.com/v4/spreadsheets/1o_XQkHbCVIxVdvXAydPP6fce0S_mkuVrwfMMYzLaYlw/values/Sheet1?alt=json&key=AIzaSyCMtJZHXtAZTVkvTz2TEbOAiBFBbbYO3Tc';
         axios.get(apiGoogleSheets).then((result) => {
           const entries = result.data['feed']['entry'];
           entries.forEach((entry) => {
