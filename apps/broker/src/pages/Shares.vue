@@ -43,7 +43,7 @@ export default {
       return new Promise((resolve) => {
         const apiGoogleSheets = 'https://sheets.googleapis.com/v4/spreadsheets/1o_XQkHbCVIxVdvXAydPP6fce0S_mkuVrwfMMYzLaYlw/values/Sheet1?alt=json&key=AIzaSyCMtJZHXtAZTVkvTz2TEbOAiBFBbbYO3Tc';
         axios.get(apiGoogleSheets).then((result) => {
-          const entries = result.data['feed']['entry'];
+          const entries = result.data['values'];
           entries.forEach((entry) => {
             const item = {
               id: entry['gsx$_cn6ca']['$t'],
